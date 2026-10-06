@@ -1,990 +1,770 @@
-/* =========================================================
-   TEXTILE EXPLORER — PROFESSIONAL JAVASCRIPT
-========================================================= */
+// ================================
+// TEXTILE EXPLORER - SCRIPT.JS
+// ================================
 
 
-/* =========================================================
-   FABRIC DATABASE
-========================================================= */
+// ================================
+// FABRIC DATABASE
+// ================================
 
 const fabrics = [
-
-    {
-        name: "Cotton",
-        type: "Natural",
-        group: "natural",
-        gsm: "120–220 GSM",
-        fiber: "Cotton",
-        construction: "Woven / Knitted",
-        use: "T-Shirts, Shirts, Home Textile",
-        description:
-            "A versatile natural fiber fabric known for comfort, breathability and moisture absorption."
-    },
-
-    {
-        name: "Denim",
-        type: "Woven",
-        group: "denim",
-        gsm: "250–450 GSM",
-        fiber: "Cotton",
-        construction: "3/1 Twill",
-        use: "Jeans, Jackets, Workwear",
-        description:
-            "A strong cotton-based twill fabric widely used for jeans and durable garments."
-    },
-
-    {
-        name: "Single Jersey",
-        type: "Knitted",
-        group: "knitted",
-        gsm: "120–220 GSM",
-        fiber: "Cotton / Polyester",
-        construction: "Weft Knit",
-        use: "T-Shirts, Casual Wear",
-        description:
-            "A lightweight knitted fabric with good stretch and comfortable hand feel."
-    },
-
-    {
-        name: "Polyester",
-        type: "Synthetic",
-        group: "synthetic",
-        gsm: "80–250 GSM",
-        fiber: "Polyester",
-        construction: "Woven / Knitted",
-        use: "Sportswear, Fashion, Technical Textile",
-        description:
-            "A durable synthetic fiber with good strength, dimensional stability and quick drying."
-    },
-
-    {
-        name: "Twill",
-        type: "Woven",
-        group: "woven",
-        gsm: "180–350 GSM",
-        fiber: "Cotton / Polyester",
-        construction: "Twill",
-        use: "Uniform, Trousers, Workwear",
-        description:
-            "A durable woven structure recognized by its diagonal surface appearance."
-    },
-
-    {
-        name: "Satin",
-        type: "Woven",
-        group: "woven",
-        gsm: "70–180 GSM",
-        fiber: "Polyester / Silk",
-        construction: "Satin",
-        use: "Fashion, Dresses, Lining",
-        description:
-            "A smooth fabric with a glossy surface and elegant appearance."
-    },
-
-    {
-        name: "Linen",
-        type: "Natural",
-        group: "natural",
-        gsm: "120–250 GSM",
-        fiber: "Flax",
-        construction: "Plain Weave",
-        use: "Shirts, Dresses, Home Textile",
-        description:
-            "A natural fiber fabric valued for breathability, durability and cool comfort."
-    },
-
-    {
-        name: "Viscose",
-        type: "Synthetic",
-        group: "synthetic",
-        gsm: "90–220 GSM",
-        fiber: "Regenerated Cellulose",
-        construction: "Woven / Knitted",
-        use: "Dresses, Shirts, Fashion",
-        description:
-            "A soft regenerated-cellulose fiber known for excellent drape and smooth handle."
-    },
-
-    {
-        name: "Rib Knit",
-        type: "Knitted",
-        group: "knitted",
-        gsm: "180–350 GSM",
-        fiber: "Cotton / Polyester",
-        construction: "Rib Knit",
-        use: "Collars, Cuffs, Waistbands",
-        description:
-            "A highly elastic knitted structure commonly used for garment trims."
-    },
-
-    {
-        name: "Interlock",
-        type: "Knitted",
-        group: "knitted",
-        gsm: "180–300 GSM",
-        fiber: "Cotton / Polyester",
-        construction: "Double Knit",
-        use: "Premium T-Shirts, Babywear",
-        description:
-            "A stable double-knit fabric with a smooth surface on both sides."
-    },
-
-    {
-        name: "Pique",
-        type: "Knitted",
-        group: "knitted",
-        gsm: "180–260 GSM",
-        fiber: "Cotton / Polyester",
-        construction: "Pique Knit",
-        use: "Polo Shirts",
-        description:
-            "A textured knitted fabric widely used for polo shirts."
-    },
-
-    {
-        name: "Fleece",
-        type: "Knitted",
-        group: "knitted",
-        gsm: "240–400 GSM",
-        fiber: "Cotton / Polyester",
-        construction: "Knitted",
-        use: "Hoodies, Sweatshirts, Winterwear",
-        description:
-            "A warm knitted fabric with a soft brushed inner surface."
-    }
-
+  {
+    name: "Cotton",
+    bangla: "কটন",
+    type: "Natural",
+    category: "natural",
+    gsm: "120–220 GSM",
+    fiber: "Cotton",
+    construction: "Woven / Knitted",
+    process: "Spinning → Weaving/Knitting → Dyeing → Finishing",
+    uses: "T-Shirt, Shirt, Trouser, Home Textile",
+    advantages: "Comfortable, breathable, absorbent",
+    disadvantages: "Wrinkles easily, may shrink"
+  },
+  {
+    name: "Denim",
+    bangla: "ডেনিম",
+    type: "Woven",
+    category: "woven",
+    gsm: "250–450 GSM",
+    fiber: "Cotton",
+    construction: "3/1 Twill",
+    process: "Spinning → Warping → Sizing → Weaving → Dyeing → Finishing",
+    uses: "Jeans, Jacket, Skirt",
+    advantages: "Strong, durable, stylish",
+    disadvantages: "Heavy, less breathable"
+  },
+  {
+    name: "Single Jersey",
+    bangla: "সিঙ্গেল জার্সি",
+    type: "Knitted",
+    category: "knitted",
+    gsm: "120–180 GSM",
+    fiber: "Cotton / Polyester",
+    construction: "Single Knit",
+    process: "Knitting → Dyeing → Finishing",
+    uses: "T-Shirt, Innerwear",
+    advantages: "Soft, stretchable, comfortable",
+    disadvantages: "Curling tendency, may lose shape"
+  },
+  {
+    name: "Polyester",
+    bangla: "পলিয়েস্টার",
+    type: "Synthetic",
+    category: "synthetic",
+    gsm: "80–250 GSM",
+    fiber: "Polyester",
+    construction: "Woven / Knitted",
+    process: "Polymerization → Spinning → Weaving/Knitting → Dyeing",
+    uses: "Sportswear, Jacket, T-Shirt",
+    advantages: "Strong, quick drying, wrinkle resistant",
+    disadvantages: "Low moisture absorption"
+  },
+  {
+    name: "Twill",
+    bangla: "টুইল",
+    type: "Woven",
+    category: "woven",
+    gsm: "180–350 GSM",
+    fiber: "Cotton / Polyester",
+    construction: "Twill Weave",
+    process: "Warping → Sizing → Weaving → Dyeing → Finishing",
+    uses: "Trouser, Uniform, Workwear",
+    advantages: "Durable, good appearance",
+    disadvantages: "Can be heavier"
+  },
+  {
+    name: "Satin",
+    bangla: "স্যাটিন",
+    type: "Woven",
+    category: "woven",
+    gsm: "80–180 GSM",
+    fiber: "Silk / Polyester",
+    construction: "Satin Weave",
+    process: "Warping → Weaving → Dyeing → Finishing",
+    uses: "Dress, Lingerie, Decorative Textile",
+    advantages: "Smooth, shiny, luxurious",
+    disadvantages: "Can snag easily"
+  },
+  {
+    name: "Linen",
+    bangla: "লিনেন",
+    type: "Natural",
+    category: "natural",
+    gsm: "120–250 GSM",
+    fiber: "Flax",
+    construction: "Plain Weave",
+    process: "Flax Processing → Spinning → Weaving → Finishing",
+    uses: "Shirt, Dress, Home Textile",
+    advantages: "Breathable, cool, durable",
+    disadvantages: "Wrinkles easily"
+  },
+  {
+    name: "Viscose",
+    bangla: "ভিসকস",
+    type: "Synthetic/Regenerated",
+    category: "synthetic",
+    gsm: "100–220 GSM",
+    fiber: "Regenerated Cellulose",
+    construction: "Woven / Knitted",
+    process: "Pulp → Dissolving → Spinning → Weaving/Knitting",
+    uses: "Dress, Shirt, Scarf",
+    advantages: "Soft, breathable, good drape",
+    disadvantages: "Can weaken when wet"
+  },
+  {
+    name: "Rib Knit",
+    bangla: "রিব নিট",
+    type: "Knitted",
+    category: "knitted",
+    gsm: "180–350 GSM",
+    fiber: "Cotton / Polyester",
+    construction: "1x1 / 2x2 Rib",
+    process: "Knitting → Dyeing → Finishing",
+    uses: "Cuff, Collar, Waistband",
+    advantages: "Highly stretchable, comfortable",
+    disadvantages: "May lose recovery"
+  },
+  {
+    name: "Interlock",
+    bangla: "ইন্টারলক",
+    type: "Knitted",
+    category: "knitted",
+    gsm: "180–300 GSM",
+    fiber: "Cotton / Polyester",
+    construction: "Double Knit",
+    process: "Knitting → Dyeing → Finishing",
+    uses: "T-Shirt, Babywear, Sportswear",
+    advantages: "Soft, stable, smooth",
+    disadvantages: "Heavier than single jersey"
+  },
+  {
+    name: "Pique",
+    bangla: "পিকে",
+    type: "Knitted",
+    category: "knitted",
+    gsm: "180–240 GSM",
+    fiber: "Cotton / Polyester",
+    construction: "Pique Knit",
+    process: "Knitting → Dyeing → Finishing",
+    uses: "Polo Shirt",
+    advantages: "Breathable, textured appearance",
+    disadvantages: "Can shrink if untreated"
+  },
+  {
+    name: "Fleece",
+    bangla: "ফ্লিস",
+    type: "Knitted",
+    category: "knitted",
+    gsm: "220–400 GSM",
+    fiber: "Polyester / Cotton",
+    construction: "Brushed Knit",
+    process: "Knitting → Dyeing → Brushing → Finishing",
+    uses: "Hoodie, Sweatshirt, Winterwear",
+    advantages: "Warm, soft, comfortable",
+    disadvantages: "Can pill"
+  }
 ];
 
 
-/* =========================================================
-   DOM ELEMENTS
-========================================================= */
+// ================================
+// FABRIC DISPLAY
+// ================================
 
-const fabricGrid =
-    document.getElementById("fabricGrid");
+const fabricGrid = document.getElementById("fabricGrid");
+const filterButtons = document.querySelectorAll("[data-filter]");
+const viewAllFabrics = document.getElementById("viewAllFabrics");
 
-const filterButtons =
-    document.querySelectorAll(".filter-btn");
+function displayFabrics(list) {
+  if (!fabricGrid) return;
 
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const navbar =
-    document.querySelector(".navbar");
-
-const navLinks =
-    document.querySelectorAll(".nav-link");
-
-const globalSearch =
-    document.getElementById("globalSearch");
-
-const searchBtn =
-    document.getElementById("searchBtn");
-
-const searchResults =
-    document.getElementById("searchResults");
-
-
-/* =========================================================
-   FABRIC CARD
-========================================================= */
-
-function createFabricCard(fabric) {
-
-    const card =
-        document.createElement("article");
-
-    card.className = "fabric-card";
-
-    card.dataset.group =
-        fabric.group;
-
-    card.innerHTML = `
-
-        <div class="fabric-image">
-
-            <span class="fabric-type">
-                ${fabric.type}
-            </span>
-
-        </div>
-
-        <div class="fabric-info">
-
-            <h3>
-                ${fabric.name}
-            </h3>
-
-            <p>
-                ${fabric.description}
-            </p>
-
-            <div class="fabric-meta">
-
-                <span>
-                    ${fabric.gsm}
-                </span>
-
-                <span>
-                    ${fabric.fiber}
-                </span>
-
-                <span>
-                    ${fabric.construction}
-                </span>
-
-            </div>
-
-        </div>
-
+  if (list.length === 0) {
+    fabricGrid.innerHTML = `
+      <div class="empty-state">
+        <h3>No fabric found</h3>
+        <p>Try another search or category.</p>
+      </div>
     `;
+    return;
+  }
 
-    return card;
+  fabricGrid.innerHTML = list.map((fabric, index) => `
+    <article class="fabric-card" data-index="${index}">
+      <div class="fabric-card-top">
+        <span class="fabric-type">${fabric.type}</span>
+        <span class="fabric-gsm">${fabric.gsm}</span>
+      </div>
+
+      <h3>${fabric.name}</h3>
+      <p class="fabric-bangla">${fabric.bangla}</p>
+
+      <div class="fabric-info">
+        <span><strong>Fiber:</strong> ${fabric.fiber}</span>
+        <span><strong>Construction:</strong> ${fabric.construction}</span>
+      </div>
+
+      <button type="button" class="fabric-details-btn">
+        View Details →
+      </button>
+    </article>
+  `).join("");
+
+  const cards = fabricGrid.querySelectorAll(".fabric-card");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const index = Number(card.dataset.index);
+      openFabricDetails(list[index]);
+    });
+  });
 }
 
 
-/* =========================================================
-   DISPLAY FABRICS
-========================================================= */
+// ================================
+// FABRIC DETAILS MODAL
+// ================================
 
-function displayFabrics(filter = "all") {
+function openFabricDetails(fabric) {
+  const modal = document.createElement("div");
 
-    if (!fabricGrid) {
-        return;
+  modal.className = "fabric-modal";
+
+  modal.innerHTML = `
+    <div class="fabric-modal-overlay"></div>
+
+    <div class="fabric-modal-content">
+      <button type="button" class="modal-close" aria-label="Close">
+        ×
+      </button>
+
+      <span class="fabric-type">${fabric.type}</span>
+
+      <h2>${fabric.name}</h2>
+      <p class="fabric-bangla">${fabric.bangla}</p>
+
+      <div class="modal-grid">
+
+        <div>
+          <strong>GSM</strong>
+          <p>${fabric.gsm}</p>
+        </div>
+
+        <div>
+          <strong>Fiber</strong>
+          <p>${fabric.fiber}</p>
+        </div>
+
+        <div>
+          <strong>Construction</strong>
+          <p>${fabric.construction}</p>
+        </div>
+
+        <div>
+          <strong>Process</strong>
+          <p>${fabric.process}</p>
+        </div>
+
+        <div>
+          <strong>Uses</strong>
+          <p>${fabric.uses}</p>
+        </div>
+
+        <div>
+          <strong>Advantages</strong>
+          <p>${fabric.advantages}</p>
+        </div>
+
+        <div>
+          <strong>Disadvantages</strong>
+          <p>${fabric.disadvantages}</p>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const closeButton = modal.querySelector(".modal-close");
+  const overlay = modal.querySelector(".fabric-modal-overlay");
+
+  function closeModal() {
+    modal.remove();
+  }
+
+  closeButton.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", function escHandler(event) {
+    if (event.key === "Escape") {
+      closeModal();
+      document.removeEventListener("keydown", escHandler);
     }
+  });
+}
 
-    fabricGrid.innerHTML = "";
 
-    let filteredFabrics;
+// ================================
+// FABRIC FILTERS
+// ================================
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    filterButtons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
 
     if (filter === "all") {
-
-        filteredFabrics =
-            fabrics;
-
+      displayFabrics(fabrics);
     } else {
+      const filtered = fabrics.filter(
+        fabric => fabric.category === filter
+      );
 
-        filteredFabrics =
-            fabrics.filter(
-                fabric =>
-                    fabric.group === filter
-            );
-
+      displayFabrics(filtered);
     }
+  });
+});
 
+if (viewAllFabrics) {
+  viewAllFabrics.addEventListener("click", () => {
+    displayFabrics(fabrics);
 
-    if (filteredFabrics.length === 0) {
+    filterButtons.forEach((btn) => {
+      btn.classList.remove("active");
+    });
 
-        fabricGrid.innerHTML = `
+    const allButton = document.querySelector('[data-filter="all"]');
 
-            <div class="no-results">
-
-                <h3>
-                    No fabric found
-                </h3>
-
-                <p>
-                    Try another category.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
+    if (allButton) {
+      allButton.classList.add("active");
     }
-
-
-    filteredFabrics.forEach(
-        fabric => {
-
-            fabricGrid.appendChild(
-                createFabricCard(fabric)
-            );
-
-        }
-    );
-
+  });
 }
 
 
-/* =========================================================
-   INITIAL FABRIC LOAD
-========================================================= */
+// ================================
+// MOBILE MENU
+// ================================
 
-displayFabrics();
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector(".main-nav");
 
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
+    menuToggle.classList.toggle("active");
+  });
 
-/* =========================================================
-   FABRIC FILTER
-========================================================= */
-
-filterButtons.forEach(button => {
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            filterButtons.forEach(
-                btn =>
-                    btn.classList.remove(
-                        "active"
-                    )
-            );
-
-            button.classList.add(
-                "active"
-            );
-
-            const filter =
-                button.dataset.filter;
-
-            displayFabrics(filter);
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-if (menuBtn) {
-
-    menuBtn.addEventListener(
-        "click",
-        () => {
-
-            navbar.classList.toggle(
-                "show"
-            );
-
-        }
-    );
-
+  mainNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("open");
+      menuToggle.classList.remove("active");
+    });
+  });
 }
 
 
-/* =========================================================
-   CLOSE MOBILE MENU AFTER CLICK
-========================================================= */
+// ================================
+// GSM CALCULATOR
+// Formula:
+// GSM = Weight(g) × 10000 / Length(cm) × Width(cm)
+// ================================
 
-navLinks.forEach(link => {
-
-    link.addEventListener(
-        "click",
-        () => {
-
-            navbar.classList.remove(
-                "show"
-            );
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
-
-window.addEventListener(
-    "scroll",
-    () => {
-
-        let currentSection = "";
-
-        sections.forEach(
-            section => {
-
-                const sectionTop =
-                    section.offsetTop - 120;
-
-                if (
-                    window.scrollY >=
-                    sectionTop
-                ) {
-
-                    currentSection =
-                        section.getAttribute(
-                            "id"
-                        );
-
-                }
-
-            }
-        );
-
-
-        navLinks.forEach(
-            link => {
-
-                link.classList.remove(
-                    "active"
-                );
-
-                const href =
-                    link.getAttribute(
-                        "href"
-                    );
-
-                if (
-                    href ===
-                    `#${currentSection}`
-                ) {
-
-                    link.classList.add(
-                        "active"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   GSM CALCULATOR
-========================================================= */
-
-const calculateGSM =
-    document.getElementById(
-        "calculateGSM"
-    );
+const gsmWeight = document.getElementById("gsmWeight");
+const gsmLength = document.getElementById("gsmLength");
+const gsmWidth = document.getElementById("gsmWidth");
+const calculateGSM = document.getElementById("calculateGSM");
+const gsmResult = document.getElementById("gsmResult");
 
 if (calculateGSM) {
+  calculateGSM.addEventListener("click", () => {
 
-    calculateGSM.addEventListener(
-        "click",
-        () => {
+    const weight = parseFloat(gsmWeight.value);
+    const length = parseFloat(gsmLength.value);
+    const width = parseFloat(gsmWidth.value);
 
-            const weight =
-                parseFloat(
-                    document.getElementById(
-                        "gsmWeight"
-                    ).value
-                );
-
-            const length =
-                parseFloat(
-                    document.getElementById(
-                        "gsmLength"
-                    ).value
-                );
-
-            const width =
-                parseFloat(
-                    document.getElementById(
-                        "gsmWidth"
-                    ).value
-                );
-
-            const result =
-                document.getElementById(
-                    "gsmResult"// Yarn Count Calculator
-const yarnCountValue = document.getElementById("yarnCountValue");
-const yarnCountType = document.getElementById("yarnCountType");
-const calculateYarnCount = document.getElementById("calculateYarnCount");
-const yarnCountResult = document.getElementById("yarnCountResult");
-
-if (calculateYarnCount) {
-  calculateYarnCount.addEventListener("click", () => {
-    const value = parseFloat(yarnCountValue.value);
-    const type = yarnCountType.value;
-
-    if (!value || value <= 0) {
-      yarnCountResult.textContent = "Please enter a valid value.";
+    if (
+      !Number.isFinite(weight) ||
+      !Number.isFinite(length) ||
+      !Number.isFinite(width) ||
+      weight <= 0 ||
+      length <= 0 ||
+      width <= 0
+    ) {
+      gsmResult.textContent = "Please enter valid values.";
       return;
     }
 
-    let ne, nm, tex, denier;
+    const gsm = (weight * 10000) / (length * width);
 
+    gsmResult.innerHTML = `
+      <strong>GSM = ${gsm.toFixed(2)}</strong>
+      <span> g/m²</span>
+    `;
+  });
+}
+
+
+// ================================
+// SHRINKAGE CALCULATOR
+// Formula:
+// Shrinkage % = (Original - Final) / Original × 100
+// ================================
+
+const originalLength = document.getElementById("originalLength");
+const finalLength = document.getElementById("finalLength");
+const calculateShrinkage = document.getElementById("calculateShrinkage");
+const shrinkageResult = document.getElementById("shrinkageResult");
+
+if (calculateShrinkage) {
+  calculateShrinkage.addEventListener("click", () => {
+
+    const original = parseFloat(originalLength.value);
+    const finalValue = parseFloat(finalLength.value);
+
+    if (
+      !Number.isFinite(original) ||
+      !Number.isFinite(finalValue) ||
+      original <= 0 ||
+      finalValue < 0
+    ) {
+      shrinkageResult.textContent = "Please enter valid values.";
+      return;
+    }
+
+    const shrinkage =
+      ((original - finalValue) / original) * 100;
+
+    shrinkageResult.innerHTML = `
+      <strong>Shrinkage = ${shrinkage.toFixed(2)}%</strong>
+    `;
+  });
+}
+
+
+// ================================
+// FABRIC WEIGHT CALCULATOR
+// GSM × Length(m) × Width(m) / 1000 = kg
+// ================================
+
+const fabricGSM = document.getElementById("fabricGSM");
+const fabricLength = document.getElementById("fabricLength");
+const fabricWidth = document.getElementById("fabricWidth");
+const calculateFabricWeight =
+  document.getElementById("calculateFabricWeight");
+const fabricWeightResult =
+  document.getElementById("fabricWeightResult");
+
+if (calculateFabricWeight) {
+  calculateFabricWeight.addEventListener("click", () => {
+
+    const gsm = parseFloat(fabricGSM.value);
+    const length = parseFloat(fabricLength.value);
+    const width = parseFloat(fabricWidth.value);
+
+    if (
+      !Number.isFinite(gsm) ||
+      !Number.isFinite(length) ||
+      !Number.isFinite(width) ||
+      gsm <= 0 ||
+      length <= 0 ||
+      width <= 0
+    ) {
+      fabricWeightResult.textContent =
+        "Please enter valid values.";
+      return;
+    }
+
+    const weightKg =
+      (gsm * length * width) / 1000;
+
+    fabricWeightResult.innerHTML = `
+      <strong>Fabric Weight = ${weightKg.toFixed(2)} kg</strong>
+    `;
+  });
+}
+
+
+// ================================
+// YARN COUNT CALCULATOR
+// ================================
+
+const yarnCountValue =
+  document.getElementById("yarnCountValue");
+
+const yarnCountType =
+  document.getElementById("yarnCountType");
+
+const calculateYarnCount =
+  document.getElementById("calculateYarnCount");
+
+const yarnCountResult =
+  document.getElementById("yarnCountResult");
+
+if (calculateYarnCount) {
+
+  calculateYarnCount.addEventListener("click", () => {
+
+    const value =
+      parseFloat(yarnCountValue.value);
+
+    const type =
+      yarnCountType.value;
+
+    if (
+      !Number.isFinite(value) ||
+      value <= 0
+    ) {
+      yarnCountResult.textContent =
+        "Please enter a valid value.";
+      return;
+    }
+
+    let ne;
+    let nm;
+    let tex;
+    let denier;
+
+    // Ne → Nm, Tex, Denier
     if (type === "ne") {
+
       ne = value;
+
       nm = ne * 1.693;
+
       tex = 590.5 / ne;
+
       denier = tex * 9;
-    } else if (type === "nm") {
+    }
+
+    // Nm → Ne, Tex, Denier
+    else if (type === "nm") {
+
       nm = value;
+
       ne = nm / 1.693;
+
       tex = 1000 / nm;
+
       denier = tex * 9;
-    } else if (type === "tex") {
+    }
+
+    // Tex → Ne, Nm, Denier
+    else if (type === "tex") {
+
       tex = value;
+
       nm = 1000 / tex;
+
       ne = 590.5 / tex;
+
       denier = tex * 9;
-    } else if (type === "denier") {
+    }
+
+    // Denier → Ne, Nm, Tex
+    else if (type === "denier") {
+
       denier = value;
+
       tex = denier / 9;
+
       nm = 1000 / tex;
+
       ne = 590.5 / tex;
     }
 
     yarnCountResult.innerHTML = `
-      <strong>Result:</strong><br>
-      Ne: ${ne.toFixed(2)}<br>
-      Nm: ${nm.toFixed(2)}<br>
-      Tex: ${tex.toFixed(2)}<br>
-      Denier: ${denier.toFixed(2)}
+      <strong>Result:</strong>
+
+      <div class="result-line">
+        Ne: ${ne.toFixed(2)}
+      </div>
+
+      <div class="result-line">
+        Nm: ${nm.toFixed(2)}
+      </div>
+
+      <div class="result-line">
+        Tex: ${tex.toFixed(2)}
+      </div>
+
+      <div class="result-line">
+        Denier: ${denier.toFixed(2)}
+      </div>
     `;
   });
 }
-                );
 
 
-            if (
-                !weight ||
-                !length ||
-                !width ||
-                length <= 0 ||
-                width <= 0
-            ) {
+// ================================
+// GLOBAL SEARCH
+// ================================
 
-                result.innerHTML =
-                    "⚠️ Please enter valid values.";
+const globalSearch =
+  document.getElementById("globalSearch");
 
-                return;
-            }
+const searchBtn =
+  document.getElementById("searchBtn");
 
-
-            /*
-                GSM formula:
-
-                GSM =
-                Weight × 10000
-                ----------------
-                Length × Width
-
-                Length and Width are in cm.
-            */
-
-            const gsm =
-                (
-                    weight *
-                    10000
-                ) /
-                (
-                    length *
-                    width
-                );
-
-
-            result.innerHTML = `
-
-                <strong>
-                    ${gsm.toFixed(2)} GSM
-                </strong>
-
-            `;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SHRINKAGE CALCULATOR
-========================================================= */
-
-const calculateShrinkage =
-    document.getElementById(
-        "calculateShrinkage"
-    );
-
-if (calculateShrinkage) {
-
-    calculateShrinkage.addEventListener(
-        "click",
-        () => {
-
-            const original =
-                parseFloat(
-                    document.getElementById(
-                        "originalLength"
-                    ).value
-                );
-
-            const finalLength =
-                parseFloat(
-                    document.getElementById(
-                        "finalLength"
-                    ).value
-                );
-
-            const result =
-                document.getElementById(
-                    "shrinkageResult"
-                );
-
-
-            if (
-                !original ||
-                !finalLength ||
-                original <= 0
-            ) {
-
-                result.innerHTML =
-                    "⚠️ Please enter valid values.";
-
-                return;
-            }
-
-
-            const shrinkage =
-                (
-                    (original - finalLength) /
-                    original
-                ) *
-                100;
-
-
-            result.innerHTML = `
-
-                <strong>
-                    ${shrinkage.toFixed(2)}% Shrinkage
-                </strong>
-
-            `;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   FABRIC WEIGHT CALCULATOR
-========================================================= */
-
-const calculateFabricWeight =
-    document.getElementById(
-        "calculateFabricWeight"
-    );
-
-if (calculateFabricWeight) {
-
-    calculateFabricWeight.addEventListener(
-        "click",
-        () => {
-
-            const gsm =
-                parseFloat(
-                    document.getElementById(
-                        "fabricGSM"
-                    ).value
-                );
-
-            const length =
-                parseFloat(
-                    document.getElementById(
-                        "fabricLength"
-                    ).value
-                );
-
-            const width =
-                parseFloat(
-                    document.getElementById(
-                        "fabricWidth"
-                    ).value
-                );
-
-            const result =
-                document.getElementById(
-                    "fabricWeightResult"
-                );
-
-
-            if (
-                !gsm ||
-                !length ||
-                !width ||
-                gsm <= 0 ||
-                length <= 0 ||
-                width <= 0
-            ) {
-
-                result.innerHTML =
-                    "⚠️ Please enter valid values.";
-
-                return;
-            }
-
-
-            /*
-                Fabric Weight:
-
-                GSM × Area
-
-                Area =
-                Length × Width
-
-                Since GSM = gram/m²,
-                result is in grams.
-            */
-
-            const weight =
-                gsm *
-                length *
-                width;
-
-
-            const kg =
-                weight / 1000;
-
-
-            result.innerHTML = `
-
-                <strong>
-                    ${weight.toFixed(2)} g
-                </strong>
-
-                <span style="
-                    margin-left:6px;
-                    color:#748383;
-                ">
-                    (${kg.toFixed(3)} kg)
-                </span>
-
-            `;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   GLOBAL SEARCH
-========================================================= */
+const searchResults =
+  document.getElementById("searchResults");
 
 function performSearch() {
 
-    const query =
-        globalSearch.value
-            .trim()
-            .toLowerCase();
+  if (!globalSearch || !searchResults) return;
 
+  const query =
+    globalSearch.value.trim().toLowerCase();
 
-    if (!query) {
+  if (!query) {
+    searchResults.innerHTML = "";
+    return;
+  }
 
-        searchResults.style.display =
-            "none";
+  const results = fabrics.filter((fabric) => {
 
-        searchResults.innerHTML =
-            "";
+    const searchableText = `
+      ${fabric.name}
+      ${fabric.bangla}
+      ${fabric.type}
+      ${fabric.category}
+      ${fabric.gsm}
+      ${fabric.fiber}
+      ${fabric.construction}
+      ${fabric.process}
+      ${fabric.uses}
+      ${fabric.advantages}
+      ${fabric.disadvantages}
+    `.toLowerCase();
 
-        return;
-    }
+    return searchableText.includes(query);
+  });
 
-
-    const results =
-        fabrics.filter(
-            fabric => {
-
-                const searchableText = [
-
-                    fabric.name,
-
-                    fabric.type,
-
-                    fabric.group,
-
-                    fabric.gsm,
-
-                    fabric.fiber,
-
-                    fabric.construction,
-
-                    fabric.use,
-
-                    fabric.description
-
-                ]
-                .join(" ")
-                .toLowerCase();
-
-
-                return searchableText.includes(
-                    query
-                );
-
-            }
-        );
-
-
-    searchResults.style.display =
-        "block";
-
-
-    if (results.length === 0) {
-
-        searchResults.innerHTML = `
-
-            <strong>
-                No results found.
-            </strong>
-
-            <p style="
-                margin-top:5px;
-                color:#748383;
-                font-size:12px;
-            ">
-                Try searching Cotton, Denim,
-                GSM, Knitted or Polyester.
-            </p>
-
-        `;
-
-        return;
-    }
-
+  if (results.length === 0) {
 
     searchResults.innerHTML = `
-
-        <div style="
-            display:grid;
-            gap:10px;
-        ">
-
-            ${results.map(
-                fabric => `
-
-                    <div style="
-                        padding:12px;
-                        background:#f6f9f8;
-                        border-radius:9px;
-                    ">
-
-                        <strong style="
-                            color:#102a2a;
-                        ">
-                            ${fabric.name}
-                        </strong>
-
-                        <div style="
-                            margin-top:3px;
-                            color:#748383;
-                            font-size:11px;
-                        ">
-                            ${fabric.type}
-                            •
-                            ${fabric.gsm}
-                            •
-                            ${fabric.fiber}
-                        </div>
-
-                    </div>
-
-                `
-            ).join("")}
-
-        </div>
-
+      <div class="search-empty">
+        <strong>No result found</strong>
+        <p>Try Cotton, Denim, Jersey, GSM etc.</p>
+      </div>
     `;
 
-}
+    return;
+  }
 
+  searchResults.innerHTML = results.map((fabric) => `
+    <button
+      type="button"
+      class="search-result-item"
+      data-fabric="${fabric.name}"
+    >
+      <strong>${fabric.name}</strong>
+      <span>${fabric.bangla} · ${fabric.type}</span>
+    </button>
+  `).join("");
+
+  searchResults
+    .querySelectorAll(".search-result-item")
+    .forEach((item) => {
+
+      item.addEventListener("click", () => {
+
+        const fabricName =
+          item.dataset.fabric;
+
+        const fabric =
+          fabrics.find(
+            f => f.name === fabricName
+          );
+
+        if (fabric) {
+          openFabricDetails(fabric);
+        }
+      });
+    });
+}
 
 if (searchBtn) {
-
-    searchBtn.addEventListener(
-        "click",
-        performSearch
-    );
-
+  searchBtn.addEventListener(
+    "click",
+    performSearch
+  );
 }
-
 
 if (globalSearch) {
 
-    globalSearch.addEventListener(
-        "keydown",
-        event => {
+  globalSearch.addEventListener(
+    "keydown",
+    (event) => {
 
-            if (
-                event.key ===
-                "Enter"
-            ) {
+      if (event.key === "Enter") {
+        performSearch();
+      }
+    }
+  );
 
-                performSearch();
+  globalSearch.addEventListener(
+    "input",
+    () => {
 
-            }
-
-        }
-    );
-
+      if (
+        globalSearch.value.trim().length >= 2
+      ) {
+        performSearch();
+      } else if (searchResults) {
+        searchResults.innerHTML = "";
+      }
+    }
+  );
 }
 
 
-/* =========================================================
-   VIEW ALL FABRICS
-========================================================= */
-
-const viewAllFabrics =
-    document.getElementById(
-        "viewAllFabrics"
-    );
-
-if (viewAllFabrics) {
-
-    viewAllFabrics.addEventListener(
-        "click",
-        () => {
-
-            const allButton =
-                document.querySelector(
-                    '[data-filter="all"]'
-                );
-
-            if (allButton) {
-
-                allButton.click();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   PREVENT EMPTY # LINKS
-========================================================= */
+// ================================
+// SMOOTH SCROLL
+// ================================
 
 document
-    .querySelectorAll('a[href="#"]')
-    .forEach(link => {
+  .querySelectorAll('a[href^="#"]')
+  .forEach((link) => {
 
-        link.addEventListener(
-            "click",
-            event => {
+    link.addEventListener("click", (event) => {
 
-                event.preventDefault();
+      const targetId =
+        link.getAttribute("href");
 
-            }
-        );
+      if (
+        !targetId ||
+        targetId === "#"
+      ) {
+        return;
+      }
 
+      const target =
+        document.querySelector(targetId);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     });
+  });
 
 
-/* =========================================================
-   PAGE READY MESSAGE
-========================================================= */
+// ================================
+// INITIAL LOAD
+// ================================
+
+displayFabrics(fabrics);
 
 console.log(
-    "Textile Explorer loaded successfully."
+  "Textile Explorer loaded successfully."
 );
