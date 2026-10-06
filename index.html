@@ -12870,5 +12870,1313 @@ document.addEventListener("keydown",function(e){
 </script>
 
 <!-- END ONE BUTTON FIVE FEATURE SYSTEM -->
+  <!-- =========================================================
+     TEXTILE EXPLORER
+     FINAL ALL-IN-ONE UI FIX + 5 FEATURE HUB
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   1. SIDEBAR — CLEAR TEXT
+========================================================= */
+
+/* Sidebar background */
+aside,
+.sidebar,
+#sidebar,
+nav.sidebar {
+
+  background:#ffffff !important;
+
+}
+
+/* Sidebar সব লেখা */
+aside *,
+.sidebar *,
+#sidebar *,
+nav.sidebar * {
+
+  color:#0f172a !important;
+
+}
+
+/* Sidebar links */
+aside a,
+.sidebar a,
+#sidebar a,
+nav.sidebar a {
+
+  color:#1e293b !important;
+
+  font-weight:600 !important;
+
+  text-decoration:none !important;
+
+}
+
+/* Sidebar hover */
+aside a:hover,
+.sidebar a:hover,
+#sidebar a:hover,
+nav.sidebar a:hover {
+
+  color:#1d4ed8 !important;
+
+  background:#eff6ff !important;
+
+}
+
+/* Sidebar headings */
+aside h1,
+aside h2,
+aside h3,
+aside h4,
+.sidebar h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar h4,
+#sidebar h1,
+#sidebar h2,
+#sidebar h3,
+#sidebar h4 {
+
+  color:#0f172a !important;
+
+}
+
+/* Sidebar buttons */
+aside button,
+.sidebar button,
+#sidebar button,
+nav.sidebar button {
+
+  color:#0f172a !important;
+
+  background:#ffffff !important;
+
+  border-color:#cbd5e1 !important;
+
+}
+
+/* Active sidebar item */
+aside .active,
+.sidebar .active,
+#sidebar .active,
+nav.sidebar .active {
+
+  color:#1d4ed8 !important;
+
+  background:#dbeafe !important;
+
+}
+
+
+/* =========================================================
+   2. OLD FLOATING BUTTONS REMOVE
+========================================================= */
+
+#teFeatureLauncher,
+.te-feature-launcher,
+
+#te2Launcher,
+.te2-launcher,
+
+#te3Launcher,
+.te3-launcher,
+
+#te4Launcher,
+.te4-launcher,
+
+#te5Launcher,
+.te5-launcher {
+
+  display:none !important;
+
+}
+
+
+/* =========================================================
+   3. MAIN FEATURE HUB
+========================================================= */
+
+#TEXTILE_FINAL_HUB * {
+
+  box-sizing:border-box;
+
+}
+
+
+/* ONE FLOATING BUTTON */
+
+#TEXTILE_FINAL_HUB .final-launch {
+
+  position:fixed !important;
+
+  right:20px !important;
+
+  bottom:20px !important;
+
+  width:62px !important;
+
+  height:62px !important;
+
+  border:none !important;
+
+  border-radius:50% !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #7c3aed
+    ) !important;
+
+  color:#ffffff !important;
+
+  font-size:28px !important;
+
+  display:flex !important;
+
+  align-items:center !important;
+
+  justify-content:center !important;
+
+  cursor:pointer !important;
+
+  z-index:999999 !important;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.28) !important;
+
+}
+
+
+/* =========================================================
+   4. FEATURE OVERLAY
+========================================================= */
+
+#TEXTILE_FINAL_HUB .final-overlay {
+
+  display:none;
+
+  position:fixed !important;
+
+  inset:0 !important;
+
+  background:rgba(15,23,42,.72) !important;
+
+  z-index:999998 !important;
+
+  align-items:center !important;
+
+  justify-content:center !important;
+
+  padding:15px !important;
+
+}
+
+#TEXTILE_FINAL_HUB .final-overlay.show {
+
+  display:flex !important;
+
+}
+
+
+/* =========================================================
+   5. FEATURE WINDOW
+========================================================= */
+
+#TEXTILE_FINAL_HUB .final-box {
+
+  width:100% !important;
+
+  max-width:900px !important;
+
+  max-height:90vh !important;
+
+  overflow-y:auto !important;
+
+  background:#f8fafc !important;
+
+  color:#0f172a !important;
+
+  border-radius:22px !important;
+
+  padding:25px !important;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif !important;
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.40) !important;
+
+}
+
+
+/* HEADER */
+
+#TEXTILE_FINAL_HUB .final-header {
+
+  display:flex !important;
+
+  align-items:center !important;
+
+  justify-content:space-between !important;
+
+  margin-bottom:22px !important;
+
+}
+
+#TEXTILE_FINAL_HUB .final-header h2 {
+
+  margin:0 !important;
+
+  color:#0f172a !important;
+
+  font-size:24px !important;
+
+  font-weight:800 !important;
+
+}
+
+
+/* CLOSE */
+
+#TEXTILE_FINAL_HUB .final-close {
+
+  width:42px !important;
+
+  height:42px !important;
+
+  border:none !important;
+
+  border-radius:50% !important;
+
+  background:#fee2e2 !important;
+
+  color:#991b1b !important;
+
+  font-size:24px !important;
+
+  cursor:pointer !important;
+
+}
+
+
+/* =========================================================
+   6. FIVE FEATURE CARDS
+========================================================= */
+
+#TEXTILE_FINAL_HUB .final-grid {
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr)) !important;
+
+  gap:18px !important;
+
+}
+
+
+/* CARD */
+
+#TEXTILE_FINAL_HUB .final-card {
+
+  background:#ffffff !important;
+
+  color:#0f172a !important;
+
+  border:1px solid #dbe3ef !important;
+
+  border-radius:18px !important;
+
+  padding:22px !important;
+
+  cursor:pointer !important;
+
+  transition:.2s !important;
+
+}
+
+#TEXTILE_FINAL_HUB .final-card:hover {
+
+  transform:translateY(-3px) !important;
+
+  box-shadow:
+    0 10px 25px rgba(15,23,42,.12) !important;
+
+}
+
+
+/* ICON */
+
+#TEXTILE_FINAL_HUB .final-icon {
+
+  font-size:34px !important;
+
+  margin-bottom:10px !important;
+
+}
+
+
+/* CARD TITLE */
+
+#TEXTILE_FINAL_HUB .final-card h3 {
+
+  margin:0 0 8px 0 !important;
+
+  color:#0f172a !important;
+
+  font-size:19px !important;
+
+  font-weight:800 !important;
+
+}
+
+
+/* CARD DESCRIPTION */
+
+#TEXTILE_FINAL_HUB .final-card p {
+
+  margin:0 !important;
+
+  color:#475569 !important;
+
+  font-size:14px !important;
+
+  line-height:1.65 !important;
+
+}
+
+
+/* =========================================================
+   7. FEATURE PAGES
+========================================================= */
+
+#TEXTILE_FINAL_HUB .final-page {
+
+  display:none;
+
+}
+
+#TEXTILE_FINAL_HUB .final-page.active {
+
+  display:block !important;
+
+}
+
+
+/* BACK BUTTON */
+
+#TEXTILE_FINAL_HUB .final-back {
+
+  padding:10px 16px !important;
+
+  border:none !important;
+
+  border-radius:10px !important;
+
+  background:#e2e8f0 !important;
+
+  color:#0f172a !important;
+
+  font-weight:700 !important;
+
+  cursor:pointer !important;
+
+  margin-bottom:18px !important;
+
+}
+
+
+/* PAGE TITLE */
+
+#TEXTILE_FINAL_HUB .final-page h3 {
+
+  margin:0 0 8px 0 !important;
+
+  color:#0f172a !important;
+
+  font-size:23px !important;
+
+}
+
+
+/* PAGE TEXT */
+
+#TEXTILE_FINAL_HUB .final-page p {
+
+  color:#334155 !important;
+
+  line-height:1.7 !important;
+
+}
+
+
+/* =========================================================
+   8. FUNCTION BUTTONS
+========================================================= */
+
+#TEXTILE_FINAL_HUB .final-functions {
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr)) !important;
+
+  gap:12px !important;
+
+  margin-top:20px !important;
+
+}
+
+
+#TEXTILE_FINAL_HUB .final-function {
+
+  width:100% !important;
+
+  padding:15px !important;
+
+  border:1px solid #cbd5e1 !important;
+
+  border-radius:12px !important;
+
+  background:#ffffff !important;
+
+  color:#0f172a !important;
+
+  font-weight:700 !important;
+
+  text-align:left !important;
+
+  cursor:pointer !important;
+
+}
+
+
+#TEXTILE_FINAL_HUB .final-function:hover {
+
+  background:#eff6ff !important;
+
+  color:#1d4ed8 !important;
+
+}
+
+
+/* RESULT */
+
+#TEXTILE_FINAL_HUB .final-result {
+
+  margin-top:18px !important;
+
+  padding:18px !important;
+
+  border-radius:12px !important;
+
+  background:#eff6ff !important;
+
+  color:#0f172a !important;
+
+  border:1px solid #bfdbfe !important;
+
+  line-height:1.7 !important;
+
+}
+
+
+/* =========================================================
+   9. DARK MODE
+========================================================= */
+
+body.dark aside,
+body.dark .sidebar,
+body.dark #sidebar,
+body.dark nav.sidebar,
+.dark aside,
+.dark .sidebar,
+.dark #sidebar,
+.dark nav.sidebar {
+
+  background:#111827 !important;
+
+}
+
+body.dark aside *,
+body.dark .sidebar *,
+body.dark #sidebar *,
+body.dark nav.sidebar *,
+.dark aside *,
+.dark .sidebar *,
+.dark #sidebar *,
+.dark nav.sidebar * {
+
+  color:#f8fafc !important;
+
+}
+
+body.dark aside a:hover,
+body.dark .sidebar a:hover,
+body.dark #sidebar a:hover,
+body.dark nav.sidebar a:hover {
+
+  color:#93c5fd !important;
+
+  background:#1e3a8a !important;
+
+}
+
+
+/* =========================================================
+   10. MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+  #TEXTILE_FINAL_HUB .final-box {
+
+    padding:18px !important;
+
+    max-height:92vh !important;
+
+  }
+
+  #TEXTILE_FINAL_HUB .final-grid {
+
+    grid-template-columns:1fr !important;
+
+  }
+
+  #TEXTILE_FINAL_HUB .final-functions {
+
+    grid-template-columns:1fr !important;
+
+  }
+
+  #TEXTILE_FINAL_HUB .final-header h2 {
+
+    font-size:20px !important;
+
+  }
+
+  #TEXTILE_FINAL_HUB .final-launch {
+
+    right:15px !important;
+
+    bottom:15px !important;
+
+    width:58px !important;
+
+    height:58px !important;
+
+    font-size:25px !important;
+
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     ONE BUTTON → FIVE FEATURES
+========================================================= -->
+
+<div id="TEXTILE_FINAL_HUB">
+
+  <!-- ONE BUTTON -->
+  <button
+    class="final-launch"
+    onclick="TEXTILE_FINAL_HUB.open()">
+    ⚡
+  </button>
+
+
+  <!-- WINDOW -->
+  <div
+    class="final-overlay"
+    id="finalOverlay">
+
+    <div class="final-box">
+
+
+      <!-- HEADER -->
+      <div class="final-header">
+
+        <h2>
+          🎓 Textile Explorer Features
+        </h2>
+
+        <button
+          class="final-close"
+          onclick="TEXTILE_FINAL_HUB.close()">
+          ×
+        </button>
+
+      </div>
+
+
+      <!-- ===================================================
+           HOME — FIVE FEATURES
+      ==================================================== -->
+
+      <div id="finalHome">
+
+        <div class="final-grid">
+
+
+          <!-- FEATURE 1 -->
+
+          <div
+            class="final-card"
+            onclick="TEXTILE_FINAL_HUB.show('study')">
+
+            <div class="final-icon">
+              📚
+            </div>
+
+            <h3>
+              Study & Learning
+            </h3>
+
+            <p>
+              Textile Notes, MCQ, Mock Test,
+              Viva এবং Exam Preparation।
+            </p>
+
+          </div>
+
+
+          <!-- FEATURE 2 -->
+
+          <div
+            class="final-card"
+            onclick="TEXTILE_FINAL_HUB.show('calculator')">
+
+            <div class="final-icon">
+              🧮
+            </div>
+
+            <h3>
+              Textile Calculator
+            </h3>
+
+            <p>
+              GSM, Yarn Count, EPI, PPI,
+              Production, Efficiency ও Shrinkage।
+            </p>
+
+          </div>
+
+
+          <!-- FEATURE 3 -->
+
+          <div
+            class="final-card"
+            onclick="TEXTILE_FINAL_HUB.show('lab')">
+
+            <div class="final-icon">
+              🧪
+            </div>
+
+            <h3>
+              Virtual Textile Lab
+            </h3>
+
+            <p>
+              Textile Testing, Defect Diagnosis,
+              Problem Solver এবং Test Analysis।
+            </p>
+
+          </div>
+
+
+          <!-- FEATURE 4 -->
+
+          <div
+            class="final-card"
+            onclick="TEXTILE_FINAL_HUB.show('career')">
+
+            <div class="final-icon">
+              💼
+            </div>
+
+            <h3>
+              Career & Job
+            </h3>
+
+            <p>
+              Textile Career, Viva, Interview,
+              CV এবং Job Preparation।
+            </p>
+
+          </div>
+
+
+          <!-- FEATURE 5 -->
+
+          <div
+            class="final-card"
+            onclick="TEXTILE_FINAL_HUB.show('factory')">
+
+            <div class="final-icon">
+              🏭
+            </div>
+
+            <h3>
+              Textile Factory
+            </h3>
+
+            <p>
+              Fiber → Spinning → Weaving →
+              Dyeing → Garments।
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           1. STUDY
+      ==================================================== -->
+
+      <div
+        class="final-page"
+        id="finalStudy">
+
+        <button
+          class="final-back"
+          onclick="TEXTILE_FINAL_HUB.home()">
+          ← Back
+        </button>
+
+        <h3>
+          📚 Study & Learning
+        </h3>
+
+        <p>
+          Textile Engineering শেখার জন্য
+          গুরুত্বপূর্ণ Learning Tools।
+        </p>
+
+        <div class="final-functions">
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('MCQ Practice')">
+            🧠 MCQ Practice
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Mock Test')">
+            📝 Mock Test
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Viva Preparation')">
+            🎤 Viva Preparation
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Textile Notes')">
+            📖 Textile Notes
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Exam Mode')">
+            🎯 Exam Mode
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Textile Glossary')">
+            📕 Textile Glossary
+          </button>
+
+        </div>
+
+        <div class="final-result">
+          একটি Function নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           2. CALCULATOR
+      ==================================================== -->
+
+      <div
+        class="final-page"
+        id="finalCalculator">
+
+        <button
+          class="final-back"
+          onclick="TEXTILE_FINAL_HUB.home()">
+          ← Back
+        </button>
+
+        <h3>
+          🧮 Textile Calculator
+        </h3>
+
+        <p>
+          Textile Engineering-এর
+          গুরুত্বপূর্ণ Calculation Tools।
+        </p>
+
+        <div class="final-functions">
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('GSM Calculator')">
+            ⚖️ GSM Calculator
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Yarn Count')">
+            🧵 Yarn Count
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('EPI / PPI')">
+            📏 EPI / PPI
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Production Calculator')">
+            🏭 Production
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Efficiency Calculator')">
+            📊 Efficiency
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Shrinkage Calculator')">
+            📐 Shrinkage
+          </button>
+
+        </div>
+
+        <div class="final-result">
+          একটি Calculator নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           3. LAB
+      ==================================================== -->
+
+      <div
+        class="final-page"
+        id="finalLab">
+
+        <button
+          class="final-back"
+          onclick="TEXTILE_FINAL_HUB.home()">
+          ← Back
+        </button>
+
+        <h3>
+          🧪 Virtual Textile Lab
+        </h3>
+
+        <p>
+          Textile Testing এবং Fabric
+          Problem Diagnosis Tools।
+        </p>
+
+        <div class="final-functions">
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('GSM Testing')">
+            ⚖️ GSM Testing
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Shrinkage Test')">
+            📐 Shrinkage Test
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Tensile Test')">
+            💪 Tensile Test
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Color Fastness')">
+            🎨 Color Fastness
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Defect Diagnosis')">
+            🐛 Defect Diagnosis
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Problem Solver')">
+            🔧 Problem Solver
+          </button>
+
+        </div>
+
+        <div class="final-result">
+          একটি Lab Tool নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           4. CAREER
+      ==================================================== -->
+
+      <div
+        class="final-page"
+        id="finalCareer">
+
+        <button
+          class="final-back"
+          onclick="TEXTILE_FINAL_HUB.home()">
+          ← Back
+        </button>
+
+        <h3>
+          💼 Career & Job
+        </h3>
+
+        <p>
+          Textile Engineering students-এর
+          Job এবং Career Preparation।
+        </p>
+
+        <div class="final-functions">
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Textile Career')">
+            💼 Textile Career
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Viva Simulator')">
+            🎤 Viva Simulator
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Interview Practice')">
+            🗣️ Interview Practice
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('CV Helper')">
+            📄 CV Helper
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Job Preparation')">
+            🎯 Job Preparation
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Bangladesh Textile Industry')">
+            🇧🇩 Bangladesh Textile Industry
+          </button>
+
+        </div>
+
+        <div class="final-result">
+          একটি Career Tool নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           5. FACTORY
+      ==================================================== -->
+
+      <div
+        class="final-page"
+        id="finalFactory">
+
+        <button
+          class="final-back"
+          onclick="TEXTILE_FINAL_HUB.home()">
+          ← Back
+        </button>
+
+        <h3>
+          🏭 Textile Factory
+        </h3>
+
+        <p>
+          Fiber থেকে Garments পর্যন্ত
+          সম্পূর্ণ Textile Production Process।
+        </p>
+
+        <div class="final-functions">
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Fiber')">
+            🧶 Fiber
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Spinning')">
+            🧵 Spinning
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Weaving')">
+            🏭 Weaving
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Knitting')">
+            🧶 Knitting
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Dyeing')">
+            🎨 Dyeing
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Finishing')">
+            ✨ Finishing
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Garments')">
+            👕 Garments
+          </button>
+
+          <button
+            class="final-function"
+            onclick="TEXTILE_FINAL_HUB.result('Factory Simulator')">
+            ⚙️ Factory Simulator
+          </button>
+
+        </div>
+
+        <div class="final-result">
+          একটি Factory Process নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   FINAL FEATURE HUB JAVASCRIPT
+========================================================= */
+
+const TEXTILE_FINAL_HUB = {
+
+  open:function(){
+
+    document
+      .getElementById("finalOverlay")
+      .classList.add("show");
+
+    this.home();
+
+  },
+
+
+  close:function(){
+
+    document
+      .getElementById("finalOverlay")
+      .classList.remove("show");
+
+  },
+
+
+  home:function(){
+
+    document
+      .getElementById("finalHome")
+      .style.display="block";
+
+    document
+      .querySelectorAll(
+        "#TEXTILE_FINAL_HUB .final-page"
+      )
+      .forEach(function(page){
+
+        page.classList.remove("active");
+
+      });
+
+  },
+
+
+  show:function(type){
+
+    document
+      .getElementById("finalHome")
+      .style.display="none";
+
+    document
+      .querySelectorAll(
+        "#TEXTILE_FINAL_HUB .final-page"
+      )
+      .forEach(function(page){
+
+        page.classList.remove("active");
+
+      });
+
+
+    const pages={
+
+      study:"finalStudy",
+
+      calculator:"finalCalculator",
+
+      lab:"finalLab",
+
+      career:"finalCareer",
+
+      factory:"finalFactory"
+
+    };
+
+
+    const target=pages[type];
+
+
+    if(target){
+
+      document
+        .getElementById(target)
+        .classList.add("active");
+
+    }
+
+  },
+
+
+  result:function(name){
+
+    const page=
+      document.querySelector(
+        "#TEXTILE_FINAL_HUB .final-page.active"
+      );
+
+
+    if(page){
+
+      const result=
+        page.querySelector(".final-result");
+
+
+      if(result){
+
+        result.innerHTML=
+          "✅ <strong>"+
+          name+
+          "</strong><br><br>"+
+          "Feature নির্বাচন করা হয়েছে।"+
+          "<br><br>"+
+          "এই Tool-এর সম্পূর্ণ Function "+
+          "পরবর্তী ধাপে তোমার Textile Explorer-এর "+
+          "আগের Feature System-এর সাথে Connect করা যাবে.";
+
+      }
+
+    }
+
+  }
+
+};
+
+
+/* Outside click */
+
+document
+  .getElementById("finalOverlay")
+  .addEventListener(
+    "click",
+    function(e){
+
+      if(e.target===this){
+
+        TEXTILE_FINAL_HUB.close();
+
+      }
+
+    }
+  );
+
+
+/* ESC */
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Escape"){
+
+      TEXTILE_FINAL_HUB.close();
+
+    }
+
+  }
+);
+
+</script>
+
+<!-- =========================================================
+     END FINAL ALL-IN-ONE CODE
+========================================================= -->
 </body>
 </html>
