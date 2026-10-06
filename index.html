@@ -3256,5 +3256,2415 @@ window.TE = {
 <!-- =========================================================
      END TEXTILE EXPLORER FEATURE PACK
      ========================================================= -->
+  <!-- =========================================================
+     TEXTILE EXPLORER — ADVANCED PACK 2
+     Add this code AFTER Feature Pack v1
+     Put before </body>
+========================================================= -->
+
+<style>
+/* ===== ADVANCED PACK 2 ===== */
+.te2-launcher{
+  position:fixed;
+  right:22px;
+  bottom:90px;
+  z-index:99990;
+}
+
+.te2-main{
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:25px;
+  background:linear-gradient(135deg,#0f766e,#14b8a6);
+  color:#fff;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  transition:.25s;
+}
+.te2-main:hover{transform:scale(1.08)}
+
+.te2-menu{
+  display:none;
+  position:absolute;
+  right:0;
+  bottom:68px;
+  width:250px;
+  padding:12px;
+  border-radius:16px;
+  background:var(--card-bg,#fff);
+  box-shadow:0 15px 40px rgba(0,0,0,.22);
+}
+
+.te2-menu button{
+  width:100%;
+  border:0;
+  background:transparent;
+  padding:12px;
+  margin:3px 0;
+  border-radius:10px;
+  text-align:left;
+  cursor:pointer;
+  font-size:14px;
+}
+.te2-menu button:hover{
+  background:rgba(20,184,166,.12);
+}
+
+.te2-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  background:rgba(0,0,0,.72);
+  padding:20px;
+  overflow:auto;
+}
+
+.te2-box{
+  max-width:1050px;
+  margin:30px auto;
+  background:var(--card-bg,#fff);
+  color:var(--text-color,#111);
+  border-radius:20px;
+  padding:25px;
+  position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.te2-close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:22px;
+}
+
+.te2-title{
+  font-size:28px;
+  margin:0 45px 8px 0;
+}
+
+.te2-sub{
+  opacity:.75;
+  margin-bottom:20px;
+}
+
+.te2-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.te2-card{
+  border:1px solid rgba(128,128,128,.2);
+  border-radius:15px;
+  padding:18px;
+  background:rgba(128,128,128,.04);
+}
+
+.te2-card h3{
+  margin-top:0;
+}
+
+.te2-btn{
+  border:0;
+  border-radius:9px;
+  padding:10px 15px;
+  cursor:pointer;
+  background:#0f766e;
+  color:white;
+  margin:4px;
+}
+
+.te2-btn.secondary{
+  background:#64748b;
+}
+
+.te2-input,
+.te2-select{
+  width:100%;
+  padding:11px;
+  margin:6px 0 12px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-sizing:border-box;
+}
+
+.te2-answer{
+  margin-top:15px;
+  padding:15px;
+  border-radius:10px;
+  background:rgba(20,184,166,.1);
+}
+
+.te2-question{
+  font-size:20px;
+  font-weight:700;
+  margin:15px 0;
+}
+
+.te2-option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:12px;
+  margin:8px 0;
+  border:1px solid #ddd;
+  border-radius:9px;
+  background:transparent;
+  cursor:pointer;
+}
+
+.te2-option:hover{
+  background:rgba(20,184,166,.1);
+}
+
+.te2-stat{
+  font-size:30px;
+  font-weight:800;
+  color:#0f766e;
+}
+
+.te2-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+.te2-table th,
+.te2-table td{
+  border:1px solid rgba(128,128,128,.25);
+  padding:10px;
+  text-align:left;
+  vertical-align:top;
+}
+
+.te2-table th{
+  background:rgba(20,184,166,.1);
+}
+
+.te2-search{
+  padding:12px;
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:10px;
+  margin-bottom:15px;
+  box-sizing:border-box;
+}
+
+.te2-pill{
+  display:inline-block;
+  padding:6px 10px;
+  margin:3px;
+  border-radius:20px;
+  background:rgba(20,184,166,.12);
+  font-size:12px;
+}
+
+.te2-career-path{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin:20px 0;
+}
+
+.te2-career-path span{
+  padding:10px 13px;
+  border-radius:10px;
+  background:rgba(20,184,166,.1);
+}
+
+@media(max-width:600px){
+  .te2-launcher{
+    right:15px;
+    bottom:75px;
+  }
+
+  .te2-box{
+    margin:10px auto;
+    padding:18px;
+  }
+
+  .te2-title{
+    font-size:22px;
+  }
+}
+</style>
+
+<div id="te2Launcher" class="te2-launcher">
+
+  <div id="te2Menu" class="te2-menu">
+
+    <button onclick="TE2.open('mcq')">
+      🧠 100+ Textile MCQ
+    </button>
+
+    <button onclick="TE2.open('viva')">
+      🎤 100+ Viva Questions
+    </button>
+
+    <button onclick="TE2.open('testing')">
+      🧪 Testing & Defects
+    </button>
+
+    <button onclick="TE2.open('calc')">
+      🧮 Advanced Calculators
+    </button>
+
+    <button onclick="TE2.open('career')">
+      🇧🇩 Bangladesh Textile Career
+    </button>
+
+    <button onclick="TE2.open('dashboard')">
+      📊 My Progress
+    </button>
+
+  </div>
+
+  <button class="te2-main" onclick="TE2.toggleMenu()">
+    🚀
+  </button>
+
+</div>
+
+
+<!-- MAIN MODAL -->
+<div id="te2Modal" class="te2-modal">
+
+  <div class="te2-box">
+
+    <button class="te2-close" onclick="TE2.close()">×</button>
+
+    <div id="te2Content"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+/* =========================================================
+   TEXTILE EXPLORER ADVANCED PACK 2
+========================================================= */
+
+const TE2 = {
+
+  menu:false,
+
+  mcqScore:0,
+  mcqIndex:0,
+  mcqQuestions:[],
+
+  vivaIndex:0,
+
+  open(type){
+
+    document.getElementById("te2Menu").style.display="none";
+    document.getElementById("te2Modal").style.display="block";
+
+    if(type==="mcq") this.showMCQ();
+    if(type==="viva") this.showViva();
+    if(type==="testing") this.showTesting();
+    if(type==="calc") this.showCalculator();
+    if(type==="career") this.showCareer();
+    if(type==="dashboard") this.showDashboard();
+
+  },
+
+  close(){
+    document.getElementById("te2Modal").style.display="none";
+  },
+
+  toggleMenu(){
+
+    this.menu=!this.menu;
+
+    document.getElementById("te2Menu").style.display=
+      this.menu ? "block" : "none";
+
+  },
+
+  /* =====================================================
+     100+ MCQ DATABASE
+  ===================================================== */
+
+  mcqs:[
+
+    {
+      q:"Cotton is a ______ fibre.",
+      o:["Synthetic","Natural","Regenerated","Mineral"],
+      a:1
+    },
+
+    {
+      q:"The main component of cotton fibre is:",
+      o:["Protein","Cellulose","Nylon","Polyester"],
+      a:1
+    },
+
+    {
+      q:"Wool is obtained mainly from:",
+      o:["Cotton plant","Sheep","Silkworm","Flax plant"],
+      a:1
+    },
+
+    {
+      q:"Silk is produced by:",
+      o:["Sheep","Silkworm","Cotton plant","Flax"],
+      a:1
+    },
+
+    {
+      q:"Polyester is a:",
+      o:["Natural fibre","Synthetic fibre","Animal fibre","Mineral fibre"],
+      a:1
+    },
+
+    {
+      q:"Viscose is a:",
+      o:["Regenerated fibre","Animal fibre","Mineral fibre","Natural protein"],
+      a:0
+    },
+
+    {
+      q:"The process of converting fibre into yarn is called:",
+      o:["Weaving","Spinning","Dyeing","Finishing"],
+      a:1
+    },
+
+    {
+      q:"The process of interlacing warp and weft is:",
+      o:["Knitting","Weaving","Spinning","Carding"],
+      a:1
+    },
+
+    {
+      q:"Knitted fabric is mainly formed by:",
+      o:["Loops","Crossing warp only","Printing","Cutting"],
+      a:0
+    },
+
+    {
+      q:"Warp yarn runs in the:",
+      o:["Crosswise direction","Lengthwise direction","Diagonal direction","Circular direction"],
+      a:1
+    },
+
+    {
+      q:"Weft yarn runs in the:",
+      o:["Lengthwise direction","Crosswise direction","Vertical only","Diagonal only"],
+      a:1
+    },
+
+    {
+      q:"GSM means:",
+      o:["Gram per Square Meter","Gram Standard Material","General Square Measure","Gram Spinning Method"],
+      a:0
+    },
+
+    {
+      q:"Higher GSM generally means:",
+      o:["Lighter fabric","Heavier fabric","No relation","Only more colour"],
+      a:1
+    },
+
+    {
+      q:"EPI means:",
+      o:["Ends Per Inch","Edges Per Inch","Ends Per Item","Elasticity Per Inch"],
+      a:0
+    },
+
+    {
+      q:"PPI means:",
+      o:["Picks Per Inch","Pounds Per Inch","Picks Per Item","Production Per Inch"],
+      a:0
+    },
+
+    {
+      q:"Warp preparation includes:",
+      o:["Sizing","Printing only","Garment washing only","Packaging"],
+      a:0
+    },
+
+    {
+      q:"Sizing is mainly applied to:",
+      o:["Warp yarn","Weft yarn only","Fabric after sewing","Buttons"],
+      a:0
+    },
+
+    {
+      q:"Carding is mainly used in:",
+      o:["Spinning preparation","Garment finishing","Dyeing only","Printing"],
+      a:0
+    },
+
+    {
+      q:"Combing mainly removes:",
+      o:["Long fibres","Short fibres and impurities","Dye","Moisture only"],
+      a:1
+    },
+
+    {
+      q:"Ring spinning uses:",
+      o:["Ring and traveller","Needle only","Loom shuttle only","Dye bath"],
+      a:0
+    },
+
+    {
+      q:"Rotor spinning is also called:",
+      o:["Open-end spinning","Ring spinning","Hand spinning","Wet spinning"],
+      a:0
+    },
+
+    {
+      q:"A loom is used for:",
+      o:["Weaving","Spinning","Dyeing","Testing"],
+      a:0
+    },
+
+    {
+      q:"A knitting machine produces:",
+      o:["Knitted fabric","Only yarn","Only fibre","Only dye"],
+      a:0
+    },
+
+    {
+      q:"Dyeing means:",
+      o:["Giving colour to textile material","Removing yarn","Cutting fabric","Increasing yarn count"],
+      a:0
+    },
+
+    {
+      q:"Printing usually gives colour in:",
+      o:["Specific designs/areas","Only entire fibre","Only yarn core","Machine parts"],
+      a:0
+    },
+
+    {
+      q:"Finishing is generally carried out to:",
+      o:["Improve fabric properties","Make fibre","Make raw cotton","Remove all colour"],
+      a:0
+    },
+
+    {
+      q:"Mercerization is mainly associated with:",
+      o:["Cotton","Polyester","Nylon","Wool only"],
+      a:0
+    },
+
+    {
+      q:"Bleaching is mainly done to:",
+      o:["Remove natural colouring matter","Increase yarn count","Create loops","Make warp"],
+      a:0
+    },
+
+    {
+      q:"Scouring removes:",
+      o:["Impurities","Only dye","Only fibre","Only labels"],
+      a:0
+    },
+
+    {
+      q:"Desizing removes:",
+      o:["Size material","Dye","Buttons","Needles"],
+      a:0
+    },
+
+    {
+      q:"A textile testing laboratory checks:",
+      o:["Quality and performance","Only colour names","Only machine price","Only worker attendance"],
+      a:0
+    },
+
+    {
+      q:"Tensile strength is related to:",
+      o:["Breaking strength","Colour depth","GSM only","Shrinkage only"],
+      a:0
+    },
+
+    {
+      q:"Abrasion resistance measures resistance to:",
+      o:["Surface wear","Colour mixing","Water only","Heat only"],
+      a:0
+    },
+
+    {
+      q:"Pilling means:",
+      o:["Formation of small fibre balls on fabric surface","Fabric dyeing","Yarn twisting","Fabric cutting"],
+      a:0
+    },
+
+    {
+      q:"Shrinkage means:",
+      o:["Dimensional reduction","Increase in width only","Colour increase","Yarn production"],
+      a:0
+    },
+
+    {
+      q:"Moisture regain is especially important in:",
+      o:["Textile fibres","Buttons only","Packaging only","Machines only"],
+      a:0
+    },
+
+    {
+      q:"Cotton has good:",
+      o:["Moisture absorbency","Melting point like polyester","Elastic recovery like rubber","Metal strength"],
+      a:0
+    },
+
+    {
+      q:"Polyester generally has:",
+      o:["Good dimensional stability","Very high moisture absorbency","Natural protein structure","No strength"],
+      a:0
+    },
+
+    {
+      q:"Nylon is known for:",
+      o:["Good strength","Very poor strength","Being cellulose","Being cotton"],
+      a:0
+    },
+
+    {
+      q:"The smallest unit of textile material is commonly:",
+      o:["Fibre","Garment","Loom","Package"],
+      a:0
+    },
+
+    {
+      q:"Yarn count indicates:",
+      o:["Yarn fineness/coarseness","Fabric colour","Machine speed only","Fabric design"],
+      a:0
+    },
+
+    {
+      q:"In English cotton count system, higher Ne generally means:",
+      o:["Finer yarn","Coarser yarn","Heavier fibre only","More moisture"],
+      a:0
+    },
+
+    {
+      q:"Tex is a system based on:",
+      o:["Mass per 1000 m","Length per pound","Mass per inch","Width per metre"],
+      a:0
+    },
+
+    {
+      q:"Denier is mass in grams per:",
+      o:["9000 m","1000 m","100 m","1 m"],
+      a:0
+    },
+
+    {
+      q:"Fabric width is usually measured in:",
+      o:["Length direction only","Cross direction","Yarn count","GSM"],
+      a:1
+    },
+
+    {
+      q:"A plain weave has:",
+      o:["Simple over-under interlacement","Only loops","No warp","No weft"],
+      a:0
+    },
+
+    {
+      q:"Twill weave is recognized by:",
+      o:["Diagonal effect","Circular loops","No interlacement","Only holes"],
+      a:0
+    },
+
+    {
+      q:"Satin weave generally gives:",
+      o:["Smooth surface","Heavy diagonal ribs","Only loops","No floats"],
+      a:0
+    },
+
+    {
+      q:"Knitted fabric is generally more:",
+      o:["Stretchable","Rigid than glass","Metallic","Non-textile"],
+      a:0
+    },
+
+    {
+      q:"GSM is calculated from:",
+      o:["Mass and area","Colour and width only","Yarn twist only","Temperature only"],
+      a:0
+    },
+
+    {
+      q:"Fabric cover is influenced by:",
+      o:["Yarn count and fabric density","Only colour","Only label","Only machine brand"],
+      a:0
+    },
+
+    {
+      q:"Twist in yarn mainly affects:",
+      o:["Strength and structure","Only colour","Only packaging","Only fabric width"],
+      a:0
+    },
+
+    {
+      q:"Higher twist may affect yarn:",
+      o:["Strength and handle","Only price","Only colour","Only GSM directly"],
+      a:0
+    },
+
+    {
+      q:"A cone is a:",
+      o:["Yarn package","Dye","Fibre","Loom"],
+      a:0
+    },
+
+    {
+      q:"Winding is used to:",
+      o:["Transfer yarn to suitable package","Make fibre","Make dye","Cut garment"],
+      a:0
+    },
+
+    {
+      q:"Autoconer is associated with:",
+      o:["Winding","Weaving only","Dyeing only","Garment cutting"],
+      a:0
+    },
+
+    {
+      q:"A knitting needle forms:",
+      o:["Loops","Warp beams","Dye molecules","Fibre balls"],
+      a:0
+    },
+
+    {
+      q:"GSM tester determines:",
+      o:["Fabric mass per unit area","Yarn twist only","Colour shade only","Machine speed"],
+      a:0
+    },
+
+    {
+      q:"Colour fastness means:",
+      o:["Resistance of colour to a specified action","Fabric thickness only","Yarn length","Machine speed"],
+      a:0
+    },
+
+    {
+      q:"Fastness to washing checks:",
+      o:["Colour behaviour during washing","Fabric GSM only","Yarn count only","Machine efficiency"],
+      a:0
+    },
+
+    {
+      q:"Fastness to rubbing is also called:",
+      o:["Crocking resistance","Tensile resistance","Bursting resistance","Shrinkage"],
+      a:0
+    },
+
+    {
+      q:"Bursting strength is especially important for:",
+      o:["Knitted fabrics","Buttons","Labels","Zippers only"],
+      a:0
+    },
+
+    {
+      q:"Seam strength is important in:",
+      o:["Garments","Raw fibre only","Dye bath only","Loom beam only"],
+      a:0
+    },
+
+    {
+      q:"Needle damage can cause:",
+      o:["Holes or needle lines","Higher yarn count","Better strength always","Higher GSM always"],
+      a:0
+    },
+
+    {
+      q:"A common knitting defect is:",
+      o:["Holes","Warp beam","Shuttle only","Sizing only"],
+      a:0
+    },
+
+    {
+      q:"A common woven fabric defect is:",
+      o:["Missing end","Needle only","Loop transfer only","Sinker only"],
+      a:0
+    },
+
+    {
+      q:"Shade variation means:",
+      o:["Difference in colour shade","Difference in yarn count only","Difference in width only","Difference in machine speed"],
+      a:0
+    },
+
+    {
+      q:"Bow defect refers to:",
+      o:["Curved filling/course line","Yarn count","Colour strength","Fibre length"],
+      a:0
+    },
+
+    {
+      q:"Skew means:",
+      o:["Angular distortion of fabric pattern/structure","Yarn melting","Fibre cutting","Machine cleaning"],
+      a:0
+    },
+
+    {
+      q:"Quality Control focuses on:",
+      o:["Maintaining required quality","Only sales","Only advertising","Only accounting"],
+      a:0
+    },
+
+    {
+      q:"IE in garments commonly means:",
+      o:["Industrial Engineering","International Education","Internal Electricity","Industrial Export"],
+      a:0
+    },
+
+    {
+      q:"SMV means:",
+      o:["Standard Minute Value","Simple Machine Value","Standard Material Volume","Spinning Machine Velocity"],
+      a:0
+    },
+
+    {
+      q:"Line balancing is mainly related to:",
+      o:["Production efficiency","Dye recipe only","Fibre colour","Fabric GSM only"],
+      a:0
+    },
+
+    {
+      q:"Merchandising mainly connects:",
+      o:["Buyer and production/business teams","Only machine and electricity","Only worker and security","Only dye and water"],
+      a:0
+    },
+
+    {
+      q:"Tech pack is commonly used in:",
+      o:["Garment production","Raw cotton farming only","Laboratory chemicals only","Power generation"],
+      a:0
+    },
+
+    {
+      q:"CAD is useful for:",
+      o:["Design development","Only dyeing","Only spinning","Only testing"],
+      a:0
+    },
+
+    {
+      q:"Compliance mainly concerns:",
+      o:["Required social, safety and regulatory standards","Only colour","Only yarn count","Only GSM"],
+      a:0
+    },
+
+    {
+      q:"Production planning deals with:",
+      o:["Planning manufacturing activities","Only advertising","Only salary","Only packaging design"],
+      a:0
+    },
+
+    {
+      q:"Inventory means:",
+      o:["Stock of materials/products","Only workers","Only machines","Only buyers"],
+      a:0
+    },
+
+    {
+      q:"Supply chain includes:",
+      o:["Movement of materials and products","Only dyeing","Only spinning","Only sewing"],
+      a:0
+    },
+
+    {
+      q:"AQL is commonly used in:",
+      o:["Quality inspection","Yarn twisting","Dyeing machine speed","Fibre opening"],
+      a:0
+    },
+
+    {
+      q:"Inspection is performed to:",
+      o:["Detect non-conformities","Increase fibre length","Change yarn count automatically","Create dye"],
+      a:0
+    },
+
+    {
+      q:"Fabric inspection is commonly done using:",
+      o:["Inspection machine/table","Spinning frame only","Dye bath only","Knitting needle only"],
+      a:0
+    },
+
+    {
+      q:"Four-point system is associated with:",
+      o:["Fabric grading/inspection","Yarn spinning","Dye synthesis","Garment sewing speed"],
+      a:0
+    },
+
+    {
+      q:"A defect that can be seen on fabric surface is:",
+      o:["Visual defect","Invisible count","Machine speed","Moisture regain"],
+      a:0
+    },
+
+    {
+      q:"Textile engineering includes:",
+      o:["Fibre, yarn, fabric, dyeing and garments","Only fashion design","Only marketing","Only accounting"],
+      a:0
+    },
+
+    {
+      q:"A diploma textile engineer can work in:",
+      o:["Spinning, knitting, dyeing, garments and QA","Only banking","Only farming","Only medicine"],
+      a:0
+    },
+
+    {
+      q:"Dyeing machine used for knitted fabric is often:",
+      o:["Soft-flow/jet type","Loom only","Ring frame","Carding machine"],
+      a:0
+    },
+
+    {
+      q:"Reactive dyes are widely used for:",
+      o:["Cellulosic fibres","Only metals","Only glass","Only wool in every case"],
+      a:0
+    },
+
+    {
+      q:"Disperse dyes are commonly used for:",
+      o:["Polyester","Cotton only","Wool only","Jute only"],
+      a:0
+    },
+
+    {
+      q:"Acid dyes are commonly associated with:",
+      o:["Wool/polyamide applications","Cotton only","Polyester only","Glass"],
+      a:0
+    },
+
+    {
+      q:"Pigments are:",
+      o:["Insoluble colourants","Soluble fibres","Yarn packages","Needles"],
+      a:0
+    },
+
+    {
+      q:"The pH scale generally ranges from:",
+      o:["0–14","0–5","10–100","1–1000"],
+      a:0
+    },
+
+    {
+      q:"Neutral pH is approximately:",
+      o:["7","2","12","14"],
+      a:0
+    },
+
+    {
+      q:"Temperature control in dyeing is important for:",
+      o:["Dyeing performance and shade control","Only machine colour","Only packaging","Only yarn length"],
+      a:0
+    },
+
+    {
+      q:"Batching in textile processing means:",
+      o:["Preparing materials/lots for next process","Only selling garments","Only calculating salary","Only packing boxes"],
+      a:0
+    },
+
+    {
+      q:"Batch-to-batch shade variation is a:",
+      o:["Quality problem","Yarn count system","Machine name","Weaving method"],
+      a:0
+    },
+
+    {
+      q:"RFT commonly means:",
+      o:["Right First Time","Rapid Fabric Test","Ring Frame Technology","Raw Fibre Treatment"],
+      a:0
+    },
+
+    {
+      q:"OEE is related to:",
+      o:["Equipment effectiveness","Only dye shade","Only fabric GSM","Only yarn count"],
+      a:0
+    },
+
+    {
+      q:"Efficiency percentage measures:",
+      o:["Actual performance relative to standard/target","Only colour depth","Only fibre length","Only moisture"],
+      a:0
+    },
+
+    {
+      q:"A production target is:",
+      o:["Planned output","Only fabric width","Only yarn count","Only defect"],
+      a:0
+    },
+
+    {
+      q:"Lean manufacturing focuses on:",
+      o:["Reducing waste","Increasing defects","Increasing unnecessary inventory","Reducing quality"],
+      a:0
+    },
+
+    {
+      q:"5S is related to:",
+      o:["Workplace organization","Dye colour only","Yarn count only","Fabric design only"],
+      a:0
+    },
+
+    {
+      q:"Kaizen means:",
+      o:["Continuous improvement","Machine breakdown","Fabric defect","Dyeing"],
+      a:0
+    },
+
+    {
+      q:"PPE means:",
+      o:["Personal Protective Equipment","Production Planning Equipment","Polyester Processing Equipment","Power Production Engine"],
+      a:0
+    },
+
+    {
+      q:"Workplace safety is important because:",
+      o:["It protects people and processes","It only increases colour","It changes yarn count","It reduces fabric width"],
+      a:0
+    },
+
+    {
+      q:"A textile mill may contain:",
+      o:["Spinning, weaving/knitting and processing sections","Only accounting","Only marketing","Only retail"],
+      a:0
+    },
+
+    {
+      q:"Garment production starts with:",
+      o:["Fabric and production planning/preparation","Only shipment","Only advertising","Only accounting"],
+      a:0
+    },
+
+    {
+      q:"Marker making is related to:",
+      o:["Garment cutting","Yarn spinning","Dyeing","Knitting"],
+      a:0
+    },
+
+    {
+      q:"Marker efficiency relates to:",
+      o:["Fabric utilization","Yarn twist","Dye concentration","Machine noise"],
+      a:0
+    },
+
+    {
+      q:"Cutting room handles:",
+      o:["Fabric cutting","Yarn spinning","Dyeing","Loom sizing"],
+      a:0
+    },
+
+    {
+      q:"Sewing is performed to:",
+      o:["Assemble garment components","Make fibre","Make yarn","Dye fabric"],
+      a:0
+    },
+
+    {
+      q:"Finishing in garments may include:",
+      o:["Thread trimming, pressing and inspection","Carding","Combing","Sizing"],
+      a:0
+    },
+
+    {
+      q:"Final inspection is performed before:",
+      o:["Shipment/packing as applicable","Fibre opening","Spinning","Carding"],
+      a:0
+    }
+
+  ],
+
+  /* =====================================================
+     SHOW MCQ
+  ===================================================== */
+
+  showMCQ(){
+
+    this.mcqScore=0;
+    this.mcqIndex=0;
+
+    this.mcqQuestions=[...this.mcqs]
+      .sort(()=>Math.random()-.5)
+      .slice(0,20);
+
+    this.renderMCQ();
+
+  },
+
+  renderMCQ(){
+
+    const item=this.mcqQuestions[this.mcqIndex];
+
+    document.getElementById("te2Content").innerHTML=`
+
+      <h2 class="te2-title">🧠 Textile Engineering MCQ</h2>
+
+      <p class="te2-sub">
+        100+ question bank থেকে random 20 questions
+      </p>
+
+      <div class="te2-card">
+
+        <span class="te2-pill">
+          Question ${this.mcqIndex+1}/20
+        </span>
+
+        <span class="te2-pill">
+          Score: ${this.mcqScore}
+        </span>
+
+        <div class="te2-question">
+          ${item.q}
+        </div>
+
+        <div id="te2Options"></div>
+
+      </div>
+    `;
+
+    const options=document.getElementById("te2Options");
+
+    item.o.forEach((option,index)=>{
+
+      const btn=document.createElement("button");
+
+      btn.className="te2-option";
+      btn.textContent=
+        String.fromCharCode(65+index)+". "+option;
+
+      btn.onclick=()=>this.answerMCQ(index);
+
+      options.appendChild(btn);
+
+    });
+
+  },
+
+  answerMCQ(index){
+
+    const item=this.mcqQuestions[this.mcqIndex];
+
+    if(index===item.a){
+
+      this.mcqScore++;
+
+      alert("✅ Correct!");
+
+    }else{
+
+      alert(
+        "❌ Wrong!\nCorrect Answer: "+
+        item.o[item.a]
+      );
+
+    }
+
+    this.mcqIndex++;
+
+    if(this.mcqIndex>=this.mcqQuestions.length){
+
+      const old=
+        Number(localStorage.getItem("te2_mcq_completed")||0);
+
+      localStorage.setItem(
+        "te2_mcq_completed",
+        old+1
+      );
+
+      document.getElementById("te2Content").innerHTML=`
+
+        <h2 class="te2-title">🎉 MCQ Completed</h2>
+
+        <div class="te2-card">
+
+          <div class="te2-stat">
+            ${this.mcqScore}/20
+          </div>
+
+          <p>
+            Your percentage:
+            <strong>${this.mcqScore*5}%</strong>
+          </p>
+
+          <button class="te2-btn"
+            onclick="TE2.showMCQ()">
+            🔄 Try Again
+          </button>
+
+        </div>
+      `;
+
+    }else{
+
+      this.renderMCQ();
+
+    }
+
+  },
+
+  /* =====================================================
+     100+ VIVA
+  ===================================================== */
+
+  viva:[
+
+    ["What is textile?","Textile is a material made from fibres/yarns and used for fabrics and textile products."],
+    ["What is fibre?","A fibre is a thin flexible material suitable for making yarn or textile structures."],
+    ["What is yarn?","Yarn is a continuous strand of fibres or filaments used to make textile structures."],
+    ["What is fabric?","Fabric is a textile structure produced by weaving, knitting, nonwoven or other methods."],
+    ["What is GSM?","GSM means grams per square metre and indicates fabric mass per unit area."],
+    ["What is EPI?","EPI means Ends Per Inch."],
+    ["What is PPI?","PPI means Picks Per Inch."],
+    ["What is warp?","Warp yarns run in the lengthwise direction of woven fabric."],
+    ["What is weft?","Weft yarns run across the width of woven fabric."],
+    ["What is weaving?","Weaving is the interlacement of warp and weft yarns."],
+    ["What is knitting?","Knitting forms fabric by intermeshing loops of yarn."],
+    ["What is spinning?","Spinning converts fibres into yarn."],
+    ["What is carding?","Carding opens, cleans and individualizes fibres and forms a web/sliver."],
+    ["What is combing?","Combing removes short fibres and improves fibre parallelization."],
+    ["What is drawing?","Drawing improves sliver evenness and fibre arrangement."],
+    ["What is roving?","Roving is an intermediate strand prepared before ring spinning."],
+    ["What is ring spinning?","Ring spinning is a yarn manufacturing method using spindle, ring and traveller."],
+    ["What is rotor spinning?","Rotor spinning is an open-end spinning method."],
+    ["What is winding?","Winding transfers yarn from one package to another suitable package."],
+    ["What is sizing?","Sizing applies a protective material to warp yarn to improve weaving performance."],
+    ["What is desizing?","Desizing removes size materials from woven fabric."],
+    ["What is scouring?","Scouring removes natural and added impurities from textile material."],
+    ["What is bleaching?","Bleaching removes natural colour and improves whiteness."],
+    ["What is mercerization?","Mercerization is a treatment of cotton with alkali to improve properties such as lustre and dye affinity."],
+    ["What is dyeing?","Dyeing is the process of imparting colour to textile material."],
+    ["What is printing?","Printing applies colour in a localized/design form."],
+    ["What is finishing?","Finishing modifies fabric properties, appearance or handle."],
+    ["What is reactive dye?","Reactive dyes form a chemical bond with suitable fibres, especially cellulosic fibres."],
+    ["What is disperse dye?","Disperse dyes are commonly used for hydrophobic synthetic fibres such as polyester."],
+    ["What is pigment?","Pigments are insoluble colourants fixed on the textile surface using a binder."],
+    ["What is colour fastness?","It is the resistance of colour to a specified action such as washing or rubbing."],
+    ["What is shrinkage?","Shrinkage is dimensional reduction after a specified treatment."],
+    ["What is pilling?","Pilling is the formation of small fibre balls on the fabric surface."],
+    ["What is abrasion?","Abrasion is surface wear caused by rubbing."],
+    ["What is tensile strength?","Tensile strength is the resistance of material to breaking under tension."],
+    ["What is bursting strength?","Bursting strength is the pressure required to rupture a textile structure."],
+    ["What is yarn count?","Yarn count expresses yarn fineness or coarseness using a specified numbering system."],
+    ["What is Tex?","Tex is grams per 1000 metres of yarn."],
+    ["What is Denier?","Denier is grams per 9000 metres of yarn."],
+    ["What is Ne?","Ne is a cotton count system expressing length per unit mass."],
+    ["What is cover factor?","Cover factor indicates how much of the fabric surface is covered by yarn."],
+    ["What is GSM tester?","A GSM tester/cutter is used to obtain a known fabric area for GSM calculation."],
+    ["What is fabric inspection?","Fabric inspection detects and grades defects in fabric."],
+    ["What is Four Point System?","A commonly used method for grading fabric defects based on defect severity/length."],
+    ["What is AQL?","AQL is a sampling concept used in quality inspection to define acceptable quality levels."],
+    ["What is QC?","QC means Quality Control."],
+    ["What is QA?","QA means Quality Assurance."],
+    ["What is IE?","IE means Industrial Engineering."],
+    ["What is SMV?","SMV means Standard Minute Value."],
+    ["What is line balancing?","Line balancing distributes work among operations to improve production flow."],
+    ["What is productivity?","Productivity is output compared with resources used."],
+    ["What is efficiency?","Efficiency compares actual performance with a standard or target."],
+    ["What is lean manufacturing?","Lean manufacturing focuses on reducing waste and improving value."],
+    ["What is 5S?","5S is a workplace organization and improvement method."],
+    ["What is Kaizen?","Kaizen means continuous improvement."],
+    ["What is PPE?","PPE means Personal Protective Equipment."],
+    ["What is merchandising?","Merchandising coordinates product development, buyer communication and production-related activities."],
+    ["What is tech pack?","A tech pack contains technical information needed to manufacture a garment/product."],
+    ["What is CAD?","CAD means Computer-Aided Design."],
+    ["What is compliance?","Compliance means meeting applicable requirements, standards, laws and buyer expectations."],
+    ["What is production planning?","It is planning materials, capacity, manpower and operations to meet production requirements."],
+    ["What is supply chain?","Supply chain manages the flow of materials, information and products from source to customer."],
+    ["What is inventory?","Inventory is stock of materials, components or finished products."],
+    ["What is marker?","A marker is a planned arrangement of garment patterns for fabric cutting."],
+    ["What is marker efficiency?","It indicates how efficiently fabric area is utilized by pattern placement."],
+    ["What is cutting?","Cutting separates garment components from fabric according to patterns."],
+    ["What is sewing?","Sewing joins garment components using stitches."],
+    ["What is finishing in garments?","Garment finishing includes processes such as thread trimming, pressing and final presentation."],
+    ["What is final inspection?","Final inspection checks finished products before shipment or packing."],
+    ["What is shade variation?","Shade variation is an unwanted difference in colour between textile parts/lots."],
+    ["What is bow?","Bow is a curved distortion of filling/course direction across fabric width."],
+    ["What is skew?","Skew is angular distortion of fabric construction or pattern."],
+    ["What is barre?","Barre is an unwanted horizontal/vertical stripe effect caused by variation in yarn or processing."],
+    ["What is needle line?","Needle line is a visible line/defect in knitted fabric associated with needle-related problems."],
+    ["What is dropped stitch?","A dropped stitch is a knitting defect where a loop is not properly retained."],
+    ["What is hole defect?","A hole is an opening in fabric caused by yarn breakage, needle damage or other causes."],
+    ["What is missing end?","A missing end is absence/breakage of a warp yarn in woven fabric."],
+    ["What is missing pick?","A missing pick is absence of a weft yarn in woven fabric."],
+    ["What is slub?","A slub is an unintended thick place in yarn/fabric."],
+    ["What is neps?","Neps are small tangled fibre masses or compact fibre knots."],
+    ["What is yarn twist?","Twist is the helical arrangement introduced into yarn to bind fibres together."],
+    ["Why is twist important?","Twist affects yarn strength, structure, handle and performance."],
+    ["Why is GSM important?","GSM helps control fabric weight, specification and product consistency."],
+    ["Why is EPI/PPI important?","They indicate fabric construction density."],
+    ["Why is testing important?","Testing verifies whether textile materials meet required performance/specifications."],
+    ["Why is quality control important?","It helps identify defects and maintain consistent product quality."],
+    ["Why is safety important in textile mills?","Textile machines and processes can create physical, chemical and operational hazards."],
+    ["What is a textile mill?","A textile mill is a manufacturing facility where textile processes such as spinning, weaving, knitting or processing are performed."],
+    ["What is knitting gauge?","Gauge indicates needle density/spacing in knitting equipment."],
+    ["What is loop length?","Loop length is the length of yarn forming a knitted loop/course unit."],
+    ["What is stitch density?","Stitch density refers to the number of stitches per unit area in knitted fabric."],
+    ["What is fabric width?","Fabric width is the usable transverse dimension of fabric."],
+    ["What is usable width?","Usable width is the portion of fabric width suitable for production use."],
+    ["What is process loss?","Process loss is material lost or consumed during manufacturing operations."],
+    ["What is waste?","Waste is material or resource that does not add value to the final product."],
+    ["What is RFT?","RFT means Right First Time."],
+    ["What is OEE?","OEE means Overall Equipment Effectiveness."],
+    ["What is production target?","A production target is the planned quantity to be produced within a specified period."],
+    ["What is bottleneck?","A bottleneck is a process that limits overall production flow."],
+    ["What is rework?","Rework means correcting a product that does not meet requirements."],
+    ["What is rejection?","Rejection means a product is not accepted because it fails specified requirements."],
+    ["What is root cause analysis?","It is a structured method for identifying the underlying cause of a problem."],
+    ["What is corrective action?","Corrective action addresses the cause of an identified problem."],
+    ["What is preventive action?","Preventive action aims to prevent potential problems."],
+    ["What is SOP?","SOP means Standard Operating Procedure."],
+    ["Why should a textile engineer learn Excel?","Excel is useful for production data, calculations, reporting and analysis."],
+    ["Why is communication important for textile engineers?","Engineers coordinate with production, quality, buyers, workers and management."],
+    ["What is a production report?","A report summarizing planned, actual, efficiency, defects and other production information."],
+    ["What is a defect rate?","Defect rate indicates the proportion of defective output."],
+    ["What is first pass yield?","First pass yield is the proportion of output meeting requirements without rework."],
+    ["What is fabric roll?","A fabric roll is a continuous length of fabric wound into a package."],
+    ["What is batch?","A batch is a defined quantity processed together under specified conditions."],
+    ["What is lot?","A lot is a group of material/product treated as a unit for identification or quality purposes."]
+  ],
+
+  showViva(){
+
+    this.vivaIndex=0;
+    this.renderViva();
+
+  },
+
+  renderViva(){
+
+    const item=this.viva[this.vivaIndex];
+
+    document.getElementById("te2Content").innerHTML=`
+
+      <h2 class="te2-title">🎤 Textile Viva Preparation</h2>
+
+      <p class="te2-sub">
+        100+ important viva questions
+      </p>
+
+      <div class="te2-card">
+
+        <span class="te2-pill">
+          ${this.vivaIndex+1}/${this.viva.length}
+        </span>
+
+        <div class="te2-question">
+          Q: ${item[0]}
+        </div>
+
+        <button class="te2-btn"
+          onclick="document.getElementById('te2VivaAns').style.display='block'">
+          👁 Show Answer
+        </button>
+
+        <div id="te2VivaAns"
+             class="te2-answer"
+             style="display:none">
+
+          <strong>Answer:</strong><br>
+          ${item[1]}
+
+        </div>
+
+        <br>
+
+        <button class="te2-btn secondary"
+          onclick="TE2.nextViva()">
+          Next →
+        </button>
+
+      </div>
+    `;
+
+  },
+
+  nextViva(){
+
+    this.vivaIndex++;
+
+    if(this.vivaIndex>=this.viva.length){
+      this.vivaIndex=0;
+    }
+
+    this.renderViva();
+
+  },
+
+  /* =====================================================
+     TESTING + DEFECTS
+  ===================================================== */
+
+  testingData:[
+
+    ["GSM Test","Fabric mass per unit area","Fabric"],
+    ["Tensile Strength","Breaking strength under tension","Fabric/Yarn"],
+    ["Tear Strength","Resistance to tearing","Fabric"],
+    ["Bursting Strength","Resistance to bursting pressure","Knitted Fabric"],
+    ["Abrasion Resistance","Resistance to rubbing/wear","Fabric"],
+    ["Pilling Resistance","Resistance to pill formation","Fabric"],
+    ["Shrinkage Test","Dimensional change after treatment","Fabric"],
+    ["Wash Fastness","Colour resistance to washing","Dyed Fabric"],
+    ["Rubbing Fastness","Colour resistance to rubbing","Dyed Fabric"],
+    ["Perspiration Fastness","Colour resistance to perspiration","Dyed Fabric"],
+    ["Light Fastness","Colour resistance to light","Dyed Fabric"],
+    ["Water Fastness","Colour resistance to water","Dyed Fabric"],
+    ["Crocking Test","Colour transfer during rubbing","Fabric"],
+    ["pH Test","Determines textile extract pH","Fabric"],
+    ["Formaldehyde Test","Checks formaldehyde level where applicable","Textile"],
+    ["Colour Matching","Checks shade against standard","Dyed Fabric"],
+    ["Fabric Width Test","Checks fabric width","Fabric"],
+    ["Fabric Bow Test","Checks bow distortion","Fabric"],
+    ["Fabric Skew Test","Checks skew distortion","Fabric"],
+    ["EPI Test","Counts ends per inch","Woven Fabric"],
+    ["PPI Test","Counts picks per inch","Woven Fabric"],
+    ["Yarn Count Test","Determines yarn linear density/count","Yarn"],
+    ["Yarn Strength Test","Measures yarn breaking strength","Yarn"],
+    ["Yarn Evenness","Checks mass variation along yarn","Yarn"],
+    ["Yarn Twist Test","Measures yarn twist","Yarn"],
+    ["Moisture Regain","Determines moisture regain","Fibre/Yarn"],
+    ["Fibre Length","Measures fibre length distribution","Fibre"],
+    ["Fibre Fineness","Measures fibre fineness","Fibre"],
+    ["Micronaire","Indicates cotton fineness/maturity related property","Cotton"],
+    ["Staple Length","Measures staple fibre length","Cotton"],
+    ["Seam Strength","Measures seam breaking strength","Garment"],
+    ["Seam Slippage","Checks yarn movement at seam","Garment/Fabric"],
+    ["Button Pull Test","Checks button attachment strength","Garment"],
+    ["Snap Pull Test","Checks snap attachment","Garment"],
+    ["Zipper Test","Checks zipper performance","Garment"],
+    ["Needle Detection","Detects metal needle fragments where required","Garment"],
+    ["Dimensional Stability","Checks size changes after treatment","Fabric/Garment"],
+    ["Appearance After Wash","Checks visual changes after laundering","Garment"],
+    ["Spirality Test","Checks twisting tendency after wash","Knitted Fabric"],
+    ["Loop Length Test","Measures knitted loop length","Knitted Fabric"],
+    ["Stitch Density","Measures stitches per unit area","Knitted Fabric"],
+    ["Gauge Check","Checks knitting needle gauge","Knitting"],
+    ["Colour Difference","Checks shade difference","Dyed Material"],
+    ["Whiteness","Measures degree of whiteness","Bleached Fabric"],
+    ["Absorbency","Measures wetting/absorption behaviour","Fabric"],
+    ["Water Repellency","Checks resistance to wetting","Finished Fabric"],
+    ["Air Permeability","Measures air flow through fabric","Fabric"],
+    ["Water Vapour Permeability","Checks moisture vapour transmission","Fabric"],
+    ["Thermal Resistance","Evaluates heat transfer resistance","Textile"],
+    ["Flammability Test","Evaluates burning behaviour","Textile/Garment"],
+    ["Odour Test","Evaluates undesirable odour","Textile"],
+    ["Composition Test","Identifies fibre composition","Textile"],
+    ["Colour Migration","Checks movement of colour during processing","Dyed Textile"],
+    ["Print Durability","Checks printed design durability","Printed Fabric"],
+    ["Coating Adhesion","Checks adhesion of coating","Coated Fabric"],
+    ["Fabric Handle","Evaluates tactile/handle properties","Fabric"],
+    ["Weight Loss","Checks mass change after treatment","Fabric"],
+    ["Chemical Residue","Checks residual chemicals where required","Textile"],
+    ["Garment Measurement","Checks garment dimensions against specification","Garment"]
+  ],
+
+  defects:[
+
+    ["Hole","Opening in fabric","Yarn breakage, needle damage or mechanical issue","Check machine, needles and yarn quality"],
+    ["Missing End","Warp yarn absent","Warp break or stop-motion issue","Check warp tension and loom"],
+    ["Missing Pick","Weft yarn absent","Weft insertion problem","Check weft insertion and loom settings"],
+    ["Slub","Thick yarn/fabric place","Yarn irregularity","Improve yarn quality and process control"],
+    ["Neps","Small fibre knots","Poor fibre preparation","Improve carding/combing"],
+    ["Barre","Unwanted stripe effect","Yarn or processing variation","Control yarn and processing uniformity"],
+    ["Shade Variation","Colour difference","Dyeing/process variation","Improve batch and recipe control"],
+    ["Crease Mark","Visible crease line","Improper fabric handling/processing","Control tension and fabric movement"],
+    ["Oil Spot","Oil mark on fabric","Machine oil leakage","Prevent leakage and clean equipment"],
+    ["Stain","Unwanted mark","Chemical/oil/handling contamination","Improve housekeeping and process control"],
+    ["Bow","Curved filling/course line","Uneven fabric processing","Control fabric handling and finishing"],
+    ["Skew","Angular distortion","Uneven processing or finishing","Control stenter/finishing conditions"],
+    ["Pilling","Fibre balls on surface","Fibre migration and abrasion","Control fibre/yarn and finishing"],
+    ["Uneven Dyeing","Non-uniform shade","Poor circulation/recipe/process control","Improve dyeing control"],
+    ["Patchy Dyeing","Patch-like shade variation","Uneven chemical/dye distribution","Improve preparation and circulation"],
+    ["Crease Dyeing","Darker/lighter crease lines","Fabric creasing during dyeing","Control loading and fabric movement"],
+    ["Rope Mark","Line/mark from rope form","Improper rope handling","Optimize machine operation"],
+    ["White Spot","Undyed/white area","Poor preparation or dye penetration","Improve pretreatment and dyeing"],
+    ["Color Bleeding","Colour transfers to another material","Poor fixation/fastness","Improve fixation and washing"],
+    ["Color Fading","Colour loses depth","Poor fastness or exposure","Improve dye selection/fixation"],
+    ["Needle Line","Vertical knitted line","Needle problem","Check needles and cylinder"],
+    ["Dropped Stitch","Missing knitted loop","Needle/yarn feeding issue","Check needles and yarn feed"],
+    ["Run","Vertical ladder-like defect","Broken loop sequence","Check knitting elements and yarn"],
+    ["Barrie","Horizontal knitted stripe","Yarn/process variation","Control yarn and machine conditions"],
+    ["Holes in Knit","Open areas","Needle or yarn break","Check needles, sinkers and yarn"],
+    ["Tight/Loose Stitch","Uneven loop size","Incorrect stitch setting","Adjust machine setting"],
+    ["Fabric Spirality","Twisting after wash","Knitting/yarn twist structure","Optimize yarn twist and knitting"],
+    ["Uneven GSM","GSM variation","Uneven yarn/fabric structure","Control process parameters"],
+    ["Width Variation","Width changes","Finishing/tension variation","Control machine width and tension"],
+    ["Uneven Shrinkage","Different dimensional change","Process inconsistency","Control finishing and washing"],
+    ["Seam Slippage","Yarn movement at seam","Low fabric resistance/poor construction","Review fabric construction and seam"],
+    ["Broken Stitch","Sewing stitch failure","Needle/thread/machine issue","Adjust machine and thread"],
+    ["Skipped Stitch","Missing sewing stitch","Needle/hook timing issue","Check machine timing"],
+    ["Open Seam","Seam opens","Poor stitch/seam quality","Improve sewing settings"],
+    ["Puckering","Wrinkled seam","Thread tension or fabric feed issue","Balance tension and feeding"],
+    ["Raw Edge","Unfinished garment edge","Improper overlock/cutting","Improve edge finishing"],
+    ["Measurement Out","Garment measurement outside tolerance","Cutting/sewing variation","Improve measurement control"],
+    ["Uneven Print","Non-uniform print","Screen/paste/process issue","Control print parameters"],
+    ["Print Misplacement","Print not in correct position","Registration problem","Improve alignment"],
+    ["Crack Print","Printed design cracks","Poor print/fixation/handling","Review print process"],
+    ["Poor Rubbing Fastness","Colour transfers by rubbing","Poor fixation or dye selection","Improve fixation/washing"],
+    ["Poor Wash Fastness","Colour changes during washing","Poor fixation","Optimize dyeing/fixation"],
+    ["Poor Light Fastness","Colour fades under light","Dye selection","Use suitable dyes"],
+    ["Formaldehyde Excess","Higher residual formaldehyde","Chemical/process issue","Review chemical finishing"],
+    ["Odour","Unpleasant smell","Chemical/residual contamination","Improve washing/drying/storage"],
+    ["Contamination","Foreign material present","Poor housekeeping","Improve cleanliness and segregation"],
+    ["Fiber Fly","Loose fibre contamination","Process/environment issue","Improve cleaning and air control"],
+    ["Dust","Dust contamination","Poor housekeeping","Improve cleaning and ventilation"],
+    ["Rust Mark","Brown/orange stain","Rusting machine parts","Repair and protect metal parts"],
+    ["Water Mark","Visible water stain","Uneven drying/wetting","Control drying and water quality"],
+    ["Uneven Softness","Handle variation","Finishing variation","Control softener application"],
+    ["Hard Handle","Fabric feels too stiff","Excess/incorrect finishing","Optimize finishing recipe"],
+    ["Excess Shrinkage","Shrinkage above requirement","Improper finishing/washing","Control relaxation and finishing"],
+    ["Low Strength","Strength below requirement","Fibre/yarn/process damage","Identify process cause"],
+    ["High Defect Rate","Too many defects","Process instability","Root cause analysis and corrective action"]
+  ],
+
+  showTesting(){
+
+    document.getElementById("te2Content").innerHTML=`
+
+      <h2 class="te2-title">🧪 Textile Testing & Defect Library</h2>
+
+      <input class="te2-search"
+        id="te2TestSearch"
+        placeholder="Search testing or defect..."
+        oninput="TE2.filterTesting()">
+
+      <div class="te2-grid"
+           id="te2TestingGrid"></div>
+
+    `;
+
+    this.filterTesting();
+
+  },
+
+  filterTesting(){
+
+    const query=
+      (document.getElementById("te2TestSearch")?.value||"")
+      .toLowerCase();
+
+    let html="";
+
+    this.testingData.forEach(item=>{
+
+      if(
+        !query ||
+        item.join(" ").toLowerCase().includes(query)
+      ){
+
+        html+=`
+
+          <div class="te2-card">
+
+            <span class="te2-pill">TEST</span>
+
+            <h3>${item[0]}</h3>
+
+            <p><strong>Purpose:</strong> ${item[1]}</p>
+
+            <p><strong>Material:</strong> ${item[2]}</p>
+
+          </div>
+        `;
+
+      }
+
+    });
+
+    this.defects.forEach(item=>{
+
+      if(
+        !query ||
+        item.join(" ").toLowerCase().includes(query)
+      ){
+
+        html+=`
+
+          <div class="te2-card">
+
+            <span class="te2-pill">DEFECT</span>
+
+            <h3>${item[0]}</h3>
+
+            <p><strong>What:</strong> ${item[1]}</p>
+
+            <p><strong>Cause:</strong> ${item[2]}</p>
+
+            <p><strong>Remedy:</strong> ${item[3]}</p>
+
+          </div>
+        `;
+
+      }
+
+    });
+
+    document.getElementById("te2TestingGrid").innerHTML=
+      html ||
+      "<p>No result found.</p>";
+
+  },
+
+  /* =====================================================
+     ADVANCED CALCULATORS
+  ===================================================== */
+
+  showCalculator(){
+
+    document.getElementById("te2Content").innerHTML=`
+
+      <h2 class="te2-title">🧮 Advanced Textile Calculators</h2>
+
+      <p class="te2-sub">
+        Quick engineering calculations for textile students
+      </p>
+
+      <div class="te2-grid">
+
+        <div class="te2-card">
+
+          <h3>📏 GSM Calculator</h3>
+
+          <input id="c2Weight"
+            class="te2-input"
+            type="number"
+            placeholder="Sample weight (g)">
+
+          <input id="c2Length"
+            class="te2-input"
+            type="number"
+            placeholder="Length (cm)">
+
+          <input id="c2Width"
+            class="te2-input"
+            type="number"
+            placeholder="Width (cm)">
+
+          <button class="te2-btn"
+            onclick="TE2.calcGSM()">
+            Calculate
+          </button>
+
+          <div id="c2GSMResult"></div>
+
+        </div>
+
+
+        <div class="te2-card">
+
+          <h3>🔄 GSM ↔ oz/yd²</h3>
+
+          <input id="c2GsmOz"
+            class="te2-input"
+            type="number"
+            placeholder="GSM">
+
+          <button class="te2-btn"
+            onclick="TE2.gsmToOz()">
+            GSM → oz/yd²
+          </button>
+
+          <input id="c2OzGsm"
+            class="te2-input"
+            type="number"
+            placeholder="oz/yd²">
+
+          <button class="te2-btn"
+            onclick="TE2.ozToGsm()">
+            oz/yd² → GSM
+          </button>
+
+          <div id="c2OzResult"></div>
+
+        </div>
+
+
+        <div class="te2-card">
+
+          <h3>🧵 Yarn Count Converter</h3>
+
+          <input id="c2Count"
+            class="te2-input"
+            type="number"
+            placeholder="Enter value">
+
+          <select id="c2CountType"
+            class="te2-select">
+
+            <option value="tex">Tex</option>
+            <option value="denier">Denier</option>
+            <option value="ne">Ne</option>
+
+          </select>
+
+          <button class="te2-btn"
+            onclick="TE2.countConvert()">
+            Convert
+          </button>
+
+          <div id="c2CountResult"></div>
+
+        </div>
+
+
+        <div class="te2-card">
+
+          <h3>📐 EPI / PPI</h3>
+
+          <input id="c2Ends"
+            class="te2-input"
+            type="number"
+            placeholder="Ends">
+
+          <input id="c2EpiWidth"
+            class="te2-input"
+            type="number"
+            placeholder="Width (inch)">
+
+          <button class="te2-btn"
+            onclick="TE2.calcEPI()">
+            Calculate EPI
+          </button>
+
+          <input id="c2Picks"
+            class="te2-input"
+            type="number"
+            placeholder="Picks">
+
+          <input id="c2PpiLength"
+            class="te2-input"
+            type="number"
+            placeholder="Length (inch)">
+
+          <button class="te2-btn"
+            onclick="TE2.calcPPI()">
+            Calculate PPI
+          </button>
+
+          <div id="c2EpiResult"></div>
+
+        </div>
+
+
+        <div class="te2-card">
+
+          <h3>📉 Shrinkage</h3>
+
+          <input id="c2Original"
+            class="te2-input"
+            type="number"
+            placeholder="Original length">
+
+          <input id="c2Final"
+            class="te2-input"
+            type="number"
+            placeholder="Final length">
+
+          <button class="te2-btn"
+            onclick="TE2.calcShrinkage()">
+            Calculate
+          </button>
+
+          <div id="c2ShrinkResult"></div>
+
+        </div>
+
+
+        <div class="te2-card">
+
+          <h3>🏭 Estimated Weaving Production</h3>
+
+          <input id="c2RPM"
+            class="te2-input"
+            type="number"
+            placeholder="Loom RPM / Picks per minute">
+
+          <input id="c2PPI"
+            class="te2-input"
+            type="number"
+            placeholder="PPI">
+
+          <input id="c2Eff"
+            class="te2-input"
+            type="number"
+            placeholder="Efficiency %">
+
+          <button class="te2-btn"
+            onclick="TE2.weavingProduction()">
+            Calculate m/min
+          </button>
+
+          <div id="c2WeaveResult"></div>
+
+          <small>
+            * Approximate calculation. Actual production depends on machine/process conditions.
+          </small>
+
+        </div>
+
+
+        <div class="te2-card">
+
+          <h3>📦 Fabric Weight</h3>
+
+          <input id="c2FabricGSM"
+            class="te2-input"
+            type="number"
+            placeholder="GSM">
+
+          <input id="c2FabricLength"
+            class="te2-input"
+            type="number"
+            placeholder="Length (meter)">
+
+          <input id="c2FabricWidth"
+            class="te2-input"
+            type="number"
+            placeholder="Width (meter)">
+
+          <button class="te2-btn"
+            onclick="TE2.fabricWeight()">
+            Calculate kg
+          </button>
+
+          <div id="c2FabricResult"></div>
+
+        </div>
+
+
+        <div class="te2-card">
+
+          <h3>📏 Unit Converter</h3>
+
+          <input id="c2UnitValue"
+            class="te2-input"
+            type="number"
+            placeholder="Value">
+
+          <select id="c2UnitType"
+            class="te2-select">
+
+            <option value="cm_m">cm → meter</option>
+            <option value="m_cm">meter → cm</option>
+            <option value="inch_cm">inch → cm</option>
+            <option value="cm_inch">cm → inch</option>
+            <option value="meter_yard">meter → yard</option>
+            <option value="yard_meter">yard → meter</option>
+            <option value="kg_lb">kg → lb</option>
+            <option value="lb_kg">lb → kg</option>
+
+          </select>
+
+          <button class="te2-btn"
+            onclick="TE2.unitConvert()">
+            Convert
+          </button>
+
+          <div id="c2UnitResult"></div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  },
+
+  calcGSM(){
+
+    const w=Number(document.getElementById("c2Weight").value);
+    const l=Number(document.getElementById("c2Length").value);
+    const wi=Number(document.getElementById("c2Width").value);
+
+    if(!w||!l||!wi)return;
+
+    const gsm=(w*10000)/(l*wi);
+
+    document.getElementById("c2GSMResult").innerHTML=
+      `<div class="te2-answer">
+        GSM = <strong>${gsm.toFixed(2)}</strong>
+      </div>`;
+
+  },
+
+  gsmToOz(){
+
+    const gsm=Number(
+      document.getElementById("c2GsmOz").value
+    );
+
+    if(!gsm)return;
+
+    const oz=gsm/33.906;
+
+    document.getElementById("c2OzResult").innerHTML=
+      `<div class="te2-answer">
+        ${gsm} GSM ≈ <strong>${oz.toFixed(2)} oz/yd²</strong>
+      </div>`;
+
+  },
+
+  ozToGsm(){
+
+    const oz=Number(
+      document.getElementById("c2OzGsm").value
+    );
+
+    if(!oz)return;
+
+    const gsm=oz*33.906;
+
+    document.getElementById("c2OzResult").innerHTML=
+      `<div class="te2-answer">
+        ${oz} oz/yd² ≈ <strong>${gsm.toFixed(2)} GSM</strong>
+      </div>`;
+
+  },
+
+  countConvert(){
+
+    const value=Number(
+      document.getElementById("c2Count").value
+    );
+
+    const type=
+      document.getElementById("c2CountType").value;
+
+    if(!value)return;
+
+    let tex,denier,ne;
+
+    if(type==="tex"){
+
+      tex=value;
+      denier=value*9;
+      ne=590.5/value;
+
+    }
+
+    if(type==="denier"){
+
+      denier=value;
+      tex=value/9;
+      ne=5314.5/value;
+
+    }
+
+    if(type==="ne"){
+
+      ne=value;
+      tex=590.5/value;
+      denier=5314.5/value;
+
+    }
+
+    document.getElementById("c2CountResult").innerHTML=`
+
+      <div class="te2-answer">
+
+        <strong>Approximate Conversion</strong><br><br>
+
+        Tex: ${tex.toFixed(3)}<br>
+        Denier: ${denier.toFixed(3)}<br>
+        Ne: ${ne.toFixed(3)}
+
+      </div>
+
+    `;
+
+  },
+
+  calcEPI(){
+
+    const ends=Number(
+      document.getElementById("c2Ends").value
+    );
+
+    const width=Number(
+      document.getElementById("c2EpiWidth").value
+    );
+
+    if(!ends||!width)return;
+
+    const epi=ends/width;
+
+    document.getElementById("c2EpiResult").innerHTML=
+      `<div class="te2-answer">
+        EPI = <strong>${epi.toFixed(2)}</strong>
+      </div>`;
+
+  },
+
+  calcPPI(){
+
+    const picks=Number(
+      document.getElementById("c2Picks").value
+    );
+
+    const length=Number(
+      document.getElementById("c2PpiLength").value
+    );
+
+    if(!picks||!length)return;
+
+    const ppi=picks/length;
+
+    document.getElementById("c2EpiResult").innerHTML+=
+      `<div class="te2-answer">
+        PPI = <strong>${ppi.toFixed(2)}</strong>
+      </div>`;
+
+  },
+
+  calcShrinkage(){
+
+    const original=Number(
+      document.getElementById("c2Original").value
+    );
+
+    const finalValue=Number(
+      document.getElementById("c2Final").value
+    );
+
+    if(!original||!finalValue)return;
+
+    const shrink=((original-finalValue)/original)*100;
+
+    document.getElementById("c2ShrinkResult").innerHTML=
+      `<div class="te2-answer">
+        Shrinkage = <strong>${shrink.toFixed(2)}%</strong>
+      </div>`;
+
+  },
+
+  weavingProduction(){
+
+    const rpm=Number(
+      document.getElementById("c2RPM").value
+    );
+
+    const ppi=Number(
+      document.getElementById("c2PPI").value
+    );
+
+    const eff=Number(
+      document.getElementById("c2Eff").value
+    );
+
+    if(!rpm||!ppi||!eff)return;
+
+    const production=
+      (rpm*60*(eff/100))/(ppi*100);
+
+    document.getElementById("c2WeaveResult").innerHTML=
+      `<div class="te2-answer">
+        Estimated Production =
+        <strong>${production.toFixed(2)} m/min</strong>
+      </div>`;
+
+  },
+
+  fabricWeight(){
+
+    const gsm=Number(
+      document.getElementById("c2FabricGSM").value
+    );
+
+    const length=Number(
+      document.getElementById("c2FabricLength").value
+    );
+
+    const width=Number(
+      document.getElementById("c2FabricWidth").value
+    );
+
+    if(!gsm||!length||!width)return;
+
+    const kg=(gsm*length*width)/1000;
+
+    document.getElementById("c2FabricResult").innerHTML=
+      `<div class="te2-answer">
+        Fabric Weight =
+        <strong>${kg.toFixed(3)} kg</strong>
+      </div>`;
+
+  },
+
+  unitConvert(){
+
+    const value=Number(
+      document.getElementById("c2UnitValue").value
+    );
+
+    const type=
+      document.getElementById("c2UnitType").value;
+
+    if(!value)return;
+
+    const formulas={
+
+      cm_m:v=>v/100,
+      m_cm:v=>v*100,
+      inch_cm:v=>v*2.54,
+      cm_inch:v=>v/2.54,
+      meter_yard:v=>v*1.0936133,
+      yard_meter:v=>v/1.0936133,
+      kg_lb:v=>v*2.2046226,
+      lb_kg:v=>v/2.2046226
+
+    };
+
+    const result=formulas[type](value);
+
+    document.getElementById("c2UnitResult").innerHTML=
+      `<div class="te2-answer">
+        Result = <strong>${result.toFixed(4)}</strong>
+      </div>`;
+
+  },
+
+  /* =====================================================
+     BANGLADESH TEXTILE CAREER
+  ===================================================== */
+
+  careers:[
+
+    {
+      title:"🎯 Merchandising",
+      role:"Buyer communication, costing, order follow-up, T&A and production coordination.",
+      skills:"English, Excel, communication, costing, negotiation, garment knowledge.",
+      entry:"Trainee Merchandiser / Assistant Merchandiser",
+      growth:"Merchandiser → Senior Merchandiser → Merchandising Manager"
+    },
+
+    {
+      title:"🧪 Quality Control / QA",
+      role:"Quality inspection, defect analysis, testing, reports and corrective action.",
+      skills:"Textile testing, defect knowledge, Excel, reporting, problem solving.",
+      entry:"QC Inspector / QA Trainee",
+      growth:"QC → QA Executive → QA Manager"
+    },
+
+    {
+      title:"⚙️ Industrial Engineering",
+      role:"SMV, line balancing, productivity, capacity and efficiency improvement.",
+      skills:"Excel, IE tools, time study, analytical thinking.",
+      entry:"IE Trainee / IE Executive",
+      growth:"IE Executive → Senior IE → IE Manager"
+    },
+
+    {
+      title:"🏭 Production",
+      role:"Managing production processes, manpower, machines and targets.",
+      skills:"Production planning, process knowledge, leadership, troubleshooting.",
+      entry:"Production Trainee / Junior Executive",
+      growth:"Executive → Senior Executive → Production Manager"
+    },
+
+    {
+      title:"🧵 Spinning",
+      role:"Fibre to yarn manufacturing and process quality control.",
+      skills:"Spinning process, yarn quality, machine knowledge, troubleshooting.",
+      entry:"Trainee / Junior Production Officer",
+      growth:"Officer → Executive → Production Manager"
+    },
+
+    {
+      title:"🧶 Knitting",
+      role:"Yarn to knitted fabric production and machine/process control.",
+      skills:"Knitting structure, GSM, loop length, machine settings.",
+      entry:"Knitting Trainee / Junior Officer",
+      growth:"Officer → Executive → Knitting Manager"
+    },
+
+    {
+      title:"🎨 Dyeing & Finishing",
+      role:"Pretreatment, dyeing, washing, finishing and shade control.",
+      skills:"Dyes, chemicals, recipe, pH, temperature, troubleshooting.",
+      entry:"Dyeing Trainee / Junior Officer",
+      growth:"Officer → Executive → Dyeing Manager"
+    },
+
+    {
+      title:"🧪 Textile Testing",
+      role:"Physical and colour fastness testing of textile materials.",
+      skills:"Testing procedures, instruments, report writing, quality standards.",
+      entry:"Lab Assistant / Testing Trainee",
+      growth:"Lab Officer → Senior Officer → Lab/QA Manager"
+    },
+
+    {
+      title:"🎨 CAD & Design",
+      role:"Pattern/design development and technical design support.",
+      skills:"CAD software, garment construction, design sense.",
+      entry:"CAD Operator / Junior Designer",
+      growth:"Designer → Senior Designer → Design Manager"
+    },
+
+    {
+      title:"📋 Compliance",
+      role:"Workplace safety, documentation, audit preparation and compliance monitoring.",
+      skills:"Documentation, communication, audit knowledge, Excel.",
+      entry:"Compliance Trainee / Executive",
+      growth:"Executive → Senior Executive → Compliance Manager"
+    },
+
+    {
+      title:"🚚 Supply Chain",
+      role:"Material planning, inventory, procurement and logistics coordination.",
+      skills:"Excel, ERP, planning, communication, analytical ability.",
+      entry:"Supply Chain Executive / Trainee",
+      growth:"Executive → Senior Executive → SCM Manager"
+    },
+
+    {
+      title:"📈 Planning / PPC",
+      role:"Production planning, capacity, order scheduling and follow-up.",
+      skills:"Excel, planning, production knowledge, analytical thinking.",
+      entry:"PPC Trainee / Junior Executive",
+      growth:"Executive → Senior Executive → Planning Manager"
+    }
+
+  ],
+
+  showCareer(){
+
+    let html=`
+
+      <h2 class="te2-title">
+        🇧🇩 Bangladesh Textile Career Zone
+      </h2>
+
+      <p class="te2-sub">
+        Diploma/Textile Engineering students-এর জন্য career roadmap
+      </p>
+
+      <div class="te2-career-path">
+
+        <span>🎓 Diploma</span>
+        →
+        <span>🧑‍💻 Internship/Trainee</span>
+        →
+        <span>👨‍💼 Executive</span>
+        →
+        <span>⭐ Senior</span>
+        →
+        <span>👔 Manager</span>
+
+      </div>
+
+      <div class="te2-grid">
+    `;
+
+    this.careers.forEach(c=>{
+
+      html+=`
+
+        <div class="te2-card">
+
+          <h3>${c.title}</h3>
+
+          <p>
+            <strong>কাজ:</strong><br>
+            ${c.role}
+          </p>
+
+          <p>
+            <strong>প্রয়োজনীয় Skill:</strong><br>
+            ${c.skills}
+          </p>
+
+          <p>
+            <strong>Entry Role:</strong><br>
+            ${c.entry}
+          </p>
+
+          <p>
+            <strong>Career Growth:</strong><br>
+            ${c.growth}
+          </p>
+
+        </div>
+
+      `;
+
+    });
+
+    html+=`
+
+      </div>
+
+      <div class="te2-card" style="margin-top:20px">
+
+        <h3>🚀 Textile Student Skill Roadmap</h3>
+
+        <ol>
+
+          <li>Textile Basic strong করো</li>
+          <li>Spinning + Weaving + Knitting বুঝো</li>
+          <li>Dyeing & Finishing শিখো</li>
+          <li>Textile Testing শিখো</li>
+          <li>Excel ভালোভাবে শিখো</li>
+          <li>English communication improve করো</li>
+          <li>Production/Quality/IE-এর যেকোনো একটি specialization নাও</li>
+          <li>Industrial training/internship-এর experience নাও</li>
+          <li>CV + LinkedIn profile তৈরি করো</li>
+          <li>Interview + Viva practice করো</li>
+
+        </ol>
+
+      </div>
+
+    `;
+
+    document.getElementById("te2Content").innerHTML=html;
+
+  },
+
+  /* =====================================================
+     DASHBOARD
+  ===================================================== */
+
+  showDashboard(){
+
+    const mcqCompleted=
+      Number(localStorage.getItem("te2_mcq_completed")||0);
+
+    document.getElementById("te2Content").innerHTML=`
+
+      <h2 class="te2-title">📊 My Textile Learning Progress</h2>
+
+      <p class="te2-sub">
+        Your learning activity is saved in this browser.
+      </p>
+
+      <div class="te2-grid">
+
+        <div class="te2-card">
+
+          <div class="te2-stat">
+            ${mcqCompleted}
+          </div>
+
+          <p>MCQ Sessions Completed</p>
+
+        </div>
+
+        <div class="te2-card">
+
+          <div class="te2-stat">
+            ${this.mcqs.length}+
+          </div>
+
+          <p>MCQ Questions</p>
+
+        </div>
+
+        <div class="te2-card">
+
+          <div class="te2-stat">
+            ${this.viva.length}+
+          </div>
+
+          <p>Viva Questions</p>
+
+        </div>
+
+        <div class="te2-card">
+
+          <div class="te2-stat">
+            ${this.defects.length}
+          </div>
+
+          <p>Defect Topics</p>
+
+        </div>
+
+        <div class="te2-card">
+
+          <div class="te2-stat">
+            ${this.testingData.length}
+          </div>
+
+          <p>Testing Topics</p>
+
+        </div>
+
+        <div class="te2-card">
+
+          <div class="te2-stat">
+            ${this.careers.length}
+          </div>
+
+          <p>Career Paths</p>
+
+        </div>
+
+      </div>
+
+      <div class="te2-card" style="margin-top:20px">
+
+        <h3>💡 Daily Textile Study Plan</h3>
+
+        <p>Day 1–2 → Fibre & Yarn</p>
+        <p>Day 3–4 → Spinning</p>
+        <p>Day 5–6 → Weaving & Knitting</p>
+        <p>Day 7–8 → Dyeing</p>
+        <p>Day 9 → Finishing</p>
+        <p>Day 10 → Textile Testing</p>
+        <p>Day 11 → Garments</p>
+        <p>Day 12 → Quality Control</p>
+        <p>Day 13 → IE & Production</p>
+        <p>Day 14 → Viva + MCQ Revision</p>
+
+      </div>
+
+    `;
+
+  }
+
+};
+
+
+/* =========================================================
+   CLOSE WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.getElementById("te2Modal")
+.addEventListener("click",function(e){
+
+  if(e.target===this){
+
+    TE2.close();
+
+  }
+
+});
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+
+    TE2.close();
+
+  }
+
+});
+</script>
+
+<!-- ===== END ADVANCED PACK 2 ===== -->
 </body>
 </html>
