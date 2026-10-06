@@ -1,119 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Textile Explorer | Learn Textile Engineering</title>
-
     <meta name="description"
-        content="Textile Explorer is a learning platform for textile engineering students, covering fabrics, textile processes, quality, calculators, career and practical knowledge.">
+        content="Textile Explorer - Textile Engineering students-এর জন্য Fabric, Calculator, Textile Process, Student Resources এবং Career information platform.">
+
+    <meta name="keywords"
+        content="Textile Engineering, Textile Explorer, Fabric, GSM Calculator, Yarn Count, EPI, PPI">
+
+    <meta name="author" content="Mohammad Jamiul Haque Jibon">
+
+    <title>Textile Explorer | Textile Engineering Resource Platform</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER / NAVBAR
-========================= -->
-
-<header class="header">
+<header class="site-header">
 
     <div class="container nav-container">
 
         <a href="#home" class="logo">
-            <span class="logo-icon">TE</span>
-
-            <span class="logo-text">
-                <strong>Textile</strong>
-                <small>Explorer</small>
-            </span>
+            Textile<span>Explorer</span>
         </a>
-
-        <nav class="navbar">
-
-            <a href="#home" class="nav-link active">Home</a>
-
-            <a href="#fabrics" class="nav-link">Fabrics</a>
-
-            <a href="#calculators" class="nav-link">Calculators</a>
-
-            <a href="#process" class="nav-link">Process</a>
-
-            <a href="#students" class="nav-link">Students</a>
-
-            <a href="#career" class="nav-link">Career</a>
-
-            <a href="#about" class="nav-link">About</a>
-
-        </nav>
 
         <button class="menu-btn" id="menuBtn">
             ☰
         </button>
+
+        <nav class="nav-menu" id="navMenu">
+
+            <a href="#home">হোম</a>
+            <a href="#fabrics">ফ্যাব্রিক</a>
+            <a href="#calculators">ক্যালকুলেটর</a>
+            <a href="#process">Textile Process</a>
+            <a href="#students">Student Zone</a>
+            <a href="#career">Career</a>
+            <a href="#about">About</a>
+
+        </nav>
 
     </div>
 
 </header>
 
 
-<!-- =========================
-     HERO SECTION
-========================= -->
-
 <main>
 
-<section class="hero" id="home">
+<section id="home" class="hero-section">
 
-    <div class="container hero-grid">
+    <div class="container hero-container">
 
         <div class="hero-content">
 
-            <div class="hero-badge">
-                🎓 Built for Textile Students
-            </div>
+            <span class="hero-badge">
+                TEXTILE ENGINEERING RESOURCE PLATFORM
+            </span>
 
             <h1>
-                Explore Textile.
-                <span>Understand Better.</span>
-                Build Your Future.
+                Textile Engineering
+                <span>সহজভাবে জানুন</span>
             </h1>
 
-            <p class="hero-description">
-                A practical digital learning platform for textile engineering
-                students. Explore fabrics, textile processes, quality,
-                calculators, career skills and industry knowledge.
+            <p>
+                Fabric, Textile Process, Calculators,
+                Student Resources এবং Career information
+                এক জায়গায়।
             </p>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="globalSearch"
+                    placeholder="Search fabric, GSM, cotton, denim..."
+                >
+
+                <button id="searchBtn">
+                    Search
+                </button>
+
+            </div>
+
+            <div id="searchResults" class="search-results"></div>
 
             <div class="hero-buttons">
 
                 <a href="#fabrics" class="btn btn-primary">
-                    Explore Fabrics →
+                    Explore Fabrics
                 </a>
 
                 <a href="#calculators" class="btn btn-secondary">
-                    Try Calculators
+                    Calculators
                 </a>
-
-            </div>
-
-            <div class="hero-stats">
-
-                <div>
-                    <strong>50+</strong>
-                    <span>Fabric Types</span>
-                </div>
-
-                <div>
-                    <strong>10+</strong>
-                    <span>Textile Tools</span>
-                </div>
-
-                <div>
-                    <strong>100+</strong>
-                    <span>Learning Topics</span>
-                </div>
 
             </div>
 
@@ -122,51 +104,19 @@
 
         <div class="hero-visual">
 
-            <div class="hero-card main-card">
-
-                <div class="fabric-preview">
-
-                    <div class="fabric-pattern"></div>
-
-                </div>
-
-                <div class="hero-card-content">
-
-                    <span class="mini-label">
-                        FEATURED
-                    </span>
-
-                    <h3>
-                        Fabric Explorer
-                    </h3>
-
-                    <p>
-                        Understand construction, GSM,
-                        fiber, uses and characteristics.
-                    </p>
-
-                    <a href="#fabrics">
-                        Explore →
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="floating-card card-one">
-
+            <div class="hero-card">
                 <span>GSM</span>
-                <strong>180</strong>
-
+                <strong>Fabric Weight</strong>
             </div>
 
+            <div class="hero-card">
+                <span>QC</span>
+                <strong>Quality Control</strong>
+            </div>
 
-            <div class="floating-card card-two">
-
-                <span>Fabric</span>
-                <strong>Cotton</strong>
-
+            <div class="hero-card">
+                <span>IE</span>
+                <strong>Industrial Engineering</strong>
             </div>
 
         </div>
@@ -175,62 +125,23 @@
 
 </section>
 
-
-<!-- =========================
-     SEARCH SECTION
-========================= -->
-
-<section class="search-section">
-
-    <div class="container">
-
-        <div class="search-box">
-
-            <span class="search-icon">
-                🔍
-            </span>
-
-            <input
-                type="text"
-                id="globalSearch"
-                placeholder="Search fabric, GSM, yarn, process, textile topic..."
-            >
-
-            <button id="searchBtn">
-                Search
-            </button>
-
-        </div>
-
-        <div id="searchResults" class="search-results"></div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     QUICK ACCESS
-========================= -->
 
 <section class="quick-section">
 
     <div class="container">
 
-        <div class="section-heading center">
+        <div class="section-heading">
 
-            <span class="section-label">
+            <span class="section-badge">
                 QUICK ACCESS
             </span>
 
             <h2>
-                Everything You Need,
-                <span>In One Place.</span>
+                প্রয়োজনীয় Textile Tools
             </h2>
 
             <p>
-                Explore the most useful textile engineering resources
-                from one simple platform.
+                গুরুত্বপূর্ণ Textile resources দ্রুত খুঁজে নিন।
             </p>
 
         </div>
@@ -245,11 +156,8 @@
                 <h3>Fabric Explorer</h3>
 
                 <p>
-                    Learn fabric types, construction,
-                    GSM, fiber and applications.
+                    বিভিন্ন Fabric সম্পর্কে জানুন।
                 </p>
-
-                <span>Explore →</span>
 
             </a>
 
@@ -261,43 +169,34 @@
                 <h3>Textile Calculators</h3>
 
                 <p>
-                    Calculate GSM, shrinkage,
-                    fabric weight and more.
+                    GSM, Shrinkage এবং Fabric Weight হিসাব করুন।
                 </p>
-
-                <span>Calculate →</span>
 
             </a>
 
 
             <a href="#process" class="quick-card">
 
-                <div class="quick-icon">🏭</div>
+                <div class="quick-icon">⚙️</div>
 
                 <h3>Textile Process</h3>
 
                 <p>
-                    Follow the journey from fiber
-                    to finished garment.
+                    Textile manufacturing process সম্পর্কে জানুন।
                 </p>
-
-                <span>Learn →</span>
 
             </a>
 
 
             <a href="#students" class="quick-card">
 
-                <div class="quick-icon">🎓</div>
+                <div class="quick-icon">📚</div>
 
                 <h3>Student Zone</h3>
 
                 <p>
-                    Study resources, viva questions
-                    and practical knowledge.
+                    Textile students-এর জন্য প্রয়োজনীয় resources।
                 </p>
-
-                <span>Study →</span>
 
             </a>
 
@@ -308,37 +207,24 @@
 </section>
 
 
-<!-- =========================
-     FABRIC EXPLORER
-========================= -->
-
-<section class="section fabrics-section" id="fabrics">
+<section id="fabrics" class="section">
 
     <div class="container">
 
-        <div class="section-top">
+        <div class="section-heading">
 
-            <div class="section-heading">
+            <span class="section-badge">
+                FABRIC EXPLORER
+            </span>
 
-                <span class="section-label">
-                    FABRIC EXPLORER
-                </span>
+            <h2>
+                Fabric সম্পর্কে জানুন
+            </h2>
 
-                <h2>
-                    Discover the World
-                    <span>of Fabrics.</span>
-                </h2>
-
-                <p>
-                    Explore different textile fabrics and understand
-                    their properties, construction and applications.
-                </p>
-
-            </div>
-
-            <button class="outline-btn" id="viewAllFabrics">
-                View All Fabrics →
-            </button>
+            <p>
+                বিভিন্ন ধরনের fabric-এর structure, fiber,
+                GSM, process এবং ব্যবহার সম্পর্কে জানুন।
+            </p>
 
         </div>
 
@@ -365,181 +251,87 @@
                 Woven
             </button>
 
-            <button class="filter-btn" data-filter="denim">
-                Denim
+        </div>
+
+
+        <div id="fabricGrid" class="fabric-grid"></div>
+
+
+        <div class="center-button">
+
+            <button
+                id="viewAllFabrics"
+                class="btn btn-primary">
+                View All Fabrics
             </button>
 
         </div>
 
-
-        <div class="fabric-grid" id="fabricGrid">
-
-            <!-- Fabric cards will be generated by JavaScript -->
-
-        </div>
-
     </div>
 
 </section>
 
 
-<!-- =========================
-     TEXTILE QUALITY
-========================= -->
-
-<section class="section quality-section">
+<section id="quality" class="section quality-section">
 
     <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-badge">
+                TEXTILE QUALITY
+            </span>
+
+            <h2>
+                Quality Control
+            </h2>
+
+            <p>
+                Textile industry-তে quality maintain করার
+                গুরুত্বপূর্ণ বিষয়গুলো।
+            </p>
+
+        </div>
+
 
         <div class="quality-grid">
 
-            <div class="quality-content">
+            <div class="quality-card">
 
-                <span class="section-label">
-                    TEXTILE QUALITY
-                </span>
+                <span>QC</span>
 
-                <h2>
-                    Understand Fabric
-                    <span>Quality.</span>
-                </h2>
+                <h3>Quality Control</h3>
 
                 <p>
-                    Textile quality depends on many important parameters.
-                    Learn how GSM, yarn count, construction, shrinkage,
-                    strength and other properties affect fabric performance.
+                    Fabric এবং garment-এর quality inspection
+                    সম্পর্কে জানুন।
                 </p>
-
-
-                <div class="quality-list">
-
-                    <div class="quality-item">
-
-                        <span>✓</span>
-
-                        <div>
-                            <strong>GSM</strong>
-                            <p>
-                                Understand fabric weight and its importance.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="quality-item">
-
-                        <span>✓</span>
-
-                        <div>
-                            <strong>Yarn Count</strong>
-                            <p>
-                                Learn yarn fineness and count systems.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="quality-item">
-
-                        <span>✓</span>
-
-                        <div>
-                            <strong>Fabric Construction</strong>
-                            <p>
-                                Understand EPI, PPI, courses and wales.
-                            </p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="quality-item">
-
-                        <span>✓</span>
-
-                        <div>
-                            <strong>Shrinkage</strong>
-                            <p>
-                                Learn dimensional change after processing.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
 
 
-            <div class="quality-visual">
+            <div class="quality-card">
 
-                <div class="quality-dashboard">
+                <span>GSM</span>
 
-                    <div class="dashboard-header">
+                <h3>Fabric GSM</h3>
 
-                        <span>
-                            Fabric Analysis
-                        </span>
+                <p>
+                    Fabric-এর weight এবং GSM calculation সম্পর্কে জানুন।
+                </p>
 
-                        <span class="status">
-                            ● Analysis
-                        </span>
-
-                    </div>
+            </div>
 
 
-                    <div class="quality-meter">
+            <div class="quality-card">
 
-                        <div class="meter-info">
+                <span>AQL</span>
 
-                            <span>
-                                Fabric Quality
-                            </span>
+                <h3>Inspection</h3>
 
-                            <strong>
-                                92%
-                            </strong>
-
-                        </div>
-
-                        <div class="meter">
-                            <span style="width:92%"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="quality-values">
-
-                        <div>
-                            <span>GSM</span>
-                            <strong>180</strong>
-                            <small>g/m²</small>
-                        </div>
-
-                        <div>
-                            <span>Count</span>
-                            <strong>30s</strong>
-                            <small>Ne</small>
-                        </div>
-
-                        <div>
-                            <span>EPI</span>
-                            <strong>110</strong>
-                            <small>ends</small>
-                        </div>
-
-                        <div>
-                            <span>PPI</span>
-                            <strong>70</strong>
-                            <small>picks</small>
-                        </div>
-
-                    </div>
-
-                </div>
+                <p>
+                    Textile এবং garment inspection-এর basic concepts।
+                </p>
 
             </div>
 
@@ -550,28 +342,22 @@
 </section>
 
 
-<!-- =========================
-     CALCULATORS
-========================= -->
-
-<section class="section calculator-section" id="calculators">
+<section id="calculators" class="section calculator-section">
 
     <div class="container">
 
-        <div class="section-heading center">
+        <div class="section-heading">
 
-            <span class="section-label">
+            <span class="section-badge">
                 TEXTILE CALCULATORS
             </span>
 
             <h2>
-                Calculate. Understand.
-                <span>Learn.</span>
+                Textile Calculator
             </h2>
 
             <p>
-                Useful textile engineering calculations
-                for students and beginners.
+                প্রয়োজনীয় Textile calculation সহজে করুন।
             </p>
 
         </div>
@@ -580,237 +366,157 @@
         <div class="calculator-grid">
 
 
-            <!-- GSM -->
-
             <div class="calculator-card">
 
-                <div class="calculator-icon">
-                    ⚖️
-                </div>
+                <div class="calculator-header">
 
-                <h3>
-                    GSM Calculator
-                </h3>
+                    <span>🧮</span>
 
-                <p>
-                    Calculate fabric GSM from sample
-                    weight, length and width.
-                </p>
-
-
-                <div class="input-group">
-
-                    <label>
-                        Weight (gram)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="gsmWeight"
-                        placeholder="Example: 5"
-                    >
+                    <h3>
+                        GSM Calculator
+                    </h3>
 
                 </div>
 
 
-                <div class="input-row">
+                <label>Weight (gram)</label>
 
-                    <div class="input-group">
-
-                        <label>
-                            Length (cm)
-                        </label>
-
-                        <input
-                            type="number"
-                            id="gsmLength"
-                            placeholder="10"
-                        >
-
-                    </div>
+                <input
+                    type="number"
+                    id="gsmWeight"
+                    placeholder="Example: 5"
+                >
 
 
-                    <div class="input-group">
+                <label>Length (cm)</label>
 
-                        <label>
-                            Width (cm)
-                        </label>
+                <input
+                    type="number"
+                    id="gsmLength"
+                    placeholder="Example: 10"
+                >
 
-                        <input
-                            type="number"
-                            id="gsmWidth"
-                            placeholder="10"
-                        >
 
-                    </div>
+                <label>Width (cm)</label>
 
-                </div>
+                <input
+                    type="number"
+                    id="gsmWidth"
+                    placeholder="Example: 10"
+                >
 
 
                 <button
-                    class="calculate-btn"
                     id="calculateGSM"
-                >
+                    class="calculator-btn">
                     Calculate GSM
                 </button>
 
 
                 <div
-                    class="result-box"
                     id="gsmResult"
-                >
-                    Result will appear here
+                    class="calculator-result">
                 </div>
 
             </div>
 
 
-            <!-- SHRINKAGE -->
-
             <div class="calculator-card">
 
-                <div class="calculator-icon">
-                    📏
-                </div>
+                <div class="calculator-header">
 
-                <h3>
-                    Shrinkage Calculator
-                </h3>
+                    <span>📏</span>
 
-                <p>
-                    Calculate dimensional shrinkage
-                    after washing or processing.
-                </p>
-
-
-                <div class="input-group">
-
-                    <label>
-                        Original Length (cm)
-                    </label>
-
-                    <input
-                        type="number"
-                        id="originalLength"
-                        placeholder="100"
-                    >
+                    <h3>
+                        Shrinkage Calculator
+                    </h3>
 
                 </div>
 
 
-                <div class="input-group">
+                <label>Original Length (cm)</label>
 
-                    <label>
-                        Final Length (cm)
-                    </label>
+                <input
+                    type="number"
+                    id="originalLength"
+                    placeholder="Example: 100"
+                >
 
-                    <input
-                        type="number"
-                        id="finalLength"
-                        placeholder="96"
-                    >
 
-                </div>
+                <label>Final Length (cm)</label>
+
+                <input
+                    type="number"
+                    id="finalLength"
+                    placeholder="Example: 95"
+                >
 
 
                 <button
-                    class="calculate-btn"
                     id="calculateShrinkage"
-                >
+                    class="calculator-btn">
                     Calculate Shrinkage
                 </button>
 
 
                 <div
-                    class="result-box"
                     id="shrinkageResult"
-                >
-                    Result will appear here
+                    class="calculator-result">
                 </div>
 
             </div>
 
 
-            <!-- FABRIC WEIGHT -->
-
             <div class="calculator-card">
 
-                <div class="calculator-icon">
-                    🧶
-                </div>
+                <div class="calculator-header">
 
-                <h3>
-                    Fabric Weight
-                </h3>
+                    <span>⚖️</span>
 
-                <p>
-                    Estimate fabric weight using GSM
-                    and fabric dimensions.
-                </p>
-
-
-                <div class="input-group">
-
-                    <label>
-                        GSM
-                    </label>
-
-                    <input
-                        type="number"
-                        id="fabricGSM"
-                        placeholder="180"
-                    >
+                    <h3>
+                        Fabric Weight
+                    </h3>
 
                 </div>
 
 
-                <div class="input-row">
+                <label>GSM</label>
 
-                    <div class="input-group">
-
-                        <label>
-                            Length (m)
-                        </label>
-
-                        <input
-                            type="number"
-                            id="fabricLength"
-                            placeholder="10"
-                        >
-
-                    </div>
+                <input
+                    type="number"
+                    id="fabricGSM"
+                    placeholder="Example: 200"
+                >
 
 
-                    <div class="input-group">
+                <label>Length (meter)</label>
 
-                        <label>
-                            Width (m)
-                        </label>
+                <input
+                    type="number"
+                    id="fabricLength"
+                    placeholder="Example: 10"
+                >
 
-                        <input
-                            type="number"
-                            id="fabricWidth"
-                            placeholder="1.5"
-                        >
 
-                    </div>
+                <label>Width (meter)</label>
 
-                </div>
+                <input
+                    type="number"
+                    id="fabricWidth"
+                    placeholder="Example: 2"
+                >
 
 
                 <button
-                    class="calculate-btn"
                     id="calculateFabricWeight"
-                >
+                    class="calculator-btn">
                     Calculate Weight
                 </button>
 
 
                 <div
-                    class="result-box"
                     id="fabricWeightResult"
-                >
-                    Result will appear here
+                    class="calculator-result">
                 </div>
 
             </div>
@@ -822,27 +528,23 @@
 </section>
 
 
-<!-- =========================
-     TEXTILE PROCESS
-========================= -->
-
-<section class="section process-section" id="process">
+<section id="process" class="section process-section">
 
     <div class="container">
 
-        <div class="section-heading center">
+        <div class="section-heading">
 
-            <span class="section-label">
+            <span class="section-badge">
                 TEXTILE PROCESS
             </span>
 
             <h2>
-                From Fiber to
-                <span>Fashion.</span>
+                Textile Manufacturing Process
             </h2>
 
             <p>
-                Understand the complete journey of a textile product.
+                Fiber থেকে finished textile product পর্যন্ত
+                basic process সম্পর্কে জানুন।
             </p>
 
         </div>
@@ -850,151 +552,48 @@
 
         <div class="process-timeline">
 
-
             <div class="process-step">
-
-                <div class="process-number">
-                    01
-                </div>
-
-                <div class="process-icon">
-                    🌱
-                </div>
-
-                <h3>
-                    Fiber
-                </h3>
-
+                <span>01</span>
+                <h3>Fiber</h3>
                 <p>
-                    Natural and man-made fibers
-                    are selected.
+                    Natural বা Synthetic fiber নির্বাচন।
                 </p>
-
             </div>
 
 
-            <div class="process-line"></div>
-
-
             <div class="process-step">
-
-                <div class="process-number">
-                    02
-                </div>
-
-                <div class="process-icon">
-                    🧶
-                </div>
-
-                <h3>
-                    Spinning
-                </h3>
-
+                <span>02</span>
+                <h3>Spinning</h3>
                 <p>
-                    Fibers are converted
-                    into yarn.
+                    Fiber থেকে Yarn তৈরি করা।
                 </p>
-
             </div>
 
 
-            <div class="process-line"></div>
-
-
             <div class="process-step">
-
-                <div class="process-number">
-                    03
-                </div>
-
-                <div class="process-icon">
-                    🏭
-                </div>
-
-                <h3>
-                    Fabric
-                </h3>
-
+                <span>03</span>
+                <h3>Weaving / Knitting</h3>
                 <p>
-                    Yarn becomes fabric through
-                    weaving or knitting.
+                    Yarn থেকে Fabric তৈরি করা।
                 </p>
-
             </div>
 
 
-            <div class="process-line"></div>
-
-
             <div class="process-step">
-
-                <div class="process-number">
-                    04
-                </div>
-
-                <div class="process-icon">
-                    🎨
-                </div>
-
-                <h3>
-                    Dyeing
-                </h3>
-
+                <span>04</span>
+                <h3>Dyeing & Finishing</h3>
                 <p>
-                    Fabric receives color,
-                    shade and appearance.
+                    Fabric-এর coloration এবং finishing process।
                 </p>
-
             </div>
 
 
-            <div class="process-line"></div>
-
-
             <div class="process-step">
-
-                <div class="process-number">
-                    05
-                </div>
-
-                <div class="process-icon">
-                    ✨
-                </div>
-
-                <h3>
-                    Finishing
-                </h3>
-
+                <span>05</span>
+                <h3>Garments</h3>
                 <p>
-                    Final properties and
-                    performance are improved.
+                    Fabric থেকে final garment production।
                 </p>
-
-            </div>
-
-
-            <div class="process-line"></div>
-
-
-            <div class="process-step">
-
-                <div class="process-number">
-                    06
-                </div>
-
-                <div class="process-icon">
-                    👕
-                </div>
-
-                <h3>
-                    Garments
-                </h3>
-
-                <p>
-                    Finished textile becomes
-                    a final product.
-                </p>
-
             </div>
 
         </div>
@@ -1004,34 +603,24 @@
 </section>
 
 
-<!-- =========================
-     STUDENT ZONE
-========================= -->
-
-<section class="section students-section" id="students">
+<section id="students" class="section student-section">
 
     <div class="container">
 
-        <div class="section-top">
+        <div class="section-heading">
 
-            <div class="section-heading">
+            <span class="section-badge">
+                STUDENT ZONE
+            </span>
 
-                <span class="section-label">
-                    STUDENT ZONE
-                </span>
+            <h2>
+                Textile Students-এর জন্য
+            </h2>
 
-                <h2>
-                    Built for the
-                    <span>Next Generation.</span>
-                </h2>
-
-                <p>
-                    Practical resources designed to help textile
-                    engineering students understand their subjects
-                    and prepare for their future.
-                </p>
-
-            </div>
+            <p>
+                Academic study এবং career preparation-এর
+                জন্য প্রয়োজনীয় resources।
+            </p>
 
         </div>
 
@@ -1040,88 +629,61 @@
 
             <div class="student-card">
 
-                <span class="student-card-icon">
-                    📖
-                </span>
+                <div class="student-icon">📚</div>
 
                 <h3>
                     Study Resources
                 </h3>
 
                 <p>
-                    Textile subjects, definitions,
-                    concepts and practical explanations.
+                    Textile Engineering-এর গুরুত্বপূর্ণ
+                    topics এবং notes।
                 </p>
-
-                <a href="#">
-                    Explore Resources →
-                </a>
 
             </div>
 
 
             <div class="student-card">
 
-                <span class="student-card-icon">
-                    🎯
-                </span>
+                <div class="student-icon">📄</div>
 
                 <h3>
-                    Exam Preparation
+                    PDF Notes
                 </h3>
 
                 <p>
-                    Important questions, short questions,
-                    viva topics and revision materials.
+                    প্রয়োজনীয় Textile notes এবং learning materials।
                 </p>
-
-                <a href="#">
-                    Prepare Now →
-                </a>
 
             </div>
 
 
             <div class="student-card">
 
-                <span class="student-card-icon">
-                    🧠
-                </span>
+                <div class="student-icon">🧮</div>
 
                 <h3>
-                    Practical Knowledge
+                    Textile Calculators
                 </h3>
 
                 <p>
-                    Learn how textile processes actually
-                    work inside the industry.
+                    বিভিন্ন calculation দ্রুত করার tools।
                 </p>
-
-                <a href="#">
-                    Learn Practical →
-                </a>
 
             </div>
 
 
             <div class="student-card">
 
-                <span class="student-card-icon">
-                    💡
-                </span>
+                <div class="student-icon">🎯</div>
 
                 <h3>
-                    Viva Questions
+                    Career Preparation
                 </h3>
 
                 <p>
-                    Build confidence with common
-                    textile engineering viva questions.
+                    Textile industry career-এর জন্য useful guidance।
                 </p>
-
-                <a href="#">
-                    Practice Viva →
-                </a>
 
             </div>
 
@@ -1132,147 +694,78 @@
 </section>
 
 
-<!-- =========================
-     CAREER ZONE
-========================= -->
-
-<section class="section career-section" id="career">
+<section id="career" class="section career-section">
 
     <div class="container">
 
-        <div class="career-layout">
+        <div class="section-heading">
 
-            <div class="career-content">
+            <span class="section-badge">
+                CAREER ZONE
+            </span>
 
-                <span class="section-label">
-                    CAREER ZONE
-                </span>
+            <h2>
+                Textile Career
+            </h2>
 
-                <h2>
-                    Build Skills.
-                    <span>Build Your Career.</span>
-                </h2>
+            <p>
+                Textile industry-তে বিভিন্ন career path সম্পর্কে জানুন।
+            </p>
+
+        </div>
+
+
+        <div class="career-grid">
+
+            <div class="career-card">
+
+                <h3>
+                    Merchandising
+                </h3>
 
                 <p>
-                    Textile engineering is more than a degree.
-                    Develop industry-ready skills and understand
-                    the career paths available in the textile
-                    and apparel industry.
+                    Buyer communication, order follow-up এবং
+                    production coordination।
                 </p>
-
-
-                <div class="career-tags">
-
-                    <span>Merchandising</span>
-
-                    <span>Industrial Engineering</span>
-
-                    <span>Quality Control</span>
-
-                    <span>CAD</span>
-
-                    <span>Production</span>
-
-                    <span>Textile Testing</span>
-
-                    <span>Garments</span>
-
-                    <span>Supply Chain</span>
-
-                </div>
-
-
-                <a
-                    href="#about"
-                    class="btn btn-primary"
-                >
-                    Explore Career Paths →
-                </a>
 
             </div>
 
 
-            <div class="career-visual">
+            <div class="career-card">
 
-                <div class="career-card">
+                <h3>
+                    Quality Control
+                </h3>
 
-                    <div class="career-card-top">
+                <p>
+                    Fabric এবং garment quality inspection।
+                </p>
 
-                        <span>
-                            TEXTILE CAREER
-                        </span>
-
-                        <span>
-                            2026+
-                        </span>
-
-                    </div>
+            </div>
 
 
-                    <div class="career-path">
+            <div class="career-card">
 
-                        <div class="career-path-item">
+                <h3>
+                    Industrial Engineering
+                </h3>
 
-                            <span>01</span>
+                <p>
+                    Productivity, efficiency এবং production improvement।
+                </p>
 
-                            <strong>
-                                Learn
-                            </strong>
-
-                            <small>
-                                Build foundation
-                            </small>
-
-                        </div>
+            </div>
 
 
-                        <div class="career-path-item">
+            <div class="career-card">
 
-                            <span>02</span>
+                <h3>
+                    CAD & Design
+                </h3>
 
-                            <strong>
-                                Practice
-                            </strong>
-
-                            <small>
-                                Develop skills
-                            </small>
-
-                        </div>
-
-
-                        <div class="career-path-item">
-
-                            <span>03</span>
-
-                            <strong>
-                                Specialize
-                            </strong>
-
-                            <small>
-                                Choose your field
-                            </small>
-
-                        </div>
-
-
-                        <div class="career-path-item">
-
-                            <span>04</span>
-
-                            <strong>
-                                Grow
-                            </strong>
-
-                            <small>
-                                Build your career
-                            </small>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <p>
+                    Textile এবং fashion design-এর digital workflow।
+                </p>
 
             </div>
 
@@ -1283,82 +776,128 @@
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- ================= ABOUT ================= -->
 
-<section class="section about-section" id="about">
+<section id="about" class="section about-section">
 
     <div class="container">
 
-        <div class="about-grid">
+        <div class="section-heading">
 
-            <div class="about-profile">
+            <span class="section-badge">
+                ABOUT TEXTILE EXPLORER
+            </span>
 
-                <div class="profile-avatar">
-                    J
-                </div>
+            <h2>
+                Textile Explorer সম্পর্কে
+            </h2>
 
-                <div class="profile-info">
+            <p>
+                Textile Engineering-এর গুরুত্বপূর্ণ বিষয়,
+                tools এবং resources এক জায়গায় সহজভাবে
+                তুলে ধরার একটি educational platform।
+            </p>
+
+        </div>
+
+
+        <div class="about-content">
+
+
+            <div class="about-text">
+
+                <h3>
+                    মোহাম্মদ জামিউল হক জীবন
+                </h3>
+
+                <p class="about-role">
+                    Mohammad Jamiul Haque Jibon
+                </p>
+
+
+                <p>
+                    <strong>Department:</strong>
+                    Diploma in Textile Engineering
+                </p>
+
+
+                <p>
+                    <strong>Institute:</strong>
+                    Natore Textile Institute
+                </p>
+
+
+                <p>
+                    <strong>Semester:</strong>
+                    6th Semester
+                </p>
+
+
+                <p>
+                    Textile Engineering-এর বিভিন্ন বিষয়,
+                    Fabric, Textile Process, Calculators,
+                    Student Resources এবং Career-related
+                    information এক জায়গায় সহজভাবে তুলে
+                    ধরার উদ্দেশ্যে Textile Explorer তৈরি করা হয়েছে।
+                </p>
+
+            </div>
+
+
+            <div class="about-highlights">
+
+
+                <div class="highlight-item">
+
+                    <strong>
+                        Diploma in Textile Engineering
+                    </strong>
 
                     <span>
-                        CREATED BY
+                        Academic Background
                     </span>
 
-                    <h3>
-                        Mohammad Jamiul Haque Jibon
-                    </h3>
+                </div>
 
-                    <p>
-                        Diploma in Textile Engineering
-                    </p>
+
+                <div class="highlight-item">
 
                     <strong>
                         Natore Textile Institute
                     </strong>
 
-                </div>
-
-            </div>
-
-
-            <div class="about-content">
-
-                <span class="section-label">
-                    ABOUT TEXTILE EXPLORER
-                </span>
-
-                <h2>
-                    Making Textile Knowledge
-                    <span>Simple & Accessible.</span>
-                </h2>
-
-                <p>
-                    Textile Explorer is designed as a digital learning
-                    platform for students who want to understand textile
-                    engineering in a practical and simple way.
-                </p>
-
-                <p>
-                    The goal is to bring textile concepts, fabric knowledge,
-                    useful calculations, industrial processes and career
-                    guidance together in one place.
-                </p>
-
-
-                <div class="mission-box">
-
                     <span>
-                        OUR MISSION
+                        Institute
                     </span>
 
+                </div>
+
+
+                <div class="highlight-item">
+
                     <strong>
-                        Learn textile better.
-                        Think practically.
-                        Build confidently.
+                        6th Semester
                     </strong>
 
+                    <span>
+                        Current Semester
+                    </span>
+
                 </div>
+
+
+                <div class="highlight-item">
+
+                    <strong>
+                        Textile Explorer
+                    </strong>
+
+                    <span>
+                        Created by Mohammad Jamiul Haque Jibon
+                    </span>
+
+                </div>
+
 
             </div>
 
@@ -1369,40 +908,28 @@
 </section>
 
 
-<!-- =========================
-     CTA
-========================= -->
-
 <section class="cta-section">
 
     <div class="container">
 
-        <div class="cta-box">
+        <div class="cta-content">
 
-            <div>
+            <span class="section-badge">
+                TEXTILE EXPLORER
+            </span>
 
-                <span class="section-label">
-                    TEXTILE EXPLORER
-                </span>
+            <h2>
+                Textile Engineering আরও সহজ করি
+            </h2>
 
-                <h2>
-                    Your Textile Journey
-                    Starts Here.
-                </h2>
-
-                <p>
-                    Explore knowledge, practice calculations
-                    and build your textile career.
-                </p>
-
-            </div>
-
+            <p>
+                Learn. Explore. Calculate. Grow.
+            </p>
 
             <a
-                href="#home"
-                class="btn btn-light"
-            >
-                Start Exploring ↑
+                href="#fabrics"
+                class="btn btn-primary">
+                Explore Now
             </a>
 
         </div>
@@ -1414,96 +941,58 @@
 </main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<footer class="site-footer">
 
-<footer class="footer">
+    <div class="container footer-container">
 
-    <div class="container footer-grid">
 
         <div class="footer-brand">
 
-            <a href="#home" class="logo footer-logo">
-
-                <span class="logo-icon">
-                    TE
-                </span>
-
-                <span class="logo-text">
-                    <strong>Textile</strong>
-                    <small>Explorer</small>
-                </span>
-
+            <a href="#home" class="logo">
+                Textile<span>Explorer</span>
             </a>
 
             <p>
-                A practical learning platform for the
-                next generation of textile professionals.
+                A Textile Engineering Resource Platform
+                for students and learners.
             </p>
 
         </div>
 
 
-        <div class="footer-column">
+        <div class="footer-links">
 
-            <h4>
-                Explore
-            </h4>
+            <h3>
+                Quick Links
+            </h3>
 
-            <a href="#fabrics">
-                Fabrics
-            </a>
-
-            <a href="#calculators">
-                Calculators
-            </a>
-
-            <a href="#process">
-                Textile Process
-            </a>
+            <a href="#home">Home</a>
+            <a href="#fabrics">Fabrics</a>
+            <a href="#calculators">Calculators</a>
+            <a href="#students">Student Zone</a>
+            <a href="#career">Career</a>
+            <a href="#about">About</a>
 
         </div>
 
 
-        <div class="footer-column">
+        <div class="footer-links">
 
-            <h4>
-                Students
-            </h4>
+            <h3>
+                Creator
+            </h3>
 
-            <a href="#students">
-                Study Resources
-            </a>
+            <p>
+                Mohammad Jamiul Haque Jibon
+            </p>
 
-            <a href="#students">
-                Exam Preparation
-            </a>
+            <p>
+                Natore Textile Institute
+            </p>
 
-            <a href="#career">
-                Career
-            </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-            <h4>
-                Platform
-            </h4>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#home">
-                Back to Top ↑
-            </a>
+            <p>
+                6th Semester
+            </p>
 
         </div>
 
@@ -1512,26 +1001,24 @@
 
     <div class="footer-bottom">
 
-        <div class="container">
+        <p>
+            © 2026 Textile Explorer.
+            All rights reserved.
+        </p>
 
-            <p>
-                © 2026 Textile Explorer.
-                Built for Textile Students.
-            </p>
-
-        </div>
+        <p>
+            Created by
+            <strong>
+                Mohammad Jamiul Haque Jibon
+            </strong>
+        </p>
 
     </div>
 
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script src="script.js"></script>
 
 </body>
-
 </html>
