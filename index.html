@@ -8,7 +8,28 @@
         content="Textile Explorer - Textile Engineering students-এর জন্য Fabric, Calculator, Textile Process, Student Resources এবং Career information platform.">
 
     <meta name="keywords"
-        content="Textile Engineering, Textile Explorer, Fabric, GSM Calculator, Yarn Count, EPI, PPI">
+        content="Textile Engineering, Textile Explorer, Fabric, GSM Calculator,<div class="calculator-card">
+  <div class="calculator-icon">🧵</div>
+  <h3>Yarn Count Calculator</h3>
+  <p>Ne, Nm, Tex এবং Denier হিসাব করুন।</p>
+
+  <label for="yarnCountValue">Value</label>
+  <input type="number" id="yarnCountValue" placeholder="যেমন: 30">
+
+  <label for="yarnCountType">Count Type</label>
+  <select id="yarnCountType">
+    <option value="ne">Ne (English Cotton)</option>
+    <option value="nm">Nm (Metric)</option>
+    <option value="tex">Tex</option>
+    <option value="denier">Denier</option>
+  </select>
+
+  <button type="button" id="calculateYarnCount">Calculate</button>
+
+  <div class="calculator-result" id="yarnCountResult">
+    Result এখানে দেখাবে
+  </div>
+</div> Yarn Count, EPI, PPI">
 
     <meta name="author" content="Mohammad Jamiul Haque Jibon">
 
