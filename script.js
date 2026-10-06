@@ -492,7 +492,55 @@ if (calculateGSM) {
 
             const result =
                 document.getElementById(
-                    "gsmResult"
+                    "gsmResult"// Yarn Count Calculator
+const yarnCountValue = document.getElementById("yarnCountValue");
+const yarnCountType = document.getElementById("yarnCountType");
+const calculateYarnCount = document.getElementById("calculateYarnCount");
+const yarnCountResult = document.getElementById("yarnCountResult");
+
+if (calculateYarnCount) {
+  calculateYarnCount.addEventListener("click", () => {
+    const value = parseFloat(yarnCountValue.value);
+    const type = yarnCountType.value;
+
+    if (!value || value <= 0) {
+      yarnCountResult.textContent = "Please enter a valid value.";
+      return;
+    }
+
+    let ne, nm, tex, denier;
+
+    if (type === "ne") {
+      ne = value;
+      nm = ne * 1.693;
+      tex = 590.5 / ne;
+      denier = tex * 9;
+    } else if (type === "nm") {
+      nm = value;
+      ne = nm / 1.693;
+      tex = 1000 / nm;
+      denier = tex * 9;
+    } else if (type === "tex") {
+      tex = value;
+      nm = 1000 / tex;
+      ne = 590.5 / tex;
+      denier = tex * 9;
+    } else if (type === "denier") {
+      denier = value;
+      tex = denier / 9;
+      nm = 1000 / tex;
+      ne = 590.5 / tex;
+    }
+
+    yarnCountResult.innerHTML = `
+      <strong>Result:</strong><br>
+      Ne: ${ne.toFixed(2)}<br>
+      Nm: ${nm.toFixed(2)}<br>
+      Tex: ${tex.toFixed(2)}<br>
+      Denier: ${denier.toFixed(2)}
+    `;
+  });
+}
                 );
 
 
