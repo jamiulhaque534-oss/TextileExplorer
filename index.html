@@ -885,6 +885,2376 @@
 
 
 <script src="script.js"></script>
+<!-- =========================================================
+     TEXTILE EXPLORER — FEATURE PACK v2.0
+     Paste this entire block before </body>
+     ========================================================= -->
 
+<style>
+/* =========================================================
+   TEXTILE EXPLORER FEATURE PACK
+   Keeps existing website design intact
+   ========================================================= */
+
+#teFeaturePack {
+  font-family: inherit;
+}
+
+.te-feature-launcher {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9998;
+}
+
+.te-feature-main-btn {
+  width: 58px;
+  height: 58px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  background: linear-gradient(135deg,#0ea5e9,#2563eb);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0,0,0,.25);
+  transition: .25s;
+}
+
+.te-feature-main-btn:hover {
+  transform: scale(1.08);
+}
+
+.te-feature-menu {
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  width: 230px;
+  background: var(--card-bg,#fff);
+  border: 1px solid rgba(100,116,139,.18);
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 15px 45px rgba(0,0,0,.18);
+  display: none;
+}
+
+.te-feature-menu.active {
+  display: block;
+  animation: tePop .2s ease;
+}
+
+@keyframes tePop {
+  from {opacity:0;transform:translateY(10px) scale(.97)}
+  to {opacity:1;transform:translateY(0) scale(1)}
+}
+
+.te-feature-menu button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.te-feature-menu button:hover {
+  background: rgba(14,165,233,.10);
+}
+
+.te-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,.65);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.te-modal.active {
+  display: flex;
+}
+
+.te-modal-box {
+  width: min(900px,100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--card-bg,#fff);
+  color: var(--text-color,#0f172a);
+  border-radius: 22px;
+  box-shadow: 0 25px 80px rgba(0,0,0,.3);
+  padding: 25px;
+  position: relative;
+}
+
+.te-close {
+  position: absolute;
+  right: 18px;
+  top: 15px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(100,116,139,.12);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.te-modal-title {
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.te-modal-subtitle {
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+.te-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+  gap: 15px;
+}
+
+.te-feature-card {
+  border: 1px solid rgba(100,116,139,.18);
+  border-radius: 16px;
+  padding: 18px;
+  cursor: pointer;
+  transition: .2s;
+  background: rgba(148,163,184,.04);
+}
+
+.te-feature-card:hover {
+  transform: translateY(-3px);
+  border-color: #38bdf8;
+  box-shadow: 0 8px 25px rgba(14,165,233,.12);
+}
+
+.te-feature-card .icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.te-feature-card h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.te-feature-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.te-input,
+.te-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font: inherit;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.te-btn {
+  border: 0;
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  background: #2563eb;
+  color: #fff;
+}
+
+.te-btn.secondary {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.te-result {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(14,165,233,.08);
+  border-left: 4px solid #0ea5e9;
+  font-weight: 600;
+}
+
+.te-note {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(14,165,233,.06);
+  margin-bottom: 12px;
+}
+
+.te-note h3 {
+  margin-top: 0;
+}
+
+.te-question {
+  padding: 18px;
+  border: 1px solid rgba(100,116,139,.18);
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.te-option {
+  display: block;
+  padding: 11px;
+  border-radius: 9px;
+  margin-top: 7px;
+  cursor: pointer;
+  background: rgba(148,163,184,.06);
+}
+
+.te-option:hover {
+  background: rgba(14,165,233,.10);
+}
+
+.te-score {
+  text-align: center;
+  padding: 22px;
+  border-radius: 16px;
+  background: rgba(34,197,94,.08);
+  margin-top: 20px;
+}
+
+.te-progress {
+  height: 9px;
+  background: #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0 18px;
+}
+
+.te-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg,#0ea5e9,#2563eb);
+  transition: .3s;
+}
+
+.te-search-results {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.te-search-item {
+  padding: 13px;
+  border-bottom: 1px solid rgba(100,116,139,.15);
+  cursor: pointer;
+}
+
+.te-search-item:hover {
+  background: rgba(14,165,233,.06);
+}
+
+.te-viva-answer {
+  display: none;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(34,197,94,.08);
+}
+
+.te-viva-question {
+  border: 1px solid rgba(100,116,139,.18);
+  border-radius: 15px;
+  padding: 17px;
+  margin-bottom: 12px;
+}
+
+.te-tag {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  background: rgba(14,165,233,.12);
+  color: #0369a1;
+  font-size: 12px;
+  margin: 3px;
+}
+
+.te-dark-text {
+  color: inherit;
+}
+
+@media(max-width:600px) {
+  .te-modal-box {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .te-feature-launcher {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .te-feature-menu {
+    width: 210px;
+  }
+
+  .te-modal-title {
+    font-size: 21px;
+  }
+}
+</style>
+
+
+<div id="teFeaturePack">
+
+  <!-- Floating Feature Button -->
+  <div class="te-feature-launcher">
+    <div class="te-feature-menu" id="teFeatureMenu">
+
+      <button onclick="TE.open('dashboard')">
+        🧭 Feature Dashboard
+      </button>
+
+      <button onclick="TE.open('notes')">
+        📚 Study Notes
+      </button>
+
+      <button onclick="TE.open('mcq')">
+        🧠 MCQ Practice
+      </button>
+
+      <button onclick="TE.open('mock')">
+        ⏱️ Mock Test
+      </button>
+
+      <button onclick="TE.open('viva')">
+        🎤 Viva Preparation
+      </button>
+
+      <button onclick="TE.open('testing')">
+        🧪 Textile Testing
+      </button>
+
+      <button onclick="TE.open('defects')">
+        ❌ Textile Defects
+      </button>
+
+      <button onclick="TE.open('calculator')">
+        🧮 Advanced Calculator
+      </button>
+
+      <button onclick="TE.open('glossary')">
+        📖 Textile Glossary
+      </button>
+
+      <button onclick="TE.open('search')">
+        🔍 Textile Search
+      </button>
+
+      <button onclick="TE.open('progress')">
+        📊 My Progress
+      </button>
+
+    </div>
+
+    <button class="te-feature-main-btn"
+            onclick="document.getElementById('teFeatureMenu').classList.toggle('active')">
+      ⚡
+    </button>
+  </div>
+
+
+  <!-- =====================================================
+       DASHBOARD
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-dashboard">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('dashboard')">×</button>
+
+      <div class="te-modal-title">
+        🧭 Textile Explorer — Feature Dashboard
+      </div>
+
+      <div class="te-modal-subtitle">
+        Textile Engineering students-এর জন্য নতুন learning tools
+      </div>
+
+      <div class="te-grid">
+
+        <div class="te-feature-card" onclick="TE.open('notes')">
+          <div class="icon">📚</div>
+          <h3>Study Notes</h3>
+          <p>Textile Engineering-এর গুরুত্বপূর্ণ topic দ্রুত revise করুন।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('mcq')">
+          <div class="icon">🧠</div>
+          <h3>MCQ Practice</h3>
+          <p>Practice MCQ এবং instant answer checking।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('mock')">
+          <div class="icon">⏱️</div>
+          <h3>Mock Test</h3>
+          <p>Exam-style timed test দিন।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('viva')">
+          <div class="icon">🎤</div>
+          <h3>Viva Preparation</h3>
+          <p>Textile viva-এর গুরুত্বপূর্ণ প্রশ্ন ও উত্তর।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('testing')">
+          <div class="icon">🧪</div>
+          <h3>Textile Testing</h3>
+          <p>Fabric ও yarn testing সম্পর্কে জানুন।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('defects')">
+          <div class="icon">❌</div>
+          <h3>Textile Defects</h3>
+          <p>Common fabric defects, causes ও remedies।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('calculator')">
+          <div class="icon">🧮</div>
+          <h3>Advanced Calculator</h3>
+          <p>Production, yarn ও fabric calculation tools।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('glossary')">
+          <div class="icon">📖</div>
+          <h3>Textile Glossary</h3>
+          <p>Important textile terms সহজ ভাষায়।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('search')">
+          <div class="icon">🔍</div>
+          <h3>Textile Search</h3>
+          <p>এক জায়গা থেকে textile topics search করুন।</p>
+        </div>
+
+        <div class="te-feature-card" onclick="TE.open('progress')">
+          <div class="icon">📊</div>
+          <h3>My Progress</h3>
+          <p>MCQ ও learning progress দেখুন।</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       STUDY NOTES
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-notes">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('notes')">×</button>
+
+      <div class="te-modal-title">📚 Textile Study Notes</div>
+
+      <div class="te-modal-subtitle">
+        গুরুত্বপূর্ণ topic দ্রুত revision করার জন্য।
+      </div>
+
+      <div class="te-note">
+        <h3>🧵 Fiber</h3>
+        <p>
+          Fiber হলো textile yarn বা fabric তৈরির জন্য ব্যবহৃত
+          ছোট, flexible এবং suitable material।
+        </p>
+
+        <span class="te-tag">Natural Fiber</span>
+        <span class="te-tag">Man-made Fiber</span>
+      </div>
+
+      <div class="te-note">
+        <h3>🧶 Yarn</h3>
+        <p>
+          Yarn হলো fiber বা filament-এর continuous strand,
+          যা fabric তৈরিতে ব্যবহৃত হয়।
+        </p>
+
+        <span class="te-tag">Count</span>
+        <span class="te-tag">Twist</span>
+        <span class="te-tag">Strength</span>
+      </div>
+
+      <div class="te-note">
+        <h3>🧵 Weaving</h3>
+        <p>
+          Warp এবং Weft yarn interlacement-এর মাধ্যমে woven fabric তৈরি হয়।
+        </p>
+
+        <span class="te-tag">Warp</span>
+        <span class="te-tag">Weft</span>
+        <span class="te-tag">EPI</span>
+        <span class="te-tag">PPI</span>
+      </div>
+
+      <div class="te-note">
+        <h3>🧶 Knitting</h3>
+        <p>
+          Loop formation-এর মাধ্যমে knitted fabric তৈরি হয়।
+          Knitted fabric সাধারণত বেশি stretchable।
+        </p>
+
+        <span class="te-tag">Course</span>
+        <span class="te-tag">Wale</span>
+        <span class="te-tag">GSM</span>
+      </div>
+
+      <div class="te-note">
+        <h3>🎨 Dyeing</h3>
+        <p>
+          Dyeing হলো textile material-এ desired colour দেওয়ার process।
+        </p>
+
+        <span class="te-tag">Reactive Dye</span>
+        <span class="te-tag">Disperse Dye</span>
+        <span class="te-tag">Vat Dye</span>
+      </div>
+
+      <div class="te-note">
+        <h3>✨ Finishing</h3>
+        <p>
+          Fabric-এর appearance, handle, performance ও functionality
+          উন্নত করার জন্য finishing করা হয়।
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       MCQ
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-mcq">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('mcq')">×</button>
+
+      <div class="te-modal-title">🧠 Textile MCQ Practice</div>
+
+      <div class="te-modal-subtitle">
+        উত্তর নির্বাচন করুন এবং শেষে score দেখুন।
+      </div>
+
+      <div id="teMCQContainer"></div>
+
+      <button class="te-btn" onclick="TE.checkMCQ()">
+        Check Answers
+      </button>
+
+      <div id="teMCQResult"></div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       MOCK TEST
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-mock">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('mock')">×</button>
+
+      <div class="te-modal-title">⏱️ Textile Mock Test</div>
+
+      <div class="te-modal-subtitle">
+        10 questions • 5 minutes
+      </div>
+
+      <div id="teMockStart">
+        <button class="te-btn" onclick="TE.startMock()">
+          Start Mock Test
+        </button>
+      </div>
+
+      <div id="teMockArea" style="display:none">
+
+        <div>
+          Time Left:
+          <strong id="teTimer">05:00</strong>
+        </div>
+
+        <div class="te-progress">
+          <span id="teMockProgress"></span>
+        </div>
+
+        <div id="teMockQuestions"></div>
+
+        <button class="te-btn" onclick="TE.submitMock()">
+          Submit Test
+        </button>
+
+      </div>
+
+      <div id="teMockResult"></div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       VIVA
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-viva">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('viva')">×</button>
+
+      <div class="te-modal-title">🎤 Textile Viva Preparation</div>
+
+      <div class="te-modal-subtitle">
+        Question-এ click করে answer দেখুন।
+      </div>
+
+      <div class="te-viva-question">
+        <strong>1. What is GSM?</strong>
+        <button class="te-btn secondary"
+                onclick="TE.toggleAnswer(1)">
+          Show Answer
+        </button>
+
+        <div id="vivaAnswer1" class="te-viva-answer">
+          GSM means Grams per Square Meter. এটি fabric-এর প্রতি square meter-এর weight নির্দেশ করে।
+        </div>
+      </div>
+
+      <div class="te-viva-question">
+        <strong>2. What is EPI?</strong>
+        <button class="te-btn secondary"
+                onclick="TE.toggleAnswer(2)">
+          Show Answer
+        </button>
+
+        <div id="vivaAnswer2" class="te-viva-answer">
+          EPI means Ends Per Inch. অর্থাৎ fabric-এর প্রতি inch width-এ warp ends-এর সংখ্যা।
+        </div>
+      </div>
+
+      <div class="te-viva-question">
+        <strong>3. What is PPI?</strong>
+        <button class="te-btn secondary"
+                onclick="TE.toggleAnswer(3)">
+          Show Answer
+        </button>
+
+        <div id="vivaAnswer3" class="te-viva-answer">
+          PPI means Picks Per Inch. অর্থাৎ fabric-এর প্রতি inch length-এ weft picks-এর সংখ্যা।
+        </div>
+      </div>
+
+      <div class="te-viva-question">
+        <strong>4. Difference between Warp and Weft?</strong>
+        <button class="te-btn secondary"
+                onclick="TE.toggleAnswer(4)">
+          Show Answer
+        </button>
+
+        <div id="vivaAnswer4" class="te-viva-answer">
+          Warp yarn fabric-এর lengthwise direction-এ থাকে এবং Weft yarn widthwise direction-এ interlace করে।
+        </div>
+      </div>
+
+      <div class="te-viva-question">
+        <strong>5. What is Yarn Count?</strong>
+        <button class="te-btn secondary"
+                onclick="TE.toggleAnswer(5)">
+          Show Answer
+        </button>
+
+        <div id="vivaAnswer5" class="te-viva-answer">
+          Yarn count হলো yarn-এর fineness বা coarseness প্রকাশ করার numerical system।
+        </div>
+      </div>
+
+      <div class="te-viva-question">
+        <strong>6. What is Shrinkage?</strong>
+        <button class="te-btn secondary"
+                onclick="TE.toggleAnswer(6)">
+          Show Answer
+        </button>
+
+        <div id="vivaAnswer6" class="te-viva-answer">
+          Washing বা processing-এর পর fabric-এর dimension কমে যাওয়াকে shrinkage বলা হয়।
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       TEXTILE TESTING
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-testing">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('testing')">×</button>
+
+      <div class="te-modal-title">🧪 Textile Testing Library</div>
+
+      <div class="te-grid">
+
+        <div class="te-feature-card">
+          <div class="icon">⚖️</div>
+          <h3>GSM Test</h3>
+          <p>Fabric weight per square meter determine করা হয়।</p>
+        </div>
+
+        <div class="te-feature-card">
+          <div class="icon">💪</div>
+          <h3>Tensile Strength</h3>
+          <p>Fabric বা yarn breaking-এর আগে কত load নিতে পারে তা পরীক্ষা করা হয়।</p>
+        </div>
+
+        <div class="te-feature-card">
+          <div class="icon">✂️</div>
+          <h3>Tear Strength</h3>
+          <p>Fabric tear করার জন্য প্রয়োজনীয় force measure করা হয়।</p>
+        </div>
+
+        <div class="te-feature-card">
+          <div class="icon">🔄</div>
+          <h3>Abrasion Test</h3>
+          <p>Friction-এর কারণে fabric-এর resistance পরীক্ষা করা হয়।</p>
+        </div>
+
+        <div class="te-feature-card">
+          <div class="icon">🎨</div>
+          <h3>Color Fastness</h3>
+          <p>Washing, rubbing, light ইত্যাদিতে colour কতটা স্থায়ী থাকে তা পরীক্ষা করা হয়।</p>
+        </div>
+
+        <div class="te-feature-card">
+          <div class="icon">📏</div>
+          <h3>Shrinkage Test</h3>
+          <p>Washing-এর পরে fabric-এর dimensional change নির্ণয় করা হয়।</p>
+        </div>
+
+        <div class="te-feature-card">
+          <div class="icon">🧵</div>
+          <h3>Yarn Count</h3>
+          <p>Yarn-এর fineness নির্ণয় করার জন্য count system ব্যবহার করা হয়।</p>
+        </div>
+
+        <div class="te-feature-card">
+          <div class="icon">🪡</div>
+          <h3>Stitch Test</h3>
+          <p>Garment seam ও stitch-এর performance পরীক্ষা করা হয়।</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       DEFECTS
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-defects">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('defects')">×</button>
+
+      <div class="te-modal-title">❌ Textile Defects Library</div>
+
+      <div class="te-modal-subtitle">
+        Common defects — Cause & Remedy
+      </div>
+
+      <div class="te-note">
+        <h3>🧵 Barre</h3>
+        <p><strong>Cause:</strong> Yarn variation, knitting variation বা dyeing variation.</p>
+        <p><strong>Remedy:</strong> Raw material ও machine parameters control করতে হবে।</p>
+      </div>
+
+      <div class="te-note">
+        <h3>🎨 Uneven Dyeing</h3>
+        <p><strong>Cause:</strong> Uneven dye penetration বা process control সমস্যা।</p>
+        <p><strong>Remedy:</strong> Temperature, pH, liquor ratio এবং dye distribution control করতে হবে।</p>
+      </div>
+
+      <div class="te-note">
+        <h3>🕳️ Hole</h3>
+        <p><strong>Cause:</strong> Needle damage, mechanical damage বা weak yarn।</p>
+        <p><strong>Remedy:</strong> Needle এবং machine condition check করতে হবে।</p>
+      </div>
+
+      <div class="te-note">
+        <h3>📏 Skew</h3>
+        <p><strong>Cause:</strong> Fabric construction বা finishing-এর সময় distortion।</p>
+        <p><strong>Remedy:</strong> Proper fabric alignment ও finishing control করতে হবে।</p>
+      </div>
+
+      <div class="te-note">
+        <h3>🧶 Slub</h3>
+        <p><strong>Cause:</strong> Yarn-এর abnormal thick place।</p>
+        <p><strong>Remedy:</strong> Yarn quality ও spinning process monitor করতে হবে।</p>
+      </div>
+
+      <div class="te-note">
+        <h3>🌈 Streak</h3>
+        <p><strong>Cause:</strong> Dyeing বা fabric construction variation।</p>
+        <p><strong>Remedy:</strong> Dyeing recipe এবং process uniformity check করতে হবে।</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       ADVANCED CALCULATOR
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-calculator">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('calculator')">×</button>
+
+      <div class="te-modal-title">🧮 Advanced Textile Calculator</div>
+
+      <div class="te-grid">
+
+        <!-- GSM -->
+        <div class="te-feature-card">
+
+          <h3>⚖️ GSM</h3>
+
+          <input
+            class="te-input"
+            id="advGsmWeight"
+            type="number"
+            placeholder="Sample weight (g)"
+          >
+
+          <input
+            class="te-input"
+            id="advGsmLength"
+            type="number"
+            placeholder="Length (cm)"
+          >
+
+          <input
+            class="te-input"
+            id="advGsmWidth"
+            type="number"
+            placeholder="Width (cm)"
+          >
+
+          <button class="te-btn" onclick="TE.calcGSM()">
+            Calculate
+          </button>
+
+          <div id="advGsmResult"></div>
+
+        </div>
+
+
+        <!-- Fabric Weight -->
+        <div class="te-feature-card">
+
+          <h3>⚖️ Fabric Weight</h3>
+
+          <input
+            class="te-input"
+            id="advFwGsm"
+            type="number"
+            placeholder="GSM"
+          >
+
+          <input
+            class="te-input"
+            id="advFwLength"
+            type="number"
+            placeholder="Length (m)"
+          >
+
+          <input
+            class="te-input"
+            id="advFwWidth"
+            type="number"
+            placeholder="Width (m)"
+          >
+
+          <button class="te-btn" onclick="TE.calcFabricWeight()">
+            Calculate
+          </button>
+
+          <div id="advFwResult"></div>
+
+        </div>
+
+
+        <!-- Shrinkage -->
+        <div class="te-feature-card">
+
+          <h3>📏 Shrinkage</h3>
+
+          <input
+            class="te-input"
+            id="advOriginal"
+            type="number"
+            placeholder="Original length"
+          >
+
+          <input
+            class="te-input"
+            id="advFinal"
+            type="number"
+            placeholder="Final length"
+          >
+
+          <button class="te-btn" onclick="TE.calcShrinkage()">
+            Calculate
+          </button>
+
+          <div id="advShrinkResult"></div>
+
+        </div>
+
+
+        <!-- Production -->
+        <div class="te-feature-card">
+
+          <h3>🏭 Production</h3>
+
+          <input
+            class="te-input"
+            id="advMachineSpeed"
+            type="number"
+            placeholder="Machine speed"
+          >
+
+          <input
+            class="te-input"
+            id="advEfficiency"
+            type="number"
+            placeholder="Efficiency %"
+          >
+
+          <input
+            class="te-input"
+            id="advTime"
+            type="number"
+            placeholder="Time (hour)"
+          >
+
+          <button class="te-btn" onclick="TE.calcProduction()">
+            Calculate
+          </button>
+
+          <div id="advProductionResult"></div>
+
+        </div>
+
+
+        <!-- EPI -->
+        <div class="te-feature-card">
+
+          <h3>🧵 EPI</h3>
+
+          <input
+            class="te-input"
+            id="advEnds"
+            type="number"
+            placeholder="Total Ends"
+          >
+
+          <input
+            class="te-input"
+            id="advEpiWidth"
+            type="number"
+            placeholder="Width (inch)"
+          >
+
+          <button class="te-btn" onclick="TE.calcEPI()">
+            Calculate
+          </button>
+
+          <div id="advEpiResult"></div>
+
+        </div>
+
+
+        <!-- PPI -->
+        <div class="te-feature-card">
+
+          <h3>🧵 PPI</h3>
+
+          <input
+            class="te-input"
+            id="advPicks"
+            type="number"
+            placeholder="Total Picks"
+          >
+
+          <input
+            class="te-input"
+            id="advPpiLength"
+            type="number"
+            placeholder="Length (inch)"
+          >
+
+          <button class="te-btn" onclick="TE.calcPPI()">
+            Calculate
+          </button>
+
+          <div id="advPpiResult"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       GLOSSARY
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-glossary">
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('glossary')">×</button>
+
+      <div class="te-modal-title">📖 Textile Glossary</div>
+
+      <input
+        class="te-input"
+        id="teGlossarySearch"
+        placeholder="Search textile term..."
+        oninput="TE.filterGlossary()"
+      >
+
+      <div id="teGlossaryList"></div>
+
+    </div>
+  </div>
+
+
+  <!-- =====================================================
+       SEARCH
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-search">
+
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('search')">×</button>
+
+      <div class="te-modal-title">
+        🔍 Textile Explorer Search
+      </div>
+
+      <div class="te-modal-subtitle">
+        Textile topic, process, fabric বা terminology search করুন।
+      </div>
+
+      <input
+        class="te-input"
+        id="teSearchInput"
+        placeholder="যেমন: GSM, cotton, weaving, dyeing..."
+        oninput="TE.search()"
+      >
+
+      <div
+        id="teSearchResults"
+        class="te-search-results">
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       PROGRESS
+       ===================================================== -->
+
+  <div class="te-modal" id="teModal-progress">
+
+    <div class="te-modal-box">
+
+      <button class="te-close" onclick="TE.close('progress')">×</button>
+
+      <div class="te-modal-title">
+        📊 My Learning Progress
+      </div>
+
+      <div class="te-note">
+
+        <h3>MCQ Completed</h3>
+
+        <div class="te-progress">
+          <span id="teMCQProgressBar"></span>
+        </div>
+
+        <strong id="teMCQProgressText">
+          0%
+        </strong>
+
+      </div>
+
+      <div class="te-note">
+
+        <h3>Mock Tests</h3>
+
+        <p>
+          Completed:
+          <strong id="teMockCount">0</strong>
+        </p>
+
+      </div>
+
+      <div class="te-note">
+
+        <h3>Study Activity</h3>
+
+        <p>
+          Textile Explorer ব্যবহার শুরু করেছেন।
+        </p>
+
+        <p>
+          Keep learning 🚀
+        </p>
+
+      </div>
+
+      <button class="te-btn secondary"
+              onclick="TE.resetProgress()">
+        Reset Progress
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+/* =========================================================
+   TEXTILE EXPLORER FEATURE ENGINE
+   ========================================================= */
+
+(function(){
+
+"use strict";
+
+const MCQS = [
+
+  {
+    q:"Which fiber is a natural cellulosic fiber?",
+    options:["Polyester","Cotton","Nylon","Acrylic"],
+    answer:1
+  },
+
+  {
+    q:"GSM means:",
+    options:[
+      "Gram per Square Meter",
+      "General Standard Material",
+      "Gram Standard Measurement",
+      "Global Square Material"
+    ],
+    answer:0
+  },
+
+  {
+    q:"EPI means:",
+    options:[
+      "Ends Per Inch",
+      "Ends Per Item",
+      "Elastic Per Inch",
+      "Ends Production Index"
+    ],
+    answer:0
+  },
+
+  {
+    q:"PPI means:",
+    options:[
+      "Picks Per Inch",
+      "Production Per Inch",
+      "Picks Per Item",
+      "Process Per Inch"
+    ],
+    answer:0
+  },
+
+  {
+    q:"Which process converts fiber into yarn?",
+    options:[
+      "Finishing",
+      "Spinning",
+      "Dyeing",
+      "Printing"
+    ],
+    answer:1
+  },
+
+  {
+    q:"Warp yarn runs mainly in which direction?",
+    options:[
+      "Widthwise",
+      "Lengthwise",
+      "Diagonal",
+      "Circular"
+    ],
+    answer:1
+  },
+
+  {
+    q:"Knitted fabric is mainly formed by:",
+    options:[
+      "Interlacement of loops",
+      "Bonding",
+      "Welding",
+      "Printing"
+    ],
+    answer:0
+  },
+
+  {
+    q:"Which is a synthetic fiber?",
+    options:[
+      "Cotton",
+      "Wool",
+      "Polyester",
+      "Silk"
+    ],
+    answer:2
+  },
+
+  {
+    q:"Shrinkage is generally measured after:",
+    options:[
+      "Spinning",
+      "Washing or processing",
+      "Carding",
+      "Blow room"
+    ],
+    answer:1
+  },
+
+  {
+    q:"Which parameter indicates fabric weight?",
+    options:[
+      "GSM",
+      "EPI",
+      "PPI",
+      "Twist"
+    ],
+    answer:0
+  }
+
+];
+
+
+const MOCK = [
+
+  {
+    q:"Which one is a natural fiber?",
+    options:["Polyester","Cotton","Nylon","Acrylic"],
+    answer:1
+  },
+
+  {
+    q:"What is GSM?",
+    options:[
+      "Grams per Square Meter",
+      "General Sewing Method",
+      "Gram Standard Material",
+      "Global Square Measurement"
+    ],
+    answer:0
+  },
+
+  {
+    q:"EPI refers to:",
+    options:[
+      "Ends Per Inch",
+      "Ends Per Item",
+      "Elastic Per Inch",
+      "Ends Production Index"
+    ],
+    answer:0
+  },
+
+  {
+    q:"PPI refers to:",
+    options:[
+      "Picks Per Inch",
+      "Production Per Inch",
+      "Picks Per Item",
+      "Process Per Inch"
+    ],
+    answer:0
+  },
+
+  {
+    q:"The process of producing yarn from fibers is:",
+    options:[
+      "Dyeing",
+      "Spinning",
+      "Finishing",
+      "Printing"
+    ],
+    answer:1
+  },
+
+  {
+    q:"Warp yarn is:",
+    options:[
+      "Lengthwise",
+      "Widthwise",
+      "Diagonal",
+      "Circular"
+    ],
+    answer:0
+  },
+
+  {
+    q:"Which is commonly used for synthetic fibers?",
+    options:[
+      "Polyester",
+      "Cotton",
+      "Wool",
+      "Jute"
+    ],
+    answer:0
+  },
+
+  {
+    q:"Fabric shrinkage means:",
+    options:[
+      "Increase in dimension",
+      "Decrease in dimension",
+      "Increase in GSM only",
+      "Colour change only"
+    ],
+    answer:1
+  },
+
+  {
+    q:"A woven fabric contains:",
+    options:[
+      "Warp and Weft",
+      "Only loops",
+      "Only fibers",
+      "Only filaments"
+    ],
+    answer:0
+  },
+
+  {
+    q:"Which test determines fabric weight?",
+    options:[
+      "GSM test",
+      "Tensile test",
+      "Tear test",
+      "Abrasion test"
+    ],
+    answer:0
+  }
+
+];
+
+
+const GLOSSARY = [
+
+  ["GSM","Grams per Square Meter — fabric-এর weight-এর একটি গুরুত্বপূর্ণ measurement."],
+
+  ["EPI","Ends Per Inch — প্রতি inch width-এ warp ends-এর সংখ্যা."],
+
+  ["PPI","Picks Per Inch — প্রতি inch length-এ weft picks-এর সংখ্যা."],
+
+  ["Warp","Woven fabric-এর lengthwise yarn."],
+
+  ["Weft","Woven fabric-এর widthwise yarn."],
+
+  ["Count","Yarn-এর fineness বা coarseness প্রকাশ করার numerical system."],
+
+  ["Denier","9000 meter yarn-এর gram weight দ্বারা প্রকাশিত filament count system."],
+
+  ["Tex","1000 meter yarn-এর gram weight."],
+
+  ["Ne","English cotton yarn count system."],
+
+  ["Spinning","Fiber থেকে yarn তৈরি করার process."],
+
+  ["Weaving","Warp ও weft-এর interlacement দ্বারা woven fabric তৈরি করার process."],
+
+  ["Knitting","Loops formation-এর মাধ্যমে fabric তৈরির process."],
+
+  ["Dyeing","Textile material-এ colour দেওয়ার process."],
+
+  ["Finishing","Fabric-এর appearance ও performance উন্নত করার process."],
+
+  ["Shrinkage","Processing বা washing-এর পরে fabric dimension কমে যাওয়া."],
+
+  ["Tensile Strength","Breaking-এর আগে material কত force নিতে পারে."],
+
+  ["Abrasion","Friction-এর কারণে surface wear resistance."],
+
+  ["Color Fastness","Colour-এর বিভিন্ন external action-এর বিরুদ্ধে resistance."],
+
+  ["Denim","সাধারণত cotton-based twill woven fabric."],
+
+  ["Knitted Fabric","Loops দ্বারা তৈরি fabric."]
+];
+
+
+const SEARCH_DATA = [
+
+  ["GSM","GSM Calculator, fabric weight, textile testing"],
+
+  ["Cotton","Natural cellulosic fiber, spinning, weaving, dyeing"],
+
+  ["Polyester","Synthetic fiber, filament, textile production"],
+
+  ["Spinning","Fiber থেকে yarn production process"],
+
+  ["Weaving","Warp ও weft interlacement process"],
+
+  ["Knitting","Loop formation textile process"],
+
+  ["Dyeing","Textile colouring process"],
+
+  ["Finishing","Fabric performance ও appearance improvement"],
+
+  ["EPI","Ends Per Inch — woven fabric"],
+
+  ["PPI","Picks Per Inch — woven fabric"],
+
+  ["Yarn Count","Yarn fineness measurement"],
+
+  ["Shrinkage","Fabric dimensional change"],
+
+  ["Tensile Test","Strength testing"],
+
+  ["Abrasion Test","Fabric surface resistance"],
+
+  ["Color Fastness","Colour durability testing"],
+
+  ["Textile Defect","Fabric quality problems"],
+
+  ["Merchandising","Textile and apparel career"],
+
+  ["Quality Control","Textile quality inspection"],
+
+  ["Industrial Engineering","Production efficiency and optimization"],
+
+  ["Garments","Apparel manufacturing"]
+
+];
+
+
+let mockTimer = null;
+let mockSeconds = 300;
+
+
+/* =========================================================
+   OPEN / CLOSE
+   ========================================================= */
+
+function open(name){
+
+  const modal = document.getElementById("teModal-"+name);
+
+  if(!modal) return;
+
+  modal.classList.add("active");
+
+  document.getElementById("teFeatureMenu")
+    .classList.remove("active");
+
+  if(name === "mcq"){
+    renderMCQ();
+  }
+
+  if(name === "glossary"){
+    renderGlossary();
+  }
+
+  if(name === "search"){
+    search();
+  }
+
+  if(name === "progress"){
+    updateProgress();
+  }
+
+}
+
+
+function close(name){
+
+  const modal = document.getElementById("teModal-"+name);
+
+  if(modal){
+    modal.classList.remove("active");
+  }
+
+}
+
+
+/* =========================================================
+   MCQ
+   ========================================================= */
+
+function renderMCQ(){
+
+  const box = document.getElementById("teMCQContainer");
+
+  if(!box) return;
+
+  box.innerHTML = MCQS.map((item,index)=>`
+
+    <div class="te-question">
+
+      <strong>
+        ${index+1}. ${item.q}
+      </strong>
+
+      ${item.options.map((option,optIndex)=>`
+
+        <label class="te-option">
+
+          <input
+            type="radio"
+            name="mcq${index}"
+            value="${optIndex}"
+          >
+
+          ${option}
+
+        </label>
+
+      `).join("")}
+
+    </div>
+
+  `).join("");
+
+}
+
+
+function checkMCQ(){
+
+  let score = 0;
+  let answered = 0;
+
+  MCQS.forEach((item,index)=>{
+
+    const selected =
+      document.querySelector(
+        `input[name="mcq${index}"]:checked`
+      );
+
+    if(selected){
+
+      answered++;
+
+      if(Number(selected.value) === item.answer){
+        score++;
+      }
+
+    }
+
+  });
+
+  const percentage =
+    Math.round((score/MCQS.length)*100);
+
+  localStorage.setItem(
+    "te_mcq_progress",
+    percentage
+  );
+
+  document.getElementById("teMCQResult").innerHTML = `
+
+    <div class="te-score">
+
+      <h2>🎯 Score: ${score}/${MCQS.length}</h2>
+
+      <p>
+        Percentage: ${percentage}%
+      </p>
+
+      <p>
+        Answered: ${answered}/${MCQS.length}
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   MOCK TEST
+   ========================================================= */
+
+function startMock(){
+
+  document.getElementById("teMockStart")
+    .style.display="none";
+
+  document.getElementById("teMockArea")
+    .style.display="block";
+
+  document.getElementById("teMockResult")
+    .innerHTML="";
+
+  mockSeconds=300;
+
+  renderMock();
+
+  clearInterval(mockTimer);
+
+  mockTimer=setInterval(()=>{
+
+    mockSeconds--;
+
+    updateTimer();
+
+    if(mockSeconds<=0){
+
+      clearInterval(mockTimer);
+
+      submitMock();
+
+    }
+
+  },1000);
+
+  updateTimer();
+
+}
+
+
+function updateTimer(){
+
+  const min =
+    Math.floor(mockSeconds/60)
+      .toString()
+      .padStart(2,"0");
+
+  const sec =
+    (mockSeconds%60)
+      .toString()
+      .padStart(2,"0");
+
+  const timer =
+    document.getElementById("teTimer");
+
+  if(timer){
+    timer.textContent =
+      `${min}:${sec}`;
+  }
+
+}
+
+
+function renderMock(){
+
+  const box =
+    document.getElementById(
+      "teMockQuestions"
+    );
+
+  if(!box) return;
+
+  box.innerHTML = MOCK.map((item,index)=>`
+
+    <div class="te-question">
+
+      <strong>
+        ${index+1}. ${item.q}
+      </strong>
+
+      ${item.options.map((option,optIndex)=>`
+
+        <label class="te-option">
+
+          <input
+            type="radio"
+            name="mock${index}"
+            value="${optIndex}"
+          >
+
+          ${option}
+
+        </label>
+
+      `).join("")}
+
+    </div>
+
+  `).join("");
+
+}
+
+
+function submitMock(){
+
+  clearInterval(mockTimer);
+
+  let score=0;
+
+  MOCK.forEach((item,index)=>{
+
+    const selected =
+      document.querySelector(
+        `input[name="mock${index}"]:checked`
+      );
+
+    if(
+      selected &&
+      Number(selected.value)===item.answer
+    ){
+      score++;
+    }
+
+  });
+
+  let count =
+    Number(
+      localStorage.getItem("te_mock_count") || 0
+    );
+
+  count++;
+
+  localStorage.setItem(
+    "te_mock_count",
+    count
+  );
+
+  document.getElementById(
+    "teMockResult"
+  ).innerHTML=`
+
+    <div class="te-score">
+
+      <h2>🏆 Mock Test Result</h2>
+
+      <h3>${score}/${MOCK.length}</h3>
+
+      <p>
+        Percentage:
+        ${Math.round(score/MOCK.length*100)}%
+      </p>
+
+      <button
+        class="te-btn"
+        onclick="TE.startMock()">
+        Retake Test
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   VIVA
+   ========================================================= */
+
+function toggleAnswer(id){
+
+  const el =
+    document.getElementById(
+      "vivaAnswer"+id
+    );
+
+  if(!el) return;
+
+  if(el.style.display==="block"){
+    el.style.display="none";
+  }else{
+    el.style.display="block";
+  }
+
+}
+
+
+/* =========================================================
+   ADVANCED CALCULATORS
+   ========================================================= */
+
+function calcGSM(){
+
+  const w =
+    Number(
+      document.getElementById(
+        "advGsmWeight"
+      ).value
+    );
+
+  const l =
+    Number(
+      document.getElementById(
+        "advGsmLength"
+      ).value
+    );
+
+  const width =
+    Number(
+      document.getElementById(
+        "advGsmWidth"
+      ).value
+    );
+
+  if(!w || !l || !width){
+
+    showResult(
+      "advGsmResult",
+      "⚠️ সব value দিন।"
+    );
+
+    return;
+  }
+
+  const gsm =
+    (w*10000)/(l*width);
+
+  showResult(
+    "advGsmResult",
+    `GSM = ${gsm.toFixed(2)} g/m²`
+  );
+
+}
+
+
+function calcFabricWeight(){
+
+  const gsm =
+    Number(
+      document.getElementById(
+        "advFwGsm"
+      ).value
+    );
+
+  const length =
+    Number(
+      document.getElementById(
+        "advFwLength"
+      ).value
+    );
+
+  const width =
+    Number(
+      document.getElementById(
+        "advFwWidth"
+      ).value
+    );
+
+  if(!gsm || !length || !width){
+
+    showResult(
+      "advFwResult",
+      "⚠️ সব value দিন।"
+    );
+
+    return;
+  }
+
+  const weight =
+    gsm*length*width;
+
+  showResult(
+    "advFwResult",
+    `Fabric Weight = ${weight.toFixed(2)} gram`
+  );
+
+}
+
+
+function calcShrinkage(){
+
+  const original =
+    Number(
+      document.getElementById(
+        "advOriginal"
+      ).value
+    );
+
+  const finalLength =
+    Number(
+      document.getElementById(
+        "advFinal"
+      ).value
+    );
+
+  if(!original || !finalLength){
+
+    showResult(
+      "advShrinkResult",
+      "⚠️ সব value দিন।"
+    );
+
+    return;
+  }
+
+  const shrink =
+    ((original-finalLength)/original)*100;
+
+  showResult(
+    "advShrinkResult",
+    `Shrinkage = ${shrink.toFixed(2)}%`
+  );
+
+}
+
+
+function calcProduction(){
+
+  const speed =
+    Number(
+      document.getElementById(
+        "advMachineSpeed"
+      ).value
+    );
+
+  const efficiency =
+    Number(
+      document.getElementById(
+        "advEfficiency"
+      ).value
+    );
+
+  const time =
+    Number(
+      document.getElementById(
+        "advTime"
+      ).value
+    );
+
+  if(!speed || !efficiency || !time){
+
+    showResult(
+      "advProductionResult",
+      "⚠️ সব value দিন।"
+    );
+
+    return;
+  }
+
+  const production =
+    speed*(efficiency/100)*time;
+
+  showResult(
+    "advProductionResult",
+    `Estimated Production = ${production.toFixed(2)} units`
+  );
+
+}
+
+
+function calcEPI(){
+
+  const ends =
+    Number(
+      document.getElementById(
+        "advEnds"
+      ).value
+    );
+
+  const width =
+    Number(
+      document.getElementById(
+        "advEpiWidth"
+      ).value
+    );
+
+  if(!ends || !width){
+
+    showResult(
+      "advEpiResult",
+      "⚠️ সব value দিন।"
+    );
+
+    return;
+  }
+
+  const epi =
+    ends/width;
+
+  showResult(
+    "advEpiResult",
+    `EPI = ${epi.toFixed(2)}`
+  );
+
+}
+
+
+function calcPPI(){
+
+  const picks =
+    Number(
+      document.getElementById(
+        "advPicks"
+      ).value
+    );
+
+  const length =
+    Number(
+      document.getElementById(
+        "advPpiLength"
+      ).value
+    );
+
+  if(!picks || !length){
+
+    showResult(
+      "advPpiResult",
+      "⚠️ সব value দিন।"
+    );
+
+    return;
+  }
+
+  const ppi =
+    picks/length;
+
+  showResult(
+    "advPpiResult",
+    `PPI = ${ppi.toFixed(2)}`
+  );
+
+}
+
+
+function showResult(id,text){
+
+  const el=document.getElementById(id);
+
+  if(el){
+
+    el.className="te-result";
+
+    el.textContent=text;
+
+  }
+
+}
+
+
+/* =========================================================
+   GLOSSARY
+   ========================================================= */
+
+function renderGlossary(){
+
+  const box =
+    document.getElementById(
+      "teGlossaryList"
+    );
+
+  if(!box) return;
+
+  box.innerHTML =
+    GLOSSARY.map(item=>`
+
+      <div class="te-note te-glossary-item"
+           data-term="${item[0].toLowerCase()}">
+
+        <h3>${item[0]}</h3>
+
+        <p>${item[1]}</p>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+function filterGlossary(){
+
+  const query =
+    document.getElementById(
+      "teGlossarySearch"
+    ).value
+      .toLowerCase()
+      .trim();
+
+  document
+    .querySelectorAll(
+      ".te-glossary-item"
+    )
+    .forEach(item=>{
+
+      item.style.display =
+        item.dataset.term
+          .includes(query)
+          ? "block"
+          : "none";
+
+    });
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+function search(){
+
+  const input =
+    document.getElementById(
+      "teSearchInput"
+    );
+
+  const result =
+    document.getElementById(
+      "teSearchResults"
+    );
+
+  if(!input || !result) return;
+
+  const query =
+    input.value.toLowerCase().trim();
+
+  if(!query){
+
+    result.innerHTML=`
+
+      <div class="te-note">
+        🔎 Search করার জন্য একটি topic লিখুন।
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  const matches =
+    SEARCH_DATA.filter(item=>
+
+      (
+        item[0]+" "+item[1]
+      )
+      .toLowerCase()
+      .includes(query)
+
+    );
+
+  if(!matches.length){
+
+    result.innerHTML=`
+
+      <div class="te-note">
+        ❌ কোনো result পাওয়া যায়নি।
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  result.innerHTML =
+    matches.map(item=>`
+
+      <div class="te-search-item">
+
+        <strong>${item[0]}</strong>
+
+        <p>${item[1]}</p>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+function updateProgress(){
+
+  const mcq =
+    Number(
+      localStorage.getItem(
+        "te_mcq_progress"
+      ) || 0
+    );
+
+  const mock =
+    Number(
+      localStorage.getItem(
+        "te_mock_count"
+      ) || 0
+    );
+
+  const bar =
+    document.getElementById(
+      "teMCQProgressBar"
+    );
+
+  const text =
+    document.getElementById(
+      "teMCQProgressText"
+    );
+
+  const count =
+    document.getElementById(
+      "teMockCount"
+    );
+
+  if(bar){
+    bar.style.width =
+      mcq+"%";
+  }
+
+  if(text){
+    text.textContent =
+      mcq+"%";
+  }
+
+  if(count){
+    count.textContent =
+      mock;
+  }
+
+}
+
+
+function resetProgress(){
+
+  localStorage.removeItem(
+    "te_mcq_progress"
+  );
+
+  localStorage.removeItem(
+    "te_mock_count"
+  );
+
+  updateProgress();
+
+  alert(
+    "Progress reset হয়েছে।"
+  );
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+   ========================================================= */
+
+document
+  .querySelectorAll(".te-modal")
+  .forEach(modal=>{
+
+    modal.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target===modal){
+
+          modal.classList.remove(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   ESC KEY
+   ========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Escape"){
+
+      document
+        .querySelectorAll(
+          ".te-modal.active"
+        )
+        .forEach(modal=>{
+
+          modal.classList.remove(
+            "active"
+          );
+
+        });
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   PUBLIC API
+   ========================================================= */
+
+window.TE = {
+
+  open,
+  close,
+  checkMCQ,
+  startMock,
+  submitMock,
+  toggleAnswer,
+  calcGSM,
+  calcFabricWeight,
+  calcShrinkage,
+  calcProduction,
+  calcEPI,
+  calcPPI,
+  filterGlossary,
+  search,
+  updateProgress,
+  resetProgress
+
+};
+
+})();
+</script>
+
+<!-- =========================================================
+     END TEXTILE EXPLORER FEATURE PACK
+     ========================================================= -->
 </body>
 </html>
