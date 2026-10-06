@@ -12093,5 +12093,782 @@ TE5.init();
 </script>
 
 <!-- ================= END PACK 5 ================= -->
+  <!-- =========================================================
+     TEXTILE EXPLORER
+     ONE BUTTON → FIVE FEATURES
+     COMPLETE SINGLE CODE
+========================================================= -->
+
+<style>
+#TE5HUB *{
+  box-sizing:border-box;
+}
+
+#TE5HUB .te5-launch{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:62px;
+  height:62px;
+  border:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:#fff;
+  font-size:28px;
+  cursor:pointer;
+  z-index:999999;
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+#TE5HUB .te5-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,.72);
+  z-index:999998;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+#TE5HUB .te5-overlay.show{
+  display:flex;
+}
+
+#TE5HUB .te5-box{
+  width:100%;
+  max-width:900px;
+  max-height:90vh;
+  overflow-y:auto;
+  background:#f8fafc;
+  border-radius:22px;
+  padding:25px;
+  color:#0f172a;
+  font-family:Arial,Helvetica,sans-serif;
+  box-shadow:0 25px 70px rgba(0,0,0,.4);
+}
+
+#TE5HUB .te5-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
+
+#TE5HUB .te5-head h2{
+  margin:0;
+  color:#0f172a;
+  font-size:24px;
+  font-weight:800;
+}
+
+#TE5HUB .te5-close{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:#fee2e2;
+  color:#991b1b;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* FIVE MAIN FEATURES */
+#TE5HUB .te5-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+
+#TE5HUB .te5-card{
+  background:#fff;
+  border:1px solid #dbe3ef;
+  border-radius:18px;
+  padding:22px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+#TE5HUB .te5-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(15,23,42,.12);
+}
+
+#TE5HUB .te5-icon{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+#TE5HUB .te5-card h3{
+  margin:0 0 8px;
+  color:#0f172a;
+  font-size:19px;
+  font-weight:800;
+}
+
+#TE5HUB .te5-card p{
+  margin:0;
+  color:#475569;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* FEATURE PAGE */
+#TE5HUB .te5-page{
+  display:none;
+}
+
+#TE5HUB .te5-page.active{
+  display:block;
+}
+
+#TE5HUB .te5-back{
+  border:0;
+  border-radius:10px;
+  padding:10px 16px;
+  background:#e2e8f0;
+  color:#0f172a;
+  font-weight:700;
+  cursor:pointer;
+  margin-bottom:18px;
+}
+
+#TE5HUB .te5-page h3{
+  margin:0 0 8px;
+  color:#0f172a;
+  font-size:23px;
+}
+
+#TE5HUB .te5-page p{
+  color:#334155;
+  line-height:1.7;
+}
+
+#TE5HUB .te5-functions{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:20px;
+}
+
+#TE5HUB .te5-function{
+  width:100%;
+  padding:15px;
+  border:1px solid #cbd5e1;
+  border-radius:12px;
+  background:#fff;
+  color:#0f172a;
+  font-weight:700;
+  text-align:left;
+  cursor:pointer;
+}
+
+#TE5HUB .te5-function:hover{
+  background:#eff6ff;
+}
+
+#TE5HUB .te5-result{
+  margin-top:18px;
+  padding:18px;
+  border-radius:12px;
+  background:#eff6ff;
+  border:1px solid #bfdbfe;
+  color:#0f172a;
+  line-height:1.7;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  #TE5HUB .te5-box{
+    padding:18px;
+    max-height:92vh;
+  }
+
+  #TE5HUB .te5-grid{
+    grid-template-columns:1fr;
+  }
+
+  #TE5HUB .te5-functions{
+    grid-template-columns:1fr;
+  }
+
+  #TE5HUB .te5-head h2{
+    font-size:20px;
+  }
+
+  #TE5HUB .te5-launch{
+    right:15px;
+    bottom:15px;
+  }
+}
+</style>
+
+
+<div id="TE5HUB">
+
+  <!-- ONE BUTTON -->
+  <button class="te5-launch" onclick="TE5HUB.open()">
+    ⚡
+  </button>
+
+
+  <!-- MAIN WINDOW -->
+  <div class="te5-overlay" id="te5Overlay">
+
+    <div class="te5-box">
+
+      <div class="te5-head">
+        <h2>🎓 Textile Explorer</h2>
+
+        <button class="te5-close"
+                onclick="TE5HUB.close()">
+          ×
+        </button>
+      </div>
+
+
+      <!-- =========================
+           FIVE MAIN FEATURES
+      ========================== -->
+
+      <div id="te5Home">
+
+        <div class="te5-grid">
+
+
+          <!-- 1 -->
+          <div class="te5-card"
+               onclick="TE5HUB.show('study')">
+
+            <div class="te5-icon">📚</div>
+
+            <h3>Study & Learning</h3>
+
+            <p>
+              Notes, MCQ, Mock Test, Viva,
+              Exam Practice এবং Textile Learning।
+            </p>
+
+          </div>
+
+
+          <!-- 2 -->
+          <div class="te5-card"
+               onclick="TE5HUB.show('calculator')">
+
+            <div class="te5-icon">🧮</div>
+
+            <h3>Textile Calculator</h3>
+
+            <p>
+              GSM, Yarn Count, EPI, PPI,
+              Production, Efficiency এবং Shrinkage।
+            </p>
+
+          </div>
+
+
+          <!-- 3 -->
+          <div class="te5-card"
+               onclick="TE5HUB.show('lab')">
+
+            <div class="te5-icon">🧪</div>
+
+            <h3>Virtual Textile Lab</h3>
+
+            <p>
+              Textile Testing, Defect Diagnosis,
+              Problem Solver এবং Test Analysis।
+            </p>
+
+          </div>
+
+
+          <!-- 4 -->
+          <div class="te5-card"
+               onclick="TE5HUB.show('career')">
+
+            <div class="te5-icon">💼</div>
+
+            <h3>Career & Job</h3>
+
+            <p>
+              Textile Career, Viva, Interview,
+              CV এবং Job Preparation।
+            </p>
+
+          </div>
+
+
+          <!-- 5 -->
+          <div class="te5-card"
+               onclick="TE5HUB.show('factory')">
+
+            <div class="te5-icon">🏭</div>
+
+            <h3>Textile Factory</h3>
+
+            <p>
+              Fiber থেকে Spinning, Weaving,
+              Knitting, Dyeing ও Garments।
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           STUDY
+      ========================== -->
+
+      <div class="te5-page" id="te5Study">
+
+        <button class="te5-back"
+                onclick="TE5HUB.home()">
+          ← Back
+        </button>
+
+        <h3>📚 Study & Learning</h3>
+
+        <p>
+          Textile Engineering শেখার জন্য
+          প্রয়োজনীয় Learning Tools।
+        </p>
+
+        <div class="te5-functions">
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('MCQ Practice')">
+            🧠 MCQ Practice
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Mock Test')">
+            📝 Mock Test
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Viva Preparation')">
+            🎤 Viva Preparation
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Textile Notes')">
+            📖 Textile Notes
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Textile Glossary')">
+            📕 Textile Glossary
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Exam Mode')">
+            🎯 Exam Mode
+          </button>
+
+        </div>
+
+        <div class="te5-result" id="te5StudyResult">
+          একটি Function নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           CALCULATOR
+      ========================== -->
+
+      <div class="te5-page" id="te5Calculator">
+
+        <button class="te5-back"
+                onclick="TE5HUB.home()">
+          ← Back
+        </button>
+
+        <h3>🧮 Textile Calculator</h3>
+
+        <p>
+          Textile Engineering-এর গুরুত্বপূর্ণ
+          calculation tools।
+        </p>
+
+        <div class="te5-functions">
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('GSM Calculator')">
+            ⚖️ GSM Calculator
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Yarn Count Calculator')">
+            🧵 Yarn Count
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('EPI / PPI Calculator')">
+            📏 EPI / PPI
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Production Calculator')">
+            🏭 Production
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Efficiency Calculator')">
+            📊 Efficiency
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Shrinkage Calculator')">
+            📐 Shrinkage
+          </button>
+
+        </div>
+
+        <div class="te5-result" id="te5CalculatorResult">
+          একটি Calculator নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           LAB
+      ========================== -->
+
+      <div class="te5-page" id="te5Lab">
+
+        <button class="te5-back"
+                onclick="TE5HUB.home()">
+          ← Back
+        </button>
+
+        <h3>🧪 Virtual Textile Lab</h3>
+
+        <p>
+          Textile Testing এবং Fabric Problem
+          Diagnosis-এর জন্য Tools।
+        </p>
+
+        <div class="te5-functions">
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('GSM Testing')">
+            ⚖️ GSM Testing
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Shrinkage Test')">
+            📐 Shrinkage Test
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Tensile Test')">
+            💪 Tensile Test
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Color Fastness Test')">
+            🎨 Color Fastness
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Defect Diagnosis')">
+            🐛 Defect Diagnosis
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Problem Solver')">
+            🔧 Problem Solver
+          </button>
+
+        </div>
+
+        <div class="te5-result" id="te5LabResult">
+          একটি Lab Tool নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           CAREER
+      ========================== -->
+
+      <div class="te5-page" id="te5Career">
+
+        <button class="te5-back"
+                onclick="TE5HUB.home()">
+          ← Back
+        </button>
+
+        <h3>💼 Career & Job</h3>
+
+        <p>
+          Textile Engineering students-এর
+          Job এবং Career Preparation।
+        </p>
+
+        <div class="te5-functions">
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Textile Career')">
+            💼 Textile Career
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Viva Simulator')">
+            🎤 Viva Simulator
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Interview Practice')">
+            🗣️ Interview Practice
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('CV Helper')">
+            📄 CV Helper
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Bangladesh Textile Industry')">
+            🇧🇩 Bangladesh Textile Industry
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Job Preparation')">
+            🎯 Job Preparation
+          </button>
+
+        </div>
+
+        <div class="te5-result" id="te5CareerResult">
+          একটি Career Tool নির্বাচন করুন।
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           FACTORY
+      ========================== -->
+
+      <div class="te5-page" id="te5Factory">
+
+        <button class="te5-back"
+                onclick="TE5HUB.home()">
+          ← Back
+        </button>
+
+        <h3>🏭 Textile Factory</h3>
+
+        <p>
+          Fiber থেকে Garments পর্যন্ত
+          সম্পূর্ণ Textile Production Process।
+        </p>
+
+        <div class="te5-functions">
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Fiber')">
+            🧶 Fiber
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Spinning')">
+            🧵 Spinning
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Weaving')">
+            🏭 Weaving
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Knitting')">
+            🧶 Knitting
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Dyeing')">
+            🎨 Dyeing
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Finishing')">
+            ✨ Finishing
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Garments')">
+            👕 Garments
+          </button>
+
+          <button class="te5-function"
+                  onclick="TE5HUB.result('Factory Simulator')">
+            ⚙️ Factory Simulator
+          </button>
+
+        </div>
+
+        <div class="te5-result" id="te5FactoryResult">
+          একটি Factory Process নির্বাচন করুন।
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+const TE5HUB = {
+
+  open:function(){
+
+    document
+      .getElementById("te5Overlay")
+      .classList.add("show");
+
+    this.home();
+
+  },
+
+  close:function(){
+
+    document
+      .getElementById("te5Overlay")
+      .classList.remove("show");
+
+  },
+
+  home:function(){
+
+    document
+      .getElementById("te5Home")
+      .style.display="block";
+
+    document
+      .querySelectorAll("#TE5HUB .te5-page")
+      .forEach(function(page){
+
+        page.classList.remove("active");
+
+      });
+
+  },
+
+  show:function(type){
+
+    document
+      .getElementById("te5Home")
+      .style.display="none";
+
+    document
+      .querySelectorAll("#TE5HUB .te5-page")
+      .forEach(function(page){
+
+        page.classList.remove("active");
+
+      });
+
+    const pages={
+
+      study:"te5Study",
+      calculator:"te5Calculator",
+      lab:"te5Lab",
+      career:"te5Career",
+      factory:"te5Factory"
+
+    };
+
+    const id=pages[type];
+
+    if(id){
+
+      document
+        .getElementById(id)
+        .classList.add("active");
+
+    }
+
+  },
+
+  result:function(name){
+
+    let box=null;
+
+    const activePage=
+      document.querySelector(
+        "#TE5HUB .te5-page.active"
+      );
+
+    if(activePage){
+
+      box=
+        activePage.querySelector(
+          ".te5-result"
+        );
+
+    }
+
+    if(box){
+
+      box.innerHTML=
+        "✅ <strong>"+name+
+        "</strong><br><br>"+
+        "এই Feature নির্বাচন করা হয়েছে।"+
+        "<br>"+
+        "তোমার Textile Explorer-এর "+
+        "মূল Feature System-এর সাথে "+
+        "এটি পরবর্তী ধাপে Connect করা যাবে।";
+
+    }
+
+  }
+
+};
+
+
+/* বাইরে ক্লিক করলে বন্ধ */
+
+document
+  .getElementById("te5Overlay")
+  .addEventListener("click",function(e){
+
+    if(e.target===this){
+
+      TE5HUB.close();
+
+    }
+
+  });
+
+
+/* ESC */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+
+    TE5HUB.close();
+
+  }
+
+});
+</script>
+
+<!-- END ONE BUTTON FIVE FEATURE SYSTEM -->
 </body>
 </html>
