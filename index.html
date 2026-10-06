@@ -5666,5 +5666,4451 @@ document.addEventListener("keydown",function(e){
 </script>
 
 <!-- ===== END ADVANCED PACK 2 ===== -->
+  <!-- =========================================================
+     TEXTILE EXPLORER — ADVANCED PACK 3
+     Paste AFTER Advanced Pack 2 and BEFORE </body>
+     ========================================================= -->
+
+<style>
+/* =========================
+   TE3 CORE
+========================= */
+#te3Launcher{
+  position:fixed;
+  right:22px;
+  bottom:145px;
+  z-index:99990;
+}
+
+.te3-main{
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:25px;
+  background:linear-gradient(135deg,#7c3aed,#2563eb);
+  color:#fff;
+  box-shadow:0 8px 30px rgba(37,99,235,.35);
+  transition:.25s;
+}
+
+.te3-main:hover{
+  transform:scale(1.08);
+}
+
+#te3Menu{
+  display:none;
+  position:absolute;
+  right:0;
+  bottom:68px;
+  width:240px;
+  background:var(--card-bg,#fff);
+  border:1px solid rgba(128,128,128,.18);
+  border-radius:16px;
+  padding:10px;
+  box-shadow:0 15px 45px rgba(0,0,0,.18);
+}
+
+.te3-menu-btn{
+  width:100%;
+  padding:11px 12px;
+  margin:4px 0;
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+  font-size:14px;
+  color:inherit;
+}
+
+.te3-menu-btn:hover{
+  background:rgba(37,99,235,.10);
+}
+
+/* =========================
+   MODAL
+========================= */
+#te3Modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100000;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(5px);
+  overflow:auto;
+  padding:25px 12px;
+}
+
+.te3-box{
+  width:min(1100px,96%);
+  margin:30px auto;
+  background:var(--card-bg,#fff);
+  color:inherit;
+  border-radius:20px;
+  padding:25px;
+  position:relative;
+  box-shadow:0 20px 70px rgba(0,0,0,.3);
+}
+
+.te3-close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  border:0;
+  background:transparent;
+  font-size:28px;
+  cursor:pointer;
+  color:inherit;
+}
+
+.te3-title{
+  font-size:25px;
+  font-weight:800;
+  margin:0 40px 8px 0;
+}
+
+.te3-subtitle{
+  opacity:.7;
+  margin-bottom:22px;
+}
+
+.te3-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.te3-card{
+  border:1px solid rgba(128,128,128,.18);
+  border-radius:15px;
+  padding:18px;
+  background:rgba(128,128,128,.035);
+}
+
+.te3-card h3{
+  margin-top:0;
+}
+
+.te3-card button,
+.te3-action{
+  border:0;
+  border-radius:9px;
+  padding:10px 14px;
+  cursor:pointer;
+  background:#2563eb;
+  color:#fff;
+  font-weight:600;
+}
+
+.te3-card button:hover,
+.te3-action:hover{
+  opacity:.9;
+}
+
+.te3-input,
+.te3-select,
+.te3-textarea{
+  width:100%;
+  padding:11px;
+  border:1px solid #bbb;
+  border-radius:9px;
+  margin:6px 0 12px;
+  box-sizing:border-box;
+  background:transparent;
+  color:inherit;
+}
+
+.te3-textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.te3-result{
+  margin-top:12px;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(37,99,235,.08);
+  line-height:1.6;
+}
+
+.te3-option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:12px;
+  margin:7px 0;
+  border:1px solid rgba(128,128,128,.2);
+  border-radius:9px;
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+}
+
+.te3-option:hover{
+  background:rgba(37,99,235,.08);
+}
+
+.te3-progress{
+  height:12px;
+  background:rgba(128,128,128,.2);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.te3-progress span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:#2563eb;
+}
+
+.te3-badge{
+  display:inline-block;
+  padding:9px 12px;
+  border-radius:20px;
+  margin:5px;
+  background:rgba(124,58,237,.12);
+}
+
+.te3-stage{
+  padding:13px;
+  margin:7px 0;
+  border-radius:10px;
+  background:rgba(37,99,235,.08);
+  cursor:pointer;
+  border:1px solid transparent;
+}
+
+.te3-stage:hover{
+  border-color:#2563eb;
+}
+
+.te3-stage.active{
+  background:#2563eb;
+  color:white;
+}
+
+.te3-hidden{
+  display:none!important;
+}
+
+.te3-small{
+  font-size:13px;
+  opacity:.7;
+}
+
+@media(max-width:600px){
+  #te3Launcher{
+    right:14px;
+    bottom:135px;
+  }
+
+  .te3-box{
+    padding:18px;
+  }
+
+  .te3-title{
+    font-size:21px;
+  }
+}
+</style>
+
+<!-- =========================
+     FLOATING BUTTON
+========================= -->
+
+<div id="te3Launcher">
+
+  <button class="te3-main" onclick="TE3.toggleMenu()">
+    🚀
+  </button>
+
+  <div id="te3Menu">
+
+    <button class="te3-menu-btn" onclick="TE3.open('assistant')">
+      🤖 AI Textile Assistant
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('quiz')">
+      🧠 Smart Quiz
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('exam')">
+      🎯 Exam Mode
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('notes')">
+      📚 Textile Notes
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('lab')">
+      🧪 Testing Lab
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('factory')">
+      🏭 Factory Simulator
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('machines')">
+      🔧 Machine Library
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('calculator')">
+      📊 Advanced Calculator
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('career')">
+      💼 Job Preparation
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('cv')">
+      📄 CV Helper
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('industry')">
+      🇧🇩 Bangladesh Textile
+    </button>
+
+    <button class="te3-menu-btn" onclick="TE3.open('progress')">
+      🏆 My Progress
+    </button>
+
+  </div>
+</div>
+
+
+<!-- =========================
+     MAIN MODAL
+========================= -->
+
+<div id="te3Modal">
+
+  <div class="te3-box">
+
+    <button class="te3-close" onclick="TE3.close()">×</button>
+
+    <h2 id="te3Title" class="te3-title">
+      Textile Explorer Advanced
+    </h2>
+
+    <div id="te3Content"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const TE3 = {
+
+  menuOpen:false,
+
+  data:{
+    quizScore:0,
+    quizTotal:0,
+    exams:0,
+    questions:0,
+    viva:0,
+    bookmarks:[],
+    badges:[]
+  },
+
+  init(){
+
+    const saved=localStorage.getItem("te3_progress");
+
+    if(saved){
+
+      try{
+        this.data=Object.assign(
+          this.data,
+          JSON.parse(saved)
+        );
+      }catch(e){}
+
+    }
+
+    this.dailyChallenge();
+
+  },
+
+  save(){
+
+    localStorage.setItem(
+      "te3_progress",
+      JSON.stringify(this.data)
+    );
+
+  },
+
+  toggleMenu(){
+
+    const menu=document.getElementById("te3Menu");
+
+    this.menuOpen=!this.menuOpen;
+
+    menu.style.display=this.menuOpen?"block":"none";
+
+  },
+
+  open(type){
+
+    document.getElementById("te3Menu").style.display="none";
+
+    document.getElementById("te3Modal").style.display="block";
+
+    const pages={
+      assistant:["🤖 AI Textile Assistant",this.assistant()],
+      quiz:["🧠 Smart Quiz Generator",this.quizHome()],
+      exam:["🎯 Topic-wise Exam Mode",this.examHome()],
+      notes:["📚 Chapter-wise Textile Notes",this.notes()],
+      lab:["🧪 Interactive Testing Lab",this.lab()],
+      factory:["🏭 Textile Factory Simulator",this.factory()],
+      machines:["🔧 Machine & Equipment Library",this.machines()],
+      calculator:["📊 Advanced Textile Calculator",this.calculator()],
+      career:["💼 Textile Job Preparation",this.career()],
+      cv:["📄 CV / Resume Helper",this.cv()],
+      industry:["🇧🇩 Bangladesh Textile Industry",this.industry()],
+      progress:["🏆 Student Progress Dashboard",this.progress()]
+    };
+
+    if(pages[type]){
+
+      document.getElementById("te3Title").innerHTML=pages[type][0];
+
+      document.getElementById("te3Content").innerHTML=pages[type][1];
+
+    }
+
+  },
+
+  close(){
+
+    document.getElementById("te3Modal").style.display="none";
+
+  },
+
+  /* =========================
+     AI TEXTILE ASSISTANT
+  ========================= */
+
+  assistant(){
+
+    return `
+
+      <div class="te3-card">
+
+        <h3>🤖 Textile Assistant</h3>
+
+        <p class="te3-small">
+          প্রশ্ন লিখুন। এটি Textile Engineering-এর
+          common topics থেকে দ্রুত উত্তর খুঁজবে।
+        </p>
+
+        <input
+          id="te3Ask"
+          class="te3-input"
+          placeholder="যেমন: GSM কী? EPI কী? Ring Frame কী?"
+        >
+
+        <button
+          class="te3-action"
+          onclick="TE3.askAI()">
+          Ask Assistant
+        </button>
+
+        <div id="te3AIResult"></div>
+
+      </div>
+
+    `;
+
+  },
+
+  askAI(){
+
+    const q=document
+      .getElementById("te3Ask")
+      .value
+      .toLowerCase();
+
+    const knowledge={
+
+      "gsm":
+      "GSM = Grams per Square Meter. অর্থাৎ ১ বর্গমিটার কাপড়ের ওজন কত গ্রাম।",
+
+      "epi":
+      "EPI = Ends Per Inch. প্রতি এক ইঞ্চি fabric width-এ কতটি warp end আছে।",
+
+      "ppi":
+      "PPI = Picks Per Inch. প্রতি এক ইঞ্চি fabric length-এ কতটি weft pick আছে।",
+
+      "yarn count":
+      "Yarn count হলো yarn-এর fineness বা coarseness প্রকাশের একটি পদ্ধতি।",
+
+      "tex":
+      "Tex হলো 1000 meter yarn-এর gram-এ weight।",
+
+      "denier":
+      "Denier হলো 9000 meter yarn-এর gram-এ weight।",
+
+      "spinning":
+      "Spinning হলো fiber থেকে yarn তৈরি করার process।",
+
+      "weaving":
+      "Weaving হলো warp ও weft yarn interlacement-এর মাধ্যমে woven fabric তৈরির process।",
+
+      "knitting":
+      "Knitting হলো loop formation-এর মাধ্যমে fabric তৈরির process।",
+
+      "dyeing":
+      "Dyeing হলো textile material-এ নির্দিষ্ট color প্রদান করার process।",
+
+      "finishing":
+      "Finishing হলো fabric-এর appearance, handle ও performance উন্নত করার শেষের process।",
+
+      "ring frame":
+      "Ring Frame spinning-এর একটি গুরুত্বপূর্ণ machine যেখানে roving থেকে yarn তৈরি করা হয়।",
+
+      "carding":
+      "Carding fiber খুলে, পরিষ্কার করে এবং individualize করে sliver তৈরি করতে সাহায্য করে।",
+
+      "garments":
+      "Garments manufacturing সাধারণত cutting, sewing, finishing ও packing ধাপের মাধ্যমে সম্পন্ন হয়।"
+
+    };
+
+    let answer=
+      "দুঃখিত, এই topic-এর তথ্য এখনো আমার local Textile Knowledge Base-এ নেই।";
+
+    for(const key in knowledge){
+
+      if(q.includes(key)){
+
+        answer=knowledge[key];
+
+        break;
+
+      }
+
+    }
+
+    document.getElementById("te3AIResult").innerHTML=
+      `<div class="te3-result">
+        <b>Answer:</b><br>${answer}
+      </div>`;
+
+  },
+
+
+  /* =========================
+     QUIZ
+  ========================= */
+
+  quizHome(){
+
+    return `
+
+      <div class="te3-grid">
+
+        <div class="te3-card">
+
+          <h3>🧠 Smart Quiz</h3>
+
+          <p>Topic নির্বাচন করে quiz শুরু করুন।</p>
+
+          <select id="te3QuizTopic" class="te3-select">
+
+            <option value="all">All Topics</option>
+            <option value="fiber">Fiber</option>
+            <option value="spinning">Spinning</option>
+            <option value="weaving">Weaving</option>
+            <option value="knitting">Knitting</option>
+            <option value="dyeing">Dyeing</option>
+            <option value="testing">Testing</option>
+            <option value="garments">Garments</option>
+            <option value="career">Career</option>
+
+          </select>
+
+          <select id="te3QuizLength" class="te3-select">
+
+            <option value="10">10 Questions</option>
+            <option value="20">20 Questions</option>
+            <option value="30">30 Questions</option>
+
+          </select>
+
+          <button
+            class="te3-action"
+            onclick="TE3.startQuiz()">
+            Start Quiz
+          </button>
+
+        </div>
+
+      </div>
+
+      <div id="te3QuizArea"></div>
+
+    `;
+
+  },
+
+
+  quizBank:[
+
+    {
+      q:"GSM এর পূর্ণরূপ কী?",
+      a:["Gram Square Meter","Grams per Square Meter","General Standard Meter","Gram Size Material"],
+      c:1,
+      topic:"testing"
+    },
+
+    {
+      q:"EPI কোন direction-এর yarn density প্রকাশ করে?",
+      a:["Warp","Weft","Bias","Selvedge"],
+      c:0,
+      topic:"weaving"
+    },
+
+    {
+      q:"PPI কোন direction-এর density?",
+      a:["Warp","Weft","Length only","None"],
+      c:1,
+      topic:"weaving"
+    },
+
+    {
+      q:"Spinning-এর main output কী?",
+      a:["Fabric","Yarn","Garment","Dye"],
+      c:1,
+      topic:"spinning"
+    },
+
+    {
+      q:"Knitting fabric কোনটির মাধ্যমে তৈরি হয়?",
+      a:["Loop","Bond","Cutting","Printing"],
+      c:0,
+      topic:"knitting"
+    },
+
+    {
+      q:"Cotton কোন ধরনের fiber?",
+      a:["Natural","Synthetic","Regenerated","Metallic"],
+      c:0,
+      topic:"fiber"
+    },
+
+    {
+      q:"Polyester কোন ধরনের fiber?",
+      a:["Natural","Synthetic","Animal","Cellulosic natural"],
+      c:1,
+      topic:"fiber"
+    },
+
+    {
+      q:"Dyeing-এর উদ্দেশ্য কী?",
+      a:["Cutting","Coloration","Sewing","Spinning"],
+      c:1,
+      topic:"dyeing"
+    },
+
+    {
+      q:"Ring Frame কোন process-এর machine?",
+      a:["Spinning","Dyeing","Garments","Printing"],
+      c:0,
+      topic:"spinning"
+    },
+
+    {
+      q:"Carding-এর একটি প্রধান কাজ কী?",
+      a:["Fiber opening","Sewing","Dye fixing","Garment folding"],
+      c:0,
+      topic:"spinning"
+    },
+
+    {
+      q:"Tex হলো কত meter yarn-এর gram weight?",
+      a:["100","500","1000","9000"],
+      c:2,
+      topic:"testing"
+    },
+
+    {
+      q:"Denier system-এ standard length কত?",
+      a:["1000 m","5000 m","9000 m","10000 m"],
+      c:2,
+      topic:"testing"
+    },
+
+    {
+      q:"Garments production-এর আগে কোনটি করা হয়?",
+      a:["Cutting","Fiber growth","Raw material planning","None"],
+      c:2,
+      topic:"garments"
+    },
+
+    {
+      q:"QA এর পূর্ণরূপ কী?",
+      a:["Quality Assurance","Quick Analysis","Quantity Assessment","Quality Area"],
+      c:0,
+      topic:"career"
+    },
+
+    {
+      q:"QC এর পূর্ণরূপ কী?",
+      a:["Quality Control","Quick Control","Quantity Check","Quality Career"],
+      c:0,
+      topic:"career"
+    },
+
+    {
+      q:"Woven fabric সাধারণত কোন দুই yarn system দিয়ে তৈরি?",
+      a:["Warp & Weft","Only warp","Only weft","Loop & needle"],
+      c:0,
+      topic:"weaving"
+    },
+
+    {
+      q:"Knitting machine-এ প্রধান element কোনটি?",
+      a:["Needle","Loom reed","Shuttle only","Bobbin only"],
+      c:0,
+      topic:"knitting"
+    },
+
+    {
+      q:"Finishing সাধারণত কখন করা হয়?",
+      a:["Raw fiber-এর আগে","Fabric processing-এর শেষে","Before spinning","Before fiber"],
+      c:1,
+      topic:"dyeing"
+    },
+
+    {
+      q:"Merchandising-এর গুরুত্বপূর্ণ কাজ কোনটি?",
+      a:["Buyer coordination","Only sewing","Only dyeing","Only spinning"],
+      c:0,
+      topic:"career"
+    },
+
+    {
+      q:"IE এর পূর্ণরূপ কী?",
+      a:["Industrial Engineering","International Export","Internal Equipment","Industrial Export"],
+      c:0,
+      topic:"career"
+    },
+
+    {
+      q:"Cotton fiber-এর main polymer কী?",
+      a:["Cellulose","Protein","Polyester","Nylon"],
+      c:0,
+      topic:"fiber"
+    },
+
+    {
+      q:"Wool কোন animal fiber-এর উদাহরণ?",
+      a:["Sheep","Cotton plant","Flax plant","Bamboo"],
+      c:0,
+      topic:"fiber"
+    },
+
+    {
+      q:"Flax কোন ধরনের fiber?",
+      a:["Natural plant","Synthetic","Animal","Mineral"],
+      c:0,
+      topic:"fiber"
+    },
+
+    {
+      q:"Sizing process কোন yarn-এ বেশি সম্পর্কিত?",
+      a:["Warp yarn","Weft only","Sewing thread only","Fiber only"],
+      c:0,
+      topic:"weaving"
+    },
+
+    {
+      q:"Warping-এর উদ্দেশ্য কী?",
+      a:["Warp sheet preparation","Dye removal","Garment sewing","Fabric printing"],
+      c:0,
+      topic:"weaving"
+    },
+
+    {
+      q:"Stenter machine সাধারণত কোন section-এ ব্যবহৃত হয়?",
+      a:["Finishing","Spinning","Blow room","Cutting"],
+      c:0,
+      topic:"dyeing"
+    },
+
+    {
+      q:"Compacting machine-এর প্রধান উদ্দেশ্য কী?",
+      a:["Shrinkage control","Fiber opening","Yarn spinning","Cutting"],
+      c:0,
+      topic:"dyeing"
+    },
+
+    {
+      q:"Fabric strength test কোন category-এর?",
+      a:["Textile testing","Merchandising","CAD","HR"],
+      c:0,
+      topic:"testing"
+    },
+
+    {
+      q:"Pilling কী সম্পর্কিত?",
+      a:["Fabric surface appearance","Yarn length only","Machine speed only","Dye bath"],
+      c:0,
+      topic:"testing"
+    },
+
+    {
+      q:"Cutting section-এর main input কী?",
+      a:["Fabric","Raw fiber","Dye","Sliver"],
+      c:0,
+      topic:"garments"
+    },
+
+    {
+      q:"Sewing machine garments industry-তে কী করে?",
+      a:["Joins garment components","Makes fiber","Dyes yarn","Tests GSM"],
+      c:0,
+      topic:"garments"
+    },
+
+    {
+      q:"Production planning-এর সংক্ষিপ্ত রূপ কী?",
+      a:["PPC","PPI","EPI","GSM"],
+      c:0,
+      topic:"career"
+    },
+
+    {
+      q:"PPC এর পূর্ণরূপ কী?",
+      a:["Production Planning and Control","Product Process Control","Production Product Count","Plant Process Calculation"],
+      c:0,
+      topic:"career"
+    },
+
+    {
+      q:"Autoconer কোন process-এর সাথে সম্পর্কিত?",
+      a:["Winding","Dyeing","Knitting","Cutting"],
+      c:0,
+      topic:"spinning"
+    },
+
+    {
+      q:"Blow Room-এর প্রধান কাজ কী?",
+      a:["Opening and cleaning fiber","Sewing","Dyeing","Printing"],
+      c:0,
+      topic:"spinning"
+    },
+
+    {
+      q:"Draw Frame কী উন্নত করে?",
+      a:["Sliver uniformity","Garment color","Fabric printing","Sewing"],
+      c:0,
+      topic:"spinning"
+    },
+
+    {
+      q:"Roving কোন stage-এর সাথে সম্পর্কিত?",
+      a:["Spinning preparation","Garment packing","Dyeing","Testing"],
+      c:0,
+      topic:"spinning"
+    },
+
+    {
+      q:"Fabric width সাধারণত কোন direction-এ measure করা হয়?",
+      a:["Across width","Only length","Diagonal only","None"],
+      c:0,
+      topic:"testing"
+    },
+
+    {
+      q:"GSM বেশি হলে একই material-এর ক্ষেত্রে fabric সাধারণত কী হবে?",
+      a:["Heavier","Lighter","Always thinner","No relation"],
+      c:0,
+      topic:"testing"
+    },
+
+    {
+      q:"Natural fiber-এর উদাহরণ কোনটি?",
+      a:["Cotton","Polyester","Nylon","Acrylic"],
+      c:0,
+      topic:"fiber"
+    }
+
+  ],
+
+
+  startQuiz(){
+
+    let topic=document.getElementById("te3QuizTopic").value;
+
+    let length=parseInt(
+      document.getElementById("te3QuizLength").value
+    );
+
+    let pool=this.quizBank.filter(x =>
+      topic==="all" || x.topic===topic
+    );
+
+    if(pool.length===0){
+      pool=this.quizBank;
+    }
+
+    pool=[...pool].sort(
+      ()=>Math.random()-.5
+    ).slice(0,Math.min(length,pool.length));
+
+    this.quizSession=pool;
+
+    this.quizIndex=0;
+
+    this.quizScore=0;
+
+    this.renderQuizQuestion();
+
+  },
+
+
+  renderQuizQuestion(){
+
+    const area=document.getElementById("te3QuizArea");
+
+    if(this.quizIndex>=this.quizSession.length){
+
+      this.data.quizScore+=this.quizScore;
+
+      this.data.quizTotal+=this.quizSession.length;
+
+      this.save();
+
+      this.checkBadges();
+
+      area.innerHTML=`
+
+        <div class="te3-result">
+
+          <h3>🎉 Quiz Complete</h3>
+
+          <h2>
+            Score: ${this.quizScore}/${this.quizSession.length}
+          </h2>
+
+          <p>
+            Percentage:
+            ${Math.round(
+              this.quizScore/
+              this.quizSession.length*100
+            )}%
+          </p>
+
+          <button
+            class="te3-action"
+            onclick="TE3.open('quiz')">
+            Try Again
+          </button>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+    const item=this.quizSession[this.quizIndex];
+
+    let html=`
+
+      <div class="te3-card">
+
+        <div class="te3-small">
+          Question ${this.quizIndex+1}
+          / ${this.quizSession.length}
+        </div>
+
+        <h3>${item.q}</h3>
+
+    `;
+
+    item.a.forEach((option,index)=>{
+
+      html+=`
+
+        <button
+          class="te3-option"
+          onclick="TE3.answerQuiz(${index})">
+          ${String.fromCharCode(65+index)}.
+          ${option}
+        </button>
+
+      `;
+
+    });
+
+    html+=`</div>`;
+
+    area.innerHTML=html;
+
+  },
+
+
+  answerQuiz(index){
+
+    const item=this.quizSession[this.quizIndex];
+
+    if(index===item.c){
+
+      this.quizScore++;
+
+    }
+
+    this.quizIndex++;
+
+    this.renderQuizQuestion();
+
+  },
+
+
+  /* =========================
+     EXAM MODE
+  ========================= */
+
+  examHome(){
+
+    return `
+
+      <div class="te3-grid">
+
+        <div class="te3-card">
+
+          <h3>🎯 Exam Mode</h3>
+
+          <p>
+            Real exam-style practice.
+          </p>
+
+          <select id="te3ExamLength" class="te3-select">
+
+            <option value="30">30 Questions</option>
+            <option value="60">60 Questions</option>
+            <option value="100">100 Questions</option>
+
+          </select>
+
+          <select id="te3ExamTopic" class="te3-select">
+
+            <option value="all">All Textile Topics</option>
+            <option value="fiber">Fiber</option>
+            <option value="spinning">Spinning</option>
+            <option value="weaving">Weaving</option>
+            <option value="knitting">Knitting</option>
+            <option value="dyeing">Dyeing</option>
+            <option value="testing">Testing</option>
+            <option value="garments">Garments</option>
+            <option value="career">Career</option>
+
+          </select>
+
+          <button
+            class="te3-action"
+            onclick="TE3.startExam()">
+            Start Exam
+          </button>
+
+        </div>
+
+      </div>
+
+      <div id="te3ExamArea"></div>
+
+    `;
+
+  },
+
+
+  startExam(){
+
+    let length=parseInt(
+      document.getElementById("te3ExamLength").value
+    );
+
+    let topic=document.getElementById("te3ExamTopic").value;
+
+    let pool=this.quizBank.filter(x =>
+      topic==="all" || x.topic===topic
+    );
+
+    pool=[...pool].sort(
+      ()=>Math.random()-.5
+    );
+
+    let selected=[];
+
+    for(let i=0;i<length;i++){
+
+      selected.push(
+        pool[i%pool.length]
+      );
+
+    }
+
+    this.examSession=selected;
+
+    this.examIndex=0;
+
+    this.examScore=0;
+
+    this.renderExam();
+
+  },
+
+
+  renderExam(){
+
+    const area=document.getElementById("te3ExamArea");
+
+    if(this.examIndex>=this.examSession.length){
+
+      this.data.exams++;
+
+      this.data.questions+=this.examSession.length;
+
+      this.save();
+
+      this.checkBadges();
+
+      area.innerHTML=`
+
+        <div class="te3-result">
+
+          <h3>🏆 Exam Finished</h3>
+
+          <h2>
+            ${this.examScore}/${this.examSession.length}
+          </h2>
+
+          <p>
+            Result:
+            ${Math.round(
+              this.examScore/
+              this.examSession.length*100
+            )}%
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+    let item=this.examSession[this.examIndex];
+
+    let html=`
+
+      <div class="te3-card">
+
+        <div class="te3-small">
+          Exam Question
+          ${this.examIndex+1}
+          / ${this.examSession.length}
+        </div>
+
+        <h3>${item.q}</h3>
+
+    `;
+
+    item.a.forEach((a,i)=>{
+
+      html+=`
+
+        <button
+          class="te3-option"
+          onclick="TE3.answerExam(${i})">
+          ${String.fromCharCode(65+i)}. ${a}
+        </button>
+
+      `;
+
+    });
+
+    html+=`</div>`;
+
+    area.innerHTML=html;
+
+  },
+
+
+  answerExam(index){
+
+    let item=this.examSession[this.examIndex];
+
+    if(index===item.c){
+
+      this.examScore++;
+
+    }
+
+    this.examIndex++;
+
+    this.renderExam();
+
+  },
+
+
+  /* =========================
+     NOTES
+  ========================= */
+
+  notes(){
+
+    const chapters=[
+
+      ["Fiber","Natural & synthetic fiber, properties and applications."],
+      ["Spinning","Blow room → Carding → Drawing → Roving → Ring Frame → Winding."],
+      ["Weaving","Warp, weft, shedding, picking, beat-up, fabric construction."],
+      ["Knitting","Loop formation, wale, course, single jersey, rib, interlock."],
+      ["Dyeing","Preparation, dyeing, washing, drying and color fastness."],
+      ["Finishing","Stenter, compacting, softening and functional finishing."],
+      ["Garments","Cutting, sewing, finishing, inspection and packing."],
+      ["Testing","GSM, tensile, tear, bursting, pilling, color fastness."],
+      ["Quality","QA, QC, inspection, defect classification and AQL."],
+      ["IE","SMV, line balancing, efficiency, productivity and capacity."]
+
+    ];
+
+    let html=`<div class="te3-grid">`;
+
+    chapters.forEach((x,i)=>{
+
+      html+=`
+
+        <div class="te3-card">
+
+          <h3>${i+1}. ${x[0]}</h3>
+
+          <p>${x[1]}</p>
+
+          <button
+            onclick="TE3.bookmark('${x[0]}')">
+            ⭐ Bookmark
+          </button>
+
+        </div>
+
+      `;
+
+    });
+
+    html+=`</div>`;
+
+    return html;
+
+  },
+
+
+  /* =========================
+     TESTING LAB
+  ========================= */
+
+  lab(){
+
+    return `
+
+      <div class="te3-grid">
+
+        <div class="te3-card">
+
+          <h3>⚖️ GSM Test</h3>
+
+          <label>Sample weight (g)</label>
+
+          <input id="labWeight"
+                 class="te3-input"
+                 type="number">
+
+          <label>Sample area (m²)</label>
+
+          <input id="labArea"
+                 class="te3-input"
+                 type="number"
+                 value="0.01">
+
+          <button
+            class="te3-action"
+            onclick="TE3.testGSM()">
+            Test GSM
+          </button>
+
+          <div id="labGSM"></div>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>🧵 Fabric Construction</h3>
+
+          <label>EPI</label>
+
+          <input id="labEPI"
+                 class="te3-input"
+                 type="number">
+
+          <label>PPI</label>
+
+          <input id="labPPI"
+                 class="te3-input"
+                 type="number">
+
+          <button
+            class="te3-action"
+            onclick="TE3.analyzeConstruction()">
+            Analyze
+          </button>
+
+          <div id="labConstruction"></div>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>📏 Shrinkage Test</h3>
+
+          <label>Original length</label>
+
+          <input id="labOriginal"
+                 class="te3-input"
+                 type="number">
+
+          <label>Final length</label>
+
+          <input id="labFinal"
+                 class="te3-input"
+                 type="number">
+
+          <button
+            class="te3-action"
+            onclick="TE3.testShrinkage()">
+            Calculate
+          </button>
+
+          <div id="labShrinkage"></div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  testGSM(){
+
+    let weight=parseFloat(
+      document.getElementById("labWeight").value
+    );
+
+    let area=parseFloat(
+      document.getElementById("labArea").value
+    );
+
+    if(!weight || !area){
+
+      alert("সব value দিন");
+
+      return;
+
+    }
+
+    let gsm=weight/area;
+
+    document.getElementById("labGSM").innerHTML=
+      `<div class="te3-result">
+        GSM = <b>${gsm.toFixed(2)} g/m²</b>
+      </div>`;
+
+  },
+
+
+  analyzeConstruction(){
+
+    let epi=parseFloat(
+      document.getElementById("labEPI").value
+    );
+
+    let ppi=parseFloat(
+      document.getElementById("labPPI").value
+    );
+
+    if(!epi || !ppi){
+
+      alert("EPI এবং PPI দিন");
+
+      return;
+
+    }
+
+    let density=epi*ppi;
+
+    document.getElementById("labConstruction").innerHTML=
+
+      `<div class="te3-result">
+        EPI = ${epi}<br>
+        PPI = ${ppi}<br>
+        Combined density index = <b>${density}</b><br>
+        <span class="te3-small">
+        এটি একটি simple construction indicator,
+        standard cover factor নয়।
+        </span>
+      </div>`;
+
+  },
+
+
+  testShrinkage(){
+
+    let original=parseFloat(
+      document.getElementById("labOriginal").value
+    );
+
+    let finalValue=parseFloat(
+      document.getElementById("labFinal").value
+    );
+
+    if(!original || !finalValue){
+
+      alert("দুইটি value দিন");
+
+      return;
+
+    }
+
+    let shrink=((original-finalValue)/original)*100;
+
+    document.getElementById("labShrinkage").innerHTML=
+
+      `<div class="te3-result">
+        Shrinkage = <b>${shrink.toFixed(2)}%</b>
+      </div>`;
+
+  },
+
+
+  /* =========================
+     FACTORY SIMULATOR
+  ========================= */
+
+  factory(){
+
+    const stages=[
+
+      ["Fiber","Raw textile fibers are selected and prepared."],
+      ["Blow Room","Fiber opening, cleaning and blending."],
+      ["Carding","Fiber individualization and sliver formation."],
+      ["Drawing","Sliver equalization and drafting."],
+      ["Roving","Fine strand preparation for spinning."],
+      ["Ring Spinning","Yarn is produced from roving."],
+      ["Winding","Yarn is wound into suitable packages."],
+      ["Warping","Warp yarn sheet is prepared."],
+      ["Sizing","Warp yarn receives protective sizing."],
+      ["Weaving / Knitting","Fabric is formed."],
+      ["Dyeing","Color is applied."],
+      ["Finishing","Fabric appearance and performance are improved."],
+      ["Garments","Fabric is converted into garments."]
+
+    ];
+
+    let html=`
+
+      <div class="te3-grid">
+
+        <div class="te3-card">
+
+          <h3>🏭 Production Flow</h3>
+
+    `;
+
+    stages.forEach((s,i)=>{
+
+      html+=`
+
+        <div
+          class="te3-stage"
+          onclick="TE3.factoryStage(${i})">
+          ${i+1}. ${s[0]}
+        </div>
+
+      `;
+
+    });
+
+    html+=`
+
+        </div>
+
+        <div class="te3-card">
+
+          <h3>Process Information</h3>
+
+          <div id="te3FactoryInfo">
+
+            একটি stage select করুন।
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+    this.factoryStages=stages;
+
+    return html;
+
+  },
+
+
+  factoryStage(index){
+
+    const s=this.factoryStages[index];
+
+    document.getElementById("te3FactoryInfo").innerHTML=
+
+      `<div class="te3-result">
+
+        <h3>${s[0]}</h3>
+
+        <p>${s[1]}</p>
+
+      </div>`;
+
+  },
+
+
+  /* =========================
+     MACHINES
+  ========================= */
+
+  machines(){
+
+    const machines=[
+
+      ["Blow Room","Fiber opening, cleaning and blending."],
+      ["Carding Machine","Fiber individualization and sliver formation."],
+      ["Draw Frame","Sliver drafting and leveling."],
+      ["Simplex / Roving Frame","Roving preparation."],
+      ["Ring Frame","Final yarn spinning."],
+      ["Autoconer","Yarn winding and package preparation."],
+      ["Warping Machine","Warp sheet preparation."],
+      ["Sizing Machine","Warp yarn sizing."],
+      ["Loom","Woven fabric production."],
+      ["Circular Knitting Machine","Knitted fabric production."],
+      ["Jet Dyeing Machine","Fabric dyeing."],
+      ["Stenter","Width setting and finishing."],
+      ["Compactor","Dimensional stabilization."],
+      ["Sewing Machine","Garment assembly."]
+
+    ];
+
+    return `
+
+      <div class="te3-grid">
+
+        ${machines.map((m,i)=>`
+
+          <div class="te3-card">
+
+            <h3>🔧 ${i+1}. ${m[0]}</h3>
+
+            <p>${m[1]}</p>
+
+            <button
+              onclick="TE3.bookmark('${m[0]}')">
+              ⭐ Save
+            </button>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    `;
+
+  },
+
+
+  /* =========================
+     ADVANCED CALCULATOR
+  ========================= */
+
+  calculator(){
+
+    return `
+
+      <div class="te3-grid">
+
+        <div class="te3-card">
+
+          <h3>📊 GSM</h3>
+
+          <input
+            id="calcWeight"
+            class="te3-input"
+            type="number"
+            placeholder="Weight (g)">
+
+          <input
+            id="calcArea"
+            class="te3-input"
+            type="number"
+            placeholder="Area (m²)">
+
+          <button
+            class="te3-action"
+            onclick="TE3.calcGSM()">
+            Calculate
+          </button>
+
+          <div id="calcGSMResult"></div>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>🧵 Yarn Count</h3>
+
+          <input
+            id="calcTex"
+            class="te3-input"
+            type="number"
+            placeholder="Tex">
+
+          <button
+            class="te3-action"
+            onclick="TE3.calcCount()">
+            Convert
+          </button>
+
+          <div id="calcCountResult"></div>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>📐 EPI / PPI</h3>
+
+          <input
+            id="calcEnds"
+            class="te3-input"
+            type="number"
+            placeholder="Ends">
+
+          <input
+            id="calcWidth"
+            class="te3-input"
+            type="number"
+            placeholder="Width (inch)">
+
+          <button
+            class="te3-action"
+            onclick="TE3.calcEPI()">
+            Calculate EPI
+          </button>
+
+          <div id="calcEPIResult"></div>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>🏭 Production</h3>
+
+          <input
+            id="calcSpeed"
+            class="te3-input"
+            type="number"
+            placeholder="Machine speed">
+
+          <input
+            id="calcEfficiency"
+            class="te3-input"
+            type="number"
+            placeholder="Efficiency %">
+
+          <input
+            id="calcTime"
+            class="te3-input"
+            type="number"
+            placeholder="Time (hour)">
+
+          <button
+            class="te3-action"
+            onclick="TE3.calcProduction()">
+            Calculate
+          </button>
+
+          <div id="calcProductionResult"></div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  calcGSM(){
+
+    let w=parseFloat(
+      document.getElementById("calcWeight").value
+    );
+
+    let a=parseFloat(
+      document.getElementById("calcArea").value
+    );
+
+    if(!w || !a){
+
+      alert("Value দিন");
+
+      return;
+
+    }
+
+    document.getElementById("calcGSMResult").innerHTML=
+
+      `<div class="te3-result">
+        GSM = <b>${(w/a).toFixed(2)} g/m²</b>
+      </div>`;
+
+  },
+
+
+  calcCount(){
+
+    let tex=parseFloat(
+      document.getElementById("calcTex").value
+    );
+
+    if(!tex){
+
+      alert("Tex দিন");
+
+      return;
+
+    }
+
+    let denier=tex*9;
+
+    let ne=590.5/tex;
+
+    document.getElementById("calcCountResult").innerHTML=
+
+      `<div class="te3-result">
+        Tex = ${tex}<br>
+        Denier = ${denier.toFixed(2)}<br>
+        Approx. Ne = ${ne.toFixed(2)}
+      </div>`;
+
+  },
+
+
+  calcEPI(){
+
+    let ends=parseFloat(
+      document.getElementById("calcEnds").value
+    );
+
+    let width=parseFloat(
+      document.getElementById("calcWidth").value
+    );
+
+    if(!ends || !width){
+
+      alert("Value দিন");
+
+      return;
+
+    }
+
+    document.getElementById("calcEPIResult").innerHTML=
+
+      `<div class="te3-result">
+        EPI = <b>${(ends/width).toFixed(2)}</b>
+      </div>`;
+
+  },
+
+
+  calcProduction(){
+
+    let speed=parseFloat(
+      document.getElementById("calcSpeed").value
+    );
+
+    let efficiency=parseFloat(
+      document.getElementById("calcEfficiency").value
+    );
+
+    let time=parseFloat(
+      document.getElementById("calcTime").value
+    );
+
+    if(!speed || !efficiency || !time){
+
+      alert("সব value দিন");
+
+      return;
+
+    }
+
+    let production=
+      speed*(efficiency/100)*time;
+
+    document.getElementById("calcProductionResult").innerHTML=
+
+      `<div class="te3-result">
+        Estimated production =
+        <b>${production.toFixed(2)}</b>
+      </div>`;
+
+  },
+
+
+  /* =========================
+     CAREER
+  ========================= */
+
+  career(){
+
+    const jobs=[
+
+      ["Merchandising","Buyer communication, costing, order follow-up."],
+      ["QA/QC","Quality inspection, defect analysis, AQL."],
+      ["Industrial Engineering","SMV, efficiency, line balancing."],
+      ["Production","Production planning and process control."],
+      ["Spinning","Yarn production and machine/process control."],
+      ["Knitting","Fabric production and machine monitoring."],
+      ["Dyeing","Coloration, recipe and process control."],
+      ["Testing","Physical and chemical textile testing."],
+      ["CAD","Pattern and apparel design support."],
+      ["Compliance","Workplace standards and audit preparation."],
+      ["PPC","Production planning and control."],
+      ["Supply Chain","Material planning and logistics."]
+
+    ];
+
+    return `
+
+      <div class="te3-grid">
+
+        ${jobs.map((j,i)=>`
+
+          <div class="te3-card">
+
+            <h3>💼 ${i+1}. ${j[0]}</h3>
+
+            <p>${j[1]}</p>
+
+            <button
+              onclick="TE3.jobPrep('${j[0]}')">
+              Interview Prep
+            </button>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+      <div id="te3JobResult"></div>
+
+    `;
+
+  },
+
+
+  jobPrep(job){
+
+    const questions={
+
+      "Merchandising":
+      "What is a tech pack? What is FOB? How do you communicate with a buyer?",
+
+      "QA/QC":
+      "What is AQL? Difference between QA and QC? What is a critical defect?",
+
+      "Industrial Engineering":
+      "What is SMV? What is line balancing? How do you improve efficiency?",
+
+      "Production":
+      "What is production planning? How do you control production delays?",
+
+      "Spinning":
+      "What is drafting? What is yarn count? What is ring spinning?",
+
+      "Knitting":
+      "What is loop? What are course and wale?",
+
+      "Dyeing":
+      "What is dyeing? What is color fastness? What is recipe?",
+
+      "Testing":
+      "What is GSM? What is tensile strength? What is pilling?",
+
+      "CAD":
+      "What is pattern making? What is marker planning?",
+
+      "Compliance":
+      "What is factory compliance? What is social compliance?",
+
+      "PPC":
+      "What is capacity planning? What is production schedule?",
+
+      "Supply Chain":
+      "What is lead time? What is inventory management?"
+
+    };
+
+    document.getElementById("te3JobResult").innerHTML=
+
+      `<div class="te3-result">
+
+        <h3>${job} — Interview Questions</h3>
+
+        <p>${questions[job] || "Prepare basic questions related to this role."}</p>
+
+      </div>`;
+
+  },
+
+
+  /* =========================
+     CV HELPER
+  ========================= */
+
+  cv(){
+
+    return `
+
+      <div class="te3-card">
+
+        <h3>📄 Textile Student CV Helper</h3>
+
+        <input
+          id="cvName"
+          class="te3-input"
+          placeholder="Your Name">
+
+        <input
+          id="cvEducation"
+          class="te3-input"
+          placeholder="Education">
+
+        <input
+          id="cvSkills"
+          class="te3-input"
+          placeholder="Skills">
+
+        <input
+          id="cvCareer"
+          class="te3-input"
+          placeholder="Target Job">
+
+        <textarea
+          id="cvAbout"
+          class="te3-textarea"
+          placeholder="Short personal information"></textarea>
+
+        <button
+          class="te3-action"
+          onclick="TE3.generateCV()">
+          Generate Profile
+        </button>
+
+        <div id="cvResult"></div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  generateCV(){
+
+    let name=document.getElementById("cvName").value;
+
+    let education=document.getElementById("cvEducation").value;
+
+    let skills=document.getElementById("cvSkills").value;
+
+    let career=document.getElementById("cvCareer").value;
+
+    let about=document.getElementById("cvAbout").value;
+
+    document.getElementById("cvResult").innerHTML=
+
+      `<div class="te3-result">
+
+        <h2>${name || "Your Name"}</h2>
+
+        <p><b>Career Objective</b></p>
+
+        <p>
+        To build a professional career in
+        ${career || "the textile industry"} and
+        contribute through technical knowledge,
+        communication and practical skills.
+        </p>
+
+        <p><b>Education:</b> ${education}</p>
+
+        <p><b>Skills:</b> ${skills}</p>
+
+        <p><b>Profile:</b> ${about}</p>
+
+      </div>`;
+
+  },
+
+
+  /* =========================
+     BANGLADESH TEXTILE
+  ========================= */
+
+  industry(){
+
+    return `
+
+      <div class="te3-grid">
+
+        <div class="te3-card">
+
+          <h3>🇧🇩 Bangladesh Textile Sector</h3>
+
+          <p>
+          Bangladesh-এর textile & apparel sector-এর
+          প্রধান career areas:
+          </p>
+
+          <ul>
+
+            <li>Spinning</li>
+            <li>Knitting</li>
+            <li>Weaving</li>
+            <li>Dyeing & Finishing</li>
+            <li>Garments</li>
+            <li>Textile Testing</li>
+            <li>Merchandising</li>
+            <li>QA/QC</li>
+            <li>IE</li>
+            <li>Compliance</li>
+            <li>PPC</li>
+            <li>Supply Chain</li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>🎯 Student Career Path</h3>
+
+          <p>
+          Diploma Textile Engineering →
+          Internship →
+          Junior/Assistant Role →
+          Executive/Officer →
+          Senior Role →
+          Management
+          </p>
+
+          <button
+            onclick="TE3.open('career')">
+            Explore Careers
+          </button>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>📚 What to Learn</h3>
+
+          <p>
+          Fabric Construction, GSM, Yarn Count,
+          Textile Testing, Production, QA/QC,
+          IE, Merchandising, English Communication
+          এবং Computer Skills।
+          </p>
+
+        </div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  /* =========================
+     PROGRESS
+  ========================= */
+
+  progress(){
+
+    let quizAccuracy=
+      this.data.quizTotal?
+      Math.round(
+        this.data.quizScore/
+        this.data.quizTotal*100
+      ):0;
+
+    let badges=this.data.badges||[];
+
+    return `
+
+      <div class="te3-grid">
+
+        <div class="te3-card">
+
+          <h3>📊 My Statistics</h3>
+
+          <p>
+            Quiz Questions:
+            <b>${this.data.quizTotal}</b>
+          </p>
+
+          <p>
+            Quiz Score:
+            <b>${this.data.quizScore}</b>
+          </p>
+
+          <p>
+            Accuracy:
+            <b>${quizAccuracy}%</b>
+          </p>
+
+          <p>
+            Exams:
+            <b>${this.data.exams}</b>
+          </p>
+
+          <p>
+            Exam Questions:
+            <b>${this.data.questions}</b>
+          </p>
+
+          <p>
+            Viva Practice:
+            <b>${this.data.viva}</b>
+          </p>
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>🏅 Achievements</h3>
+
+          ${
+            badges.length
+            ?
+            badges.map(x=>
+              `<span class="te3-badge">${x}</span>`
+            ).join("")
+            :
+            "<p>Practice শুরু করুন। Badge unlock হবে।</p>"
+          }
+
+        </div>
+
+
+        <div class="te3-card">
+
+          <h3>⭐ Bookmarks</h3>
+
+          ${
+            this.data.bookmarks.length
+            ?
+            this.data.bookmarks.map(x=>
+              `<span class="te3-badge">${x}</span>`
+            ).join("")
+            :
+            "<p>No bookmarks yet.</p>"
+          }
+
+        </div>
+
+      </div>
+
+      <div class="te3-card">
+
+        <h3>📈 Learning Progress</h3>
+
+        <p>
+        Quiz Accuracy
+        </p>
+
+        <div class="te3-progress">
+
+          <span style="width:${quizAccuracy}%"></span>
+
+        </div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  /* =========================
+     BOOKMARK
+  ========================= */
+
+  bookmark(name){
+
+    if(!this.data.bookmarks.includes(name)){
+
+      this.data.bookmarks.push(name);
+
+      this.save();
+
+      alert(name+" bookmarked!");
+
+    }else{
+
+      alert("Already bookmarked.");
+
+    }
+
+  },
+
+
+  /* =========================
+     BADGES
+  ========================= */
+
+  checkBadges(){
+
+    const b=this.data.badges;
+
+    if(this.data.quizTotal>=1 &&
+       !b.includes("🥉 First Quiz")){
+
+      b.push("🥉 First Quiz");
+
+    }
+
+    if(this.data.quizTotal>=20 &&
+       !b.includes("📚 20 Questions")){
+
+      b.push("📚 20 Questions");
+
+    }
+
+    if(this.data.quizTotal>=50 &&
+       !b.includes("🔥 50 Questions")){
+
+      b.push("🔥 50 Questions");
+
+    }
+
+    if(this.data.quizTotal>=100 &&
+       !b.includes("🏆 100 Questions")){
+
+      b.push("🏆 100 Questions");
+
+    }
+
+    if(this.data.exams>=5 &&
+       !b.includes("🎯 Exam Warrior")){
+
+      b.push("🎯 Exam Warrior");
+
+    }
+
+    this.save();
+
+  },
+
+
+  /* =========================
+     DAILY CHALLENGE
+  ========================= */
+
+  dailyChallenge(){
+
+    const today=
+      new Date().toISOString().slice(0,10);
+
+    const key="te3_daily_"+today;
+
+    if(!localStorage.getItem(key)){
+
+      localStorage.setItem(key,"1");
+
+      console.log(
+        "🎯 Textile Explorer Daily Challenge Ready!"
+      );
+
+    }
+
+  }
+
+};
+
+
+/* =========================
+   MODAL EVENTS
+========================= */
+
+document.addEventListener(
+  "click",
+  function(e){
+
+    const modal=
+      document.getElementById("te3Modal");
+
+    if(e.target===modal){
+
+      TE3.close();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Escape"){
+
+      TE3.close();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   START
+========================= */
+
+TE3.init();
+
+</script>
+
+<!-- =========================
+     END ADVANCED PACK 3
+========================= -->
+  <!-- =========================================================
+ TEXTILE EXPLORER — ADVANCED PACK 4
+ Paste AFTER Advanced Pack 3 and BEFORE </body>
+ ========================================================= -->
+
+<style>
+/* ===============================
+   TE4 CORE
+================================ */
+
+#te4Launcher{
+  position:fixed;
+  right:22px;
+  bottom:75px;
+  z-index:99980;
+}
+
+.te4-main{
+  width:58px;
+  height:58px;
+  border:0;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:24px;
+  color:#fff;
+  background:linear-gradient(135deg,#f97316,#dc2626);
+  box-shadow:0 8px 30px rgba(220,38,38,.35);
+  transition:.25s;
+}
+
+.te4-main:hover{
+  transform:scale(1.08);
+}
+
+#te4Menu{
+  display:none;
+  position:absolute;
+  right:0;
+  bottom:68px;
+  width:245px;
+  padding:10px;
+  border-radius:16px;
+  background:var(--card-bg,#fff);
+  border:1px solid rgba(128,128,128,.18);
+  box-shadow:0 15px 45px rgba(0,0,0,.2);
+}
+
+.te4-menu-btn{
+  display:block;
+  width:100%;
+  padding:11px;
+  margin:4px 0;
+  border:0;
+  border-radius:9px;
+  text-align:left;
+  cursor:pointer;
+  color:inherit;
+  background:transparent;
+}
+
+.te4-menu-btn:hover{
+  background:rgba(249,115,22,.10);
+}
+
+/* ===============================
+   MODAL
+================================ */
+
+#te4Modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100001;
+  overflow:auto;
+  padding:20px;
+  background:rgba(0,0,0,.70);
+  backdrop-filter:blur(5px);
+}
+
+.te4-box{
+  width:min(1100px,96%);
+  margin:25px auto;
+  padding:25px;
+  border-radius:20px;
+  position:relative;
+  color:inherit;
+  background:var(--card-bg,#fff);
+  box-shadow:0 20px 70px rgba(0,0,0,.3);
+}
+
+.te4-close{
+  position:absolute;
+  right:18px;
+  top:12px;
+  border:0;
+  background:transparent;
+  color:inherit;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.te4-title{
+  margin:0 45px 8px 0;
+  font-size:25px;
+  font-weight:800;
+}
+
+.te4-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:15px;
+}
+
+.te4-card{
+  padding:18px;
+  border-radius:15px;
+  border:1px solid rgba(128,128,128,.18);
+  background:rgba(128,128,128,.035);
+}
+
+.te4-card h3{
+  margin-top:0;
+}
+
+.te4-input,
+.te4-select,
+.te4-textarea{
+  box-sizing:border-box;
+  width:100%;
+  padding:11px;
+  margin:6px 0 12px;
+  border-radius:9px;
+  border:1px solid #aaa;
+  background:transparent;
+  color:inherit;
+}
+
+.te4-textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.te4-btn{
+  padding:10px 15px;
+  border:0;
+  border-radius:9px;
+  cursor:pointer;
+  background:#dc2626;
+  color:#fff;
+  font-weight:600;
+}
+
+.te4-btn:hover{
+  opacity:.9;
+}
+
+.te4-option{
+  display:block;
+  width:100%;
+  padding:12px;
+  margin:7px 0;
+  text-align:left;
+  border-radius:9px;
+  border:1px solid rgba(128,128,128,.2);
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+}
+
+.te4-option:hover{
+  background:rgba(249,115,22,.10);
+}
+
+.te4-result{
+  margin-top:13px;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(249,115,22,.09);
+  line-height:1.65;
+}
+
+.te4-stage{
+  padding:13px;
+  margin:7px 0;
+  border-radius:10px;
+  cursor:pointer;
+  background:rgba(220,38,38,.08);
+  border:1px solid transparent;
+}
+
+.te4-stage:hover{
+  border-color:#dc2626;
+}
+
+.te4-stage.active{
+  background:#dc2626;
+  color:#fff;
+}
+
+.te4-badge{
+  display:inline-block;
+  padding:8px 12px;
+  margin:5px;
+  border-radius:20px;
+  background:rgba(220,38,38,.12);
+}
+
+.te4-xp{
+  height:13px;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(128,128,128,.2);
+}
+
+.te4-xp span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#dc2626;
+}
+
+.te4-small{
+  font-size:13px;
+  opacity:.7;
+}
+
+.te4-success{
+  border-left:4px solid #16a34a;
+}
+
+.te4-danger{
+  border-left:4px solid #dc2626;
+}
+
+@media(max-width:600px){
+
+  #te4Launcher{
+    right:14px;
+    bottom:70px;
+  }
+
+  .te4-box{
+    padding:18px;
+  }
+
+  .te4-title{
+    font-size:21px;
+  }
+
+}
+
+/* print certificate */
+@media print{
+
+  body *{
+    visibility:hidden!important;
+  }
+
+  #te4Certificate,
+  #te4Certificate *{
+    visibility:visible!important;
+  }
+
+  #te4Certificate{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+  }
+
+}
+</style>
+
+
+<!-- ===============================
+ FLOATING BUTTON
+================================ -->
+
+<div id="te4Launcher">
+
+  <button class="te4-main"
+          onclick="TE4.toggleMenu()">
+    🔥
+  </button>
+
+  <div id="te4Menu">
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('viva')">
+      🎤 AI Viva Teacher
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('question')">
+      📝 Question Paper Generator
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('defect')">
+      🐛 Fabric Defect Diagnosis
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('trouble')">
+      🛠️ Machine Troubleshooting
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('identify')">
+      🧵 Yarn & Fabric Identifier
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('test')">
+      🔬 Test Result Analyzer
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('interview')">
+      💼 Job Interview Simulator
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('dictionary')">
+      🌐 Textile Dictionary
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('analytics')">
+      📊 Performance Analytics
+    </button>
+
+    <button class="te4-menu-btn"
+            onclick="TE4.open('certificate')">
+      🏅 Progress Certificate
+    </button>
+
+  </div>
+</div>
+
+
+<!-- ===============================
+ MODAL
+================================ -->
+
+<div id="te4Modal">
+
+  <div class="te4-box">
+
+    <button class="te4-close"
+            onclick="TE4.close()">
+      ×
+    </button>
+
+    <h2 id="te4Title"
+        class="te4-title">
+      Textile Explorer Advanced 4
+    </h2>
+
+    <div id="te4Content"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   TEXTILE EXPLORER ADVANCED PACK 4
+========================================================= */
+
+const TE4 = {
+
+  menu:false,
+
+  data:{
+    viva:0,
+    interviews:0,
+    questionsGenerated:0,
+    xp:0,
+    level:1,
+    badges:[]
+  },
+
+
+  init(){
+
+    const saved=
+      localStorage.getItem("te4_progress");
+
+    if(saved){
+
+      try{
+
+        this.data=Object.assign(
+          this.data,
+          JSON.parse(saved)
+        );
+
+      }catch(e){}
+
+    }
+
+    this.updateLevel();
+
+  },
+
+
+  save(){
+
+    localStorage.setItem(
+      "te4_progress",
+      JSON.stringify(this.data)
+    );
+
+  },
+
+
+  toggleMenu(){
+
+    const menu=
+      document.getElementById("te4Menu");
+
+    this.menu=!this.menu;
+
+    menu.style.display=
+      this.menu?"block":"none";
+
+  },
+
+
+  open(type){
+
+    document.getElementById("te4Menu")
+      .style.display="none";
+
+    document.getElementById("te4Modal")
+      .style.display="block";
+
+    const pages={
+
+      viva:[
+        "🎤 AI Viva Teacher",
+        this.viva()
+      ],
+
+      question:[
+        "📝 Question Paper Generator",
+        this.question()
+      ],
+
+      defect:[
+        "🐛 Fabric Defect Diagnosis",
+        this.defect()
+      ],
+
+      trouble:[
+        "🛠️ Machine Troubleshooting",
+        this.trouble()
+      ],
+
+      identify:[
+        "🧵 Yarn & Fabric Identifier",
+        this.identify()
+      ],
+
+      test:[
+        "🔬 Test Result Analyzer",
+        this.test()
+      ],
+
+      interview:[
+        "💼 Job Interview Simulator",
+        this.interview()
+      ],
+
+      dictionary:[
+        "🌐 Textile Dictionary",
+        this.dictionary()
+      ],
+
+      analytics:[
+        "📊 Performance Analytics",
+        this.analytics()
+      ],
+
+      certificate:[
+        "🏅 Progress Certificate",
+        this.certificate()
+      ]
+
+    };
+
+    if(pages[type]){
+
+      document.getElementById("te4Title")
+        .innerHTML=pages[type][0];
+
+      document.getElementById("te4Content")
+        .innerHTML=pages[type][1];
+
+    }
+
+  },
+
+
+  close(){
+
+    document.getElementById("te4Modal")
+      .style.display="none";
+
+  },
+
+
+  /* =====================================================
+     AI VIVA TEACHER
+  ===================================================== */
+
+  vivaBank:[
+
+    {
+      q:"What is GSM?",
+      a:"GSM means Grams per Square Meter. It indicates the weight of fabric per square meter."
+    },
+
+    {
+      q:"What is EPI?",
+      a:"EPI means Ends Per Inch. It indicates the number of warp ends per inch."
+    },
+
+    {
+      q:"What is PPI?",
+      a:"PPI means Picks Per Inch. It indicates the number of weft picks per inch."
+    },
+
+    {
+      q:"What is yarn count?",
+      a:"Yarn count expresses the fineness or coarseness of yarn."
+    },
+
+    {
+      q:"What is spinning?",
+      a:"Spinning is the process of converting textile fibers into yarn."
+    },
+
+    {
+      q:"What is weaving?",
+      a:"Weaving is the interlacement of warp and weft yarns to form woven fabric."
+    },
+
+    {
+      q:"What is knitting?",
+      a:"Knitting forms fabric by creating interconnected loops."
+    },
+
+    {
+      q:"What is dyeing?",
+      a:"Dyeing is the process of imparting color to textile materials."
+    },
+
+    {
+      q:"What is finishing?",
+      a:"Finishing improves fabric appearance, handle, dimensional stability and performance."
+    },
+
+    {
+      q:"What is QA?",
+      a:"QA means Quality Assurance. It focuses on preventing quality problems."
+    },
+
+    {
+      q:"What is QC?",
+      a:"QC means Quality Control. It focuses on inspection and controlling defects."
+    },
+
+    {
+      q:"What is AQL?",
+      a:"AQL means Acceptable Quality Limit and is used in sampling inspection."
+    },
+
+    {
+      q:"What is SMV?",
+      a:"SMV means Standard Minute Value, the standard time allowed to perform an operation."
+    },
+
+    {
+      q:"What is line balancing?",
+      a:"Line balancing distributes work among operations to improve production flow."
+    },
+
+    {
+      q:"What is polyester?",
+      a:"Polyester is a widely used synthetic fiber with good strength and dimensional stability."
+    },
+
+    {
+      q:"What is cotton?",
+      a:"Cotton is a natural cellulosic fiber obtained from the cotton plant."
+    },
+
+    {
+      q:"What is carding?",
+      a:"Carding opens, cleans and individualizes fibers and forms sliver."
+    },
+
+    {
+      q:"What is ring spinning?",
+      a:"Ring spinning converts roving into yarn using drafting, twisting and winding actions."
+    },
+
+    {
+      q:"What is warping?",
+      a:"Warping prepares a sheet of warp yarns for weaving."
+    },
+
+    {
+      q:"What is sizing?",
+      a:"Sizing applies a protective film to warp yarns to improve weaving performance."
+    }
+
+  ],
+
+
+  viva(){
+
+    return `
+
+      <div class="te4-card">
+
+        <h3>🎤 Random Viva Practice</h3>
+
+        <p class="te4-small">
+          Question দেখুন এবং নিজের উত্তর দেওয়ার পর
+          "Show Answer" চাপুন।
+        </p>
+
+        <button class="te4-btn"
+                onclick="TE4.newViva()">
+          Start Viva
+        </button>
+
+        <div id="te4VivaArea"></div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  newViva(){
+
+    const item=
+      this.vivaBank[
+        Math.floor(
+          Math.random()*this.vivaBank.length
+        )
+      ];
+
+    this.currentViva=item;
+
+    this.data.viva++;
+
+    this.addXP(5);
+
+    document.getElementById("te4VivaArea")
+      .innerHTML=`
+
+      <div class="te4-result">
+
+        <h3>🎤 Question</h3>
+
+        <p><b>${item.q}</b></p>
+
+        <button class="te4-btn"
+                onclick="TE4.showVivaAnswer()">
+          Show Answer
+        </button>
+
+        <div id="te4VivaAnswer"></div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  showVivaAnswer(){
+
+    document.getElementById("te4VivaAnswer")
+      .innerHTML=`
+
+      <div class="te4-result te4-success">
+
+        <b>Suggested Answer:</b>
+
+        <p>${this.currentViva.a}</p>
+
+      </div>
+
+    `;
+
+  },
+
+
+  /* =====================================================
+     QUESTION PAPER GENERATOR
+  ===================================================== */
+
+  question(){
+
+    return `
+
+      <div class="te4-grid">
+
+        <div class="te4-card">
+
+          <h3>📝 Generate Question Paper</h3>
+
+          <label>Topic</label>
+
+          <select id="te4QTopic"
+                  class="te4-select">
+
+            <option value="all">All Topics</option>
+            <option value="fiber">Fiber</option>
+            <option value="spinning">Spinning</option>
+            <option value="weaving">Weaving</option>
+            <option value="knitting">Knitting</option>
+            <option value="dyeing">Dyeing</option>
+            <option value="testing">Testing</option>
+            <option value="garments">Garments</option>
+
+          </select>
+
+          <label>Number of Questions</label>
+
+          <select id="te4QNumber"
+                  class="te4-select">
+
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+
+          </select>
+
+          <button class="te4-btn"
+                  onclick="TE4.generatePaper()">
+            Generate
+          </button>
+
+        </div>
+
+      </div>
+
+      <div id="te4Paper"></div>
+
+    `;
+
+  },
+
+
+  generatePaper(){
+
+    const topic=
+      document.getElementById("te4QTopic").value;
+
+    const count=
+      parseInt(
+        document.getElementById("te4QNumber").value
+      );
+
+    let bank=[
+      ...this.vivaBank
+    ];
+
+    if(
+      window.TE3 &&
+      Array.isArray(window.TE3.quizBank)
+    ){
+
+      bank=window.TE3.quizBank.map(x=>({
+
+        q:x.q,
+
+        options:x.a,
+
+        correct:x.c,
+
+        topic:x.topic
+
+      }));
+
+    }
+
+    if(topic!=="all"){
+
+      bank=bank.filter(
+        x=>x.topic===topic
+      );
+
+    }
+
+    if(!bank.length){
+
+      alert("এই topic-এর question নেই।");
+
+      return;
+
+    }
+
+    bank=[
+      ...bank
+    ].sort(
+      ()=>Math.random()-.5
+    );
+
+    let html=`
+
+      <div class="te4-card">
+
+        <h3>📄 Generated Question Paper</h3>
+
+    `;
+
+    for(
+      let i=0;
+      i<count;
+      i++
+    ){
+
+      const q=
+        bank[i%bank.length];
+
+      html+=`
+
+        <p>
+          <b>${i+1}. ${q.q}</b>
+        </p>
+
+      `;
+
+      if(q.options){
+
+        q.options.forEach((o,j)=>{
+
+          html+=`
+
+            <div>
+              ${String.fromCharCode(65+j)}.
+              ${o}
+            </div>
+
+          `;
+
+        });
+
+      }else{
+
+        html+=`
+          <div class="te4-small">
+            Answer: ______________________
+          </div>
+        `;
+
+      }
+
+    }
+
+    html+=`
+
+        <br>
+
+        <button
+          class="te4-btn"
+          onclick="window.print()">
+          Print Question Paper
+        </button>
+
+      </div>
+
+    `;
+
+    document.getElementById("te4Paper")
+      .innerHTML=html;
+
+    this.data.questionsGenerated+=count;
+
+    this.addXP(10);
+
+  },
+
+
+  /* =====================================================
+     FABRIC DEFECT DIAGNOSIS
+  ===================================================== */
+
+  defect(){
+
+    return `
+
+      <div class="te4-card">
+
+        <h3>🐛 Fabric Defect Diagnosis</h3>
+
+        <p>
+          Defect নির্বাচন করুন।
+        </p>
+
+        <select id="te4Defect"
+                class="te4-select">
+
+          <option value="">Select Defect</option>
+
+          <option value="hole">
+            Hole
+          </option>
+
+          <option value="stain">
+            Stain
+          </option>
+
+          <option value="broken">
+            Broken End
+          </option>
+
+          <option value="missing">
+            Missing Pick
+          </option>
+
+          <option value="crease">
+            Crease Mark
+          </option>
+
+          <option value="shade">
+            Shade Variation
+          </option>
+
+          <option value="pilling">
+            Pilling
+          </option>
+
+          <option value="oil">
+            Oil Spot
+          </option>
+
+        </select>
+
+        <button class="te4-btn"
+                onclick="TE4.diagnoseDefect()">
+          Diagnose
+        </button>
+
+        <div id="te4DefectResult"></div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  diagnoseDefect(){
+
+    const d=
+      document.getElementById("te4Defect").value;
+
+    const data={
+
+      hole:[
+        "Possible causes: mechanical damage, needle/loom issue or handling.",
+        "Check machine condition and fabric handling."
+      ],
+
+      stain:[
+        "Possible causes: oil, chemical, dirt or contamination.",
+        "Identify stain source and review cleaning/process control."
+      ],
+
+      broken:[
+        "Possible causes: excessive warp tension, weak yarn or loom setting.",
+        "Check yarn strength, tension and loom parameters."
+      ],
+
+      missing:[
+        "Possible causes: weft insertion or loom stop/start problem.",
+        "Inspect weft insertion and loom settings."
+      ],
+
+      crease:[
+        "Possible causes: fabric handling, wet processing or drying condition.",
+        "Review fabric path and finishing conditions."
+      ],
+
+      shade:[
+        "Possible causes: dye concentration, process variation or batch difference.",
+        "Check recipe, temperature, time and batch control."
+      ],
+
+      pilling:[
+        "Possible causes: fiber properties, yarn structure and abrasion.",
+        "Review fiber, yarn, fabric construction and finishing."
+      ],
+
+      oil:[
+        "Possible causes: machine lubrication or contamination.",
+        "Inspect machine oil leakage and maintenance."
+      ]
+
+    };
+
+    if(!data[d]){
+
+      alert("একটি defect select করুন.");
+
+      return;
+
+    }
+
+    document.getElementById("te4DefectResult")
+      .innerHTML=`
+
+      <div class="te4-result">
+
+        <h3>🔍 Diagnosis</h3>
+
+        <p>${data[d][0]}</p>
+
+        <p><b>Recommended Check:</b>
+        ${data[d][1]}</p>
+
+      </div>
+
+    `;
+
+    this.addXP(5);
+
+  },
+
+
+  /* =====================================================
+     MACHINE TROUBLESHOOTING
+  ===================================================== */
+
+  trouble(){
+
+    return `
+
+      <div class="te4-card">
+
+        <h3>🛠️ Machine Troubleshooting</h3>
+
+        <select id="te4Machine"
+                class="te4-select">
+
+          <option value="">Select Machine</option>
+
+          <option value="carding">
+            Carding Machine
+          </option>
+
+          <option value="ring">
+            Ring Frame
+          </option>
+
+          <option value="loom">
+            Loom
+          </option>
+
+          <option value="knitting">
+            Knitting Machine
+          </option>
+
+          <option value="dyeing">
+            Dyeing Machine
+          </option>
+
+          <option value="stenter">
+            Stenter
+          </option>
+
+        </select>
+
+        <select id="te4Problem"
+                class="te4-select">
+
+          <option value="">Select Problem</option>
+
+          <option value="quality">
+            Product Quality Problem
+          </option>
+
+          <option value="break">
+            Frequent Breakage
+          </option>
+
+          <option value="uneven">
+            Uneven Result
+          </option>
+
+          <option value="production">
+            Low Production
+          </option>
+
+        </select>
+
+        <button class="te4-btn"
+                onclick="TE4.troubleshoot()">
+          Find Possible Causes
+        </button>
+
+        <div id="te4TroubleResult"></div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  troubleshoot(){
+
+    const machine=
+      document.getElementById("te4Machine").value;
+
+    const problem=
+      document.getElementById("te4Problem").value;
+
+    if(!machine || !problem){
+
+      alert("Machine এবং Problem select করুন.");
+
+      return;
+
+    }
+
+    const common={
+
+      quality:
+      "Check raw material quality, machine settings, process parameters and maintenance.",
+
+      break:
+      "Check yarn/fiber strength, tension, alignment, machine speed and mechanical condition.",
+
+      uneven:
+      "Check drafting, tension, temperature, pressure, recipe and machine calibration.",
+
+      production:
+      "Check machine speed, efficiency, downtime, changeover and operator performance."
+
+    };
+
+    document.getElementById("te4TroubleResult")
+      .innerHTML=`
+
+      <div class="te4-result">
+
+        <h3>🔧 Possible Causes</h3>
+
+        <p>
+          <b>Machine:</b> ${machine}
+        </p>
+
+        <p>
+          ${common[problem]}
+        </p>
+
+        <p class="te4-small">
+          এটি general troubleshooting guide;
+          machine-specific service manual-এর বিকল্প নয়।
+        </p>
+
+      </div>
+
+    `;
+
+    this.addXP(5);
+
+  },
+
+
+  /* =====================================================
+     YARN & FABRIC IDENTIFIER
+  ===================================================== */
+
+  identify(){
+
+    return `
+
+      <div class="te4-grid">
+
+        <div class="te4-card">
+
+          <h3>🧵 Yarn Identifier</h3>
+
+          <select id="te4Yarn"
+                  class="te4-select">
+
+            <option value="">Select Characteristics</option>
+
+            <option value="cotton">
+              Soft / Natural / Cellulosic
+            </option>
+
+            <option value="polyester">
+              Strong / Synthetic / Thermoplastic
+            </option>
+
+            <option value="wool">
+              Warm / Animal Fiber
+            </option>
+
+            <option value="nylon">
+              Strong / Synthetic / High Abrasion Resistance
+            </option>
+
+          </select>
+
+          <button class="te4-btn"
+                  onclick="TE4.identifyYarn()">
+            Identify
+          </button>
+
+          <div id="te4YarnResult"></div>
+
+        </div>
+
+
+        <div class="te4-card">
+
+          <h3>🧶 Fabric Identifier</h3>
+
+          <select id="te4Fabric"
+                  class="te4-select">
+
+            <option value="">Select Structure</option>
+
+            <option value="woven">
+              Warp + Weft
+            </option>
+
+            <option value="knit">
+              Loop Structure
+            </option>
+
+            <option value="rib">
+              Rib Knit
+            </option>
+
+            <option value="interlock">
+              Interlock Knit
+            </option>
+
+          </select>
+
+          <button class="te4-btn"
+                  onclick="TE4.identifyFabric()">
+            Identify
+          </button>
+
+          <div id="te4FabricResult"></div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  identifyYarn(){
+
+    const v=
+      document.getElementById("te4Yarn").value;
+
+    const result={
+
+      cotton:
+      "Likely Cotton — natural cellulosic fiber.",
+
+      polyester:
+      "Likely Polyester — synthetic thermoplastic fiber.",
+
+      wool:
+      "Likely Wool — natural animal fiber.",
+
+      nylon:
+      "Likely Nylon — synthetic polyamide fiber."
+
+    };
+
+    document.getElementById("te4YarnResult")
+      .innerHTML=
+
+      `<div class="te4-result">
+        ${result[v] || "Select a characteristic."}
+      </div>`;
+
+  },
+
+
+  identifyFabric(){
+
+    const v=
+      document.getElementById("te4Fabric").value;
+
+    const result={
+
+      woven:
+      "Woven fabric — warp and weft yarns are interlaced.",
+
+      knit:
+      "Knitted fabric — fabric is formed through loops.",
+
+      rib:
+      "Rib knit — commonly has alternating knit and purl columns.",
+
+      interlock:
+      "Interlock knit — a double-knit structure with interlocking loops."
+
+    };
+
+    document.getElementById("te4FabricResult")
+      .innerHTML=
+
+      `<div class="te4-result">
+        ${result[v] || "Select a structure."}
+      </div>`;
+
+  },
+
+
+  /* =====================================================
+     TEST RESULT ANALYZER
+  ===================================================== */
+
+  test(){
+
+    return `
+
+      <div class="te4-grid">
+
+        <div class="te4-card">
+
+          <h3>🔬 Tensile Result</h3>
+
+          <input
+            id="te4Strength"
+            class="te4-input"
+            type="number"
+            placeholder="Strength">
+
+          <input
+            id="te4Target"
+            class="te4-input"
+            type="number"
+            placeholder="Target">
+
+          <button class="te4-btn"
+                  onclick="TE4.analyzeStrength()">
+            Analyze
+          </button>
+
+          <div id="te4StrengthResult"></div>
+
+        </div>
+
+
+        <div class="te4-card">
+
+          <h3>🎨 Color Fastness</h3>
+
+          <select id="te4Fastness"
+                  class="te4-select">
+
+            <option value="1">Grade 1</option>
+            <option value="2">Grade 2</option>
+            <option value="3">Grade 3</option>
+            <option value="4">Grade 4</option>
+            <option value="5">Grade 5</option>
+
+          </select>
+
+          <button class="te4-btn"
+                  onclick="TE4.analyzeFastness()">
+            Analyze
+          </button>
+
+          <div id="te4FastnessResult"></div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  analyzeStrength(){
+
+    const strength=
+      parseFloat(
+        document.getElementById("te4Strength").value
+      );
+
+    const target=
+      parseFloat(
+        document.getElementById("te4Target").value
+      );
+
+    if(!strength || !target){
+
+      alert("Strength এবং Target দিন.");
+
+      return;
+
+    }
+
+    const percent=
+      strength/target*100;
+
+    const status=
+      percent>=100
+      ?"PASS — Target achieved"
+      :"CHECK — Below target";
+
+    document.getElementById("te4StrengthResult")
+      .innerHTML=
+
+      `<div class="te4-result">
+
+        Result:
+        <b>${percent.toFixed(1)}%</b>
+
+        <br><br>
+
+        ${status}
+
+      </div>`;
+
+  },
+
+
+  analyzeFastness(){
+
+    const grade=
+      parseInt(
+        document.getElementById("te4Fastness").value
+      );
+
+    let text="";
+
+    if(grade>=4){
+
+      text="Generally good rating.";
+
+    }else if(grade===3){
+
+      text="Moderate rating; application requirement check করুন.";
+
+    }else{
+
+      text="Low rating; improvement may be required depending on standard.";
+
+    }
+
+    document.getElementById("te4FastnessResult")
+      .innerHTML=
+
+      `<div class="te4-result">
+
+        Grade: <b>${grade}</b><br>
+        ${text}
+
+      </div>`;
+
+  },
+
+
+  /* =====================================================
+     JOB INTERVIEW SIMULATOR
+  ===================================================== */
+
+  interviewBank:[
+
+    {
+      q:"Tell me about yourself.",
+      a:"Give a short introduction covering education, textile knowledge, skills and career goal."
+    },
+
+    {
+      q:"Why did you choose Textile Engineering?",
+      a:"Explain your interest in textile production, technology, manufacturing and the career opportunities in the sector."
+    },
+
+    {
+      q:"What is GSM?",
+      a:"GSM means Grams per Square Meter and indicates fabric mass per square meter."
+    },
+
+    {
+      q:"What is the difference between QA and QC?",
+      a:"QA focuses on preventing quality problems while QC focuses on inspection and controlling defects."
+    },
+
+    {
+      q:"What is SMV?",
+      a:"SMV means Standard Minute Value and represents the standard time required for an operation."
+    },
+
+    {
+      q:"What is merchandising?",
+      a:"Merchandising involves coordinating product requirements, buyer communication, costing, order follow-up and production-related activities."
+    },
+
+    {
+      q:"What is AQL?",
+      a:"AQL is Acceptable Quality Limit used in sampling inspection."
+    },
+
+    {
+      q:"What is production efficiency?",
+      a:"Efficiency compares actual performance with the expected standard performance."
+    }
+
+  ],
+
+
+  interview(){
+
+    return `
+
+      <div class="te4-card">
+
+        <h3>💼 Job Interview Simulator</h3>
+
+        <button class="te4-btn"
+                onclick="TE4.newInterview()">
+          Ask Interview Question
+        </button>
+
+        <div id="te4InterviewArea"></div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  newInterview(){
+
+    const item=
+      this.interviewBank[
+        Math.floor(
+          Math.random()*
+          this.interviewBank.length
+        )
+      ];
+
+    this.currentInterview=item;
+
+    this.data.interviews++;
+
+    this.addXP(8);
+
+    document.getElementById("te4InterviewArea")
+      .innerHTML=`
+
+      <div class="te4-result">
+
+        <h3>🎤 Interview Question</h3>
+
+        <p><b>${item.q}</b></p>
+
+        <textarea
+          id="te4InterviewAnswer"
+          class="te4-textarea"
+          placeholder="নিজের উত্তর লিখুন..."></textarea>
+
+        <button
+          class="te4-btn"
+          onclick="TE4.showInterviewTip()">
+          Compare / Get Tip
+        </button>
+
+        <div id="te4InterviewTip"></div>
+
+      </div>
+
+    `;
+
+  },
+
+
+  showInterviewTip(){
+
+    const value=
+      document.getElementById("te4InterviewAnswer")
+      .value.trim();
+
+    if(!value){
+
+      alert("আগে নিজের উত্তর লিখুন.");
+
+      return;
+
+    }
+
+    document.getElementById("te4InterviewTip")
+      .innerHTML=`
+
+      <div class="te4-result te4-success">
+
+        <b>Suggested Direction:</b>
+
+        <p>
+          ${this.currentInterview.a}
+        </p>
+
+        <p class="te4-small">
+          Interview-তে উত্তর মুখস্থ না করে নিজের ভাষায়
+          confidently বলার চেষ্টা করুন।
+        </p>
+
+      </div>
+
+    `;
+
+  },
+
+
+  /* =====================================================
+     TEXTILE DICTIONARY
+  ===================================================== */
+
+  dictionary(){
+
+    const words={
+
+      "AQL":
+      "Acceptable Quality Limit — sampling inspection-এর একটি quality concept.",
+
+      "GSM":
+      "Grams per Square Meter — fabric mass per square meter.",
+
+      "EPI":
+      "Ends Per Inch — প্রতি inch-এ warp ends.",
+
+      "PPI":
+      "Picks Per Inch — প্রতি inch-এ weft picks.",
+
+      "Tex":
+      "1000 meter yarn-এর gram weight.",
+
+      "Denier":
+      "9000 meter yarn-এর gram weight.",
+
+      "SMV":
+      "Standard Minute Value.",
+
+      "QA":
+      "Quality Assurance.",
+
+      "QC":
+      "Quality Control.",
+
+      "PPC":
+      "Production Planning and Control.",
+
+      "IE":
+      "Industrial Engineering.",
+
+      "Warp":
+      "Woven fabric-এর lengthwise yarn system.",
+
+      "Weft":
+      "Woven fabric-এর widthwise yarn system.",
+
+      "Course":
+      "Knitted fabric-এর horizontal row of loops.",
+
+      "Wale":
+      "Knitted fabric-এর vertical column of loops.",
+
+      "Carding":
+      "Fiber opening, cleaning and individualization process.",
+
+      "Sizing":
+      "Warp yarn-এ protective size প্রয়োগের process.",
+
+      "Stenter":
+      "Fabric width setting ও finishing-এর জন্য ব্যবহৃত machine.",
+
+      "Pilling":
+      "Fabric surface-এ ছোট fiber balls তৈরি হওয়া.",
+
+      "Shrinkage":
+      "Processing-এর পরে fabric dimension কমে যাওয়া."
+
+    };
+
+    let html=`
+
+      <div class="te4-card">
+
+        <input
+          id="te4DictionarySearch"
+          class="te4-input"
+          placeholder="Search textile term..."
+          oninput="TE4.searchDictionary()">
+
+      </div>
+
+      <div id="te4DictionaryResults"
+           class="te4-grid">
+
+    `;
+
+    Object.keys(words).forEach(word=>{
+
+      html+=`
+
+        <div class="te4-card te4-dict-item"
+             data-word="${word.toLowerCase()}">
+
+          <h3>${word}</h3>
+
+          <p>${words[word]}</p>
+
+        </div>
+
+      `;
+
+    });
+
+    html+=`</div>`;
+
+    this.dictionaryData=words;
+
+    return html;
+
+  },
+
+
+  searchDictionary(){
+
+    const q=
+      document.getElementById("te4DictionarySearch")
+      .value.toLowerCase();
+
+    document
+      .querySelectorAll(".te4-dict-item")
+      .forEach(item=>{
+
+        item.style.display=
+          item.dataset.word.includes(q)
+          ?"block"
+          :"none";
+
+      });
+
+  },
+
+
+  /* =====================================================
+     ANALYTICS
+  ===================================================== */
+
+  analytics(){
+
+    let old={};
+
+    try{
+
+      old=JSON.parse(
+        localStorage.getItem("te3_progress") || "{}"
+      );
+
+    }catch(e){}
+
+    const quiz=
+      old.quizTotal || 0;
+
+    const score=
+      old.quizScore || 0;
+
+    const accuracy=
+      quiz
+      ?Math.round(score/quiz*100)
+      :0;
+
+    const exams=
+      old.exams || 0;
+
+    const questions=
+      old.questions || 0;
+
+    return `
+
+      <div class="te4-grid">
+
+        <div class="te4-card">
+
+          <h3>🧠 Quiz</h3>
+
+          <h2>${quiz}</h2>
+
+          <p>Questions Attempted</p>
+
+        </div>
+
+        <div class="te4-card">
+
+          <h3>🎯 Accuracy</h3>
+
+          <h2>${accuracy}%</h2>
+
+          <p>Current Quiz Accuracy</p>
+
+        </div>
+
+        <div class="te4-card">
+
+          <h3>📝 Exams</h3>
+
+          <h2>${exams}</h2>
+
+          <p>Completed Exams</p>
+
+        </div>
+
+        <div class="te4-card">
+
+          <h3>📚 Exam Questions</h3>
+
+          <h2>${questions}</h2>
+
+          <p>Total Attempted</p>
+
+        </div>
+
+        <div class="te4-card">
+
+          <h3>🔥 Your Level</h3>
+
+          <h2>Level ${this.data.level}</h2>
+
+          <p>${this.data.xp} XP</p>
+
+        </div>
+
+      </div>
+
+      <div class="te4-card">
+
+        <h3>XP Progress</h3>
+
+        <div class="te4-xp">
+
+          <span style="
+            width:${this.xpPercent()}%
+          "></span>
+
+        </div>
+
+        <p>
+          ${this.data.xp} XP
+        </p>
+
+      </div>
+
+    `;
+
+  },
+
+
+  /* =====================================================
+     CERTIFICATE
+  ===================================================== */
+
+  certificate(){
+
+    const name=
+      prompt(
+        "Certificate-এ যে নামটি থাকবে সেটি লিখুন:"
+      ) || "Textile Explorer Student";
+
+    return `
+
+      <div id="te4Certificate"
+           style="
+           border:8px double #b45309;
+           padding:45px;
+           text-align:center;
+           background:#fff;
+           color:#111;
+           ">
+
+        <div style="font-size:45px;">
+          🏅
+        </div>
+
+        <h1>
+          CERTIFICATE OF LEARNING
+        </h1>
+
+        <p>
+          This certificate is presented to
+        </p>
+
+        <h2 style="font-size:30px;">
+          ${name}
+        </h2>
+
+        <p>
+          for active learning and practice on
+        </p>
+
+        <h2>
+          TEXTILE EXPLORER
+        </h2>
+
+        <p>
+          Textile Engineering Learning Platform
+        </p>
+
+        <hr>
+
+        <p>
+          Level: <b>${this.data.level}</b>
+          &nbsp; | &nbsp;
+          XP: <b>${this.data.xp}</b>
+        </p>
+
+        <p style="font-size:12px;">
+          This is a learning-progress certificate,
+          not an accredited academic qualification.
+        </p>
+
+      </div>
+
+      <br>
+
+      <button
+        class="te4-btn"
+        onclick="window.print()">
+        🖨️ Print Certificate
+      </button>
+
+    `;
+
+  },
+
+
+  /* =====================================================
+     XP SYSTEM
+  ===================================================== */
+
+  addXP(points){
+
+    this.data.xp+=points;
+
+    this.updateLevel();
+
+    this.save();
+
+  },
+
+
+  updateLevel(){
+
+    this.data.level=
+      Math.floor(
+        this.data.xp/100
+      )+1;
+
+    this.checkBadges();
+
+  },
+
+
+  xpPercent(){
+
+    return this.data.xp%100;
+
+  },
+
+
+  checkBadges(){
+
+    const b=this.data.badges;
+
+    if(
+      this.data.viva>=1 &&
+      !b.includes("🎤 Viva Starter")
+    ){
+
+      b.push("🎤 Viva Starter");
+
+    }
+
+    if(
+      this.data.interviews>=1 &&
+      !b.includes("💼 Interview Starter")
+    ){
+
+      b.push("💼 Interview Starter");
+
+    }
+
+    if(
+      this.data.xp>=100 &&
+      !b.includes("🔥 100 XP")
+    ){
+
+      b.push("🔥 100 XP");
+
+    }
+
+    if(
+      this.data.xp>=500 &&
+      !b.includes("🏆 500 XP Master")
+    ){
+
+      b.push("🏆 500 XP Master");
+
+    }
+
+    this.save();
+
+  }
+
+};
+
+
+/* =========================================================
+   MODAL EVENTS
+========================================================= */
+
+document.addEventListener(
+  "click",
+  function(e){
+
+    const modal=
+      document.getElementById("te4Modal");
+
+    if(e.target===modal){
+
+      TE4.close();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Escape"){
+
+      TE4.close();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+TE4.init();
+
+</script>
+
+<!-- =========================================================
+ END ADVANCED PACK 4
+========================================================= -->
 </body>
 </html>
