@@ -10112,5 +10112,1986 @@ TE4.init();
 <!-- =========================================================
  END ADVANCED PACK 4
 ========================================================= -->
+  <!-- =========================================================
+ TEXTILE EXPLORER — ADVANCED PACK 5
+ AI TUTOR + PROFESSIONAL CALCULATORS + VIRTUAL LAB
+ PROBLEM SOLVER + COURSE + VIVA + DASHBOARD
+ ========================================================= -->
+
+<style>
+/* ================= PACK 5 CSS ================= */
+
+#te5Launcher{
+  position:fixed;
+  right:22px;
+  bottom:110px;
+  width:62px;
+  height:62px;
+  border:0;
+  border-radius:50%;
+  background:linear-gradient(135deg,#0ea5e9,#6366f1);
+  color:#fff;
+  font-size:27px;
+  cursor:pointer;
+  z-index:99990;
+  box-shadow:0 8px 28px rgba(0,0,0,.3);
+  transition:.25s;
+}
+#te5Launcher:hover{
+  transform:scale(1.08) rotate(5deg);
+}
+
+#te5Modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  z-index:99999;
+  padding:25px;
+  overflow:auto;
+}
+
+.te5-box{
+  max-width:1100px;
+  margin:30px auto;
+  background:#fff;
+  color:#111827;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 25px 80px rgba(0,0,0,.4);
+}
+
+.te5-head{
+  padding:20px 24px;
+  background:linear-gradient(135deg,#0f172a,#1e3a8a);
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.te5-head h2{
+  margin:0;
+  font-size:23px;
+}
+
+.te5-close{
+  border:0;
+  background:rgba(255,255,255,.15);
+  color:white;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.te5-content{
+  padding:25px;
+}
+
+.te5-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:15px;
+}
+
+.te5-card{
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:18px;
+  background:#f8fafc;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.te5-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.te5-card .icon{
+  font-size:30px;
+}
+
+.te5-card h3{
+  margin:10px 0 6px;
+  font-size:17px;
+}
+
+.te5-card p{
+  margin:0;
+  color:#64748b;
+  font-size:13px;
+}
+
+.te5-section{
+  margin-top:20px;
+}
+
+.te5-input,
+.te5-select,
+.te5-textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  margin:6px 0 12px;
+  font-size:14px;
+}
+
+.te5-textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.te5-btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  background:#2563eb;
+  color:#fff;
+  cursor:pointer;
+  font-weight:600;
+  margin:4px;
+}
+
+.te5-btn:hover{
+  opacity:.9;
+}
+
+.te5-btn.secondary{
+  background:#475569;
+}
+
+.te5-result{
+  margin-top:15px;
+  padding:16px;
+  border-radius:12px;
+  background:#eff6ff;
+  border-left:4px solid #2563eb;
+}
+
+.te5-answer{
+  margin-top:15px;
+  padding:18px;
+  border-radius:14px;
+  background:#f8fafc;
+  line-height:1.7;
+}
+
+.te5-stat{
+  padding:15px;
+  border-radius:14px;
+  background:#eef2ff;
+  text-align:center;
+}
+
+.te5-stat strong{
+  display:block;
+  font-size:25px;
+  color:#1d4ed8;
+}
+
+.te5-progress{
+  height:12px;
+  background:#e2e8f0;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.te5-progress span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#06b6d4,#2563eb);
+}
+
+.te5-topic{
+  padding:14px;
+  border:1px solid #e2e8f0;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+.te5-topic strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.te5-danger{
+  border-left-color:#dc2626;
+  background:#fef2f2;
+}
+
+.te5-success{
+  border-left-color:#16a34a;
+  background:#f0fdf4;
+}
+
+.te5-hidden{
+  display:none;
+}
+
+.te5-options label{
+  display:block;
+  padding:10px;
+  margin:7px 0;
+  border:1px solid #e2e8f0;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.te5-options label:hover{
+  background:#f1f5f9;
+}
+
+@media(max-width:600px){
+  #te5Launcher{
+    right:15px;
+    bottom:90px;
+  }
+
+  #te5Modal{
+    padding:8px;
+  }
+
+  .te5-box{
+    margin:10px auto;
+    border-radius:15px;
+  }
+
+  .te5-content{
+    padding:15px;
+  }
+
+  .te5-head{
+    padding:16px;
+  }
+}
+
+/* Dark mode compatibility */
+body.dark #te5Modal .te5-box,
+.dark #te5Modal .te5-box{
+  background:#0f172a;
+  color:#e5e7eb;
+}
+
+body.dark #te5Modal .te5-card,
+.dark #te5Modal .te5-card,
+body.dark #te5Modal .te5-topic,
+.dark #te5Modal .te5-topic,
+body.dark #te5Modal .te5-answer,
+.dark #te5Modal .te5-answer{
+  background:#111827;
+  border-color:#334155;
+  color:#e5e7eb;
+}
+
+body.dark #te5Modal .te5-input,
+body.dark #te5Modal .te5-select,
+body.dark #te5Modal .te5-textarea,
+.dark #te5Modal .te5-input,
+.dark #te5Modal .te5-select,
+.dark #te5Modal .te5-textarea{
+  background:#111827;
+  color:#fff;
+  border-color:#475569;
+}
+</style>
+
+
+<button id="te5Launcher" title="Advanced Textile Hub">🚀</button>
+
+<div id="te5Modal">
+
+  <div class="te5-box">
+
+    <div class="te5-head">
+      <h2>🚀 Textile Explorer — Advanced Hub</h2>
+      <button class="te5-close" onclick="TE5.close()">×</button>
+    </div>
+
+    <div class="te5-content">
+
+      <!-- MAIN MENU -->
+      <div id="te5Home">
+
+        <div class="te5-grid">
+
+          <div class="te5-card" onclick="TE5.open('ai')">
+            <div class="icon">🤖</div>
+            <h3>AI Textile Tutor</h3>
+            <p>Textile প্রশ্ন করো, সহজ explanation পাও।</p>
+          </div>
+
+          <div class="te5-card" onclick="TE5.open('calc')">
+            <div class="icon">🧮</div>
+            <h3>Professional Calculator</h3>
+            <p>GSM, Count, EPI/PPI, Production ও আরও অনেক।</p>
+          </div>
+
+          <div class="te5-card" onclick="TE5.open('lab')">
+            <div class="icon">🧪</div>
+            <h3>Virtual Textile Lab</h3>
+            <p>Test result analyse ও Pass/Fail practice।</p>
+          </div>
+
+          <div class="te5-card" onclick="TE5.open('problem')">
+            <div class="icon">🐛</div>
+            <h3>Problem Solver</h3>
+            <p>Textile problem → Cause → Solution.</p>
+          </div>
+
+          <div class="te5-card" onclick="TE5.open('course')">
+            <div class="icon">📚</div>
+            <h3>Complete Course</h3>
+            <p>Fiber থেকে Garments পর্যন্ত chapter learning।</p>
+          </div>
+
+          <div class="te5-card" onclick="TE5.open('viva')">
+            <div class="icon">🎤</div>
+            <h3>Viva Simulator</h3>
+            <p>Viva প্রশ্নের উত্তর দিয়ে practice করো।</p>
+          </div>
+
+          <div class="te5-card" onclick="TE5.open('dashboard')">
+            <div class="icon">📈</div>
+            <h3>Student Dashboard</h3>
+            <p>XP, Level, Practice ও progress দেখো।</p>
+          </div>
+
+          <div class="te5-card" onclick="TE5.open('challenge')">
+            <div class="icon">🏆</div>
+            <h3>Daily Challenge</h3>
+            <p>প্রতিদিন Textile challenge complete করো।</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- AI TUTOR -->
+      <div id="te5-ai" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>🤖 AI Textile Tutor</h2>
+
+        <p>
+          যেকোনো Textile topic লিখো। যেমন:
+          <b>GSM কী?</b>,
+          <b>EPI/PPI কী?</b>,
+          <b>Ring Frame কী?</b>
+        </p>
+
+        <textarea id="te5AiQuestion"
+          class="te5-textarea"
+          placeholder="তোমার Textile প্রশ্ন লিখো..."></textarea>
+
+        <button class="te5-btn" onclick="TE5.askAI()">Ask Textile Tutor</button>
+
+        <div id="te5AiAnswer"></div>
+
+      </div>
+
+
+      <!-- CALCULATOR -->
+      <div id="te5-calc" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>🧮 Professional Textile Calculator</h2>
+
+        <select id="te5CalcType" class="te5-select"
+          onchange="TE5.calcUI()">
+
+          <option value="gsm">GSM</option>
+          <option value="fabricWeight">Fabric Weight</option>
+          <option value="count">Yarn Count</option>
+          <option value="epi">EPI / PPI</option>
+          <option value="production">Production</option>
+          <option value="efficiency">Efficiency</option>
+          <option value="twist">Twist / TPI</option>
+          <option value="cover">Cover Factor</option>
+
+        </select>
+
+        <div id="te5CalcInputs"></div>
+
+        <button class="te5-btn" onclick="TE5.calculate()">
+          Calculate
+        </button>
+
+        <div id="te5CalcResult"></div>
+
+      </div>
+
+
+      <!-- VIRTUAL LAB -->
+      <div id="te5-lab" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>🧪 Virtual Textile Laboratory</h2>
+
+        <select id="te5LabType" class="te5-select">
+
+          <option value="gsm">GSM Test</option>
+          <option value="shrinkage">Shrinkage Test</option>
+          <option value="tensile">Tensile Test</option>
+          <option value="color">Color Fastness</option>
+          <option value="pilling">Pilling Test</option>
+
+        </select>
+
+        <div id="te5LabInputs"></div>
+
+        <button class="te5-btn" onclick="TE5.runLab()">
+          Run Test
+        </button>
+
+        <div id="te5LabResult"></div>
+
+      </div>
+
+
+      <!-- PROBLEM SOLVER -->
+      <div id="te5-problem" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>🐛 Textile Problem Solver</h2>
+
+        <p>
+          নিচের problem থেকে একটি select করো।
+        </p>
+
+        <select id="te5ProblemType" class="te5-select">
+
+          <option value="gsmhigh">Fabric GSM বেশি হচ্ছে</option>
+          <option value="gsmlow">Fabric GSM কম হচ্ছে</option>
+          <option value="breakage">Yarn Breakage বেশি</option>
+          <option value="shade">Shade Variation</option>
+          <option value="pilling">Pilling বেশি</option>
+          <option value="shrinkage">Shrinkage বেশি</option>
+          <option value="lowproduction">Production কম</option>
+          <option value="uneven">Uneven Yarn</option>
+
+        </select>
+
+        <button class="te5-btn" onclick="TE5.solveProblem()">
+          Diagnose Problem
+        </button>
+
+        <div id="te5ProblemResult"></div>
+
+      </div>
+
+
+      <!-- COURSE -->
+      <div id="te5-course" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>📚 Textile Engineering Complete Course</h2>
+
+        <div id="te5CourseList"></div>
+
+      </div>
+
+
+      <!-- COURSE DETAIL -->
+      <div id="te5-courseDetail" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.open('course')">
+          ← Courses
+        </button>
+
+        <div id="te5CourseDetail"></div>
+
+      </div>
+
+
+      <!-- VIVA -->
+      <div id="te5-viva" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>🎤 Textile Viva Simulator</h2>
+
+        <div id="te5VivaQuestion"></div>
+
+        <button class="te5-btn" onclick="TE5.showVivaAnswer()">
+          Show Answer
+        </button>
+
+        <button class="te5-btn secondary" onclick="TE5.nextViva()">
+          Next Question
+        </button>
+
+        <div id="te5VivaAnswer"></div>
+
+      </div>
+
+
+      <!-- DASHBOARD -->
+      <div id="te5-dashboard" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>📈 Student Dashboard</h2>
+
+        <div class="te5-grid">
+
+          <div class="te5-stat">
+            <strong id="te5XP">0</strong>
+            XP
+          </div>
+
+          <div class="te5-stat">
+            <strong id="te5Level">1</strong>
+            Level
+          </div>
+
+          <div class="te5-stat">
+            <strong id="te5VivaCount">0</strong>
+            Viva Practice
+          </div>
+
+          <div class="te5-stat">
+            <strong id="te5ChallengeCount">0</strong>
+            Challenges
+          </div>
+
+        </div>
+
+        <div class="te5-section">
+
+          <h3>Level Progress</h3>
+
+          <div class="te5-progress">
+            <span id="te5LevelBar" style="width:0%"></span>
+          </div>
+
+        </div>
+
+        <div id="te5Badges" class="te5-answer"></div>
+
+      </div>
+
+
+      <!-- DAILY CHALLENGE -->
+      <div id="te5-challenge" class="te5-section te5-hidden">
+
+        <button class="te5-btn secondary" onclick="TE5.home()">← Back</button>
+
+        <h2>🏆 Daily Textile Challenge</h2>
+
+        <div id="te5ChallengeBox"></div>
+
+        <button class="te5-btn" onclick="TE5.completeChallenge()">
+          Complete Challenge
+        </button>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* =========================================================
+ TEXTILE EXPLORER — ADVANCED PACK 5 JS
+ ========================================================= */
+
+window.TE5 = {
+
+  data:{
+    xp:0,
+    viva:0,
+    challenges:0,
+    currentViva:0,
+    currentChallenge:0
+  },
+
+
+  init:function(){
+
+    const saved=localStorage.getItem("te5_data");
+
+    if(saved){
+
+      try{
+        this.data=Object.assign(
+          this.data,
+          JSON.parse(saved)
+        );
+      }catch(e){}
+
+    }
+
+    this.renderCourse();
+    this.calcUI();
+    this.renderLab();
+    this.renderDashboard();
+
+  },
+
+
+  save:function(){
+
+    localStorage.setItem(
+      "te5_data",
+      JSON.stringify(this.data)
+    );
+
+  },
+
+
+  addXP:function(amount){
+
+    this.data.xp += amount;
+
+    this.save();
+    this.renderDashboard();
+
+  },
+
+
+  open:function(type){
+
+    document.getElementById("te5Modal").style.display="block";
+
+    document.querySelectorAll(
+      "#te5Modal .te5-section"
+    ).forEach(el=>el.classList.add("te5-hidden"));
+
+    if(type==="courseDetail"){
+      document.getElementById("te5-courseDetail")
+        .classList.remove("te5-hidden");
+      return;
+    }
+
+    const el=document.getElementById("te5-"+type);
+
+    if(el){
+      el.classList.remove("te5-hidden");
+    }
+
+    if(type==="dashboard"){
+      this.renderDashboard();
+    }
+
+    if(type==="viva"){
+      this.renderViva();
+    }
+
+    if(type==="challenge"){
+      this.renderChallenge();
+    }
+
+  },
+
+
+  home:function(){
+
+    document.querySelectorAll(
+      "#te5Modal .te5-section"
+    ).forEach(el=>el.classList.add("te5-hidden"));
+
+    document.getElementById("te5Home")
+      .classList.remove("te5-hidden");
+
+  },
+
+
+  close:function(){
+
+    document.getElementById("te5Modal")
+      .style.display="none";
+
+  },
+
+
+  /* ================= AI TUTOR ================= */
+
+  askAI:function(){
+
+    const q=document.getElementById("te5AiQuestion")
+      .value.toLowerCase().trim();
+
+    let answer="";
+
+    if(!q){
+
+      answer="⚠️ আগে একটি Textile প্রশ্ন লিখো।";
+
+    }
+
+    else if(q.includes("gsm")){
+
+      answer=`
+      <h3>📘 GSM</h3>
+      <p><b>GSM = Grams per Square Meter.</b></p>
+      <p>অর্থাৎ ১ square meter fabric-এর weight কত gram
+      তা GSM দিয়ে প্রকাশ করা হয়।</p>
+
+      <p><b>Formula:</b></p>
+
+      <div class="te5-result">
+      GSM = Weight(g) ÷ Area(m²)
+      </div>
+
+      <p>
+      উদাহরণ: 1 m² fabric-এর weight 180g হলে
+      GSM = 180 GSM.
+      </p>
+      `;
+
+    }
+
+    else if(
+      q.includes("epi") ||
+      q.includes("ppi")
+    ){
+
+      answer=`
+      <h3>🧵 EPI / PPI</h3>
+
+      <p><b>EPI:</b> Ends Per Inch — প্রতি inch-এ warp yarn-এর সংখ্যা।</p>
+
+      <p><b>PPI:</b> Picks Per Inch — প্রতি inch-এ weft yarn-এর সংখ্যা।</p>
+
+      <div class="te5-result">
+      EPI = Number of Ends ÷ Width
+      <br>
+      PPI = Number of Picks ÷ Length
+      </div>
+      `;
+
+    }
+
+    else if(q.includes("tex")){
+
+      answer=`
+      <h3>🧵 Tex</h3>
+
+      <p>
+      Tex হলো yarn linear density-এর একটি unit।
+      </p>
+
+      <div class="te5-result">
+      Tex = Weight(g) per 1000 meter
+      </div>
+
+      <p>
+      20 Tex yarn মানে 1000 meter yarn-এর weight 20 gram।
+      </p>
+      `;
+
+    }
+
+    else if(q.includes("denier")){
+
+      answer=`
+      <h3>🧵 Denier</h3>
+
+      <p>
+      Denier হলো 9000 meter yarn-এর gram weight।
+      </p>
+
+      <div class="te5-result">
+      Denier = Weight(g) × 9000 ÷ Length(m)
+      </div>
+      `;
+
+    }
+
+    else if(q.includes("spinning")){
+
+      answer=`
+      <h3>🏭 Spinning</h3>
+
+      <p>
+      Spinning হলো fiber থেকে yarn তৈরি করার process।
+      </p>
+
+      <p>
+      Basic flow:
+      <b>Blow Room → Carding → Drawing → Roving → Ring Frame → Winding</b>
+      </p>
+      `;
+
+    }
+
+    else if(q.includes("weaving")){
+
+      answer=`
+      <h3>🏭 Weaving</h3>
+
+      <p>
+      দুই সেট yarn—Warp এবং Weft—interlacement-এর মাধ্যমে
+      woven fabric তৈরি হয়।
+      </p>
+
+      <p>
+      প্রধান elements:
+      Shedding, Picking, Beat-up.
+      </p>
+      `;
+
+    }
+
+    else if(q.includes("knitting")){
+
+      answer=`
+      <h3>🧶 Knitting</h3>
+
+      <p>
+      Loop formation-এর মাধ্যমে yarn থেকে knitted fabric তৈরি হয়।
+      </p>
+
+      <p>
+      প্রধান দুই ধরনের knitting:
+      <b>Warp Knitting</b> এবং <b>Weft Knitting</b>.
+      </p>
+      `;
+
+    }
+
+    else if(q.includes("dyeing")){
+
+      answer=`
+      <h3>🎨 Dyeing</h3>
+
+      <p>
+      Textile material-এর মধ্যে dye molecules প্রবেশ/আবদ্ধ করার
+      process হলো dyeing।
+      </p>
+
+      <p>
+      গুরুত্বপূর্ণ বিষয়:
+      Temperature, Time, pH, Liquor Ratio এবং Chemical concentration.
+      </p>
+      `;
+
+    }
+
+    else if(q.includes("carding")){
+
+      answer=`
+      <h3>⚙️ Carding</h3>
+
+      <p>
+      Carding-কে spinning-এর heart বলা হয়।
+      </p>
+
+      <p>
+      প্রধান কাজ:
+      <br>• Fiber opening
+      <br>• Cleaning
+      <br>• Individualization
+      <br>• Nep reduction
+      <br>• Sliver formation
+      </p>
+      `;
+
+    }
+
+    else if(q.includes("ring frame")){
+
+      answer=`
+      <h3>⚙️ Ring Frame</h3>
+
+      <p>
+      Ring Frame মূলত roving থেকে final yarn তৈরি করে।
+      </p>
+
+      <p>
+      প্রধান কাজ:
+      <b>Drafting + Twisting + Winding</b>
+      </p>
+      `;
+
+    }
+
+    else{
+
+      answer=`
+      <h3>🤖 Textile Tutor</h3>
+
+      <p>
+      এই প্রশ্নের জন্য আমার offline knowledge base-এ
+      সরাসরি answer নেই।
+      </p>
+
+      <p>
+      তুমি আরও specific keyword দিয়ে প্রশ্ন করতে পারো।
+      যেমন:
+      <b>GSM, EPI, PPI, Tex, Denier, Spinning,
+      Carding, Ring Frame, Weaving, Knitting, Dyeing</b>.
+      </p>
+      `;
+
+    }
+
+    document.getElementById("te5AiAnswer")
+      .innerHTML=
+      `<div class="te5-answer">${answer}</div>`;
+
+    this.addXP(3);
+
+  },
+
+
+  /* ================= CALCULATOR ================= */
+
+  calcUI:function(){
+
+    const type=document.getElementById("te5CalcType").value;
+
+    let html="";
+
+    if(type==="gsm"){
+
+      html=`
+      <label>Weight (gram)</label>
+      <input id="te5c1" class="te5-input">
+
+      <label>Length (cm)</label>
+      <input id="te5c2" class="te5-input">
+
+      <label>Width (cm)</label>
+      <input id="te5c3" class="te5-input">
+      `;
+
+    }
+
+    else if(type==="fabricWeight"){
+
+      html=`
+      <label>GSM</label>
+      <input id="te5c1" class="te5-input">
+
+      <label>Length (meter)</label>
+      <input id="te5c2" class="te5-input">
+
+      <label>Width (meter)</label>
+      <input id="te5c3" class="te5-input">
+      `;
+
+    }
+
+    else if(type==="count"){
+
+      html=`
+      <label>Count Value</label>
+      <input id="te5c1" class="te5-input">
+
+      <select id="te5c2" class="te5-select">
+        <option value="tex">Tex → Denier / Ne</option>
+        <option value="denier">Denier → Tex / Ne</option>
+        <option value="ne">Ne → Tex / Denier</option>
+      </select>
+      `;
+
+    }
+
+    else if(type==="epi"){
+
+      html=`
+      <label>Total Ends</label>
+      <input id="te5c1" class="te5-input">
+
+      <label>Fabric Width (inch)</label>
+      <input id="te5c2" class="te5-input">
+
+      <label>Total Picks</label>
+      <input id="te5c3" class="te5-input">
+
+      <label>Fabric Length (inch)</label>
+      <input id="te5c4" class="te5-input">
+      `;
+
+    }
+
+    else if(type==="production"){
+
+      html=`
+      <label>Machine Speed (RPM)</label>
+      <input id="te5c1" class="te5-input">
+
+      <label>Efficiency (%)</label>
+      <input id="te5c2" class="te5-input">
+
+      <label>Time (hour)</label>
+      <input id="te5c3" class="te5-input">
+
+      <label>PPI</label>
+      <input id="te5c4" class="te5-input">
+      `;
+
+    }
+
+    else if(type==="efficiency"){
+
+      html=`
+      <label>Actual Production</label>
+      <input id="te5c1" class="te5-input">
+
+      <label>Standard / Theoretical Production</label>
+      <input id="te5c2" class="te5-input">
+      `;
+
+    }
+
+    else if(type==="twist"){
+
+      html=`
+      <label>Twist per inch</label>
+      <input id="te5c1" class="te5-input">
+
+      <label>Yarn Count Ne</label>
+      <input id="te5c2" class="te5-input">
+      `;
+
+    }
+
+    else if(type==="cover"){
+
+      html=`
+      <label>EPI</label>
+      <input id="te5c1" class="te5-input">
+
+      <label>PPI</label>
+      <input id="te5c2" class="te5-input">
+
+      <label>Warp Count Ne</label>
+      <input id="te5c3" class="te5-input">
+
+      <label>Weft Count Ne</label>
+      <input id="te5c4" class="te5-input">
+      `;
+
+    }
+
+    document.getElementById("te5CalcInputs").innerHTML=html;
+
+  },
+
+
+  calculate:function(){
+
+    const type=document.getElementById("te5CalcType").value;
+
+    const v=id=>parseFloat(
+      document.getElementById(id)?.value
+    );
+
+    let result="";
+
+    if(type==="gsm"){
+
+      const weight=v("te5c1");
+      const length=v("te5c2");
+      const width=v("te5c3");
+
+      const area=(length*width)/10000;
+
+      result=`GSM = <b>${(weight/area).toFixed(2)}</b> GSM`;
+
+    }
+
+    else if(type==="fabricWeight"){
+
+      const gsm=v("te5c1");
+      const length=v("te5c2");
+      const width=v("te5c3");
+
+      result=
+      `Fabric Weight = <b>${(gsm*length*width/1000).toFixed(3)}</b> kg`;
+
+    }
+
+    else if(type==="count"){
+
+      const x=v("te5c1");
+      const unit=document.getElementById("te5c2").value;
+
+      if(unit==="tex"){
+
+        result=
+        `Tex: <b>${x}</b><br>
+        Denier: <b>${(x*9).toFixed(2)}</b><br>
+        Ne: <b>${(590.5/x).toFixed(2)}</b>`;
+
+      }
+
+      else if(unit==="denier"){
+
+        result=
+        `Denier: <b>${x}</b><br>
+        Tex: <b>${(x/9).toFixed(2)}</b><br>
+        Ne: <b>${(5314.5/x).toFixed(2)}</b>`;
+
+      }
+
+      else{
+
+        result=
+        `Ne: <b>${x}</b><br>
+        Tex: <b>${(590.5/x).toFixed(2)}</b><br>
+        Denier: <b>${(5314.5/x).toFixed(2)}</b>`;
+
+      }
+
+    }
+
+    else if(type==="epi"){
+
+      const ends=v("te5c1");
+      const width=v("te5c2");
+      const picks=v("te5c3");
+      const length=v("te5c4");
+
+      result=
+      `EPI = <b>${(ends/width).toFixed(2)}</b><br>
+       PPI = <b>${(picks/length).toFixed(2)}</b>`;
+
+    }
+
+    else if(type==="production"){
+
+      const rpm=v("te5c1");
+      const eff=v("te5c2");
+      const hours=v("te5c3");
+      const ppi=v("te5c4");
+
+      const meters=
+      (rpm*60*(eff/100)*hours)/(ppi*100);
+
+      result=
+      `Estimated Production =
+      <b>${meters.toFixed(2)} meter</b>`;
+
+    }
+
+    else if(type==="efficiency"){
+
+      const actual=v("te5c1");
+      const standard=v("te5c2");
+
+      result=
+      `Efficiency =
+      <b>${((actual/standard)*100).toFixed(2)}%</b>`;
+
+    }
+
+    else if(type==="twist"){
+
+      const tpi=v("te5c1");
+      const ne=v("te5c2");
+
+      const tm=tpi/Math.sqrt(ne);
+
+      result=
+      `Twist Multiplier ≈
+      <b>${tm.toFixed(3)}</b>`;
+
+    }
+
+    else if(type==="cover"){
+
+      const epi=v("te5c1");
+      const ppi=v("te5c2");
+      const warp=v("te5c3");
+      const weft=v("te5c4");
+
+      const warpCover=epi/Math.sqrt(warp);
+      const weftCover=ppi/Math.sqrt(weft);
+
+      result=
+      `Warp Cover Factor ≈ <b>${warpCover.toFixed(2)}</b><br>
+       Weft Cover Factor ≈ <b>${weftCover.toFixed(2)}</b>`;
+
+    }
+
+    document.getElementById("te5CalcResult")
+      .innerHTML=
+      `<div class="te5-result">${result}</div>`;
+
+    this.addXP(2);
+
+  },
+
+
+  /* ================= VIRTUAL LAB ================= */
+
+  renderLab:function(){
+
+    const el=document.getElementById("te5LabInputs");
+
+    if(!el)return;
+
+    el.innerHTML=`
+
+      <label>Measured Value</label>
+      <input id="te5LabValue" class="te5-input">
+
+      <label>Target / Standard</label>
+      <input id="te5LabTarget" class="te5-input">
+
+    `;
+
+  },
+
+
+  runLab:function(){
+
+    const type=document.getElementById("te5LabType").value;
+
+    const value=parseFloat(
+      document.getElementById("te5LabValue").value
+    );
+
+    const target=parseFloat(
+      document.getElementById("te5LabTarget").value
+    );
+
+    let result="";
+
+    if(!isFinite(value)||!isFinite(target)){
+
+      result="⚠️ সঠিক numerical value দাও।";
+
+    }
+
+    else if(type==="gsm"){
+
+      const diff=Math.abs(value-target);
+
+      result=
+      diff<=target*.05
+      ?`✅ PASS — GSM acceptable range-এর মধ্যে। Difference: ${diff.toFixed(2)}`
+      :`❌ REVIEW — GSM target থেকে বেশি difference দেখাচ্ছে।`;
+
+    }
+
+    else if(type==="shrinkage"){
+
+      result=
+      value<=target
+      ?`✅ PASS — Shrinkage ${value}% acceptable।`
+      :`❌ FAIL — Shrinkage ${value}% target ${target}% এর বেশি।`;
+
+    }
+
+    else if(type==="tensile"){
+
+      result=
+      value>=target
+      ?`✅ PASS — Tensile strength target পূরণ করেছে।`
+      :`❌ FAIL — Tensile strength target-এর নিচে।`;
+
+    }
+
+    else if(type==="color"){
+
+      result=
+      value>=target
+      ?`✅ PASS — Color fastness grade acceptable।`
+      :`❌ REVIEW — Color fastness improve করা দরকার।`;
+
+    }
+
+    else if(type==="pilling"){
+
+      result=
+      value>=target
+      ?`✅ PASS — Pilling rating acceptable।`
+      :`❌ FAIL — Pilling performance কম।`;
+
+    }
+
+    document.getElementById("te5LabResult")
+      .innerHTML=
+      `<div class="te5-result">${result}</div>`;
+
+    this.addXP(5);
+
+  },
+
+
+  /* ================= PROBLEM SOLVER ================= */
+
+  solveProblem:function(){
+
+    const p=document.getElementById("te5ProblemType").value;
+
+    const problems={
+
+      gsmhigh:{
+        title:"Fabric GSM বেশি",
+        cause:[
+          "Yarn count/coarser yarn",
+          "EPI/PPI বেশি",
+          "Fabric construction পরিবর্তন",
+          "Finishing বা compaction effect"
+        ],
+        solution:[
+          "Yarn count verify করো",
+          "EPI/PPI check করো",
+          "Machine setting verify করো",
+          "Finishing parameter review করো"
+        ]
+      },
+
+      gsmlow:{
+        title:"Fabric GSM কম",
+        cause:[
+          "Yarn finer হতে পারে",
+          "EPI/PPI কম",
+          "Fabric construction loose",
+          "Over-stretching"
+        ],
+        solution:[
+          "Yarn count verify করো",
+          "EPI/PPI check করো",
+          "Machine setting check করো"
+        ]
+      },
+
+      breakage:{
+        title:"Yarn Breakage বেশি",
+        cause:[
+          "Low yarn strength",
+          "High twist variation",
+          "Machine speed বেশি",
+          "Drafting problem",
+          "Poor lubrication/maintenance"
+        ],
+        solution:[
+          "Yarn quality test করো",
+          "Machine speed optimize করো",
+          "Drafting system inspect করো",
+          "Machine maintenance করো"
+        ]
+      },
+
+      shade:{
+        title:"Shade Variation",
+        cause:[
+          "Uneven dye concentration",
+          "Temperature variation",
+          "pH variation",
+          "Liquor ratio সমস্যা",
+          "Poor process control"
+        ],
+        solution:[
+          "pH control করো",
+          "Temperature profile verify করো",
+          "Dye concentration check করো",
+          "Process uniformity নিশ্চিত করো"
+        ]
+      },
+
+      pilling:{
+        title:"Pilling বেশি",
+        cause:[
+          "Loose fiber",
+          "Low twist",
+          "Fiber length short",
+          "High abrasion"
+        ],
+        solution:[
+          "Better fiber selection",
+          "Twist optimize করা",
+          "Anti-pilling finish",
+          "Proper finishing"
+        ]
+      },
+
+      shrinkage:{
+        title:"Shrinkage বেশি",
+        cause:[
+          "Relaxation shrinkage",
+          "Heat treatment",
+          "Improper finishing",
+          "Fabric tension"
+        ],
+        solution:[
+          "Compaction control",
+          "Stenter setting optimize",
+          "Finishing condition review"
+        ]
+      },
+
+      lowproduction:{
+        title:"Production কম",
+        cause:[
+          "Machine speed কম",
+          "Efficiency কম",
+          "Frequent machine stoppage",
+          "High breakage"
+        ],
+        solution:[
+          "Downtime analysis",
+          "Machine maintenance",
+          "Operator efficiency improve",
+          "Breakage reduction"
+        ]
+      },
+
+      uneven:{
+        title:"Uneven Yarn",
+        cause:[
+          "Poor drafting",
+          "Fiber blending সমস্যা",
+          "Carding সমস্যা",
+          "Drawing irregularity"
+        ],
+        solution:[
+          "Carding settings check",
+          "Drawing process check",
+          "Sliver uniformity test"
+        ]
+      }
+
+    };
+
+    const x=problems[p];
+
+    document.getElementById("te5ProblemResult")
+      .innerHTML=`
+
+      <div class="te5-answer">
+
+        <h3>🔍 ${x.title}</h3>
+
+        <h4>Possible Causes</h4>
+
+        <ul>
+          ${x.cause.map(c=>`<li>${c}</li>`).join("")}
+        </ul>
+
+        <h4>Recommended Solutions</h4>
+
+        <ul>
+          ${x.solution.map(s=>`<li>${s}</li>`).join("")}
+        </ul>
+
+        <div class="te5-result">
+        💡 Tip: প্রথমে root cause identify করে
+        তারপর machine/process parameter change করো।
+        </div>
+
+      </div>
+      `;
+
+    this.addXP(5);
+
+  },
+
+
+  /* ================= COURSE ================= */
+
+  courses:[
+
+    {
+      name:"Fiber Engineering",
+      icon:"🌱",
+      lessons:[
+        ["Natural Fiber","Cotton, wool, silk ও অন্যান্য natural fiber-এর basic properties।"],
+        ["Man-made Fiber","Polyester, nylon, viscose, acrylic ইত্যাদি।"],
+        ["Fiber Properties","Length, strength, fineness, maturity, moisture regain।"]
+      ]
+    },
+
+    {
+      name:"Spinning Technology",
+      icon:"🧵",
+      lessons:[
+        ["Blow Room","Opening, cleaning এবং blending।"],
+        ["Carding","Fiber individualization ও sliver formation।"],
+        ["Drawing","Sliver doubling ও drafting।"],
+        ["Roving","Ring spinning-এর জন্য intermediate strand।"],
+        ["Ring Frame","Drafting, twisting ও winding।"],
+        ["Winding","Yarn clearing ও package formation।"]
+      ]
+    },
+
+    {
+      name:"Weaving Technology",
+      icon:"🏭",
+      lessons:[
+        ["Warping","Warp yarn sheet preparation।"],
+        ["Sizing","Warp yarn-এর strength ও abrasion resistance improve করা।"],
+        ["Shedding","Warp yarn-এর separation।"],
+        ["Picking","Weft insertion।"],
+        ["Beat-up","Weft yarn fabric fell-এর দিকে push করা।"]
+      ]
+    },
+
+    {
+      name:"Knitting Technology",
+      icon:"🧶",
+      lessons:[
+        ["Weft Knitting","Course ও wale ভিত্তিক loop structure।"],
+        ["Warp Knitting","Multiple yarn system দিয়ে loop formation।"],
+        ["Single Jersey","Common weft knitted structure।"],
+        ["Rib","Stretchable structure।"],
+        ["Interlock","Double knit structure।"]
+      ]
+    },
+
+    {
+      name:"Dyeing & Finishing",
+      icon:"🎨",
+      lessons:[
+        ["Pretreatment","Desizing, scouring, bleaching।"],
+        ["Dyeing","Coloration process।"],
+        ["Printing","Pattern application।"],
+        ["Finishing","Fabric-এর final properties improve করা।"],
+        ["Stenter","Width setting ও heat treatment।"]
+      ]
+    },
+
+    {
+      name:"Garments Technology",
+      icon:"👕",
+      lessons:[
+        ["Cutting","Marker, spreading ও cutting।"],
+        ["Sewing","Garment assembly।"],
+        ["Finishing","Thread trimming, ironing ও final presentation।"],
+        ["Quality Control","Measurement, appearance ও workmanship check।"]
+      ]
+    },
+
+    {
+      name:"Textile Testing",
+      icon:"🔬",
+      lessons:[
+        ["GSM Test","Fabric mass per unit area।"],
+        ["Tensile Test","Fabric breaking strength।"],
+        ["Tear Test","Tear resistance।"],
+        ["Bursting Test","Knitted fabric pressure resistance।"],
+        ["Pilling Test","Surface pill formation।"],
+        ["Color Fastness","Color resistance to different conditions।"]
+      ]
+    },
+
+    {
+      name:"Textile Career",
+      icon:"💼",
+      lessons:[
+        ["Merchandising","Buyer communication, costing, order follow-up।"],
+        ["QA/QC","Quality assurance ও inspection।"],
+        ["IE","Production efficiency ও SMV analysis।"],
+        ["Production","Factory production management।"],
+        ["PPC","Production planning and control।"]
+      ]
+    }
+
+  ],
+
+
+  renderCourse:function(){
+
+    const el=document.getElementById("te5CourseList");
+
+    if(!el)return;
+
+    el.innerHTML=this.courses.map((c,i)=>`
+
+      <div class="te5-topic"
+        onclick="TE5.showCourse(${i})"
+        style="cursor:pointer">
+
+        <strong>
+          ${c.icon} ${c.name}
+        </strong>
+
+        <small>
+          ${c.lessons.length} lessons
+        </small>
+
+      </div>
+
+    `).join("");
+
+  },
+
+
+  showCourse:function(index){
+
+    const c=this.courses[index];
+
+    let html=`
+
+      <h2>${c.icon} ${c.name}</h2>
+
+      <p>
+      এই chapter-এর গুরুত্বপূর্ণ topics নিচে দেওয়া হলো।
+      </p>
+    `;
+
+    c.lessons.forEach((l,i)=>{
+
+      html+=`
+
+        <div class="te5-topic">
+
+          <strong>${i+1}. ${l[0]}</strong>
+
+          <p>${l[1]}</p>
+
+          <button class="te5-btn"
+            onclick="TE5.lessonComplete(${index},${i})">
+            ✓ Mark Complete
+          </button>
+
+        </div>
+
+      `;
+
+    });
+
+    document.getElementById("te5CourseDetail")
+      .innerHTML=html;
+
+    this.open("courseDetail");
+
+  },
+
+
+  lessonComplete:function(){
+
+    this.addXP(10);
+
+    alert("✅ Lesson completed! +10 XP");
+
+  },
+
+
+  /* ================= VIVA ================= */
+
+  vivaBank:[
+
+    ["What is GSM?","GSM means Grams per Square Meter."],
+
+    ["What is EPI?","EPI means Ends Per Inch."],
+
+    ["What is PPI?","PPI means Picks Per Inch."],
+
+    ["What is Tex?","Tex is the mass in grams per 1000 meters of yarn."],
+
+    ["What is Denier?","Denier is the mass in grams per 9000 meters of yarn."],
+
+    ["What is Carding?","Carding opens, cleans and individualizes fibers and forms sliver."],
+
+    ["What is Drawing?","Drawing improves sliver uniformity through drafting and doubling."],
+
+    ["What is Roving?","Roving is an intermediate strand prepared for spinning."],
+
+    ["What is Ring Frame?","Ring Frame converts roving into final yarn using drafting, twisting and winding."],
+
+    ["What is Weaving?","Weaving forms fabric by interlacing warp and weft yarns."],
+
+    ["What is Knitting?","Knitting forms fabric through loop formation."],
+
+    ["What is Dyeing?","Dyeing is the coloration of textile material."],
+
+    ["What is Finishing?","Finishing improves the final appearance and performance of textile material."],
+
+    ["What is AQL?","AQL means Acceptable Quality Limit."],
+
+    ["What is Shrinkage?","Shrinkage is dimensional reduction of textile material after treatment or washing."],
+
+    ["What is Pilling?","Pilling is formation of small fiber balls on fabric surface."],
+
+    ["What is Stenter?","Stenter is used for width setting and heat treatment of fabric."],
+
+    ["What is SMV?","SMV means Standard Minute Value used in garment production planning."],
+
+    ["What is QA?","QA means Quality Assurance."],
+
+    ["What is QC?","QC means Quality Control."]
+
+  ],
+
+
+  renderViva:function(){
+
+    this.data.currentViva=
+      Math.floor(Math.random()*this.vivaBank.length);
+
+    const q=this.vivaBank[this.data.currentViva];
+
+    document.getElementById("te5VivaQuestion")
+      .innerHTML=`
+
+      <div class="te5-answer">
+
+        <h3>🎤 Viva Question</h3>
+
+        <p style="font-size:20px">
+        ${q[0]}
+        </p>
+
+      </div>
+
+      `;
+
+    document.getElementById("te5VivaAnswer")
+      .innerHTML="";
+
+  },
+
+
+  showVivaAnswer:function(){
+
+    const q=this.vivaBank[this.data.currentViva];
+
+    document.getElementById("te5VivaAnswer")
+      .innerHTML=`
+
+      <div class="te5-result">
+
+        <b>✅ Suggested Answer:</b>
+
+        <p>${q[1]}</p>
+
+      </div>
+
+      `;
+
+    this.data.viva++;
+    this.addXP(5);
+
+  },
+
+
+  nextViva:function(){
+
+    this.renderViva();
+
+  },
+
+
+  /* ================= DASHBOARD ================= */
+
+  renderDashboard:function(){
+
+    const xp=this.data.xp;
+
+    const level=
+      Math.floor(xp/100)+1;
+
+    const progress=
+      xp%100;
+
+    const xpEl=document.getElementById("te5XP");
+
+    if(!xpEl)return;
+
+    xpEl.textContent=xp;
+
+    document.getElementById("te5Level")
+      .textContent=level;
+
+    document.getElementById("te5VivaCount")
+      .textContent=this.data.viva;
+
+    document.getElementById("te5ChallengeCount")
+      .textContent=this.data.challenges;
+
+    document.getElementById("te5LevelBar")
+      .style.width=progress+"%";
+
+    let badges=[];
+
+    if(xp>=10)
+      badges.push("🥉 First XP");
+
+    if(xp>=100)
+      badges.push("🥈 Textile Learner");
+
+    if(xp>=250)
+      badges.push("🥇 Textile Explorer");
+
+    if(xp>=500)
+      badges.push("🏆 Textile Master");
+
+    if(this.data.viva>=10)
+      badges.push("🎤 Viva Starter");
+
+    if(this.data.challenges>=5)
+      badges.push("🔥 Challenge Warrior");
+
+    document.getElementById("te5Badges")
+      .innerHTML=`
+
+      <h3>🏅 Achievements</h3>
+
+      ${
+        badges.length
+        ? badges.map(x=>`<span style="
+            display:inline-block;
+            padding:8px 10px;
+            margin:4px;
+            border-radius:20px;
+            background:#e0e7ff;
+          ">${x}</span>`).join("")
+        : "<p>Practice করো এবং badge unlock করো!</p>"
+      }
+
+      `;
+
+  },
+
+
+  /* ================= DAILY CHALLENGE ================= */
+
+  challenges:[
+
+    {
+      q:"GSM-এর full form কী?",
+      a:"Grams per Square Meter"
+    },
+
+    {
+      q:"EPI কী measure করে?",
+      a:"Warp ends per inch"
+    },
+
+    {
+      q:"PPI কী measure করে?",
+      a:"Weft picks per inch"
+    },
+
+    {
+      q:"Carding-এর একটি প্রধান কাজ কী?",
+      a:"Fiber opening, cleaning and individualization"
+    },
+
+    {
+      q:"Ring Frame-এর প্রধান কাজ কী?",
+      a:"Roving থেকে final yarn তৈরি করা"
+    },
+
+    {
+      q:"Weaving-এ দুই ধরনের yarn কী?",
+      a:"Warp and Weft"
+    },
+
+    {
+      q:"Knitting কীভাবে fabric তৈরি করে?",
+      a:"Loop formation-এর মাধ্যমে"
+    },
+
+    {
+      q:"Tex কী?",
+      a:"Grams per 1000 meters"
+    },
+
+    {
+      q:"Denier কী?",
+      a:"Grams per 9000 meters"
+    },
+
+    {
+      q:"SMV কোথায় বেশি ব্যবহৃত হয়?",
+      a:"Garments production planning"
+    }
+
+  ],
+
+
+  renderChallenge:function(){
+
+    this.data.currentChallenge=
+      new Date().getDate()%
+      this.challenges.length;
+
+    const c=
+      this.challenges[this.data.currentChallenge];
+
+    document.getElementById("te5ChallengeBox")
+      .innerHTML=`
+
+      <div class="te5-answer">
+
+        <h3>🔥 Today's Question</h3>
+
+        <p style="font-size:19px">
+        ${c.q}
+        </p>
+
+        <details>
+          <summary>Answer দেখো</summary>
+          <p><b>${c.a}</b></p>
+        </details>
+
+      </div>
+
+      `;
+
+  },
+
+
+  completeChallenge:function(){
+
+    this.data.challenges++;
+
+    this.addXP(15);
+
+    alert("🏆 Challenge Complete! +15 XP");
+
+    this.renderChallenge();
+
+  }
+
+};
+
+
+/* ================= START ================= */
+
+document.getElementById("te5Launcher")
+  .addEventListener("click",function(){
+
+    TE5.open("ai");
+
+  });
+
+
+document.getElementById("te5Modal")
+  .addEventListener("click",function(e){
+
+    if(e.target===this){
+      TE5.close();
+    }
+
+  });
+
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+    TE5.close();
+  }
+
+});
+
+
+TE5.init();
+
+</script>
+
+<!-- ================= END PACK 5 ================= -->
 </body>
 </html>
