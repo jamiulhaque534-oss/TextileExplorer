@@ -41355,5 +41355,29 @@ const TEC8 = (() => {
 <!-- =========================================================
  END M6-M10
 ========================================================= -->
+  <!-- MOBILE MENU FIX -->
+<script>
+(function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  if (!menuToggle || !mainNav) return;
+
+  menuToggle.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    mainNav.classList.toggle("open");
+    menuToggle.classList.toggle("active");
+  });
+
+  mainNav.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      mainNav.classList.remove("open");
+      menuToggle.classList.remove("active");
+    });
+  });
+})();
+</script>
 </body>
 </html>
