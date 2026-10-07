@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Textile Explorer Platform loaded successfully.");
-});
-document.addEventListener("DOMContentLoaded", function () {
   const root = document.getElementById("textile-platform-root");
 
   if (!root) return;
