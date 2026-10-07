@@ -1,1 +1,412 @@
+/* =========================================================
+   TEXTILE EXPLORER — PLATFORM UPGRADE
+   ========================================================= */
 
+:root {
+  --tx-primary: #0f766e;
+  --tx-primary-dark: #115e59;
+  --tx-secondary: #14b8a6;
+  --tx-bg: #f5f7fa;
+  --tx-card: #ffffff;
+  --tx-text: #172033;
+  --tx-muted: #667085;
+  --tx-border: #e5e7eb;
+  --tx-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --tx-radius: 18px;
+}
+
+/* ==============================
+   PLATFORM COMMON
+   ============================== */
+
+.tx-platform-section {
+  width: min(1180px, calc(100% - 32px));
+  margin: 50px auto;
+}
+
+.tx-platform-title {
+  margin-bottom: 8px;
+  color: var(--tx-text);
+  font-size: clamp(25px, 4vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.tx-platform-subtitle {
+  margin: 0 0 25px;
+  color: var(--tx-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ==============================
+   PLATFORM GRID
+   ============================== */
+
+.tx-platform-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.tx-platform-card {
+  position: relative;
+  padding: 24px;
+  background: var(--tx-card);
+  border: 1px solid var(--tx-border);
+  border-radius: var(--tx-radius);
+  box-shadow: var(--tx-shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+  overflow: hidden;
+}
+
+.tx-platform-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, .12);
+}
+
+.tx-platform-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  background: #ecfdf5;
+  font-size: 25px;
+}
+
+.tx-platform-card h3 {
+  margin: 0 0 8px;
+  color: var(--tx-text);
+  font-size: 18px;
+}
+
+.tx-platform-card p {
+  margin: 0;
+  color: var(--tx-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ==============================
+   PLATFORM BUTTON
+   ============================== */
+
+.tx-platform-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--tx-primary);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.tx-platform-btn:hover {
+  background: var(--tx-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* ==============================
+   SMART SEARCH
+   ============================== */
+
+.tx-smart-search {
+  position: relative;
+  max-width: 760px;
+  margin: 25px auto;
+}
+
+.tx-smart-search input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 17px 22px 17px 52px;
+  border: 1px solid var(--tx-border);
+  border-radius: 15px;
+  outline: none;
+  background: #fff;
+  color: var(--tx-text);
+  font-size: 15px;
+  box-shadow: var(--tx-shadow);
+}
+
+.tx-smart-search input:focus {
+  border-color: var(--tx-secondary);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, .12);
+}
+
+.tx-smart-search::before {
+  content: "🔎";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* ==============================
+   PLATFORM DASHBOARD
+   ============================== */
+
+.tx-dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.tx-stat {
+  padding: 23px;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border: 1px solid var(--tx-border);
+  border-radius: 16px;
+  box-shadow: var(--tx-shadow);
+}
+
+.tx-stat-number {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--tx-primary);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.tx-stat-label {
+  color: var(--tx-muted);
+  font-size: 14px;
+}
+
+/* ==============================
+   CATEGORY BADGE
+   ============================== */
+
+.tx-category {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 13px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f0fdfa;
+  color: var(--tx-primary-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ==============================
+   KNOWLEDGE / RESOURCE LIST
+   ============================== */
+
+.tx-resource-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.tx-resource {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--tx-border);
+  border-radius: 15px;
+  transition: .2s ease;
+}
+
+.tx-resource:hover {
+  border-color: var(--tx-secondary);
+  transform: translateY(-3px);
+}
+
+.tx-resource-icon {
+  flex: 0 0 auto;
+  font-size: 26px;
+}
+
+.tx-resource h4 {
+  margin: 0 0 5px;
+  color: var(--tx-text);
+  font-size: 16px;
+}
+
+.tx-resource p {
+  margin: 0;
+  color: var(--tx-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ==============================
+   AI ASSISTANT CARD
+   ============================== */
+
+.tx-ai-box {
+  position: relative;
+  padding: 32px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #0f766e, #115e59);
+  color: #fff;
+  overflow: hidden;
+  box-shadow: var(--tx-shadow);
+}
+
+.tx-ai-box::after {
+  content: "AI";
+  position: absolute;
+  right: 25px;
+  top: 8px;
+  font-size: 100px;
+  font-weight: 900;
+  opacity: .06;
+}
+
+.tx-ai-box h2 {
+  position: relative;
+  margin: 0 0 10px;
+  font-size: 26px;
+  z-index: 1;
+}
+
+.tx-ai-box p {
+  position: relative;
+  max-width: 700px;
+  margin: 0;
+  color: rgba(255,255,255,.85);
+  line-height: 1.7;
+  z-index: 1;
+}
+
+/* ==============================
+   CAREER / JOB CARDS
+   ============================== */
+
+.tx-job-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.tx-job-card {
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--tx-border);
+  border-radius: 16px;
+  box-shadow: var(--tx-shadow);
+}
+
+.tx-job-card h3 {
+  margin: 0 0 8px;
+  color: var(--tx-text);
+}
+
+.tx-job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.tx-job-meta span {
+  padding: 5px 9px;
+  border-radius: 7px;
+  background: #f3f4f6;
+  color: #4b5563;
+  font-size: 12px;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
+@media (max-width: 1000px) {
+  .tx-platform-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tx-dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tx-resource-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tx-job-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .tx-platform-section {
+    width: min(100% - 22px, 1180px);
+    margin: 35px auto;
+  }
+
+  .tx-platform-grid,
+  .tx-dashboard,
+  .tx-resource-list,
+  .tx-job-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tx-platform-card {
+    padding: 20px;
+  }
+
+  .tx-ai-box {
+    padding: 25px 20px;
+  }
+
+  .tx-ai-box h2 {
+    font-size: 22px;
+  }
+
+  .tx-smart-search input {
+    padding: 15px 18px 15px 48px;
+  }
+}
+
+/* ==============================
+   DARK MODE SUPPORT
+   ============================== */
+
+@media (prefers-color-scheme: dark) {
+  .tx-platform-card,
+  .tx-stat,
+  .tx-resource,
+  .tx-job-card,
+  .tx-smart-search input {
+    background: #111827;
+  }
+
+  .tx-platform-card h3,
+  .tx-resource h4,
+  .tx-job-card h3,
+  .tx-platform-title,
+  .tx-smart-search input {
+    color: #f9fafb;
+  }
+
+  .tx-platform-card p,
+  .tx-resource p,
+  .tx-platform-subtitle,
+  .tx-stat-label {
+    color: #9ca3af;
+  }
+
+  .tx-platform-card,
+  .tx-stat,
+  .tx-resource,
+  .tx-job-card {
+    border-color: #374151;
+  }
+}
