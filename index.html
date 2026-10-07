@@ -20780,5 +20780,1448 @@ document.addEventListener(
 </script>
 
 <!-- ================= END TEG2 ================= -->
+  <!-- =========================================================
+     🎓 TEXTILE EXPLORER — STUDENT SUPER HUB
+     Isolated Module: TESH
+     ========================================================= -->
+
+<style>
+/* ===== TESH CORE ===== */
+.tesh-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(8px);
+  z-index:999999;
+  display:none;
+  overflow-y:auto;
+  padding:25px 15px;
+}
+
+.tesh-overlay.tesh-show{
+  display:block;
+}
+
+.tesh-modal{
+  width:min(1200px,100%);
+  margin:20px auto;
+  background:var(--bg,#fff);
+  color:var(--text,#111);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 25px 80px rgba(0,0,0,.35);
+  animation:teshIn .25s ease;
+}
+
+@keyframes teshIn{
+  from{opacity:0;transform:translateY(25px) scale(.97)}
+  to{opacity:1;transform:none}
+}
+
+/* ===== HEADER ===== */
+.tesh-head{
+  padding:25px;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:#fff;
+  position:relative;
+}
+
+.tesh-head h2{
+  margin:0 45px 7px 0;
+  font-size:28px;
+}
+
+.tesh-head p{
+  margin:0;
+  opacity:.9;
+}
+
+.tesh-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* ===== DASHBOARD ===== */
+.tesh-dashboard{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  padding:20px;
+  background:rgba(127,127,127,.05);
+}
+
+.tesh-stat{
+  padding:17px;
+  border-radius:16px;
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(127,127,127,.15);
+}
+
+.tesh-stat strong{
+  display:block;
+  font-size:25px;
+  margin-bottom:3px;
+}
+
+.tesh-stat span{
+  font-size:13px;
+  opacity:.7;
+}
+
+/* ===== CONTENT ===== */
+.tesh-content{
+  padding:20px;
+}
+
+.tesh-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.tesh-card{
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:18px;
+  padding:20px;
+  cursor:pointer;
+  transition:.2s;
+  background:rgba(255,255,255,.55);
+}
+
+.tesh-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(0,0,0,.10);
+}
+
+.tesh-icon{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.tesh-card h3{
+  margin:0 0 7px;
+  font-size:17px;
+}
+
+.tesh-card p{
+  margin:0;
+  font-size:13px;
+  opacity:.7;
+  line-height:1.5;
+}
+
+/* ===== PANELS ===== */
+.tesh-panel{
+  display:none;
+}
+
+.tesh-panel.tesh-active{
+  display:block;
+}
+
+.tesh-back{
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  font-size:15px;
+  margin-bottom:18px;
+  padding:5px 0;
+}
+
+.tesh-panel h3{
+  margin-top:0;
+  font-size:23px;
+}
+
+/* ===== FORMS ===== */
+.tesh-form{
+  display:grid;
+  gap:12px;
+}
+
+.tesh-form input,
+.tesh-form select,
+.tesh-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border-radius:11px;
+  border:1px solid #ccc;
+  background:transparent;
+  color:inherit;
+  outline:none;
+}
+
+.tesh-form textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+.tesh-btn{
+  border:0;
+  padding:12px 17px;
+  border-radius:11px;
+  cursor:pointer;
+  background:#2563eb;
+  color:#fff;
+  font-weight:600;
+}
+
+.tesh-btn.danger{
+  background:#dc2626;
+}
+
+.tesh-btn.secondary{
+  background:#64748b;
+}
+
+.tesh-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+/* ===== LIST ===== */
+.tesh-list{
+  display:grid;
+  gap:10px;
+  margin-top:18px;
+}
+
+.tesh-item{
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:14px;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+}
+
+.tesh-item-title{
+  font-weight:700;
+}
+
+.tesh-item small{
+  opacity:.65;
+}
+
+/* ===== PROGRESS ===== */
+.tesh-progress{
+  height:10px;
+  background:rgba(127,127,127,.18);
+  border-radius:20px;
+  overflow:hidden;
+  margin:8px 0;
+}
+
+.tesh-progress span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:#2563eb;
+  transition:.3s;
+}
+
+/* ===== GOALS ===== */
+.tesh-goal{
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:15px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+.tesh-goal.done{
+  opacity:.65;
+}
+
+.tesh-goal-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+/* ===== NOTES ===== */
+.tesh-note{
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:15px;
+  padding:15px;
+}
+
+.tesh-note h4{
+  margin:0 0 7px;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:850px){
+  .tesh-dashboard{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tesh-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:550px){
+  .tesh-overlay{
+    padding:8px;
+  }
+
+  .tesh-modal{
+    border-radius:17px;
+  }
+
+  .tesh-dashboard,
+  .tesh-grid{
+    grid-template-columns:1fr;
+  }
+
+  .tesh-head h2{
+    font-size:23px;
+  }
+}
+</style>
+
+
+<!-- ===== STUDENT SUPER HUB BUTTON ===== -->
+
+<button
+  onclick="TESH.open()"
+  style="
+    position:fixed;
+    right:20px;
+    bottom:85px;
+    z-index:9990;
+    border:0;
+    border-radius:50px;
+    padding:14px 20px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:0 8px 30px rgba(37,99,235,.35);
+  ">
+  🎓 Student Super Hub
+</button>
+
+
+<!-- ===== OVERLAY ===== -->
+
+<div id="teshOverlay" class="tesh-overlay">
+
+  <div class="tesh-modal">
+
+    <!-- HEADER -->
+    <div class="tesh-head">
+
+      <button class="tesh-close" onclick="TESH.close()">×</button>
+
+      <h2>🎓 Student Super Hub</h2>
+
+      <p>
+        Your personal academic, study & career command center
+      </p>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <div class="tesh-dashboard">
+
+      <div class="tesh-stat">
+        <strong id="teshTaskCount">0</strong>
+        <span>📚 Study Tasks</span>
+      </div>
+
+      <div class="tesh-stat">
+        <strong id="teshGoalCount">0</strong>
+        <span>🎯 Goals</span>
+      </div>
+
+      <div class="tesh-stat">
+        <strong id="teshNoteCount">0</strong>
+        <span>🗒️ Notes</span>
+      </div>
+
+      <div class="tesh-stat">
+        <strong id="teshProgress">0%</strong>
+        <span>📊 Progress</span>
+      </div>
+
+    </div>
+
+
+    <!-- HOME -->
+    <div id="teshHome" class="tesh-content">
+
+      <div class="tesh-grid">
+
+        <div class="tesh-card" onclick="TESH.panel('study')">
+          <div class="tesh-icon">📚</div>
+          <h3>Study Planner</h3>
+          <p>Plan subjects, topics, priorities and study targets.</p>
+        </div>
+
+        <div class="tesh-card" onclick="TESH.panel('routine')">
+          <div class="tesh-icon">⏰</div>
+          <h3>Routine Maker</h3>
+          <p>Create your daily study routine and time blocks.</p>
+        </div>
+
+        <div class="tesh-card" onclick="TESH.panel('exam')">
+          <div class="tesh-icon">📝</div>
+          <h3>Exam Planner</h3>
+          <p>Add exam dates and track your preparation.</p>
+        </div>
+
+        <div class="tesh-card" onclick="TESH.panel('cgpa')">
+          <div class="tesh-icon">🧮</div>
+          <h3>CGPA Calculator</h3>
+          <p>Calculate semester GPA and overall CGPA.</p>
+        </div>
+
+        <div class="tesh-card" onclick="TESH.panel('goal')">
+          <div class="tesh-icon">🎯</div>
+          <h3>Goal Tracker</h3>
+          <p>Set academic, career and personal goals.</p>
+        </div>
+
+        <div class="tesh-card" onclick="TESH.panel('notes')">
+          <div class="tesh-icon">🗒️</div>
+          <h3>Personal Notes</h3>
+          <p>Save your important study and career notes.</p>
+        </div>
+
+        <div class="tesh-card" onclick="TESH.panel('progress')">
+          <div class="tesh-icon">📊</div>
+          <h3>Progress Dashboard</h3>
+          <p>See your overall tasks, goals and achievements.</p>
+        </div>
+
+        <div class="tesh-card" onclick="TESH.panel('achievement')">
+          <div class="tesh-icon">🏆</div>
+          <h3>Achievements</h3>
+          <p>Unlock milestones as you complete your targets.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= STUDY PLANNER ================= -->
+
+    <div id="teshStudy" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>📚 Study Planner</h3>
+
+      <div class="tesh-form">
+
+        <input id="teshStudySubject"
+               placeholder="Subject name">
+
+        <input id="teshStudyTopic"
+               placeholder="Topic / Chapter">
+
+        <select id="teshStudyPriority">
+          <option value="High">🔴 High Priority</option>
+          <option value="Medium" selected>🟡 Medium Priority</option>
+          <option value="Low">🟢 Low Priority</option>
+        </select>
+
+        <input id="teshStudyDate"
+               type="date">
+
+        <button class="tesh-btn"
+                onclick="TESH.addStudy()">
+          + Add Study Task
+        </button>
+
+      </div>
+
+      <div id="teshStudyList" class="tesh-list"></div>
+
+    </div>
+
+
+    <!-- ================= ROUTINE ================= -->
+
+    <div id="teshRoutine" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>⏰ Routine Maker</h3>
+
+      <div class="tesh-form">
+
+        <input id="teshRoutineTime"
+               type="time">
+
+        <input id="teshRoutineActivity"
+               placeholder="Activity / Subject">
+
+        <input id="teshRoutineDuration"
+               placeholder="Duration e.g. 60 minutes">
+
+        <button class="tesh-btn"
+                onclick="TESH.addRoutine()">
+          + Add Routine
+        </button>
+
+      </div>
+
+      <div id="teshRoutineList" class="tesh-list"></div>
+
+    </div>
+
+
+    <!-- ================= EXAM ================= -->
+
+    <div id="teshExam" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>📝 Exam Planner</h3>
+
+      <div class="tesh-form">
+
+        <input id="teshExamName"
+               placeholder="Exam / Subject">
+
+        <input id="teshExamDate"
+               type="date">
+
+        <button class="tesh-btn"
+                onclick="TESH.addExam()">
+          + Add Exam
+        </button>
+
+      </div>
+
+      <div id="teshExamList" class="tesh-list"></div>
+
+    </div>
+
+
+    <!-- ================= CGPA ================= -->
+
+    <div id="teshCgpa" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>🧮 CGPA Calculator</h3>
+
+      <div class="tesh-form">
+
+        <input id="teshCgpa1"
+               type="number"
+               step="0.01"
+               placeholder="Semester 1 GPA">
+
+        <input id="teshCgpa2"
+               type="number"
+               step="0.01"
+               placeholder="Semester 2 GPA">
+
+        <input id="teshCgpa3"
+               type="number"
+               step="0.01"
+               placeholder="Semester 3 GPA">
+
+        <input id="teshCgpa4"
+               type="number"
+               step="0.01"
+               placeholder="Semester 4 GPA">
+
+        <input id="teshCgpa5"
+               type="number"
+               step="0.01"
+               placeholder="Semester 5 GPA">
+
+        <input id="teshCgpa6"
+               type="number"
+               step="0.01"
+               placeholder="Semester 6 GPA">
+
+        <input id="teshCgpa7"
+               type="number"
+               step="0.01"
+               placeholder="Semester 7 GPA">
+
+        <input id="teshCgpa8"
+               type="number"
+               step="0.01"
+               placeholder="Semester 8 GPA">
+
+        <button class="tesh-btn"
+                onclick="TESH.calculateCGPA()">
+          🧮 Calculate CGPA
+        </button>
+
+      </div>
+
+      <div id="teshCgpaResult"
+           style="margin-top:20px;font-size:22px;font-weight:700;">
+      </div>
+
+    </div>
+
+
+    <!-- ================= GOALS ================= -->
+
+    <div id="teshGoal" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>🎯 Goal Tracker</h3>
+
+      <div class="tesh-form">
+
+        <input id="teshGoalInput"
+               placeholder="Write your goal">
+
+        <input id="teshGoalDate"
+               type="date">
+
+        <button class="tesh-btn"
+                onclick="TESH.addGoal()">
+          + Add Goal
+        </button>
+
+      </div>
+
+      <div id="teshGoalList" class="tesh-list"></div>
+
+    </div>
+
+
+    <!-- ================= NOTES ================= -->
+
+    <div id="teshNotes" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>🗒️ Personal Notes</h3>
+
+      <div class="tesh-form">
+
+        <input id="teshNoteTitle"
+               placeholder="Note title">
+
+        <textarea id="teshNoteText"
+                  placeholder="Write your note..."></textarea>
+
+        <button class="tesh-btn"
+                onclick="TESH.addNote()">
+          💾 Save Note
+        </button>
+
+      </div>
+
+      <div id="teshNoteList" class="tesh-list"></div>
+
+    </div>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <div id="teshProgressPanel" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>📊 Progress Dashboard</h3>
+
+      <div style="margin:25px 0">
+
+        <strong>Overall Progress</strong>
+
+        <div class="tesh-progress">
+          <span id="teshProgressBar"></span>
+        </div>
+
+        <div id="teshProgressText">
+          0% completed
+        </div>
+
+      </div>
+
+      <div class="tesh-dashboard"
+           style="padding:0;background:none">
+
+        <div class="tesh-stat">
+          <strong id="teshPTasks">0</strong>
+          <span>Total Tasks</span>
+        </div>
+
+        <div class="tesh-stat">
+          <strong id="teshPDone">0</strong>
+          <span>Completed</span>
+        </div>
+
+        <div class="tesh-stat">
+          <strong id="teshPGoals">0</strong>
+          <span>Goals</span>
+        </div>
+
+        <div class="tesh-stat">
+          <strong id="teshPNotes">0</strong>
+          <span>Notes</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= ACHIEVEMENT ================= -->
+
+    <div id="teshAchievement" class="tesh-content tesh-panel">
+
+      <button class="tesh-back" onclick="TESH.home()">← Back to Hub</button>
+
+      <h3>🏆 Achievements</h3>
+
+      <div id="teshAchievementList"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+/* =========================================================
+   TESH — STUDENT SUPER HUB ENGINE
+   ========================================================= */
+
+const TESH = {
+
+  data: {
+    study: JSON.parse(localStorage.getItem("teshStudy") || "[]"),
+    routine: JSON.parse(localStorage.getItem("teshRoutine") || "[]"),
+    exam: JSON.parse(localStorage.getItem("teshExam") || "[]"),
+    goal: JSON.parse(localStorage.getItem("teshGoal") || "[]"),
+    notes: JSON.parse(localStorage.getItem("teshNotes") || "[]")
+  },
+
+  save(){
+    localStorage.setItem("teshStudy",JSON.stringify(this.data.study));
+    localStorage.setItem("teshRoutine",JSON.stringify(this.data.routine));
+    localStorage.setItem("teshExam",JSON.stringify(this.data.exam));
+    localStorage.setItem("teshGoal",JSON.stringify(this.data.goal));
+    localStorage.setItem("teshNotes",JSON.stringify(this.data.notes));
+    this.refresh();
+  },
+
+  open(){
+    document.getElementById("teshOverlay").classList.add("tesh-show");
+    document.body.style.overflow="hidden";
+    this.home();
+    this.refresh();
+  },
+
+  close(){
+    document.getElementById("teshOverlay").classList.remove("tesh-show");
+    document.body.style.overflow="";
+  },
+
+  home(){
+
+    document.querySelectorAll(".tesh-panel")
+      .forEach(x=>x.classList.remove("tesh-active"));
+
+    document.getElementById("teshHome").style.display="block";
+
+    this.refresh();
+  },
+
+  panel(name){
+
+    document.getElementById("teshHome").style.display="none";
+
+    document.querySelectorAll(".tesh-panel")
+      .forEach(x=>x.classList.remove("tesh-active"));
+
+    const map={
+      study:"teshStudy",
+      routine:"teshRoutine",
+      exam:"teshExam",
+      cgpa:"teshCgpa",
+      goal:"teshGoal",
+      notes:"teshNotes",
+      progress:"teshProgressPanel",
+      achievement:"teshAchievement"
+    };
+
+    document.getElementById(map[name]).classList.add("tesh-active");
+
+    this.refresh();
+  },
+
+
+  /* ===== STUDY ===== */
+
+  addStudy(){
+
+    const subject=document.getElementById("teshStudySubject").value.trim();
+    const topic=document.getElementById("teshStudyTopic").value.trim();
+    const priority=document.getElementById("teshStudyPriority").value;
+    const date=document.getElementById("teshStudyDate").value;
+
+    if(!subject || !topic){
+      alert("Subject এবং Topic দিন।");
+      return;
+    }
+
+    this.data.study.push({
+      id:Date.now(),
+      subject,
+      topic,
+      priority,
+      date,
+      done:false
+    });
+
+    document.getElementById("teshStudySubject").value="";
+    document.getElementById("teshStudyTopic").value="";
+    document.getElementById("teshStudyDate").value="";
+
+    this.save();
+    this.renderStudy();
+  },
+
+
+  completeStudy(id){
+
+    const item=this.data.study.find(x=>x.id===id);
+
+    if(item){
+      item.done=!item.done;
+      this.save();
+      this.renderStudy();
+    }
+
+  },
+
+
+  deleteStudy(id){
+
+    this.data.study=this.data.study.filter(x=>x.id!==id);
+
+    this.save();
+    this.renderStudy();
+
+  },
+
+
+  renderStudy(){
+
+    const box=document.getElementById("teshStudyList");
+
+    if(!this.data.study.length){
+      box.innerHTML="<p style='opacity:.6'>এখনও কোনো study task নেই।</p>";
+      return;
+    }
+
+    box.innerHTML=this.data.study.map(x=>`
+
+      <div class="tesh-item">
+
+        <div>
+
+          <div class="tesh-item-title"
+               style="${x.done?'text-decoration:line-through':''}">
+            ${this.safe(x.subject)} — ${this.safe(x.topic)}
+          </div>
+
+          <small>
+            ${this.safe(x.priority)}
+            ${x.date ? " • "+x.date : ""}
+          </small>
+
+        </div>
+
+        <div class="tesh-actions">
+
+          <button class="tesh-btn"
+                  onclick="TESH.completeStudy(${x.id})">
+            ${x.done?"↩️":"✓"}
+          </button>
+
+          <button class="tesh-btn danger"
+                  onclick="TESH.deleteStudy(${x.id})">
+            🗑
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+  },
+
+
+  /* ===== ROUTINE ===== */
+
+  addRoutine(){
+
+    const time=document.getElementById("teshRoutineTime").value;
+    const activity=document.getElementById("teshRoutineActivity").value.trim();
+    const duration=document.getElementById("teshRoutineDuration").value.trim();
+
+    if(!time || !activity){
+      alert("Time এবং Activity দিন।");
+      return;
+    }
+
+    this.data.routine.push({
+      id:Date.now(),
+      time,
+      activity,
+      duration
+    });
+
+    this.save();
+    this.renderRoutine();
+
+    document.getElementById("teshRoutineActivity").value="";
+    document.getElementById("teshRoutineDuration").value="";
+  },
+
+
+  deleteRoutine(id){
+
+    this.data.routine=this.data.routine.filter(x=>x.id!==id);
+
+    this.save();
+    this.renderRoutine();
+
+  },
+
+
+  renderRoutine(){
+
+    const box=document.getElementById("teshRoutineList");
+
+    if(!this.data.routine.length){
+      box.innerHTML="<p style='opacity:.6'>Routine এখনো তৈরি হয়নি।</p>";
+      return;
+    }
+
+    const sorted=[...this.data.routine].sort((a,b)=>a.time.localeCompare(b.time));
+
+    box.innerHTML=sorted.map(x=>`
+
+      <div class="tesh-item">
+
+        <div>
+          <div class="tesh-item-title">
+            ⏰ ${this.safe(x.time)} — ${this.safe(x.activity)}
+          </div>
+
+          <small>${this.safe(x.duration)}</small>
+        </div>
+
+        <button class="tesh-btn danger"
+                onclick="TESH.deleteRoutine(${x.id})">
+          🗑
+        </button>
+
+      </div>
+
+    `).join("");
+  },
+
+
+  /* ===== EXAM ===== */
+
+  addExam(){
+
+    const name=document.getElementById("teshExamName").value.trim();
+    const date=document.getElementById("teshExamDate").value;
+
+    if(!name || !date){
+      alert("Exam name এবং date দিন।");
+      return;
+    }
+
+    this.data.exam.push({
+      id:Date.now(),
+      name,
+      date
+    });
+
+    this.save();
+    this.renderExam();
+
+    document.getElementById("teshExamName").value="";
+    document.getElementById("teshExamDate").value="";
+  },
+
+
+  deleteExam(id){
+
+    this.data.exam=this.data.exam.filter(x=>x.id!==id);
+
+    this.save();
+    this.renderExam();
+
+  },
+
+
+  renderExam(){
+
+    const box=document.getElementById("teshExamList");
+
+    if(!this.data.exam.length){
+      box.innerHTML="<p style='opacity:.6'>কোনো exam যোগ করা হয়নি।</p>";
+      return;
+    }
+
+    const today=new Date();
+
+    box.innerHTML=this.data.exam.map(x=>{
+
+      const examDate=new Date(x.date+"T00:00:00");
+      const diff=Math.ceil(
+        (examDate-today)/(1000*60*60*24)
+      );
+
+      let countdown="Exam passed";
+
+      if(diff>0){
+        countdown=`⏳ ${diff} day(s) remaining`;
+      }
+
+      if(diff===0){
+        countdown="🔥 Exam is today!";
+      }
+
+      return `
+
+        <div class="tesh-item">
+
+          <div>
+            <div class="tesh-item-title">
+              📝 ${this.safe(x.name)}
+            </div>
+
+            <small>
+              ${x.date} • ${countdown}
+            </small>
+          </div>
+
+          <button class="tesh-btn danger"
+                  onclick="TESH.deleteExam(${x.id})">
+            🗑
+          </button>
+
+        </div>
+
+      `;
+
+    }).join("");
+  },
+
+
+  /* ===== CGPA ===== */
+
+  calculateCGPA(){
+
+    const ids=[
+      "teshCgpa1",
+      "teshCgpa2",
+      "teshCgpa3",
+      "teshCgpa4",
+      "teshCgpa5",
+      "teshCgpa6",
+      "teshCgpa7",
+      "teshCgpa8"
+    ];
+
+    const values=ids
+      .map(id=>parseFloat(document.getElementById(id).value))
+      .filter(x=>!isNaN(x));
+
+    if(!values.length){
+      alert("কমপক্ষে একটি GPA দিন।");
+      return;
+    }
+
+    const total=values.reduce((a,b)=>a+b,0);
+
+    const cgpa=(total/values.length).toFixed(2);
+
+    document.getElementById("teshCgpaResult").innerHTML=
+      `🎓 Your CGPA: <strong>${cgpa}</strong>`;
+
+  },
+
+
+  /* ===== GOALS ===== */
+
+  addGoal(){
+
+    const title=document.getElementById("teshGoalInput").value.trim();
+    const date=document.getElementById("teshGoalDate").value;
+
+    if(!title){
+      alert("Goal লিখুন।");
+      return;
+    }
+
+    this.data.goal.push({
+      id:Date.now(),
+      title,
+      date,
+      done:false
+    });
+
+    this.save();
+    this.renderGoals();
+
+    document.getElementById("teshGoalInput").value="";
+    document.getElementById("teshGoalDate").value="";
+  },
+
+
+  toggleGoal(id){
+
+    const goal=this.data.goal.find(x=>x.id===id);
+
+    if(goal){
+      goal.done=!goal.done;
+      this.save();
+      this.renderGoals();
+    }
+
+  },
+
+
+  deleteGoal(id){
+
+    this.data.goal=this.data.goal.filter(x=>x.id!==id);
+
+    this.save();
+    this.renderGoals();
+
+  },
+
+
+  renderGoals(){
+
+    const box=document.getElementById("teshGoalList");
+
+    if(!this.data.goal.length){
+      box.innerHTML="<p style='opacity:.6'>কোনো goal নেই।</p>";
+      return;
+    }
+
+    box.innerHTML=this.data.goal.map(x=>`
+
+      <div class="tesh-goal ${x.done?'done':''}">
+
+        <div class="tesh-goal-top">
+
+          <div>
+
+            <strong>
+              ${x.done?"✅":"🎯"}
+              ${this.safe(x.title)}
+            </strong>
+
+            ${x.date ? `<div><small>Deadline: ${x.date}</small></div>` : ""}
+
+          </div>
+
+          <div class="tesh-actions">
+
+            <button class="tesh-btn"
+                    onclick="TESH.toggleGoal(${x.id})">
+              ${x.done?"↩️":"✓"}
+            </button>
+
+            <button class="tesh-btn danger"
+                    onclick="TESH.deleteGoal(${x.id})">
+              🗑
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `).join("");
+  },
+
+
+  /* ===== NOTES ===== */
+
+  addNote(){
+
+    const title=document.getElementById("teshNoteTitle").value.trim();
+    const text=document.getElementById("teshNoteText").value.trim();
+
+    if(!title || !text){
+      alert("Title এবং Note লিখুন।");
+      return;
+    }
+
+    this.data.notes.push({
+      id:Date.now(),
+      title,
+      text,
+      date:new Date().toLocaleString()
+    });
+
+    this.save();
+    this.renderNotes();
+
+    document.getElementById("teshNoteTitle").value="";
+    document.getElementById("teshNoteText").value="";
+  },
+
+
+  deleteNote(id){
+
+    this.data.notes=this.data.notes.filter(x=>x.id!==id);
+
+    this.save();
+    this.renderNotes();
+
+  },
+
+
+  renderNotes(){
+
+    const box=document.getElementById("teshNoteList");
+
+    if(!this.data.notes.length){
+      box.innerHTML="<p style='opacity:.6'>কোনো note নেই।</p>";
+      return;
+    }
+
+    box.innerHTML=this.data.notes.map(x=>`
+
+      <div class="tesh-note">
+
+        <h4>🗒️ ${this.safe(x.title)}</h4>
+
+        <div style="white-space:pre-wrap">
+          ${this.safe(x.text)}
+        </div>
+
+        <small style="opacity:.55">
+          ${this.safe(x.date)}
+        </small>
+
+        <div style="margin-top:10px">
+
+          <button class="tesh-btn danger"
+                  onclick="TESH.deleteNote(${x.id})">
+            🗑 Delete
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+  },
+
+
+  /* ===== PROGRESS ===== */
+
+  getProgress(){
+
+    const tasks=this.data.study.length;
+
+    const done=this.data.study.filter(x=>x.done).length;
+
+    if(!tasks) return 0;
+
+    return Math.round((done/tasks)*100);
+
+  },
+
+
+  renderProgress(){
+
+    const progress=this.getProgress();
+
+    document.getElementById("teshProgressBar").style.width=
+      progress+"%";
+
+    document.getElementById("teshProgressText").textContent=
+      progress+"% completed";
+
+    document.getElementById("teshPTasks").textContent=
+      this.data.study.length;
+
+    document.getElementById("teshPDone").textContent=
+      this.data.study.filter(x=>x.done).length;
+
+    document.getElementById("teshPGoals").textContent=
+      this.data.goal.length;
+
+    document.getElementById("teshPNotes").textContent=
+      this.data.notes.length;
+
+  },
+
+
+  /* ===== ACHIEVEMENTS ===== */
+
+  renderAchievements(){
+
+    const tasks=this.data.study.length;
+    const done=this.data.study.filter(x=>x.done).length;
+    const goals=this.data.goal.length;
+    const notes=this.data.notes.length;
+
+    const achievements=[
+
+      {
+        icon:"🌱",
+        title:"First Step",
+        text:"প্রথম study task যোগ করেছো।",
+        unlocked:tasks>=1
+      },
+
+      {
+        icon:"📚",
+        title:"Study Starter",
+        text:"৫টি study task যোগ করেছো।",
+        unlocked:tasks>=5
+      },
+
+      {
+        icon:"🔥",
+        title:"Study Warrior",
+        text:"১০টি study task complete করেছো।",
+        unlocked:done>=10
+      },
+
+      {
+        icon:"🎯",
+        title:"Goal Setter",
+        text:"প্রথম goal তৈরি করেছো।",
+        unlocked:goals>=1
+      },
+
+      {
+        icon:"🗒️",
+        title:"Note Keeper",
+        text:"৫টি personal note তৈরি করেছো।",
+        unlocked:notes>=5
+      }
+
+    ];
+
+    document.getElementById("teshAchievementList").innerHTML=
+      achievements.map(a=>`
+
+        <div class="tesh-goal"
+             style="opacity:${a.unlocked?1:.45}">
+
+          <div style="font-size:28px">
+            ${a.unlocked?"🏆":"🔒"} ${a.icon}
+          </div>
+
+          <strong>
+            ${this.safe(a.title)}
+          </strong>
+
+          <div style="margin-top:5px">
+            ${this.safe(a.text)}
+          </div>
+
+          <small>
+            ${a.unlocked?"Unlocked":"Locked"}
+          </small>
+
+        </div>
+
+      `).join("");
+
+  },
+
+
+  /* ===== DASHBOARD ===== */
+
+  refresh(){
+
+    document.getElementById("teshTaskCount").textContent=
+      this.data.study.length;
+
+    document.getElementById("teshGoalCount").textContent=
+      this.data.goal.length;
+
+    document.getElementById("teshNoteCount").textContent=
+      this.data.notes.length;
+
+    document.getElementById("teshProgress").textContent=
+      this.getProgress()+"%";
+
+    this.renderStudy();
+    this.renderRoutine();
+    this.renderExam();
+    this.renderGoals();
+    this.renderNotes();
+    this.renderProgress();
+    this.renderAchievements();
+
+  },
+
+
+  /* ===== SECURITY ===== */
+
+  safe(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+};
+
+
+/* ===== ESCAPE KEY ===== */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+    TESH.close();
+  }
+
+});
+
+
+/* ===== INITIAL LOAD ===== */
+
+TESH.refresh();
+
+</script>
+
+<!-- ===== END STUDENT SUPER HUB ===== -->
 </body>
 </html>
