@@ -14230,5 +14230,52 @@ document.addEventListener(
   }
 }
 </style>
+  <script>
+/* ===== TEXTILE FINAL HUB - SAFE STUDY CONNECTION ===== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const studyCard = document.querySelector(
+    '#TEXTILE_FINAL_HUB .feature-card:nth-child(1)'
+  );
+
+  if (!studyCard) return;
+
+  studyCard.addEventListener("click", function () {
+
+    /* Try existing Textile Explorer functions */
+    if (typeof window.TE2 !== "undefined") {
+      if (typeof TE2.open === "function") {
+        TE2.open();
+        return;
+      }
+    }
+
+    if (typeof window.TE3 !== "undefined") {
+      if (typeof TE3.open === "function") {
+        TE3.open();
+        return;
+      }
+    }
+
+    if (typeof window.TE4 !== "undefined") {
+      if (typeof TE4.open === "function") {
+        TE4.open();
+        return;
+      }
+    }
+
+    if (typeof window.TE5 !== "undefined") {
+      if (typeof TE5.open === "function") {
+        TE5.open();
+        return;
+      }
+    }
+
+    alert("Study & Learning system connection পাওয়া যায়নি।");
+  });
+
+});
+</script>
 </body>
 </html>
