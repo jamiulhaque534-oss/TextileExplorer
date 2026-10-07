@@ -32400,5 +32400,8941 @@ const TEC8 = (() => {
 })();
 
 </script>
+  <!-- =========================================================
+     TEXTILE EXPLORER — MOBILE PRO UI v1.0
+     Mobile-only optimization
+     Does NOT remove existing features
+========================================================= -->
+
+<style id="TEM1-Mobile-Pro">
+
+/* =========================================================
+   MOBILE FOUNDATION
+========================================================= */
+
+@media (max-width: 768px){
+
+  html{
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+  }
+
+  body{
+    overflow-x:hidden;
+    padding-bottom:72px;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  *,
+  *::before,
+  *::after{
+    box-sizing:border-box;
+  }
+
+  img,
+  video,
+  iframe{
+    max-width:100%;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea{
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  button,
+  .btn,
+  .calculate-btn,
+  .student-link,
+  .coming-btn,
+  .filter-btn{
+    min-height:44px;
+  }
+
+
+  /* =======================================================
+     HEADER
+  ======================================================= */
+
+  .site-header{
+    position:sticky !important;
+    top:0;
+    z-index:9990;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+  }
+
+  .header-inner{
+    min-height:62px !important;
+    padding:8px 14px !important;
+    gap:8px !important;
+  }
+
+  .logo{
+    min-width:0;
+    flex:1;
+    text-decoration:none;
+  }
+
+  .logo-icon{
+    flex-shrink:0;
+    width:38px !important;
+    height:38px !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .logo strong{
+    font-size:15px !important;
+    line-height:1.1;
+    white-space:nowrap;
+  }
+
+  .logo small{
+    font-size:9px !important;
+    display:block;
+    margin-top:2px;
+  }
+
+  .menu-toggle{
+    width:42px !important;
+    height:42px !important;
+    min-width:42px;
+    padding:0 !important;
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    font-size:21px !important;
+    border-radius:12px !important;
+  }
+
+  .header-actions{
+    display:flex;
+    gap:5px !important;
+  }
+
+  .header-actions .icon-btn{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px;
+    padding:0 !important;
+    border-radius:12px !important;
+  }
+
+
+  /* =======================================================
+     MOBILE NAV
+  ======================================================= */
+
+  .main-nav{
+    position:absolute !important;
+    top:100%;
+    left:10px;
+    right:10px;
+    width:auto !important;
+
+    padding:8px !important;
+    border-radius:18px !important;
+
+    display:none !important;
+    flex-direction:column !important;
+    gap:3px !important;
+
+    max-height:calc(100vh - 80px);
+    overflow-y:auto;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.18);
+    z-index:9999;
+  }
+
+  .main-nav.active,
+  .main-nav.open,
+  .main-nav.show{
+    display:flex !important;
+  }
+
+  .main-nav a{
+    width:100%;
+    min-height:46px;
+    display:flex !important;
+    align-items:center;
+    padding:11px 14px !important;
+    border-radius:12px;
+    font-size:14px !important;
+  }
+
+
+  /* =======================================================
+     HERO
+  ======================================================= */
+
+  .hero{
+    padding:38px 0 30px !important;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr !important;
+    gap:25px !important;
+  }
+
+  .hero-content{
+    text-align:center;
+  }
+
+  .hero-badge{
+    display:inline-flex;
+    max-width:100%;
+    font-size:11px !important;
+    padding:7px 11px !important;
+  }
+
+  .hero h1{
+    font-size:clamp(30px,9vw,42px) !important;
+    line-height:1.08 !important;
+    margin:14px 0 !important;
+  }
+
+  .hero p{
+    font-size:14px !important;
+    line-height:1.65 !important;
+    max-width:430px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .search-box{
+    width:100%;
+    display:flex !important;
+    margin-top:20px !important;
+  }
+
+  .search-box input{
+    min-width:0;
+    width:100%;
+    height:48px !important;
+    font-size:14px !important;
+  }
+
+  .search-box button{
+    min-width:76px;
+    height:48px !important;
+    padding:0 12px !important;
+  }
+
+  .hero-buttons{
+    display:grid !important;
+    grid-template-columns:1fr 1fr;
+    gap:9px !important;
+    margin-top:12px !important;
+  }
+
+  .hero-buttons .btn{
+    width:100%;
+    justify-content:center;
+    padding:12px 8px !important;
+    font-size:13px !important;
+  }
+
+  .hero-panel{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px !important;
+  }
+
+  .hero-stat{
+    min-width:0;
+    padding:13px 6px !important;
+    text-align:center;
+  }
+
+  .hero-stat strong{
+    font-size:20px !important;
+  }
+
+  .hero-stat span{
+    font-size:9px !important;
+    line-height:1.3;
+  }
+
+  .hero-mini-card{
+    grid-column:1/-1;
+    padding:13px !important;
+  }
+
+
+  /* =======================================================
+     SECTION SPACING
+  ======================================================= */
+
+  .section{
+    padding:48px 0 !important;
+  }
+
+  .container{
+    width:100% !important;
+    max-width:none !important;
+    padding-left:14px !important;
+    padding-right:14px !important;
+  }
+
+  .section-heading{
+    margin-bottom:22px !important;
+  }
+
+  .section-heading span{
+    font-size:10px !important;
+    letter-spacing:1px;
+  }
+
+  .section-heading h2{
+    font-size:26px !important;
+    line-height:1.15 !important;
+    margin-top:7px !important;
+  }
+
+  .section-heading p{
+    font-size:13px !important;
+    line-height:1.6;
+  }
+
+
+  /* =======================================================
+     QUICK ACCESS
+  ======================================================= */
+
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:10px !important;
+  }
+
+  .quick-card{
+    padding:18px 12px !important;
+    min-height:145px;
+    border-radius:16px !important;
+  }
+
+  .quick-card h3{
+    font-size:14px !important;
+    margin:8px 0 5px;
+  }
+
+  .quick-card p{
+    font-size:11px !important;
+    line-height:1.45;
+  }
+
+
+  /* =======================================================
+     FABRIC
+  ======================================================= */
+
+  .filter-row{
+    display:flex !important;
+    overflow-x:auto !important;
+    flex-wrap:nowrap !important;
+    gap:7px !important;
+    padding:3px 1px 9px;
+    scrollbar-width:none;
+  }
+
+  .filter-row::-webkit-scrollbar{
+    display:none;
+  }
+
+  .filter-btn{
+    flex:0 0 auto;
+    white-space:nowrap;
+    padding:9px 13px !important;
+    font-size:12px !important;
+  }
+
+  .fabric-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:10px !important;
+  }
+
+  .fabric-card{
+    min-width:0;
+    border-radius:15px !important;
+    overflow:hidden;
+  }
+
+
+  /* =======================================================
+     CALCULATORS
+  ======================================================= */
+
+  .calculator-grid{
+    grid-template-columns:1fr !important;
+    gap:14px !important;
+  }
+
+  .calculator-card{
+    width:100%;
+    padding:18px !important;
+    border-radius:18px !important;
+  }
+
+  .calculator-card h3{
+    font-size:18px !important;
+  }
+
+  .calculator-card p{
+    font-size:12px !important;
+    line-height:1.55;
+  }
+
+  .input-row{
+    grid-template-columns:1fr 1fr !important;
+    gap:9px !important;
+  }
+
+  .input-group label{
+    font-size:11px !important;
+  }
+
+  .input-group input,
+  .input-group select,
+  .calculator-card input,
+  .calculator-card select{
+    width:100%;
+    min-height:46px !important;
+    font-size:14px !important;
+  }
+
+  .calculate-btn{
+    width:100% !important;
+    min-height:48px !important;
+    margin-top:5px;
+  }
+
+  .calculator-result{
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+
+  /* =======================================================
+     PROCESS
+  ======================================================= */
+
+  .process-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:10px !important;
+  }
+
+  .process-card{
+    min-width:0;
+    padding:16px 11px !important;
+    border-radius:15px !important;
+  }
+
+  .process-card h3{
+    font-size:14px !important;
+  }
+
+  .process-card p{
+    font-size:10px !important;
+    line-height:1.5;
+  }
+
+
+  /* =======================================================
+     STUDENT
+  ======================================================= */
+
+  .student-grid{
+    grid-template-columns:1fr !important;
+    gap:11px !important;
+  }
+
+  .student-card{
+    padding:18px !important;
+    border-radius:17px !important;
+  }
+
+  .student-card h3{
+    font-size:17px !important;
+  }
+
+  .student-card p{
+    font-size:12px !important;
+  }
+
+  .coming-btn,
+  .student-link{
+    width:100%;
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    margin-top:10px;
+  }
+
+
+  /* =======================================================
+     CAREER
+  ======================================================= */
+
+  .career-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+  }
+
+  .career-card{
+    min-width:0;
+    padding:17px 12px !important;
+    border-radius:15px !important;
+  }
+
+  .career-card h3{
+    font-size:14px !important;
+  }
+
+  .career-card p{
+    font-size:10px !important;
+    line-height:1.5;
+  }
+
+
+  /* =======================================================
+     FAQ
+  ======================================================= */
+
+  .faq-container{
+    width:100%;
+  }
+
+  .faq-question{
+    width:100%;
+    min-height:52px !important;
+    padding:12px 13px !important;
+    text-align:left;
+    font-size:13px !important;
+  }
+
+  .faq-answer p{
+    font-size:12px !important;
+    line-height:1.65;
+  }
+
+
+  /* =======================================================
+     ABOUT
+  ======================================================= */
+
+  .about-grid{
+    grid-template-columns:1fr !important;
+    gap:24px !important;
+  }
+
+  .about-text{
+    font-size:13px !important;
+    line-height:1.7;
+  }
+
+  .creator-box{
+    padding:15px !important;
+    border-radius:16px !important;
+  }
+
+  .creator-box strong{
+    font-size:13px !important;
+  }
+
+  .creator-box span,
+  .creator-box small{
+    font-size:10px !important;
+  }
+
+
+  /* =======================================================
+     CTA
+  ======================================================= */
+
+  .cta-section{
+    padding:35px 14px !important;
+  }
+
+  .cta-box{
+    padding:23px 17px !important;
+    border-radius:20px !important;
+    text-align:center;
+  }
+
+  .cta-box h2{
+    font-size:23px !important;
+    line-height:1.2;
+  }
+
+  .cta-box p{
+    font-size:12px !important;
+    line-height:1.6;
+  }
+
+  .cta-box .btn{
+    width:100%;
+    margin-top:12px;
+    justify-content:center;
+  }
+
+
+  /* =======================================================
+     FOOTER
+  ======================================================= */
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:20px !important;
+  }
+
+  .footer-grid > div:first-child{
+    grid-column:1/-1;
+  }
+
+  .site-footer{
+    padding-bottom:85px !important;
+  }
+
+  .footer-grid a{
+    display:block;
+    margin:7px 0;
+    font-size:12px;
+  }
+
+  .footer-bottom{
+    font-size:10px !important;
+    line-height:1.5;
+    padding:15px 10px !important;
+  }
+
+
+  /* =======================================================
+     EXISTING FEATURE HUBS / MODALS
+  ======================================================= */
+
+  [id$="Overlay"],
+  [id*="Overlay"]{
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  [id$="Overlay"] > div,
+  [id*="Overlay"] > div{
+    max-width:calc(100vw - 20px) !important;
+  }
+
+
+  /* Generic feature cards */
+  [class*="-grid"]{
+    max-width:100%;
+  }
+
+  [class*="-card"],
+  [class*="-panel"]{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+
+  [class*="-input"],
+  [class*="-select"],
+  [class*="-textarea"]{
+    max-width:100%;
+    min-height:44px;
+    font-size:14px !important;
+  }
+
+  [class*="-btn"]{
+    min-height:44px;
+    max-width:100%;
+  }
+
+
+  /* =======================================================
+     MOBILE BOTTOM NAV
+  ======================================================= */
+
+  #TEM1BottomNav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:68px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    z-index:10000;
+
+    padding:
+      6px
+      7px
+      calc(6px + env(safe-area-inset-bottom));
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:0 -8px 30px rgba(0,0,0,.12);
+  }
+
+  #TEM1BottomNav a{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+
+    text-decoration:none;
+    border-radius:12px;
+
+    font-size:10px;
+    font-weight:600;
+  }
+
+  #TEM1BottomNav a span{
+    font-size:20px;
+    line-height:1;
+  }
+
+  #TEM1BottomNav a:active{
+    transform:scale(.94);
+  }
+
+
+  /* =======================================================
+     MOBILE "MORE" DRAWER
+  ======================================================= */
+
+  #TEM1MoreDrawer{
+    position:fixed;
+    inset:0;
+    z-index:10001;
+
+    display:none;
+    align-items:flex-end;
+
+    background:rgba(0,0,0,.48);
+    backdrop-filter:blur(4px);
+  }
+
+  #TEM1MoreDrawer.active{
+    display:flex;
+  }
+
+  #TEM1MoreSheet{
+    width:100%;
+    max-height:82vh;
+    overflow-y:auto;
+
+    padding:10px 14px
+      calc(85px + env(safe-area-inset-bottom));
+
+    border-radius:24px 24px 0 0;
+
+    box-shadow:0 -15px 45px rgba(0,0,0,.22);
+    animation:TEM1SheetUp .22s ease;
+  }
+
+  @keyframes TEM1SheetUp{
+    from{
+      transform:translateY(100%);
+    }
+    to{
+      transform:translateY(0);
+    }
+  }
+
+  #TEM1SheetHandle{
+    width:42px;
+    height:4px;
+    border-radius:99px;
+    margin:4px auto 18px;
+    opacity:.35;
+  }
+
+  #TEM1MoreSheet h3{
+    margin:0 0 5px;
+    font-size:20px;
+  }
+
+  #TEM1MoreSheet > p{
+    margin:0 0 15px;
+    font-size:12px;
+    opacity:.7;
+  }
+
+  .TEM1MoreGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+  }
+
+  .TEM1MoreItem{
+    min-height:70px;
+    padding:11px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    text-decoration:none;
+    border-radius:15px;
+
+    font-size:12px;
+    font-weight:600;
+  }
+
+  .TEM1MoreItem span{
+    font-size:21px;
+  }
+
+
+  /* =======================================================
+     TOUCH FEEDBACK
+  ======================================================= */
+
+  .quick-card,
+  .calculator-card,
+  .student-card,
+  .career-card,
+  .process-card,
+  .fabric-card{
+    transition:
+      transform .16s ease,
+      box-shadow .16s ease;
+  }
+
+  .quick-card:active,
+  .calculator-card:active,
+  .student-card:active,
+  .career-card:active,
+  .process-card:active{
+    transform:scale(.985);
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE — 360px
+  ======================================================= */
+
+  @media (max-width:390px){
+
+    .container{
+      padding-left:12px !important;
+      padding-right:12px !important;
+    }
+
+    .logo strong{
+      font-size:14px !important;
+    }
+
+    .logo small{
+      display:none;
+    }
+
+    .header-actions .icon-btn{
+      width:36px !important;
+      min-width:36px;
+      height:36px !important;
+    }
+
+    .menu-toggle{
+      width:38px !important;
+      min-width:38px;
+      height:38px !important;
+    }
+
+    .hero{
+      padding-top:30px !important;
+    }
+
+    .hero h1{
+      font-size:30px !important;
+    }
+
+    .hero-buttons{
+      grid-template-columns:1fr !important;
+    }
+
+    .hero-panel{
+      grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .quick-card{
+      min-height:135px;
+      padding:15px 9px !important;
+    }
+
+    .fabric-grid,
+    .career-grid{
+      grid-template-columns:1fr !important;
+    }
+
+    .process-grid{
+      grid-template-columns:1fr !important;
+    }
+
+    .input-row{
+      grid-template-columns:1fr !important;
+    }
+
+    .footer-grid{
+      grid-template-columns:1fr !important;
+    }
+
+    .footer-grid > div:first-child{
+      grid-column:auto;
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   DARK MODE FRIENDLY BOTTOM NAV
+========================================================= */
+
+@media (max-width:768px){
+
+  #TEM1BottomNav{
+    background:rgba(255,255,255,.92);
+    border-top:1px solid rgba(0,0,0,.07);
+  }
+
+  #TEM1BottomNav a{
+    color:inherit;
+  }
+
+  #TEM1MoreSheet{
+    background:var(--bg,#fff);
+    color:inherit;
+  }
+
+  #TEM1SheetHandle{
+    background:currentColor;
+  }
+
+  .TEM1MoreItem{
+    background:rgba(127,127,127,.08);
+    color:inherit;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     MOBILE BOTTOM NAV
+========================================================= -->
+
+<nav id="TEM1BottomNav" aria-label="Mobile Navigation">
+
+  <a href="#home">
+    <span>⌂</span>
+    Home
+  </a>
+
+  <a href="#calculators">
+    <span>🧮</span>
+    Tools
+  </a>
+
+  <a href="#students">
+    <span>🎓</span>
+    Student
+  </a>
+
+  <a href="#career">
+    <span>💼</span>
+    Career
+  </a>
+
+  <a href="#" id="TEM1MoreBtn">
+    <span>☰</span>
+    More
+  </a>
+
+</nav>
+
+
+<!-- =========================================================
+     MOBILE MORE DRAWER
+========================================================= -->
+
+<div id="TEM1MoreDrawer">
+
+  <div id="TEM1MoreSheet">
+
+    <div id="TEM1SheetHandle"></div>
+
+    <h3>Explore Textile Explorer</h3>
+
+    <p>
+      প্রয়োজনীয় section এক জায়গা থেকে দ্রুত access করুন।
+    </p>
+
+    <div class="TEM1MoreGrid">
+
+      <a class="TEM1MoreItem" href="#fabrics">
+        <span>🧵</span>
+        Fabrics
+      </a>
+
+      <a class="TEM1MoreItem" href="#process">
+        <span>⚙️</span>
+        Process
+      </a>
+
+      <a class="TEM1MoreItem" href="#students">
+        <span>📚</span>
+        Student Zone
+      </a>
+
+      <a class="TEM1MoreItem" href="#career">
+        <span>💼</span>
+        Career
+      </a>
+
+      <a class="TEM1MoreItem" href="#faq">
+        <span>❓</span>
+        FAQ
+      </a>
+
+      <a class="TEM1MoreItem" href="#about">
+        <span>👤</span>
+        About
+      </a>
+
+      <a class="TEM1MoreItem" href="#calculators">
+        <span>🧮</span>
+        Calculators
+      </a>
+
+      <a class="TEM1MoreItem" href="#home">
+        <span>🏠</span>
+        Home
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   TEXTILE EXPLORER — MOBILE PRO JS
+========================================================= */
+
+(function(){
+
+  const moreBtn =
+    document.getElementById("TEM1MoreBtn");
+
+  const drawer =
+    document.getElementById("TEM1MoreDrawer");
+
+  if(!moreBtn || !drawer) return;
+
+
+  /* -----------------------------------------
+     OPEN MORE
+  ----------------------------------------- */
+
+  moreBtn.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    drawer.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+  });
+
+
+  /* -----------------------------------------
+     CLOSE DRAWER
+  ----------------------------------------- */
+
+  drawer.addEventListener("click", function(e){
+
+    if(e.target === drawer){
+
+      drawer.classList.remove("active");
+
+      document.body.style.overflow = "";
+
+    }
+
+  });
+
+
+  /* -----------------------------------------
+     CLOSE AFTER LINK CLICK
+  ----------------------------------------- */
+
+  drawer
+    .querySelectorAll("a")
+    .forEach(function(link){
+
+      link.addEventListener("click", function(){
+
+        drawer.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+      });
+
+    });
+
+
+  /* -----------------------------------------
+     ESC KEY
+  ----------------------------------------- */
+
+  document.addEventListener("keydown", function(e){
+
+    if(e.key === "Escape"){
+
+      drawer.classList.remove("active");
+
+      document.body.style.overflow = "";
+
+    }
+
+  });
+
+
+  /* -----------------------------------------
+     AUTO CLOSE EXISTING MOBILE NAV
+     WHEN LINK IS CLICKED
+  ----------------------------------------- */
+
+  document
+    .querySelectorAll(".main-nav a")
+    .forEach(function(link){
+
+      link.addEventListener("click", function(){
+
+        const nav =
+          document.getElementById("mainNav");
+
+        if(nav){
+
+          nav.classList.remove("active");
+          nav.classList.remove("open");
+          nav.classList.remove("show");
+
+        }
+
+      });
+
+    });
+
+
+  /* -----------------------------------------
+     PREVENT HORIZONTAL OVERFLOW
+  ----------------------------------------- */
+
+  function mobileSafety(){
+
+    if(window.innerWidth <= 768){
+
+      document.documentElement.style.overflowX =
+        "hidden";
+
+      document.body.style.overflowX =
+        "hidden";
+
+    }
+
+  }
+
+  mobileSafety();
+
+  window.addEventListener(
+    "resize",
+    mobileSafety
+  );
+
+
+  /* -----------------------------------------
+     MOBILE VIEWPORT HEIGHT FIX
+  ----------------------------------------- */
+
+  function setVH(){
+
+    document.documentElement.style
+      .setProperty(
+        "--tem1-vh",
+        window.innerHeight * 0.01 + "px"
+      );
+
+  }
+
+  setVH();
+
+  window.addEventListener(
+    "resize",
+    setVH
+  );
+
+
+})();
+
+</script>
+
+<!-- ================= END MOBILE PRO ================= -->
+  <!-- =========================================================
+ TEXTILE EXPLORER
+ MOBILE FUTURE PACK
+ M2 + M3 + M4 + M5
+ Built on existing M1
+========================================================= -->
+
+<style id="TE-M2-M5">
+
+/* =========================================================
+ M2 — PREMIUM MOBILE UI
+========================================================= */
+
+@media (max-width:768px){
+
+  /* ---------- GLOBAL ---------- */
+
+  :root{
+    --te-mobile-radius:18px;
+    --te-mobile-radius-sm:14px;
+    --te-mobile-gap:11px;
+    --te-mobile-shadow:0 8px 28px rgba(0,0,0,.08);
+    --te-mobile-shadow-active:0 12px 34px rgba(0,0,0,.13);
+  }
+
+  body{
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  a,
+  button{
+    touch-action:manipulation;
+  }
+
+  /* ---------- PREMIUM CONTAINERS ---------- */
+
+  .section{
+    position:relative;
+  }
+
+  .section::after{
+    content:"";
+    display:block;
+    clear:both;
+  }
+
+  /* ---------- CARDS ---------- */
+
+  .quick-card,
+  .fabric-card,
+  .calculator-card,
+  .process-card,
+  .student-card,
+  .career-card{
+
+    border-radius:var(--te-mobile-radius) !important;
+
+    transition:
+      transform .18s ease,
+      box-shadow .18s ease,
+      border-color .18s ease;
+  }
+
+  .quick-card:hover,
+  .fabric-card:hover,
+  .calculator-card:hover,
+  .process-card:hover,
+  .student-card:hover,
+  .career-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+      var(--te-mobile-shadow-active);
+  }
+
+  /* ---------- CARD ICON ---------- */
+
+  .quick-card .icon,
+  .student-card .icon,
+  .career-card .icon,
+  .process-card .icon{
+
+    transition:
+      transform .2s ease;
+  }
+
+  .quick-card:active .icon,
+  .student-card:active .icon,
+  .career-card:active .icon,
+  .process-card:active .icon{
+
+    transform:scale(1.08);
+  }
+
+  /* ---------- HERO PREMIUM ---------- */
+
+  .hero{
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    top:-100px;
+    right:-90px;
+
+    border-radius:50%;
+
+    background:rgba(127,127,127,.06);
+
+    pointer-events:none;
+  }
+
+  .hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+    height:160px;
+
+    bottom:-80px;
+    left:-80px;
+
+    border-radius:50%;
+
+    background:rgba(127,127,127,.045);
+
+    pointer-events:none;
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+  }
+
+  .hero-panel{
+    position:relative;
+    z-index:2;
+  }
+
+  /* ---------- SEARCH ---------- */
+
+  .search-box{
+
+    border-radius:16px !important;
+
+    box-shadow:
+      0 5px 20px rgba(0,0,0,.07);
+
+    overflow:hidden;
+  }
+
+  .search-box input{
+    outline:none !important;
+  }
+
+  .search-box input:focus{
+
+    box-shadow:
+      inset 0 0 0 2px rgba(127,127,127,.16);
+  }
+
+  /* ---------- BUTTONS ---------- */
+
+  .btn,
+  .calculate-btn,
+  .student-link,
+  .coming-btn{
+
+    transition:
+      transform .15s ease,
+      box-shadow .15s ease;
+  }
+
+  .btn:active,
+  .calculate-btn:active,
+  .student-link:active,
+  .coming-btn:active{
+
+    transform:scale(.97);
+  }
+
+
+  /* =======================================================
+     M2 — MOBILE DASHBOARD
+  ======================================================= */
+
+  #TEM2Dashboard{
+
+    margin:0 0 22px;
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(4,1fr);
+
+    gap:7px;
+
+  }
+
+  .TEM2DashCard{
+
+    min-width:0;
+
+    padding:12px 5px;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    background:
+      rgba(127,127,127,.055);
+
+    border:
+      1px solid rgba(127,127,127,.08);
+
+  }
+
+  .TEM2DashIcon{
+
+    display:block;
+
+    font-size:19px;
+
+    line-height:1;
+
+    margin-bottom:5px;
+
+  }
+
+  .TEM2DashNumber{
+
+    display:block;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    line-height:1.1;
+
+  }
+
+  .TEM2DashLabel{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:8px;
+
+    opacity:.65;
+
+    line-height:1.2;
+
+  }
+
+
+  /* =======================================================
+     M2 — QUICK ACTIONS
+  ======================================================= */
+
+  #TEM2QuickActions{
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(4,1fr);
+
+    gap:8px;
+
+    margin-bottom:25px;
+
+  }
+
+  .TEM2Action{
+
+    min-width:0;
+
+    min-height:76px;
+
+    padding:10px 5px;
+
+    border-radius:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:5px;
+
+    text-decoration:none;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    background:
+      rgba(127,127,127,.055);
+
+    border:
+      1px solid rgba(127,127,127,.08);
+
+    transition:
+      transform .16s ease,
+      background .16s ease;
+  }
+
+  .TEM2Action span{
+
+    font-size:21px;
+
+    line-height:1;
+
+  }
+
+  .TEM2Action:active{
+
+    transform:scale(.94);
+
+  }
+
+
+  /* =======================================================
+     M2 — SECTION TITLE
+  ======================================================= */
+
+  .TEM2MobileTitle{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin:0 0 12px;
+
+  }
+
+  .TEM2MobileTitle h3{
+
+    margin:0;
+
+    font-size:17px;
+
+    line-height:1.2;
+
+  }
+
+  .TEM2MobileTitle a{
+
+    font-size:10px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+  }
+
+
+  /* =======================================================
+     M2 — MOBILE FEATURE LABEL
+  ======================================================= */
+
+  .TEM2FeatureBadge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    padding:5px 9px;
+
+    border-radius:99px;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    background:
+      rgba(127,127,127,.08);
+
+  }
+
+
+  /* =======================================================
+     M3 — ACTIVE NAV
+  ======================================================= */
+
+  #TEM1BottomNav a{
+
+    position:relative;
+
+    transition:
+      transform .15s ease,
+      opacity .15s ease;
+  }
+
+  #TEM1BottomNav a.TEM3Active{
+
+    opacity:1;
+
+    font-weight:800;
+
+  }
+
+  #TEM1BottomNav a.TEM3Active::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:3px;
+
+    width:20px;
+
+    height:3px;
+
+    border-radius:99px;
+
+    background:currentColor;
+
+    opacity:.7;
+
+  }
+
+
+  /* =======================================================
+     M3 — BACK TO TOP
+  ======================================================= */
+
+  #TEM3Top{
+
+    position:fixed;
+
+    right:14px;
+
+    bottom:82px;
+
+    width:44px;
+
+    height:44px;
+
+    border:0;
+
+    border-radius:50%;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9998;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:
+      0 8px 25px rgba(0,0,0,.18);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    background:
+      rgba(255,255,255,.88);
+
+  }
+
+  #TEM3Top.TEM3Show{
+
+    display:flex;
+
+    animation:TEM3TopIn .2s ease;
+
+  }
+
+  @keyframes TEM3TopIn{
+
+    from{
+      opacity:0;
+      transform:translateY(8px);
+    }
+
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+  }
+
+
+  /* =======================================================
+     M3 — SCROLL PROGRESS
+  ======================================================= */
+
+  #TEM3Progress{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:2px;
+
+    z-index:10005;
+
+    pointer-events:none;
+
+  }
+
+
+  /* =======================================================
+     M4 — MODAL MOBILE
+  ======================================================= */
+
+  [id$="Overlay"],
+  [id*="Overlay"]{
+
+    -webkit-overflow-scrolling:touch;
+
+    overscroll-behavior:contain;
+
+  }
+
+  @media (max-width:768px){
+
+    [id$="Overlay"] > div,
+    [id*="Overlay"] > div{
+
+      border-radius:20px !important;
+
+      max-height:
+        calc(100vh - 20px) !important;
+
+      overflow-y:auto !important;
+
+      -webkit-overflow-scrolling:touch;
+
+    }
+
+  }
+
+
+  /* =======================================================
+     M4 — FORM CONTROLS
+  ======================================================= */
+
+  input,
+  select,
+  textarea{
+
+    font-size:16px !important;
+
+  }
+
+  button{
+
+    font-family:inherit;
+
+  }
+
+  textarea{
+
+    resize:vertical;
+
+  }
+
+
+  /* =======================================================
+     M4 — TABLE SAFETY
+  ======================================================= */
+
+  table{
+
+    max-width:100%;
+
+  }
+
+  .table-wrapper,
+  .table-responsive,
+  [class*="table-wrap"],
+  [class*="table-responsive"]{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    -webkit-overflow-scrolling:touch;
+
+    scrollbar-width:thin;
+
+  }
+
+
+  /* =======================================================
+     M4 — IMAGES
+  ======================================================= */
+
+  img{
+
+    height:auto;
+
+  }
+
+  img[loading="lazy"]{
+
+    content-visibility:auto;
+
+  }
+
+
+  /* =======================================================
+     M4 — VIDEO
+  ======================================================= */
+
+  video{
+
+    width:100%;
+
+    height:auto;
+
+    border-radius:16px;
+
+  }
+
+
+  /* =======================================================
+     M4 — MOBILE NOTIFICATION
+  ======================================================= */
+
+  #TEM4Toast{
+
+    position:fixed;
+
+    left:14px;
+    right:14px;
+
+    bottom:82px;
+
+    z-index:10006;
+
+    display:none;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:12px 14px;
+
+    border-radius:14px;
+
+    font-size:12px;
+
+    line-height:1.4;
+
+    box-shadow:
+      0 10px 30px rgba(0,0,0,.18);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+  }
+
+  #TEM4Toast.TEM4Show{
+
+    display:flex;
+
+    animation:
+      TEM4ToastIn .25s ease;
+
+  }
+
+  @keyframes TEM4ToastIn{
+
+    from{
+      opacity:0;
+      transform:translateY(10px);
+    }
+
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+  }
+
+
+  /* =======================================================
+     M5 — MOBILE APP LAUNCHER
+  ======================================================= */
+
+  #TEM5Launcher{
+
+    position:fixed;
+
+    left:14px;
+
+    bottom:82px;
+
+    z-index:9997;
+
+    width:48px;
+
+    height:48px;
+
+    border:0;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    box-shadow:
+      0 9px 28px rgba(0,0,0,.17);
+
+    background:
+      rgba(255,255,255,.9);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+  }
+
+
+  /* =======================================================
+     M5 — LAUNCHER PANEL
+  ======================================================= */
+
+  #TEM5Panel{
+
+    position:fixed;
+
+    left:10px;
+    right:10px;
+    bottom:75px;
+
+    z-index:10003;
+
+    padding:15px;
+
+    border-radius:22px;
+
+    display:none;
+
+    max-height:70vh;
+
+    overflow-y:auto;
+
+    box-shadow:
+      0 20px 55px rgba(0,0,0,.22);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+  }
+
+  #TEM5Panel.TEM5Open{
+
+    display:block;
+
+    animation:
+      TEM5PanelIn .2s ease;
+
+  }
+
+  @keyframes TEM5PanelIn{
+
+    from{
+      opacity:0;
+      transform:translateY(15px) scale(.98);
+    }
+
+    to{
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+  }
+
+  .TEM5PanelHead{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+  }
+
+  .TEM5PanelHead h3{
+
+    margin:0;
+
+    font-size:18px;
+
+  }
+
+  .TEM5Close{
+
+    width:35px;
+    height:35px;
+
+    border:0;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+  }
+
+  .TEM5Tools{
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(3,1fr);
+
+    gap:8px;
+
+  }
+
+  .TEM5Tool{
+
+    min-height:75px;
+
+    padding:9px 5px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:5px;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    background:
+      rgba(127,127,127,.07);
+
+  }
+
+  .TEM5Tool span{
+
+    font-size:21px;
+
+  }
+
+
+  /* =======================================================
+     M5 — RECENT TOOLS
+  ======================================================= */
+
+  #TEM5Recent{
+
+    margin-top:20px;
+
+  }
+
+  .TEM5RecentTitle{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:9px;
+
+  }
+
+  .TEM5RecentTitle h4{
+
+    margin:0;
+
+    font-size:14px;
+
+  }
+
+  .TEM5RecentList{
+
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    scrollbar-width:none;
+
+    padding-bottom:4px;
+
+  }
+
+  .TEM5RecentList::-webkit-scrollbar{
+
+    display:none;
+
+  }
+
+  .TEM5RecentItem{
+
+    flex:0 0 auto;
+
+    padding:9px 12px;
+
+    border-radius:12px;
+
+    font-size:10px;
+
+    text-decoration:none;
+
+    background:
+      rgba(127,127,127,.07);
+
+  }
+
+
+  /* =======================================================
+     M5 — MOBILE INSTALL-STYLE BANNER
+  ======================================================= */
+
+  #TEM5Install{
+
+    position:fixed;
+
+    left:10px;
+    right:10px;
+
+    bottom:76px;
+
+    z-index:9996;
+
+    display:none;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px;
+
+    border-radius:17px;
+
+    box-shadow:
+      0 12px 35px rgba(0,0,0,.18);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+  }
+
+  #TEM5Install.TEM5InstallShow{
+
+    display:flex;
+
+    animation:
+      TEM5InstallIn .3s ease;
+
+  }
+
+  @keyframes TEM5InstallIn{
+
+    from{
+      opacity:0;
+      transform:translateY(15px);
+    }
+
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+  }
+
+  .TEM5InstallIcon{
+
+    width:42px;
+    height:42px;
+
+    flex:0 0 42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    font-size:21px;
+
+    background:
+      rgba(127,127,127,.1);
+
+  }
+
+  .TEM5InstallText{
+
+    flex:1;
+    min-width:0;
+
+  }
+
+  .TEM5InstallText strong{
+
+    display:block;
+
+    font-size:12px;
+
+  }
+
+  .TEM5InstallText small{
+
+    display:block;
+
+    margin-top:2px;
+
+    font-size:9px;
+
+    opacity:.65;
+
+  }
+
+  .TEM5InstallBtn{
+
+    min-height:38px;
+
+    padding:0 12px;
+
+    border:0;
+
+    border-radius:10px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+  }
+
+  .TEM5InstallClose{
+
+    width:30px;
+    height:30px;
+
+    border:0;
+
+    background:transparent;
+
+    font-size:15px;
+
+  }
+
+
+  /* =======================================================
+     M5 — SAFE AREA
+  ======================================================= */
+
+  #TEM1BottomNav{
+
+    padding-bottom:
+      calc(6px + env(safe-area-inset-bottom));
+
+  }
+
+  body{
+
+    padding-bottom:
+      calc(72px + env(safe-area-inset-bottom));
+
+  }
+
+
+  /* =======================================================
+     SMALL DEVICES
+  ======================================================= */
+
+  @media (max-width:390px){
+
+    #TEM2Dashboard{
+
+      gap:5px;
+
+    }
+
+    .TEM2DashCard{
+
+      padding:10px 3px;
+
+    }
+
+    .TEM2DashIcon{
+
+      font-size:17px;
+
+    }
+
+    .TEM2DashNumber{
+
+      font-size:14px;
+
+    }
+
+    .TEM2DashLabel{
+
+      font-size:7px;
+
+    }
+
+    #TEM2QuickActions{
+
+      gap:6px;
+
+    }
+
+    .TEM2Action{
+
+      min-height:70px;
+
+      font-size:8px;
+
+    }
+
+    .TEM2Action span{
+
+      font-size:19px;
+
+    }
+
+    .TEM5Tools{
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+ DARK MODE SUPPORT
+========================================================= */
+
+@media (max-width:768px){
+
+  body.dark-mode #TEM3Top,
+  body.dark #TEM3Top{
+
+    background:
+      rgba(30,30,30,.9);
+
+    color:#fff;
+
+  }
+
+  body.dark-mode #TEM5Launcher,
+  body.dark #TEM5Launcher{
+
+    background:
+      rgba(30,30,30,.9);
+
+    color:#fff;
+
+  }
+
+  body.dark-mode #TEM5Panel,
+  body.dark #TEM5Panel{
+
+    background:
+      rgba(20,20,20,.96);
+
+    color:#fff;
+
+  }
+
+  body.dark-mode #TEM5Install,
+  body.dark #TEM5Install{
+
+    background:
+      rgba(25,25,25,.95);
+
+    color:#fff;
+
+  }
+
+  body.dark-mode #TEM4Toast,
+  body.dark #TEM4Toast{
+
+    background:
+      rgba(25,25,25,.95);
+
+    color:#fff;
+
+  }
+
+  body.dark-mode .TEM5Tool,
+  body.dark .TEM5Tool,
+  body.dark-mode .TEM5RecentItem,
+  body.dark .TEM5RecentItem,
+  body.dark-mode .TEM2Action,
+  body.dark .TEM2Action,
+  body.dark-mode .TEM2DashCard,
+  body.dark .TEM2DashCard{
+
+    background:
+      rgba(255,255,255,.07);
+
+    border-color:
+      rgba(255,255,255,.08);
+
+  }
+
+}
+
+
+/* =========================================================
+ DESKTOP — HIDE MOBILE ONLY FEATURES
+========================================================= */
+
+@media (min-width:769px){
+
+  #TEM2Dashboard,
+  #TEM2QuickActions,
+  #TEM3Top,
+  #TEM3Progress,
+  #TEM4Toast,
+  #TEM5Launcher,
+  #TEM5Panel,
+  #TEM5Install{
+
+    display:none !important;
+
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+ M2 — MOBILE DASHBOARD
+========================================================= -->
+
+<div id="TEM2Dashboard">
+
+  <div class="TEM2DashCard">
+    <span class="TEM2DashIcon">🧮</span>
+    <span class="TEM2DashNumber">Tools</span>
+    <span class="TEM2DashLabel">Calculators</span>
+  </div>
+
+  <div class="TEM2DashCard">
+    <span class="TEM2DashIcon">🧵</span>
+    <span class="TEM2DashNumber">Textile</span>
+    <span class="TEM2DashLabel">Knowledge</span>
+  </div>
+
+  <div class="TEM2DashCard">
+    <span class="TEM2DashIcon">🎓</span>
+    <span class="TEM2DashNumber">Study</span>
+    <span class="TEM2DashLabel">Student Zone</span>
+  </div>
+
+  <div class="TEM2DashCard">
+    <span class="TEM2DashIcon">💼</span>
+    <span class="TEM2DashNumber">Career</span>
+    <span class="TEM2DashLabel">Future</span>
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M2 — QUICK ACTIONS
+========================================================= -->
+
+<div id="TEM2QuickActions">
+
+  <a class="TEM2Action" href="#calculators">
+    <span>🧮</span>
+    Calculator
+  </a>
+
+  <a class="TEM2Action" href="#fabrics">
+    <span>🧵</span>
+    Fabrics
+  </a>
+
+  <a class="TEM2Action" href="#students">
+    <span>🎓</span>
+    Student
+  </a>
+
+  <a class="TEM2Action" href="#career">
+    <span>💼</span>
+    Career
+  </a>
+
+</div>
+
+
+<!-- =========================================================
+ M3 — SCROLL PROGRESS
+========================================================= -->
+
+<div id="TEM3Progress"></div>
+
+
+<!-- =========================================================
+ M3 — BACK TO TOP
+========================================================= -->
+
+<button
+  id="TEM3Top"
+  type="button"
+  aria-label="Back to top">
+
+  ↑
+
+</button>
+
+
+<!-- =========================================================
+ M4 — TOAST
+========================================================= -->
+
+<div id="TEM4Toast">
+
+  <span>✓</span>
+
+  <span id="TEM4ToastText">
+    Ready
+  </span>
+
+</div>
+
+
+<!-- =========================================================
+ M5 — MOBILE APP LAUNCHER
+========================================================= -->
+
+<button
+  id="TEM5Launcher"
+  type="button"
+  aria-label="Open mobile tools">
+
+  ✦
+
+</button>
+
+
+<!-- =========================================================
+ M5 — APP LAUNCHER PANEL
+========================================================= -->
+
+<div id="TEM5Panel">
+
+  <div class="TEM5PanelHead">
+
+    <h3>
+      Textile Explorer
+    </h3>
+
+    <button
+      class="TEM5Close"
+      id="TEM5Close"
+      type="button">
+
+      ✕
+
+    </button>
+
+  </div>
+
+
+  <div class="TEM5Tools">
+
+    <a
+      class="TEM5Tool"
+      href="#calculators">
+
+      <span>🧮</span>
+
+      Calculators
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#fabrics">
+
+      <span>🧵</span>
+
+      Fabrics
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#process">
+
+      <span>⚙️</span>
+
+      Process
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#students">
+
+      <span>🎓</span>
+
+      Student
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#career">
+
+      <span>💼</span>
+
+      Career
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#faq">
+
+      <span>❓</span>
+
+      FAQ
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#about">
+
+      <span>👤</span>
+
+      About
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#home">
+
+      <span>🏠</span>
+
+      Home
+
+    </a>
+
+
+    <a
+      class="TEM5Tool"
+      href="#calculators">
+
+      <span>📊</span>
+
+      Tools
+
+    </a>
+
+  </div>
+
+
+  <div id="TEM5Recent">
+
+    <div class="TEM5RecentTitle">
+
+      <h4>
+        Quick Access
+      </h4>
+
+    </div>
+
+    <div class="TEM5RecentList">
+
+      <a
+        class="TEM5RecentItem"
+        href="#calculators">
+
+        🧮 Calculator
+
+      </a>
+
+      <a
+        class="TEM5RecentItem"
+        href="#students">
+
+        🎓 Student
+
+      </a>
+
+      <a
+        class="TEM5RecentItem"
+        href="#career">
+
+        💼 Career
+
+      </a>
+
+      <a
+        class="TEM5RecentItem"
+        href="#fabrics">
+
+        🧵 Fabrics
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M5 — INSTALL STYLE BANNER
+========================================================= -->
+
+<div id="TEM5Install">
+
+  <div class="TEM5InstallIcon">
+    📱
+  </div>
+
+  <div class="TEM5InstallText">
+
+    <strong>
+      Textile Explorer
+    </strong>
+
+    <small>
+      মোবাইলে আরও সহজে ব্যবহার করুন
+    </small>
+
+  </div>
+
+  <button
+    class="TEM5InstallBtn"
+    id="TEM5InstallBtn"
+    type="button">
+
+    Open
+
+  </button>
+
+  <button
+    class="TEM5InstallClose"
+    id="TEM5InstallClose"
+    type="button">
+
+    ✕
+
+  </button>
+
+</div>
+
+
+<script>
+
+(function(){
+
+  "use strict";
+
+
+  /* =======================================================
+     MOBILE ONLY
+  ======================================================= */
+
+  function isMobile(){
+
+    return window.innerWidth <= 768;
+
+  }
+
+
+  /* =======================================================
+     M2 — MOVE DASHBOARD TO HERO AREA
+  ======================================================= */
+
+  function placeMobileDashboard(){
+
+    if(!isMobile()) return;
+
+    const dashboard =
+      document.getElementById("TEM2Dashboard");
+
+    const quick =
+      document.getElementById("TEM2QuickActions");
+
+    if(!dashboard || !quick) return;
+
+
+    /*
+      Put mobile dashboard near the beginning
+      without deleting existing content.
+    */
+
+    const hero =
+      document.querySelector(".hero");
+
+    if(hero && !dashboard.dataset.placed){
+
+      hero.appendChild(dashboard);
+
+      hero.appendChild(quick);
+
+      dashboard.dataset.placed = "yes";
+
+    }
+
+  }
+
+
+  /* =======================================================
+     M3 — SCROLL PROGRESS
+  ======================================================= */
+
+  const progress =
+    document.getElementById("TEM3Progress");
+
+  function updateProgress(){
+
+    if(!progress || !isMobile()) return;
+
+    const doc =
+      document.documentElement;
+
+    const scrollTop =
+      window.scrollY || doc.scrollTop;
+
+    const scrollHeight =
+      doc.scrollHeight - window.innerHeight;
+
+    let percentage = 0;
+
+    if(scrollHeight > 0){
+
+      percentage =
+        (scrollTop / scrollHeight) * 100;
+
+    }
+
+    progress.style.width =
+      percentage + "%";
+
+  }
+
+  window.addEventListener(
+    "scroll",
+    updateProgress,
+    {passive:true}
+  );
+
+
+  /* =======================================================
+     M3 — BACK TO TOP
+  ======================================================= */
+
+  const topBtn =
+    document.getElementById("TEM3Top");
+
+  function updateTopButton(){
+
+    if(!topBtn || !isMobile()) return;
+
+    if(window.scrollY > 500){
+
+      topBtn.classList.add("TEM3Show");
+
+    }else{
+
+      topBtn.classList.remove("TEM3Show");
+
+    }
+
+  }
+
+  window.addEventListener(
+    "scroll",
+    updateTopButton,
+    {passive:true}
+  );
+
+
+  if(topBtn){
+
+    topBtn.addEventListener(
+      "click",
+      function(){
+
+        window.scrollTo({
+
+          top:0,
+
+          behavior:"smooth"
+
+        });
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     M3 — ACTIVE BOTTOM NAV
+  ======================================================= */
+
+  const bottomLinks =
+    document.querySelectorAll(
+      "#TEM1BottomNav a"
+    );
+
+
+  function updateActiveNav(){
+
+    if(!isMobile()) return;
+
+    const scroll =
+      window.scrollY + 160;
+
+
+    let activeId = "home";
+
+
+    const sections = [
+
+      {
+        id:"home",
+        selector:"#home"
+      },
+
+      {
+        id:"calculators",
+        selector:"#calculators"
+      },
+
+      {
+        id:"students",
+        selector:"#students"
+      },
+
+      {
+        id:"career",
+        selector:"#career"
+      }
+
+    ];
+
+
+    sections.forEach(function(item){
+
+      const el =
+        document.querySelector(
+          item.selector
+        );
+
+      if(el && el.offsetTop <= scroll){
+
+        activeId = item.id;
+
+      }
+
+    });
+
+
+    bottomLinks.forEach(function(link){
+
+      link.classList.remove(
+        "TEM3Active"
+      );
+
+      const href =
+        link.getAttribute("href");
+
+      if(href === "#" + activeId){
+
+        link.classList.add(
+          "TEM3Active"
+        );
+
+      }
+
+    });
+
+  }
+
+
+  window.addEventListener(
+    "scroll",
+    updateActiveNav,
+    {passive:true}
+  );
+
+
+  /* =======================================================
+     M4 — TOAST
+  ======================================================= */
+
+  const toast =
+    document.getElementById("TEM4Toast");
+
+  const toastText =
+    document.getElementById(
+      "TEM4ToastText"
+    );
+
+
+  let toastTimer;
+
+
+  window.TE_MobileToast =
+    function(message){
+
+      if(!toast || !toastText) return;
+
+      toastText.textContent =
+        message || "Done";
+
+      toast.classList.add(
+        "TEM4Show"
+      );
+
+      clearTimeout(toastTimer);
+
+      toastTimer =
+        setTimeout(
+          function(){
+
+            toast.classList.remove(
+              "TEM4Show"
+            );
+
+          },
+          2200
+        );
+
+    };
+
+
+  /* =======================================================
+     M4 — ADD TOUCH FEEDBACK
+  ======================================================= */
+
+  document.addEventListener(
+    "click",
+    function(e){
+
+      if(!isMobile()) return;
+
+      const button =
+        e.target.closest(
+          "button, .btn, .calculate-btn"
+        );
+
+      if(!button) return;
+
+      button.classList.add(
+        "TEM4Pressed"
+      );
+
+      setTimeout(
+        function(){
+
+          button.classList.remove(
+            "TEM4Pressed"
+          );
+
+        },
+        140
+      );
+
+    }
+  );
+
+
+  /* =======================================================
+     M4 — IMAGE LAZY LOADING
+  ======================================================= */
+
+  function optimizeImages(){
+
+    if(!isMobile()) return;
+
+    document
+      .querySelectorAll("img")
+      .forEach(function(img){
+
+        if(
+          !img.hasAttribute("loading") &&
+          !img.closest(
+            ".hero"
+          )
+        ){
+
+          img.setAttribute(
+            "loading",
+            "lazy"
+          );
+
+        }
+
+        img.setAttribute(
+          "decoding",
+          "async"
+        );
+
+      });
+
+  }
+
+
+  /* =======================================================
+     M4 — SAFE TABLE WRAP
+  ======================================================= */
+
+  function protectTables(){
+
+    if(!isMobile()) return;
+
+    document
+      .querySelectorAll("table")
+      .forEach(function(table){
+
+        if(
+          table.parentElement &&
+          (
+            table.parentElement.classList.contains(
+              "table-responsive"
+            ) ||
+            table.parentElement.classList.contains(
+              "table-wrapper"
+            )
+          )
+        ){
+
+          return;
+
+        }
+
+        const wrapper =
+          document.createElement("div");
+
+        wrapper.style.width =
+          "100%";
+
+        wrapper.style.overflowX =
+          "auto";
+
+        wrapper.style.webkitOverflowScrolling =
+          "touch";
+
+        table.parentNode.insertBefore(
+          wrapper,
+          table
+        );
+
+        wrapper.appendChild(
+          table
+        );
+
+      });
+
+  }
+
+
+  /* =======================================================
+     M5 — APP LAUNCHER
+  ======================================================= */
+
+  const launcher =
+    document.getElementById(
+      "TEM5Launcher"
+    );
+
+  const panel =
+    document.getElementById(
+      "TEM5Panel"
+    );
+
+  const closeLauncher =
+    document.getElementById(
+      "TEM5Close"
+    );
+
+
+  function closePanel(){
+
+    if(panel){
+
+      panel.classList.remove(
+        "TEM5Open"
+      );
+
+    }
+
+  }
+
+
+  if(launcher){
+
+    launcher.addEventListener(
+      "click",
+      function(){
+
+        if(!isMobile()) return;
+
+        panel.classList.toggle(
+          "TEM5Open"
+        );
+
+      }
+    );
+
+  }
+
+
+  if(closeLauncher){
+
+    closeLauncher.addEventListener(
+      "click",
+      closePanel
+    );
+
+  }
+
+
+  /* Close launcher after navigation */
+
+  if(panel){
+
+    panel
+      .querySelectorAll("a")
+      .forEach(function(link){
+
+        link.addEventListener(
+          "click",
+          function(){
+
+            closePanel();
+
+          }
+        );
+
+      });
+
+  }
+
+
+  /* =======================================================
+     M5 — INSTALL STYLE MESSAGE
+  ======================================================= */
+
+  const install =
+    document.getElementById(
+      "TEM5Install"
+    );
+
+  const installBtn =
+    document.getElementById(
+      "TEM5InstallBtn"
+    );
+
+  const installClose =
+    document.getElementById(
+      "TEM5InstallClose"
+    );
+
+
+  function showInstall(){
+
+    if(!isMobile()) return;
+
+    /*
+      Show only once per browser.
+    */
+
+    try{
+
+      const dismissed =
+        localStorage.getItem(
+          "TE_M5_INSTALL_DISMISSED"
+        );
+
+      if(dismissed) return;
+
+    }catch(e){}
+
+    setTimeout(
+      function(){
+
+        if(install){
+
+          install.classList.add(
+            "TEM5InstallShow"
+          );
+
+        }
+
+      },
+      4500
+    );
+
+  }
+
+
+  if(installClose){
+
+    installClose.addEventListener(
+      "click",
+      function(){
+
+        if(install){
+
+          install.classList.remove(
+            "TEM5InstallShow"
+          );
+
+        }
+
+        try{
+
+          localStorage.setItem(
+            "TE_M5_INSTALL_DISMISSED",
+            "1"
+          );
+
+        }catch(e){}
+
+      }
+    );
+
+  }
+
+
+  if(installBtn){
+
+    installBtn.addEventListener(
+      "click",
+      function(){
+
+        if(install){
+
+          install.classList.remove(
+            "TEM5InstallShow"
+          );
+
+        }
+
+        const launcher =
+          document.getElementById(
+            "TEM5Launcher"
+          );
+
+        if(launcher){
+
+          launcher.click();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     M5 — REMEMBER LAST SECTION
+  ======================================================= */
+
+  document.addEventListener(
+    "click",
+    function(e){
+
+      if(!isMobile()) return;
+
+      const link =
+        e.target.closest(
+          "a[href^='#']"
+        );
+
+      if(!link) return;
+
+      const target =
+        link.getAttribute(
+          "href"
+        );
+
+      if(!target || target === "#") return;
+
+      try{
+
+        localStorage.setItem(
+          "TE_M5_LAST_SECTION",
+          target
+        );
+
+      }catch(e){}
+
+    }
+  );
+
+
+  /* =======================================================
+     M5 — SMART RETURN
+  ======================================================= */
+
+  function restoreLastSection(){
+
+    if(!isMobile()) return;
+
+    /*
+      Do not force-scroll automatically.
+      Only prepare last section information.
+    */
+
+    try{
+
+      const last =
+        localStorage.getItem(
+          "TE_M5_LAST_SECTION"
+        );
+
+      if(last){
+
+        document.body.dataset.lastSection =
+          last;
+
+      }
+
+    }catch(e){}
+
+  }
+
+
+  /* =======================================================
+     M5 — MOBILE PERFORMANCE
+  ======================================================= */
+
+  function performanceMode(){
+
+    if(!isMobile()) return;
+
+    /*
+      Avoid expensive effects on very small devices.
+    */
+
+    if(window.innerWidth <= 360){
+
+      document.documentElement
+        .classList.add(
+          "TE-MicroMobile"
+        );
+
+    }
+
+  }
+
+
+  /* =======================================================
+     INITIALIZE
+  ======================================================= */
+
+  function init(){
+
+    placeMobileDashboard();
+
+    updateProgress();
+
+    updateTopButton();
+
+    updateActiveNav();
+
+    optimizeImages();
+
+    protectTables();
+
+    restoreLastSection();
+
+    performanceMode();
+
+    showInstall();
+
+  }
+
+
+  if(
+    document.readyState ===
+    "loading"
+  ){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      init
+    );
+
+  }else{
+
+    init();
+
+  }
+
+
+  /* =======================================================
+     RESIZE
+  ======================================================= */
+
+  let resizeTimer;
+
+  window.addEventListener(
+    "resize",
+    function(){
+
+      clearTimeout(
+        resizeTimer
+      );
+
+      resizeTimer =
+        setTimeout(
+          function(){
+
+            placeMobileDashboard();
+
+            performanceMode();
+
+          },
+          180
+        );
+
+    }
+  );
+
+
+  /* =======================================================
+     MOBILE VISIBILITY
+  ======================================================= */
+
+  document.addEventListener(
+    "visibilitychange",
+    function(){
+
+      if(
+        document.visibilityState ===
+        "visible"
+      ){
+
+        updateProgress();
+
+        updateTopButton();
+
+      }
+
+    }
+  );
+
+
+})();
+
+</script>
+
+<!-- =========================================================
+ END — MOBILE FUTURE PACK M2-M5
+========================================================= -->
+  <!-- =========================================================
+ TEXTILE EXPLORER
+ MOBILE FUTURE PACK
+ M6 + M7 + M8 + M9 + M10
+ ---------------------------------------------------------
+ M6  Smart Search + Recent Tools
+ M7  Favorites + Personal Shortcuts
+ M8  Mobile UX + Accessibility
+ M9  Performance + Smart Loading
+ M10 PWA-READY INSTALL EXPERIENCE
+ ========================================================= -->
+
+<style id="TE-M6-M10">
+
+/* =========================================================
+   GLOBAL MOBILE FOUNDATION
+========================================================= */
+
+@media (max-width:768px){
+
+  #TEM6SearchLayer,
+  #TEM7FavLayer,
+  #TEM8Sheet,
+  #TEM10InstallCard{
+
+    font-family:inherit;
+
+  }
+
+  .TEM6Hidden,
+  .TEM7Hidden{
+
+    display:none !important;
+
+  }
+
+
+  /* =======================================================
+     M6 — SEARCH BUTTON
+  ======================================================= */
+
+  #TEM6SearchButton{
+
+    position:fixed;
+
+    right:14px;
+
+    bottom:136px;
+
+    width:46px;
+    height:46px;
+
+    border:0;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:9995;
+
+    font-size:20px;
+
+    box-shadow:
+      0 9px 28px rgba(0,0,0,.17);
+
+    background:
+      rgba(255,255,255,.92);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    cursor:pointer;
+
+    transition:
+      transform .16s ease;
+
+  }
+
+  #TEM6SearchButton:active{
+
+    transform:scale(.92);
+
+  }
+
+
+  /* =======================================================
+     M6 — SEARCH OVERLAY
+  ======================================================= */
+
+  #TEM6SearchLayer{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10020;
+
+    display:none;
+
+    background:
+      rgba(0,0,0,.48);
+
+    backdrop-filter:blur(5px);
+
+    -webkit-backdrop-filter:blur(5px);
+
+    padding:12px;
+
+  }
+
+  #TEM6SearchLayer.TEM6Open{
+
+    display:block;
+
+  }
+
+
+  #TEM6SearchBox{
+
+    width:100%;
+
+    max-height:
+      calc(100vh - 24px);
+
+    overflow-y:auto;
+
+    border-radius:22px;
+
+    padding:15px;
+
+    margin-top:3px;
+
+    box-shadow:
+      0 20px 60px rgba(0,0,0,.22);
+
+    background:
+      rgba(255,255,255,.97);
+
+    animation:
+      TEM6SearchIn .2s ease;
+
+  }
+
+  @keyframes TEM6SearchIn{
+
+    from{
+
+      opacity:0;
+
+      transform:
+        translateY(-10px)
+        scale(.98);
+
+    }
+
+    to{
+
+      opacity:1;
+
+      transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+  }
+
+
+  .TEM6SearchHeader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:11px;
+
+  }
+
+
+  #TEM6Input{
+
+    flex:1;
+
+    min-width:0;
+
+    height:46px;
+
+    border-radius:13px;
+
+    border:1px solid rgba(127,127,127,.15);
+
+    padding:0 13px;
+
+    font-size:16px !important;
+
+    outline:none;
+
+    background:
+      rgba(127,127,127,.06);
+
+  }
+
+
+  #TEM6Close{
+
+    width:42px;
+    height:42px;
+
+    flex:0 0 42px;
+
+    border:0;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+  }
+
+
+  #TEM6Results{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+  }
+
+
+  .TEM6Result{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-height:54px;
+
+    padding:9px 11px;
+
+    border-radius:13px;
+
+    text-decoration:none;
+
+    background:
+      rgba(127,127,127,.055);
+
+  }
+
+
+  .TEM6ResultIcon{
+
+    width:35px;
+    height:35px;
+
+    flex:0 0 35px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    background:
+      rgba(127,127,127,.08);
+
+  }
+
+
+  .TEM6ResultText{
+
+    min-width:0;
+
+    flex:1;
+
+  }
+
+
+  .TEM6ResultText strong{
+
+    display:block;
+
+    font-size:12px;
+
+    line-height:1.2;
+
+  }
+
+
+  .TEM6ResultText small{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:9px;
+
+    opacity:.6;
+
+  }
+
+
+  .TEM6NoResult{
+
+    padding:25px 10px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    opacity:.6;
+
+  }
+
+
+  /* =======================================================
+     M7 — FAVORITES BUTTON
+  ======================================================= */
+
+  #TEM7Favorites{
+
+    position:fixed;
+
+    left:14px;
+
+    bottom:136px;
+
+    width:46px;
+    height:46px;
+
+    border:0;
+
+    border-radius:50%;
+
+    z-index:9995;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    box-shadow:
+      0 9px 28px rgba(0,0,0,.17);
+
+    background:
+      rgba(255,255,255,.92);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+  }
+
+
+  /* =======================================================
+     M7 — FAVORITES PANEL
+  ======================================================= */
+
+  #TEM7FavLayer{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10021;
+
+    display:none;
+
+    align-items:flex-end;
+
+    background:
+      rgba(0,0,0,.48);
+
+    backdrop-filter:blur(4px);
+
+    -webkit-backdrop-filter:blur(4px);
+
+  }
+
+
+  #TEM7FavLayer.TEM7Open{
+
+    display:flex;
+
+  }
+
+
+  #TEM7FavPanel{
+
+    width:100%;
+
+    max-height:78vh;
+
+    overflow-y:auto;
+
+    padding:12px 14px
+      calc(82px + env(safe-area-inset-bottom));
+
+    border-radius:24px 24px 0 0;
+
+    animation:
+      TEM7Up .22s ease;
+
+    background:
+      var(--bg,#fff);
+
+    box-shadow:
+      0 -18px 50px rgba(0,0,0,.22);
+
+  }
+
+
+  @keyframes TEM7Up{
+
+    from{
+
+      transform:
+        translateY(100%);
+
+    }
+
+    to{
+
+      transform:
+        translateY(0);
+
+    }
+
+  }
+
+
+  .TEM7Handle{
+
+    width:42px;
+
+    height:4px;
+
+    border-radius:99px;
+
+    margin:3px auto 16px;
+
+    background:currentColor;
+
+    opacity:.25;
+
+  }
+
+
+  .TEM7Head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:13px;
+
+  }
+
+
+  .TEM7Head h3{
+
+    margin:0;
+
+    font-size:19px;
+
+  }
+
+
+  #TEM7Clear{
+
+    border:0;
+
+    min-height:36px;
+
+    padding:0 10px;
+
+    border-radius:10px;
+
+    font-size:10px;
+
+  }
+
+
+  #TEM7List{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+  }
+
+
+  .TEM7Item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-height:58px;
+
+    padding:9px 11px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    background:
+      rgba(127,127,127,.07);
+
+  }
+
+
+  .TEM7ItemIcon{
+
+    font-size:21px;
+
+  }
+
+
+  .TEM7ItemText{
+
+    flex:1;
+
+    min-width:0;
+
+  }
+
+
+  .TEM7ItemText strong{
+
+    display:block;
+
+    font-size:12px;
+
+  }
+
+
+  .TEM7ItemText small{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:9px;
+
+    opacity:.6;
+
+  }
+
+
+  .TEM7Remove{
+
+    width:34px;
+    height:34px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:transparent;
+
+    font-size:15px;
+
+  }
+
+
+  .TEM7Empty{
+
+    text-align:center;
+
+    padding:28px 10px;
+
+    font-size:12px;
+
+    opacity:.55;
+
+  }
+
+
+  /* =======================================================
+     M8 — ACCESSIBILITY TOOLS
+  ======================================================= */
+
+  #TEM8Accessibility{
+
+    position:fixed;
+
+    right:14px;
+
+    bottom:190px;
+
+    width:44px;
+    height:44px;
+
+    border:0;
+
+    border-radius:50%;
+
+    z-index:9994;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    box-shadow:
+      0 8px 25px rgba(0,0,0,.16);
+
+    background:
+      rgba(255,255,255,.92);
+
+    backdrop-filter:blur(16px);
+
+  }
+
+
+  #TEM8Sheet{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10022;
+
+    display:none;
+
+    align-items:flex-end;
+
+    background:
+      rgba(0,0,0,.48);
+
+  }
+
+
+  #TEM8Sheet.TEM8Open{
+
+    display:flex;
+
+  }
+
+
+  #TEM8Panel{
+
+    width:100%;
+
+    padding:13px 15px
+      calc(85px + env(safe-area-inset-bottom));
+
+    border-radius:24px 24px 0 0;
+
+    background:
+      var(--bg,#fff);
+
+    box-shadow:
+      0 -18px 50px rgba(0,0,0,.22);
+
+    animation:
+      TEM8Up .2s ease;
+
+  }
+
+
+  @keyframes TEM8Up{
+
+    from{
+      transform:translateY(100%);
+    }
+
+    to{
+      transform:translateY(0);
+    }
+
+  }
+
+
+  .TEM8Head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:14px;
+
+  }
+
+
+  .TEM8Head h3{
+
+    margin:0;
+
+    font-size:18px;
+
+  }
+
+
+  .TEM8Options{
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:8px;
+
+  }
+
+
+  .TEM8Option{
+
+    min-height:54px;
+
+    border:0;
+
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    background:
+      rgba(127,127,127,.07);
+
+  }
+
+
+  /* Accessibility states */
+
+  body.TEM8LargeText{
+
+    font-size:110% !important;
+
+  }
+
+
+  body.TEM8LargeText h1{
+
+    font-size:
+      calc(1em + 7px) !important;
+
+  }
+
+
+  body.TEM8LargeText p,
+  body.TEM8LargeText li{
+
+    font-size:
+      calc(1em + 2px) !important;
+
+  }
+
+
+  body.TEM8HighContrast{
+
+    filter:
+      contrast(1.08);
+
+  }
+
+
+  body.TEM8Focus *:focus{
+
+    outline:
+      3px solid currentColor !important;
+
+    outline-offset:3px !important;
+
+  }
+
+
+  /* =======================================================
+     M9 — PERFORMANCE MODE
+  ======================================================= */
+
+  .TEM9ReduceMotion *,
+  .TEM9ReduceMotion *::before,
+  .TEM9ReduceMotion *::after{
+
+    animation-duration:
+      .01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      .01ms !important;
+
+    scroll-behavior:
+      auto !important;
+
+  }
+
+
+  /* =======================================================
+     M10 — INSTALL CARD
+  ======================================================= */
+
+  #TEM10InstallCard{
+
+    position:fixed;
+
+    left:10px;
+    right:10px;
+
+    bottom:78px;
+
+    z-index:10010;
+
+    display:none;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:11px;
+
+    border-radius:17px;
+
+    box-shadow:
+      0 14px 40px rgba(0,0,0,.2);
+
+    background:
+      rgba(255,255,255,.96);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+  }
+
+
+  #TEM10InstallCard.TEM10Show{
+
+    display:flex;
+
+    animation:
+      TEM10In .25s ease;
+
+  }
+
+
+  @keyframes TEM10In{
+
+    from{
+
+      opacity:0;
+
+      transform:
+        translateY(12px);
+
+    }
+
+    to{
+
+      opacity:1;
+
+      transform:
+        translateY(0);
+
+    }
+
+  }
+
+
+  .TEM10Icon{
+
+    width:42px;
+    height:42px;
+
+    flex:0 0 42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    font-size:20px;
+
+    background:
+      rgba(127,127,127,.08);
+
+  }
+
+
+  .TEM10Text{
+
+    flex:1;
+
+    min-width:0;
+
+  }
+
+
+  .TEM10Text strong{
+
+    display:block;
+
+    font-size:12px;
+
+  }
+
+
+  .TEM10Text small{
+
+    display:block;
+
+    margin-top:2px;
+
+    font-size:9px;
+
+    opacity:.6;
+
+  }
+
+
+  #TEM10InstallBtn{
+
+    min-height:38px;
+
+    padding:0 11px;
+
+    border:0;
+
+    border-radius:10px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+  }
+
+
+  #TEM10InstallClose{
+
+    width:30px;
+    height:30px;
+
+    border:0;
+
+    background:transparent;
+
+    font-size:14px;
+
+  }
+
+
+  /* =======================================================
+     M10 — LANDSCAPE
+  ======================================================= */
+
+  @media
+  (max-width:900px)
+  and
+  (orientation:landscape){
+
+    #TEM1BottomNav{
+
+      height:58px;
+
+    }
+
+    #TEM1BottomNav a span{
+
+      font-size:16px;
+
+    }
+
+    #TEM1BottomNav a{
+
+      font-size:8px;
+
+    }
+
+    body{
+
+      padding-bottom:62px;
+
+    }
+
+    #TEM7FavPanel,
+    #TEM8Panel{
+
+      max-height:88vh;
+
+    }
+
+  }
+
+
+  /* =======================================================
+     360PX OPTIMIZATION
+  ======================================================= */
+
+  @media (max-width:360px){
+
+    #TEM6SearchButton,
+    #TEM7Favorites{
+
+      width:42px;
+      height:42px;
+
+      font-size:18px;
+
+    }
+
+    #TEM6SearchButton{
+
+      right:10px;
+
+    }
+
+    #TEM7Favorites{
+
+      left:10px;
+
+    }
+
+    #TEM8Accessibility{
+
+      right:10px;
+
+      width:40px;
+      height:40px;
+
+    }
+
+    .TEM8Options{
+
+      grid-template-columns:1fr;
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+ DARK MODE
+========================================================= */
+
+@media (max-width:768px){
+
+  body.dark-mode #TEM6SearchButton,
+  body.dark #TEM6SearchButton,
+  body.dark-mode #TEM7Favorites,
+  body.dark #TEM7Favorites,
+  body.dark-mode #TEM8Accessibility,
+  body.dark #TEM8Accessibility{
+
+    background:
+      rgba(25,25,25,.94);
+
+    color:#fff;
+
+  }
+
+
+  body.dark-mode #TEM6SearchBox,
+  body.dark #TEM6SearchBox{
+
+    background:
+      rgba(20,20,20,.98);
+
+    color:#fff;
+
+  }
+
+
+  body.dark-mode #TEM6Input,
+  body.dark #TEM6Input{
+
+    background:
+      rgba(255,255,255,.07);
+
+    color:#fff;
+
+    border-color:
+      rgba(255,255,255,.1);
+
+  }
+
+
+  body.dark-mode #TEM7FavPanel,
+  body.dark #TEM7FavPanel,
+  body.dark-mode #TEM8Panel,
+  body.dark #TEM8Panel{
+
+    background:
+      #151515;
+
+    color:#fff;
+
+  }
+
+
+  body.dark-mode #TEM10InstallCard,
+  body.dark #TEM10InstallCard{
+
+    background:
+      rgba(22,22,22,.97);
+
+    color:#fff;
+
+  }
+
+}
+
+
+/* =========================================================
+ DESKTOP HIDE
+========================================================= */
+
+@media (min-width:769px){
+
+  #TEM6SearchButton,
+  #TEM6SearchLayer,
+  #TEM7Favorites,
+  #TEM7FavLayer,
+  #TEM8Accessibility,
+  #TEM8Sheet,
+  #TEM10InstallCard{
+
+    display:none !important;
+
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+ M6 — SEARCH BUTTON
+========================================================= -->
+
+<button
+  id="TEM6SearchButton"
+  type="button"
+  aria-label="Search">
+
+  🔎
+
+</button>
+
+
+<!-- =========================================================
+ M6 — SEARCH LAYER
+========================================================= -->
+
+<div id="TEM6SearchLayer">
+
+  <div id="TEM6SearchBox">
+
+    <div class="TEM6SearchHeader">
+
+      <input
+        id="TEM6Input"
+        type="search"
+        autocomplete="off"
+        placeholder="Search Textile Explorer...">
+
+      <button
+        id="TEM6Close"
+        type="button">
+
+        ✕
+
+      </button>
+
+    </div>
+
+
+    <div id="TEM6Results">
+
+      <div class="TEM6NoResult">
+
+        Type something to search
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M7 — FAVORITES
+========================================================= -->
+
+<button
+  id="TEM7Favorites"
+  type="button"
+  aria-label="Favorites">
+
+  ♡
+
+</button>
+
+
+<div id="TEM7FavLayer">
+
+  <div id="TEM7FavPanel">
+
+    <div class="TEM7Handle"></div>
+
+    <div class="TEM7Head">
+
+      <h3>
+        ❤️ My Favorites
+      </h3>
+
+      <button
+        id="TEM7Clear"
+        type="button">
+
+        Clear
+
+      </button>
+
+    </div>
+
+
+    <div id="TEM7List">
+
+      <div class="TEM7Empty">
+
+        এখনো কোনো favorite নেই।
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M8 — ACCESSIBILITY
+========================================================= -->
+
+<button
+  id="TEM8Accessibility"
+  type="button"
+  aria-label="Accessibility">
+
+  ♿
+
+</button>
+
+
+<div id="TEM8Sheet">
+
+  <div id="TEM8Panel">
+
+    <div class="TEM8Head">
+
+      <h3>
+        Accessibility
+      </h3>
+
+      <button
+        id="TEM8Close"
+        type="button">
+
+        ✕
+
+      </button>
+
+    </div>
+
+
+    <div class="TEM8Options">
+
+      <button
+        class="TEM8Option"
+        id="TEM8Text">
+
+        🔠 Large Text
+
+      </button>
+
+
+      <button
+        class="TEM8Option"
+        id="TEM8Contrast">
+
+        ◐ Contrast
+
+      </button>
+
+
+      <button
+        class="TEM8Option"
+        id="TEM8Focus">
+
+        🎯 Focus Mode
+
+      </button>
+
+
+      <button
+        class="TEM8Option"
+        id="TEM8Motion">
+
+        🧘 Reduce Motion
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M10 — PWA INSTALL UI
+========================================================= -->
+
+<div id="TEM10InstallCard">
+
+  <div class="TEM10Icon">
+    📱
+  </div>
+
+
+  <div class="TEM10Text">
+
+    <strong>
+      Textile Explorer
+    </strong>
+
+    <small>
+      Home Screen-এ যোগ করে দ্রুত ব্যবহার করুন
+    </small>
+
+  </div>
+
+
+  <button
+    id="TEM10InstallBtn"
+    type="button">
+
+    Install
+
+  </button>
+
+
+  <button
+    id="TEM10InstallClose"
+    type="button">
+
+    ✕
+
+  </button>
+
+</div>
+
+
+<script>
+
+(function(){
+
+  "use strict";
+
+
+  /* =======================================================
+     HELPERS
+  ======================================================= */
+
+  const mobile =
+    () => window.innerWidth <= 768;
+
+
+  const safeGet =
+    key => {
+
+      try{
+
+        return localStorage.getItem(key);
+
+      }catch(e){
+
+        return null;
+
+      }
+
+    };
+
+
+  const safeSet =
+    (key,value) => {
+
+      try{
+
+        localStorage.setItem(
+          key,
+          value
+        );
+
+      }catch(e){}
+
+    };
+
+
+  /* =======================================================
+     M6 — SEARCH DATA
+  ======================================================= */
+
+  const searchItems = [
+
+    {
+      name:"GSM Calculator",
+      icon:"🧮",
+      desc:"Fabric GSM calculation",
+      target:"#calculators"
+    },
+
+    {
+      name:"Yarn Count",
+      icon:"🧵",
+      desc:"Yarn count tools",
+      target:"#calculators"
+    },
+
+    {
+      name:"EPI Calculator",
+      icon:"📐",
+      desc:"Ends per inch",
+      target:"#calculators"
+    },
+
+    {
+      name:"PPI Calculator",
+      icon:"📏",
+      desc:"Picks per inch",
+      target:"#calculators"
+    },
+
+    {
+      name:"Fabric Weight",
+      icon:"⚖️",
+      desc:"Fabric weight calculation",
+      target:"#calculators"
+    },
+
+    {
+      name:"Shrinkage",
+      icon:"↔️",
+      desc:"Shrinkage calculation",
+      target:"#calculators"
+    },
+
+    {
+      name:"Fabrics",
+      icon:"🧵",
+      desc:"Fabric knowledge",
+      target:"#fabrics"
+    },
+
+    {
+      name:"Textile Process",
+      icon:"⚙️",
+      desc:"Textile manufacturing process",
+      target:"#process"
+    },
+
+    {
+      name:"Student Zone",
+      icon:"🎓",
+      desc:"Study and student tools",
+      target:"#students"
+    },
+
+    {
+      name:"Career",
+      icon:"💼",
+      desc:"Textile career information",
+      target:"#career"
+    },
+
+    {
+      name:"FAQ",
+      icon:"❓",
+      desc:"Frequently asked questions",
+      target:"#faq"
+    },
+
+    {
+      name:"About",
+      icon:"👤",
+      desc:"About Textile Explorer",
+      target:"#about"
+    }
+
+  ];
+
+
+  /* =======================================================
+     M6 — SEARCH
+  ======================================================= */
+
+  const searchButton =
+    document.getElementById(
+      "TEM6SearchButton"
+    );
+
+  const searchLayer =
+    document.getElementById(
+      "TEM6SearchLayer"
+    );
+
+  const searchInput =
+    document.getElementById(
+      "TEM6Input"
+    );
+
+  const searchClose =
+    document.getElementById(
+      "TEM6Close"
+    );
+
+  const results =
+    document.getElementById(
+      "TEM6Results"
+    );
+
+
+  function openSearch(){
+
+    if(!mobile()) return;
+
+    searchLayer.classList.add(
+      "TEM6Open"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+    setTimeout(
+      () => searchInput.focus(),
+      100
+    );
+
+  }
+
+
+  function closeSearch(){
+
+    searchLayer.classList.remove(
+      "TEM6Open"
+    );
+
+    document.body.style.overflow =
+      "";
+
+    searchInput.value =
+      "";
+
+    renderResults("");
+
+  }
+
+
+  function renderResults(query){
+
+    const q =
+      String(query || "")
+        .trim()
+        .toLowerCase();
+
+
+    if(!q){
+
+      results.innerHTML =
+
+        `<div class="TEM6NoResult">
+          Search Textile Explorer
+        </div>`;
+
+      return;
+
+    }
+
+
+    const matches =
+      searchItems.filter(item =>
+
+        (
+          item.name +
+          " " +
+          item.desc
+        )
+        .toLowerCase()
+        .includes(q)
+
+      );
+
+
+    if(!matches.length){
+
+      results.innerHTML =
+
+        `<div class="TEM6NoResult">
+          কোনো result পাওয়া যায়নি।
+        </div>`;
+
+      return;
+
+    }
+
+
+    results.innerHTML =
+      matches.map(item =>
+
+        `<a
+          class="TEM6Result"
+          href="${item.target}">
+
+          <span
+            class="TEM6ResultIcon">
+            ${item.icon}
+          </span>
+
+          <span
+            class="TEM6ResultText">
+
+            <strong>
+              ${item.name}
+            </strong>
+
+            <small>
+              ${item.desc}
+            </small>
+
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </a>`
+
+      ).join("");
+
+
+    results
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          function(){
+
+            closeSearch();
+
+          }
+        );
+
+      });
+
+  }
+
+
+  if(searchButton){
+
+    searchButton.addEventListener(
+      "click",
+      openSearch
+    );
+
+  }
+
+
+  if(searchClose){
+
+    searchClose.addEventListener(
+      "click",
+      closeSearch
+    );
+
+  }
+
+
+  if(searchInput){
+
+    searchInput.addEventListener(
+      "input",
+      function(){
+
+        renderResults(
+          searchInput.value
+        );
+
+      }
+    );
+
+  }
+
+
+  if(searchLayer){
+
+    searchLayer.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target === searchLayer){
+
+          closeSearch();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  document.addEventListener(
+    "keydown",
+    function(e){
+
+      if(e.key === "Escape"){
+
+        closeSearch();
+
+        closeFavorites();
+
+        closeAccessibility();
+
+      }
+
+
+      if(
+        mobile() &&
+        e.key === "/" &&
+        document.activeElement !==
+          searchInput
+      ){
+
+        e.preventDefault();
+
+        openSearch();
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     M7 — FAVORITES
+  ======================================================= */
+
+  const favLayer =
+    document.getElementById(
+      "TEM7FavLayer"
+    );
+
+  const favButton =
+    document.getElementById(
+      "TEM7Favorites"
+    );
+
+  const favList =
+    document.getElementById(
+      "TEM7List"
+    );
+
+  const favClear =
+    document.getElementById(
+      "TEM7Clear"
+    );
+
+
+  let favorites = [];
+
+
+  try{
+
+    favorites =
+      JSON.parse(
+        safeGet(
+          "TE_M7_FAVORITES"
+        ) || "[]"
+      );
+
+  }catch(e){
+
+    favorites = [];
+
+  }
+
+
+  const favoriteItems = [
+
+    {
+      id:"calculator",
+      name:"Calculator",
+      icon:"🧮",
+      desc:"Textile calculators",
+      target:"#calculators"
+    },
+
+    {
+      id:"fabrics",
+      name:"Fabrics",
+      icon:"🧵",
+      desc:"Fabric library",
+      target:"#fabrics"
+    },
+
+    {
+      id:"student",
+      name:"Student Zone",
+      icon:"🎓",
+      desc:"Study tools",
+      target:"#students"
+    },
+
+    {
+      id:"career",
+      name:"Career",
+      icon:"💼",
+      desc:"Career resources",
+      target:"#career"
+    },
+
+    {
+      id:"process",
+      name:"Textile Process",
+      icon:"⚙️",
+      desc:"Manufacturing process",
+      target:"#process"
+    }
+
+  ];
+
+
+  function saveFavorites(){
+
+    safeSet(
+      "TE_M7_FAVORITES",
+      JSON.stringify(favorites)
+    );
+
+  }
+
+
+  function renderFavorites(){
+
+    if(!favList) return;
+
+
+    if(!favorites.length){
+
+      favList.innerHTML =
+
+        `<div class="TEM7Empty">
+          এখনো কোনো favorite নেই।
+          <br>
+          পরে দ্রুত access করার জন্য
+          favorite তৈরি করতে পারবেন।
+        </div>`;
+
+      return;
+
+    }
+
+
+    favList.innerHTML =
+      favorites.map(id => {
+
+        const item =
+          favoriteItems.find(
+            x => x.id === id
+          );
+
+        if(!item) return "";
+
+        return `
+
+          <div
+            class="TEM7Item">
+
+            <span
+              class="TEM7ItemIcon">
+              ${item.icon}
+            </span>
+
+            <a
+              class="TEM7ItemText"
+              href="${item.target}">
+
+              <strong>
+                ${item.name}
+              </strong>
+
+              <small>
+                ${item.desc}
+              </small>
+
+            </a>
+
+            <button
+              class="TEM7Remove"
+              data-remove="${item.id}"
+              type="button">
+
+              ✕
+
+            </button>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+
+    favList
+      .querySelectorAll(
+        "[data-remove]"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          function(){
+
+            const id =
+              button.dataset.remove;
+
+            favorites =
+              favorites.filter(
+                x => x !== id
+              );
+
+            saveFavorites();
+
+            renderFavorites();
+
+          }
+        );
+
+      });
+
+
+    favList
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          closeFavorites
+        );
+
+      });
+
+  }
+
+
+  function openFavorites(){
+
+    if(!mobile()) return;
+
+    renderFavorites();
+
+    favLayer.classList.add(
+      "TEM7Open"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  function closeFavorites(){
+
+    if(!favLayer) return;
+
+    favLayer.classList.remove(
+      "TEM7Open"
+    );
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  if(favButton){
+
+    favButton.addEventListener(
+      "click",
+      openFavorites
+    );
+
+  }
+
+
+  if(favLayer){
+
+    favLayer.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target === favLayer){
+
+          closeFavorites();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  if(favClear){
+
+    favClear.addEventListener(
+      "click",
+      function(){
+
+        favorites = [];
+
+        saveFavorites();
+
+        renderFavorites();
+
+      }
+    );
+
+  }
+
+
+  /*
+    Public helper:
+    other modules can call:
+    TE_AddMobileFavorite("career")
+  */
+
+  window.TE_AddMobileFavorite =
+    function(id){
+
+      if(
+        !favoriteItems.some(
+          x => x.id === id
+        )
+      ){
+
+        return;
+
+      }
+
+
+      if(
+        !favorites.includes(id)
+      ){
+
+        favorites.push(id);
+
+        saveFavorites();
+
+      }
+
+
+      renderFavorites();
+
+    };
+
+
+  /* =======================================================
+     M8 — ACCESSIBILITY
+  ======================================================= */
+
+  const accessButton =
+    document.getElementById(
+      "TEM8Accessibility"
+    );
+
+  const accessSheet =
+    document.getElementById(
+      "TEM8Sheet"
+    );
+
+  const accessClose =
+    document.getElementById(
+      "TEM8Close"
+    );
+
+
+  function openAccessibility(){
+
+    if(!mobile()) return;
+
+    accessSheet.classList.add(
+      "TEM8Open"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  function closeAccessibility(){
+
+    if(!accessSheet) return;
+
+    accessSheet.classList.remove(
+      "TEM8Open"
+    );
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  if(accessButton){
+
+    accessButton.addEventListener(
+      "click",
+      openAccessibility
+    );
+
+  }
+
+
+  if(accessClose){
+
+    accessClose.addEventListener(
+      "click",
+      closeAccessibility
+    );
+
+  }
+
+
+  if(accessSheet){
+
+    accessSheet.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target === accessSheet){
+
+          closeAccessibility();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  const textButton =
+    document.getElementById(
+      "TEM8Text"
+    );
+
+  const contrastButton =
+    document.getElementById(
+      "TEM8Contrast"
+    );
+
+  const focusButton =
+    document.getElementById(
+      "TEM8Focus"
+    );
+
+  const motionButton =
+    document.getElementById(
+      "TEM8Motion"
+    );
+
+
+  if(textButton){
+
+    textButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM8LargeText"
+        );
+
+        safeSet(
+          "TE_M8_LARGE_TEXT",
+          document.body.classList.contains(
+            "TEM8LargeText"
+          )
+            ? "1"
+            : "0"
+        );
+
+      }
+    );
+
+  }
+
+
+  if(contrastButton){
+
+    contrastButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM8HighContrast"
+        );
+
+      }
+    );
+
+  }
+
+
+  if(focusButton){
+
+    focusButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM8Focus"
+        );
+
+      }
+    );
+
+  }
+
+
+  if(motionButton){
+
+    motionButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM9ReduceMotion"
+        );
+
+        safeSet(
+          "TE_M9_REDUCE_MOTION",
+          document.body.classList.contains(
+            "TEM9ReduceMotion"
+          )
+            ? "1"
+            : "0"
+        );
+
+      }
+    );
+
+  }
+
+
+  /* Restore accessibility settings */
+
+  if(
+    safeGet(
+      "TE_M8_LARGE_TEXT"
+    ) === "1"
+  ){
+
+    document.body.classList.add(
+      "TEM8LargeText"
+    );
+
+  }
+
+
+  if(
+    safeGet(
+      "TE_M9_REDUCE_MOTION"
+    ) === "1"
+  ){
+
+    document.body.classList.add(
+      "TEM9ReduceMotion"
+    );
+
+  }
+
+
+  /* =======================================================
+     M9 — SMART PERFORMANCE
+  ======================================================= */
+
+  function optimizeMobile(){
+
+    if(!mobile()) return;
+
+
+    /* Lazy load non-critical images */
+
+    document
+      .querySelectorAll(
+        "img:not([loading])"
+      )
+      .forEach(img => {
+
+        if(
+          !img.closest(".hero")
+        ){
+
+          img.loading =
+            "lazy";
+
+        }
+
+        img.decoding =
+          "async";
+
+      });
+
+
+    /* Add safe image dimensions */
+
+    document
+      .querySelectorAll("img")
+      .forEach(img => {
+
+        img.style.maxWidth =
+          "100%";
+
+      });
+
+
+    /* Reduce expensive effects
+       on very small devices */
+
+    if(
+      window.innerWidth <= 360
+    ){
+
+      document.body.classList.add(
+        "TEM9MicroDevice"
+      );
+
+    }
+
+  }
+
+
+  /* =======================================================
+     M9 — SAVE LAST VISITED SECTION
+  ======================================================= */
+
+  document.addEventListener(
+    "click",
+    function(e){
+
+      if(!mobile()) return;
+
+
+      const link =
+        e.target.closest(
+          "a[href^='#']"
+        );
+
+
+      if(!link) return;
+
+
+      const target =
+        link.getAttribute(
+          "href"
+        );
+
+
+      if(
+        target &&
+        target !== "#"
+      ){
+
+        safeSet(
+          "TE_M9_LAST_SECTION",
+          target
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     M10 — PWA INSTALL
+  ======================================================= */
+
+  let deferredPrompt = null;
+
+
+  const installCard =
+    document.getElementById(
+      "TEM10InstallCard"
+    );
+
+  const installButton =
+    document.getElementById(
+      "TEM10InstallBtn"
+    );
+
+  const installClose =
+    document.getElementById(
+      "TEM10InstallClose"
+    );
+
+
+  window.addEventListener(
+    "beforeinstallprompt",
+    function(e){
+
+      e.preventDefault();
+
+      deferredPrompt = e;
+
+
+      if(
+        mobile() &&
+        !safeGet(
+          "TE_M10_INSTALL_DISMISSED"
+        )
+      ){
+
+        setTimeout(
+          function(){
+
+            if(installCard){
+
+              installCard.classList.add(
+                "TEM10Show"
+              );
+
+            }
+
+          },
+          5000
+        );
+
+      }
+
+    }
+  );
+
+
+  if(installButton){
+
+    installButton.addEventListener(
+      "click",
+      async function(){
+
+        if(!deferredPrompt){
+
+          if(
+            window.TE_MobileToast
+          ){
+
+            window.TE_MobileToast(
+              "Browser menu থেকে Add to Home Screen ব্যবহার করুন।"
+            );
+
+          }
+
+          return;
+
+        }
+
+
+        deferredPrompt.prompt();
+
+        try{
+
+          await deferredPrompt.userChoice;
+
+        }catch(e){}
+
+
+        deferredPrompt =
+          null;
+
+
+        if(installCard){
+
+          installCard.classList.remove(
+            "TEM10Show"
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  if(installClose){
+
+    installClose.addEventListener(
+      "click",
+      function(){
+
+        if(installCard){
+
+          installCard.classList.remove(
+            "TEM10Show"
+          );
+
+        }
+
+        safeSet(
+          "TE_M10_INSTALL_DISMISSED",
+          "1"
+        );
+
+      }
+    );
+
+  }
+
+
+  window.addEventListener(
+    "appinstalled",
+    function(){
+
+      if(installCard){
+
+        installCard.classList.remove(
+          "TEM10Show"
+        );
+
+      }
+
+      if(
+        window.TE_MobileToast
+      ){
+
+        window.TE_MobileToast(
+          "Textile Explorer Home Screen-এ যোগ হয়েছে ✓"
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     INITIALIZE
+  ======================================================= */
+
+  function init(){
+
+    optimizeMobile();
+
+  }
+
+
+  if(
+    document.readyState ===
+    "loading"
+  ){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      init
+    );
+
+  }else{
+
+    init();
+
+  }
+
+
+  /* =======================================================
+     RESIZE
+  ======================================================= */
+
+  let resizeTimer;
+
+  window.addEventListener(
+    "resize",
+    function(){
+
+      clearTimeout(
+        resizeTimer
+      );
+
+      resizeTimer =
+        setTimeout(
+          optimizeMobile,
+          200
+        );
+
+    }
+  );
+
+
+})();
+
+</script>
+
+<!-- =========================================================
+ END M6-M10
+========================================================= -->
+  <!-- =========================================================
+ TEXTILE EXPLORER
+ MOBILE FUTURE PACK
+ M6 + M7 + M8 + M9 + M10
+ ---------------------------------------------------------
+ M6  Smart Search + Recent Tools
+ M7  Favorites + Personal Shortcuts
+ M8  Mobile UX + Accessibility
+ M9  Performance + Smart Loading
+ M10 PWA-READY INSTALL EXPERIENCE
+ ========================================================= -->
+
+<style id="TE-M6-M10">
+
+/* =========================================================
+   GLOBAL MOBILE FOUNDATION
+========================================================= */
+
+@media (max-width:768px){
+
+  #TEM6SearchLayer,
+  #TEM7FavLayer,
+  #TEM8Sheet,
+  #TEM10InstallCard{
+
+    font-family:inherit;
+
+  }
+
+  .TEM6Hidden,
+  .TEM7Hidden{
+
+    display:none !important;
+
+  }
+
+
+  /* =======================================================
+     M6 — SEARCH BUTTON
+  ======================================================= */
+
+  #TEM6SearchButton{
+
+    position:fixed;
+
+    right:14px;
+
+    bottom:136px;
+
+    width:46px;
+    height:46px;
+
+    border:0;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:9995;
+
+    font-size:20px;
+
+    box-shadow:
+      0 9px 28px rgba(0,0,0,.17);
+
+    background:
+      rgba(255,255,255,.92);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    cursor:pointer;
+
+    transition:
+      transform .16s ease;
+
+  }
+
+  #TEM6SearchButton:active{
+
+    transform:scale(.92);
+
+  }
+
+
+  /* =======================================================
+     M6 — SEARCH OVERLAY
+  ======================================================= */
+
+  #TEM6SearchLayer{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10020;
+
+    display:none;
+
+    background:
+      rgba(0,0,0,.48);
+
+    backdrop-filter:blur(5px);
+
+    -webkit-backdrop-filter:blur(5px);
+
+    padding:12px;
+
+  }
+
+  #TEM6SearchLayer.TEM6Open{
+
+    display:block;
+
+  }
+
+
+  #TEM6SearchBox{
+
+    width:100%;
+
+    max-height:
+      calc(100vh - 24px);
+
+    overflow-y:auto;
+
+    border-radius:22px;
+
+    padding:15px;
+
+    margin-top:3px;
+
+    box-shadow:
+      0 20px 60px rgba(0,0,0,.22);
+
+    background:
+      rgba(255,255,255,.97);
+
+    animation:
+      TEM6SearchIn .2s ease;
+
+  }
+
+  @keyframes TEM6SearchIn{
+
+    from{
+
+      opacity:0;
+
+      transform:
+        translateY(-10px)
+        scale(.98);
+
+    }
+
+    to{
+
+      opacity:1;
+
+      transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+  }
+
+
+  .TEM6SearchHeader{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:11px;
+
+  }
+
+
+  #TEM6Input{
+
+    flex:1;
+
+    min-width:0;
+
+    height:46px;
+
+    border-radius:13px;
+
+    border:1px solid rgba(127,127,127,.15);
+
+    padding:0 13px;
+
+    font-size:16px !important;
+
+    outline:none;
+
+    background:
+      rgba(127,127,127,.06);
+
+  }
+
+
+  #TEM6Close{
+
+    width:42px;
+    height:42px;
+
+    flex:0 0 42px;
+
+    border:0;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+  }
+
+
+  #TEM6Results{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+  }
+
+
+  .TEM6Result{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-height:54px;
+
+    padding:9px 11px;
+
+    border-radius:13px;
+
+    text-decoration:none;
+
+    background:
+      rgba(127,127,127,.055);
+
+  }
+
+
+  .TEM6ResultIcon{
+
+    width:35px;
+    height:35px;
+
+    flex:0 0 35px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    background:
+      rgba(127,127,127,.08);
+
+  }
+
+
+  .TEM6ResultText{
+
+    min-width:0;
+
+    flex:1;
+
+  }
+
+
+  .TEM6ResultText strong{
+
+    display:block;
+
+    font-size:12px;
+
+    line-height:1.2;
+
+  }
+
+
+  .TEM6ResultText small{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:9px;
+
+    opacity:.6;
+
+  }
+
+
+  .TEM6NoResult{
+
+    padding:25px 10px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    opacity:.6;
+
+  }
+
+
+  /* =======================================================
+     M7 — FAVORITES BUTTON
+  ======================================================= */
+
+  #TEM7Favorites{
+
+    position:fixed;
+
+    left:14px;
+
+    bottom:136px;
+
+    width:46px;
+    height:46px;
+
+    border:0;
+
+    border-radius:50%;
+
+    z-index:9995;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    box-shadow:
+      0 9px 28px rgba(0,0,0,.17);
+
+    background:
+      rgba(255,255,255,.92);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+  }
+
+
+  /* =======================================================
+     M7 — FAVORITES PANEL
+  ======================================================= */
+
+  #TEM7FavLayer{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10021;
+
+    display:none;
+
+    align-items:flex-end;
+
+    background:
+      rgba(0,0,0,.48);
+
+    backdrop-filter:blur(4px);
+
+    -webkit-backdrop-filter:blur(4px);
+
+  }
+
+
+  #TEM7FavLayer.TEM7Open{
+
+    display:flex;
+
+  }
+
+
+  #TEM7FavPanel{
+
+    width:100%;
+
+    max-height:78vh;
+
+    overflow-y:auto;
+
+    padding:12px 14px
+      calc(82px + env(safe-area-inset-bottom));
+
+    border-radius:24px 24px 0 0;
+
+    animation:
+      TEM7Up .22s ease;
+
+    background:
+      var(--bg,#fff);
+
+    box-shadow:
+      0 -18px 50px rgba(0,0,0,.22);
+
+  }
+
+
+  @keyframes TEM7Up{
+
+    from{
+
+      transform:
+        translateY(100%);
+
+    }
+
+    to{
+
+      transform:
+        translateY(0);
+
+    }
+
+  }
+
+
+  .TEM7Handle{
+
+    width:42px;
+
+    height:4px;
+
+    border-radius:99px;
+
+    margin:3px auto 16px;
+
+    background:currentColor;
+
+    opacity:.25;
+
+  }
+
+
+  .TEM7Head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:13px;
+
+  }
+
+
+  .TEM7Head h3{
+
+    margin:0;
+
+    font-size:19px;
+
+  }
+
+
+  #TEM7Clear{
+
+    border:0;
+
+    min-height:36px;
+
+    padding:0 10px;
+
+    border-radius:10px;
+
+    font-size:10px;
+
+  }
+
+
+  #TEM7List{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+  }
+
+
+  .TEM7Item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-height:58px;
+
+    padding:9px 11px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    background:
+      rgba(127,127,127,.07);
+
+  }
+
+
+  .TEM7ItemIcon{
+
+    font-size:21px;
+
+  }
+
+
+  .TEM7ItemText{
+
+    flex:1;
+
+    min-width:0;
+
+  }
+
+
+  .TEM7ItemText strong{
+
+    display:block;
+
+    font-size:12px;
+
+  }
+
+
+  .TEM7ItemText small{
+
+    display:block;
+
+    margin-top:3px;
+
+    font-size:9px;
+
+    opacity:.6;
+
+  }
+
+
+  .TEM7Remove{
+
+    width:34px;
+    height:34px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:transparent;
+
+    font-size:15px;
+
+  }
+
+
+  .TEM7Empty{
+
+    text-align:center;
+
+    padding:28px 10px;
+
+    font-size:12px;
+
+    opacity:.55;
+
+  }
+
+
+  /* =======================================================
+     M8 — ACCESSIBILITY TOOLS
+  ======================================================= */
+
+  #TEM8Accessibility{
+
+    position:fixed;
+
+    right:14px;
+
+    bottom:190px;
+
+    width:44px;
+    height:44px;
+
+    border:0;
+
+    border-radius:50%;
+
+    z-index:9994;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:19px;
+
+    box-shadow:
+      0 8px 25px rgba(0,0,0,.16);
+
+    background:
+      rgba(255,255,255,.92);
+
+    backdrop-filter:blur(16px);
+
+  }
+
+
+  #TEM8Sheet{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10022;
+
+    display:none;
+
+    align-items:flex-end;
+
+    background:
+      rgba(0,0,0,.48);
+
+  }
+
+
+  #TEM8Sheet.TEM8Open{
+
+    display:flex;
+
+  }
+
+
+  #TEM8Panel{
+
+    width:100%;
+
+    padding:13px 15px
+      calc(85px + env(safe-area-inset-bottom));
+
+    border-radius:24px 24px 0 0;
+
+    background:
+      var(--bg,#fff);
+
+    box-shadow:
+      0 -18px 50px rgba(0,0,0,.22);
+
+    animation:
+      TEM8Up .2s ease;
+
+  }
+
+
+  @keyframes TEM8Up{
+
+    from{
+      transform:translateY(100%);
+    }
+
+    to{
+      transform:translateY(0);
+    }
+
+  }
+
+
+  .TEM8Head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:14px;
+
+  }
+
+
+  .TEM8Head h3{
+
+    margin:0;
+
+    font-size:18px;
+
+  }
+
+
+  .TEM8Options{
+
+    display:grid;
+
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:8px;
+
+  }
+
+
+  .TEM8Option{
+
+    min-height:54px;
+
+    border:0;
+
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    background:
+      rgba(127,127,127,.07);
+
+  }
+
+
+  /* Accessibility states */
+
+  body.TEM8LargeText{
+
+    font-size:110% !important;
+
+  }
+
+
+  body.TEM8LargeText h1{
+
+    font-size:
+      calc(1em + 7px) !important;
+
+  }
+
+
+  body.TEM8LargeText p,
+  body.TEM8LargeText li{
+
+    font-size:
+      calc(1em + 2px) !important;
+
+  }
+
+
+  body.TEM8HighContrast{
+
+    filter:
+      contrast(1.08);
+
+  }
+
+
+  body.TEM8Focus *:focus{
+
+    outline:
+      3px solid currentColor !important;
+
+    outline-offset:3px !important;
+
+  }
+
+
+  /* =======================================================
+     M9 — PERFORMANCE MODE
+  ======================================================= */
+
+  .TEM9ReduceMotion *,
+  .TEM9ReduceMotion *::before,
+  .TEM9ReduceMotion *::after{
+
+    animation-duration:
+      .01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      .01ms !important;
+
+    scroll-behavior:
+      auto !important;
+
+  }
+
+
+  /* =======================================================
+     M10 — INSTALL CARD
+  ======================================================= */
+
+  #TEM10InstallCard{
+
+    position:fixed;
+
+    left:10px;
+    right:10px;
+
+    bottom:78px;
+
+    z-index:10010;
+
+    display:none;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:11px;
+
+    border-radius:17px;
+
+    box-shadow:
+      0 14px 40px rgba(0,0,0,.2);
+
+    background:
+      rgba(255,255,255,.96);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+  }
+
+
+  #TEM10InstallCard.TEM10Show{
+
+    display:flex;
+
+    animation:
+      TEM10In .25s ease;
+
+  }
+
+
+  @keyframes TEM10In{
+
+    from{
+
+      opacity:0;
+
+      transform:
+        translateY(12px);
+
+    }
+
+    to{
+
+      opacity:1;
+
+      transform:
+        translateY(0);
+
+    }
+
+  }
+
+
+  .TEM10Icon{
+
+    width:42px;
+    height:42px;
+
+    flex:0 0 42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    font-size:20px;
+
+    background:
+      rgba(127,127,127,.08);
+
+  }
+
+
+  .TEM10Text{
+
+    flex:1;
+
+    min-width:0;
+
+  }
+
+
+  .TEM10Text strong{
+
+    display:block;
+
+    font-size:12px;
+
+  }
+
+
+  .TEM10Text small{
+
+    display:block;
+
+    margin-top:2px;
+
+    font-size:9px;
+
+    opacity:.6;
+
+  }
+
+
+  #TEM10InstallBtn{
+
+    min-height:38px;
+
+    padding:0 11px;
+
+    border:0;
+
+    border-radius:10px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+  }
+
+
+  #TEM10InstallClose{
+
+    width:30px;
+    height:30px;
+
+    border:0;
+
+    background:transparent;
+
+    font-size:14px;
+
+  }
+
+
+  /* =======================================================
+     M10 — LANDSCAPE
+  ======================================================= */
+
+  @media
+  (max-width:900px)
+  and
+  (orientation:landscape){
+
+    #TEM1BottomNav{
+
+      height:58px;
+
+    }
+
+    #TEM1BottomNav a span{
+
+      font-size:16px;
+
+    }
+
+    #TEM1BottomNav a{
+
+      font-size:8px;
+
+    }
+
+    body{
+
+      padding-bottom:62px;
+
+    }
+
+    #TEM7FavPanel,
+    #TEM8Panel{
+
+      max-height:88vh;
+
+    }
+
+  }
+
+
+  /* =======================================================
+     360PX OPTIMIZATION
+  ======================================================= */
+
+  @media (max-width:360px){
+
+    #TEM6SearchButton,
+    #TEM7Favorites{
+
+      width:42px;
+      height:42px;
+
+      font-size:18px;
+
+    }
+
+    #TEM6SearchButton{
+
+      right:10px;
+
+    }
+
+    #TEM7Favorites{
+
+      left:10px;
+
+    }
+
+    #TEM8Accessibility{
+
+      right:10px;
+
+      width:40px;
+      height:40px;
+
+    }
+
+    .TEM8Options{
+
+      grid-template-columns:1fr;
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+ DARK MODE
+========================================================= */
+
+@media (max-width:768px){
+
+  body.dark-mode #TEM6SearchButton,
+  body.dark #TEM6SearchButton,
+  body.dark-mode #TEM7Favorites,
+  body.dark #TEM7Favorites,
+  body.dark-mode #TEM8Accessibility,
+  body.dark #TEM8Accessibility{
+
+    background:
+      rgba(25,25,25,.94);
+
+    color:#fff;
+
+  }
+
+
+  body.dark-mode #TEM6SearchBox,
+  body.dark #TEM6SearchBox{
+
+    background:
+      rgba(20,20,20,.98);
+
+    color:#fff;
+
+  }
+
+
+  body.dark-mode #TEM6Input,
+  body.dark #TEM6Input{
+
+    background:
+      rgba(255,255,255,.07);
+
+    color:#fff;
+
+    border-color:
+      rgba(255,255,255,.1);
+
+  }
+
+
+  body.dark-mode #TEM7FavPanel,
+  body.dark #TEM7FavPanel,
+  body.dark-mode #TEM8Panel,
+  body.dark #TEM8Panel{
+
+    background:
+      #151515;
+
+    color:#fff;
+
+  }
+
+
+  body.dark-mode #TEM10InstallCard,
+  body.dark #TEM10InstallCard{
+
+    background:
+      rgba(22,22,22,.97);
+
+    color:#fff;
+
+  }
+
+}
+
+
+/* =========================================================
+ DESKTOP HIDE
+========================================================= */
+
+@media (min-width:769px){
+
+  #TEM6SearchButton,
+  #TEM6SearchLayer,
+  #TEM7Favorites,
+  #TEM7FavLayer,
+  #TEM8Accessibility,
+  #TEM8Sheet,
+  #TEM10InstallCard{
+
+    display:none !important;
+
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+ M6 — SEARCH BUTTON
+========================================================= -->
+
+<button
+  id="TEM6SearchButton"
+  type="button"
+  aria-label="Search">
+
+  🔎
+
+</button>
+
+
+<!-- =========================================================
+ M6 — SEARCH LAYER
+========================================================= -->
+
+<div id="TEM6SearchLayer">
+
+  <div id="TEM6SearchBox">
+
+    <div class="TEM6SearchHeader">
+
+      <input
+        id="TEM6Input"
+        type="search"
+        autocomplete="off"
+        placeholder="Search Textile Explorer...">
+
+      <button
+        id="TEM6Close"
+        type="button">
+
+        ✕
+
+      </button>
+
+    </div>
+
+
+    <div id="TEM6Results">
+
+      <div class="TEM6NoResult">
+
+        Type something to search
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M7 — FAVORITES
+========================================================= -->
+
+<button
+  id="TEM7Favorites"
+  type="button"
+  aria-label="Favorites">
+
+  ♡
+
+</button>
+
+
+<div id="TEM7FavLayer">
+
+  <div id="TEM7FavPanel">
+
+    <div class="TEM7Handle"></div>
+
+    <div class="TEM7Head">
+
+      <h3>
+        ❤️ My Favorites
+      </h3>
+
+      <button
+        id="TEM7Clear"
+        type="button">
+
+        Clear
+
+      </button>
+
+    </div>
+
+
+    <div id="TEM7List">
+
+      <div class="TEM7Empty">
+
+        এখনো কোনো favorite নেই।
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M8 — ACCESSIBILITY
+========================================================= -->
+
+<button
+  id="TEM8Accessibility"
+  type="button"
+  aria-label="Accessibility">
+
+  ♿
+
+</button>
+
+
+<div id="TEM8Sheet">
+
+  <div id="TEM8Panel">
+
+    <div class="TEM8Head">
+
+      <h3>
+        Accessibility
+      </h3>
+
+      <button
+        id="TEM8Close"
+        type="button">
+
+        ✕
+
+      </button>
+
+    </div>
+
+
+    <div class="TEM8Options">
+
+      <button
+        class="TEM8Option"
+        id="TEM8Text">
+
+        🔠 Large Text
+
+      </button>
+
+
+      <button
+        class="TEM8Option"
+        id="TEM8Contrast">
+
+        ◐ Contrast
+
+      </button>
+
+
+      <button
+        class="TEM8Option"
+        id="TEM8Focus">
+
+        🎯 Focus Mode
+
+      </button>
+
+
+      <button
+        class="TEM8Option"
+        id="TEM8Motion">
+
+        🧘 Reduce Motion
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+ M10 — PWA INSTALL UI
+========================================================= -->
+
+<div id="TEM10InstallCard">
+
+  <div class="TEM10Icon">
+    📱
+  </div>
+
+
+  <div class="TEM10Text">
+
+    <strong>
+      Textile Explorer
+    </strong>
+
+    <small>
+      Home Screen-এ যোগ করে দ্রুত ব্যবহার করুন
+    </small>
+
+  </div>
+
+
+  <button
+    id="TEM10InstallBtn"
+    type="button">
+
+    Install
+
+  </button>
+
+
+  <button
+    id="TEM10InstallClose"
+    type="button">
+
+    ✕
+
+  </button>
+
+</div>
+
+
+<script>
+
+(function(){
+
+  "use strict";
+
+
+  /* =======================================================
+     HELPERS
+  ======================================================= */
+
+  const mobile =
+    () => window.innerWidth <= 768;
+
+
+  const safeGet =
+    key => {
+
+      try{
+
+        return localStorage.getItem(key);
+
+      }catch(e){
+
+        return null;
+
+      }
+
+    };
+
+
+  const safeSet =
+    (key,value) => {
+
+      try{
+
+        localStorage.setItem(
+          key,
+          value
+        );
+
+      }catch(e){}
+
+    };
+
+
+  /* =======================================================
+     M6 — SEARCH DATA
+  ======================================================= */
+
+  const searchItems = [
+
+    {
+      name:"GSM Calculator",
+      icon:"🧮",
+      desc:"Fabric GSM calculation",
+      target:"#calculators"
+    },
+
+    {
+      name:"Yarn Count",
+      icon:"🧵",
+      desc:"Yarn count tools",
+      target:"#calculators"
+    },
+
+    {
+      name:"EPI Calculator",
+      icon:"📐",
+      desc:"Ends per inch",
+      target:"#calculators"
+    },
+
+    {
+      name:"PPI Calculator",
+      icon:"📏",
+      desc:"Picks per inch",
+      target:"#calculators"
+    },
+
+    {
+      name:"Fabric Weight",
+      icon:"⚖️",
+      desc:"Fabric weight calculation",
+      target:"#calculators"
+    },
+
+    {
+      name:"Shrinkage",
+      icon:"↔️",
+      desc:"Shrinkage calculation",
+      target:"#calculators"
+    },
+
+    {
+      name:"Fabrics",
+      icon:"🧵",
+      desc:"Fabric knowledge",
+      target:"#fabrics"
+    },
+
+    {
+      name:"Textile Process",
+      icon:"⚙️",
+      desc:"Textile manufacturing process",
+      target:"#process"
+    },
+
+    {
+      name:"Student Zone",
+      icon:"🎓",
+      desc:"Study and student tools",
+      target:"#students"
+    },
+
+    {
+      name:"Career",
+      icon:"💼",
+      desc:"Textile career information",
+      target:"#career"
+    },
+
+    {
+      name:"FAQ",
+      icon:"❓",
+      desc:"Frequently asked questions",
+      target:"#faq"
+    },
+
+    {
+      name:"About",
+      icon:"👤",
+      desc:"About Textile Explorer",
+      target:"#about"
+    }
+
+  ];
+
+
+  /* =======================================================
+     M6 — SEARCH
+  ======================================================= */
+
+  const searchButton =
+    document.getElementById(
+      "TEM6SearchButton"
+    );
+
+  const searchLayer =
+    document.getElementById(
+      "TEM6SearchLayer"
+    );
+
+  const searchInput =
+    document.getElementById(
+      "TEM6Input"
+    );
+
+  const searchClose =
+    document.getElementById(
+      "TEM6Close"
+    );
+
+  const results =
+    document.getElementById(
+      "TEM6Results"
+    );
+
+
+  function openSearch(){
+
+    if(!mobile()) return;
+
+    searchLayer.classList.add(
+      "TEM6Open"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+    setTimeout(
+      () => searchInput.focus(),
+      100
+    );
+
+  }
+
+
+  function closeSearch(){
+
+    searchLayer.classList.remove(
+      "TEM6Open"
+    );
+
+    document.body.style.overflow =
+      "";
+
+    searchInput.value =
+      "";
+
+    renderResults("");
+
+  }
+
+
+  function renderResults(query){
+
+    const q =
+      String(query || "")
+        .trim()
+        .toLowerCase();
+
+
+    if(!q){
+
+      results.innerHTML =
+
+        `<div class="TEM6NoResult">
+          Search Textile Explorer
+        </div>`;
+
+      return;
+
+    }
+
+
+    const matches =
+      searchItems.filter(item =>
+
+        (
+          item.name +
+          " " +
+          item.desc
+        )
+        .toLowerCase()
+        .includes(q)
+
+      );
+
+
+    if(!matches.length){
+
+      results.innerHTML =
+
+        `<div class="TEM6NoResult">
+          কোনো result পাওয়া যায়নি।
+        </div>`;
+
+      return;
+
+    }
+
+
+    results.innerHTML =
+      matches.map(item =>
+
+        `<a
+          class="TEM6Result"
+          href="${item.target}">
+
+          <span
+            class="TEM6ResultIcon">
+            ${item.icon}
+          </span>
+
+          <span
+            class="TEM6ResultText">
+
+            <strong>
+              ${item.name}
+            </strong>
+
+            <small>
+              ${item.desc}
+            </small>
+
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </a>`
+
+      ).join("");
+
+
+    results
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          function(){
+
+            closeSearch();
+
+          }
+        );
+
+      });
+
+  }
+
+
+  if(searchButton){
+
+    searchButton.addEventListener(
+      "click",
+      openSearch
+    );
+
+  }
+
+
+  if(searchClose){
+
+    searchClose.addEventListener(
+      "click",
+      closeSearch
+    );
+
+  }
+
+
+  if(searchInput){
+
+    searchInput.addEventListener(
+      "input",
+      function(){
+
+        renderResults(
+          searchInput.value
+        );
+
+      }
+    );
+
+  }
+
+
+  if(searchLayer){
+
+    searchLayer.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target === searchLayer){
+
+          closeSearch();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  document.addEventListener(
+    "keydown",
+    function(e){
+
+      if(e.key === "Escape"){
+
+        closeSearch();
+
+        closeFavorites();
+
+        closeAccessibility();
+
+      }
+
+
+      if(
+        mobile() &&
+        e.key === "/" &&
+        document.activeElement !==
+          searchInput
+      ){
+
+        e.preventDefault();
+
+        openSearch();
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     M7 — FAVORITES
+  ======================================================= */
+
+  const favLayer =
+    document.getElementById(
+      "TEM7FavLayer"
+    );
+
+  const favButton =
+    document.getElementById(
+      "TEM7Favorites"
+    );
+
+  const favList =
+    document.getElementById(
+      "TEM7List"
+    );
+
+  const favClear =
+    document.getElementById(
+      "TEM7Clear"
+    );
+
+
+  let favorites = [];
+
+
+  try{
+
+    favorites =
+      JSON.parse(
+        safeGet(
+          "TE_M7_FAVORITES"
+        ) || "[]"
+      );
+
+  }catch(e){
+
+    favorites = [];
+
+  }
+
+
+  const favoriteItems = [
+
+    {
+      id:"calculator",
+      name:"Calculator",
+      icon:"🧮",
+      desc:"Textile calculators",
+      target:"#calculators"
+    },
+
+    {
+      id:"fabrics",
+      name:"Fabrics",
+      icon:"🧵",
+      desc:"Fabric library",
+      target:"#fabrics"
+    },
+
+    {
+      id:"student",
+      name:"Student Zone",
+      icon:"🎓",
+      desc:"Study tools",
+      target:"#students"
+    },
+
+    {
+      id:"career",
+      name:"Career",
+      icon:"💼",
+      desc:"Career resources",
+      target:"#career"
+    },
+
+    {
+      id:"process",
+      name:"Textile Process",
+      icon:"⚙️",
+      desc:"Manufacturing process",
+      target:"#process"
+    }
+
+  ];
+
+
+  function saveFavorites(){
+
+    safeSet(
+      "TE_M7_FAVORITES",
+      JSON.stringify(favorites)
+    );
+
+  }
+
+
+  function renderFavorites(){
+
+    if(!favList) return;
+
+
+    if(!favorites.length){
+
+      favList.innerHTML =
+
+        `<div class="TEM7Empty">
+          এখনো কোনো favorite নেই।
+          <br>
+          পরে দ্রুত access করার জন্য
+          favorite তৈরি করতে পারবেন।
+        </div>`;
+
+      return;
+
+    }
+
+
+    favList.innerHTML =
+      favorites.map(id => {
+
+        const item =
+          favoriteItems.find(
+            x => x.id === id
+          );
+
+        if(!item) return "";
+
+        return `
+
+          <div
+            class="TEM7Item">
+
+            <span
+              class="TEM7ItemIcon">
+              ${item.icon}
+            </span>
+
+            <a
+              class="TEM7ItemText"
+              href="${item.target}">
+
+              <strong>
+                ${item.name}
+              </strong>
+
+              <small>
+                ${item.desc}
+              </small>
+
+            </a>
+
+            <button
+              class="TEM7Remove"
+              data-remove="${item.id}"
+              type="button">
+
+              ✕
+
+            </button>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+
+    favList
+      .querySelectorAll(
+        "[data-remove]"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          function(){
+
+            const id =
+              button.dataset.remove;
+
+            favorites =
+              favorites.filter(
+                x => x !== id
+              );
+
+            saveFavorites();
+
+            renderFavorites();
+
+          }
+        );
+
+      });
+
+
+    favList
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          closeFavorites
+        );
+
+      });
+
+  }
+
+
+  function openFavorites(){
+
+    if(!mobile()) return;
+
+    renderFavorites();
+
+    favLayer.classList.add(
+      "TEM7Open"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  function closeFavorites(){
+
+    if(!favLayer) return;
+
+    favLayer.classList.remove(
+      "TEM7Open"
+    );
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  if(favButton){
+
+    favButton.addEventListener(
+      "click",
+      openFavorites
+    );
+
+  }
+
+
+  if(favLayer){
+
+    favLayer.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target === favLayer){
+
+          closeFavorites();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  if(favClear){
+
+    favClear.addEventListener(
+      "click",
+      function(){
+
+        favorites = [];
+
+        saveFavorites();
+
+        renderFavorites();
+
+      }
+    );
+
+  }
+
+
+  /*
+    Public helper:
+    other modules can call:
+    TE_AddMobileFavorite("career")
+  */
+
+  window.TE_AddMobileFavorite =
+    function(id){
+
+      if(
+        !favoriteItems.some(
+          x => x.id === id
+        )
+      ){
+
+        return;
+
+      }
+
+
+      if(
+        !favorites.includes(id)
+      ){
+
+        favorites.push(id);
+
+        saveFavorites();
+
+      }
+
+
+      renderFavorites();
+
+    };
+
+
+  /* =======================================================
+     M8 — ACCESSIBILITY
+  ======================================================= */
+
+  const accessButton =
+    document.getElementById(
+      "TEM8Accessibility"
+    );
+
+  const accessSheet =
+    document.getElementById(
+      "TEM8Sheet"
+    );
+
+  const accessClose =
+    document.getElementById(
+      "TEM8Close"
+    );
+
+
+  function openAccessibility(){
+
+    if(!mobile()) return;
+
+    accessSheet.classList.add(
+      "TEM8Open"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  function closeAccessibility(){
+
+    if(!accessSheet) return;
+
+    accessSheet.classList.remove(
+      "TEM8Open"
+    );
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  if(accessButton){
+
+    accessButton.addEventListener(
+      "click",
+      openAccessibility
+    );
+
+  }
+
+
+  if(accessClose){
+
+    accessClose.addEventListener(
+      "click",
+      closeAccessibility
+    );
+
+  }
+
+
+  if(accessSheet){
+
+    accessSheet.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target === accessSheet){
+
+          closeAccessibility();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  const textButton =
+    document.getElementById(
+      "TEM8Text"
+    );
+
+  const contrastButton =
+    document.getElementById(
+      "TEM8Contrast"
+    );
+
+  const focusButton =
+    document.getElementById(
+      "TEM8Focus"
+    );
+
+  const motionButton =
+    document.getElementById(
+      "TEM8Motion"
+    );
+
+
+  if(textButton){
+
+    textButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM8LargeText"
+        );
+
+        safeSet(
+          "TE_M8_LARGE_TEXT",
+          document.body.classList.contains(
+            "TEM8LargeText"
+          )
+            ? "1"
+            : "0"
+        );
+
+      }
+    );
+
+  }
+
+
+  if(contrastButton){
+
+    contrastButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM8HighContrast"
+        );
+
+      }
+    );
+
+  }
+
+
+  if(focusButton){
+
+    focusButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM8Focus"
+        );
+
+      }
+    );
+
+  }
+
+
+  if(motionButton){
+
+    motionButton.addEventListener(
+      "click",
+      function(){
+
+        document.body.classList.toggle(
+          "TEM9ReduceMotion"
+        );
+
+        safeSet(
+          "TE_M9_REDUCE_MOTION",
+          document.body.classList.contains(
+            "TEM9ReduceMotion"
+          )
+            ? "1"
+            : "0"
+        );
+
+      }
+    );
+
+  }
+
+
+  /* Restore accessibility settings */
+
+  if(
+    safeGet(
+      "TE_M8_LARGE_TEXT"
+    ) === "1"
+  ){
+
+    document.body.classList.add(
+      "TEM8LargeText"
+    );
+
+  }
+
+
+  if(
+    safeGet(
+      "TE_M9_REDUCE_MOTION"
+    ) === "1"
+  ){
+
+    document.body.classList.add(
+      "TEM9ReduceMotion"
+    );
+
+  }
+
+
+  /* =======================================================
+     M9 — SMART PERFORMANCE
+  ======================================================= */
+
+  function optimizeMobile(){
+
+    if(!mobile()) return;
+
+
+    /* Lazy load non-critical images */
+
+    document
+      .querySelectorAll(
+        "img:not([loading])"
+      )
+      .forEach(img => {
+
+        if(
+          !img.closest(".hero")
+        ){
+
+          img.loading =
+            "lazy";
+
+        }
+
+        img.decoding =
+          "async";
+
+      });
+
+
+    /* Add safe image dimensions */
+
+    document
+      .querySelectorAll("img")
+      .forEach(img => {
+
+        img.style.maxWidth =
+          "100%";
+
+      });
+
+
+    /* Reduce expensive effects
+       on very small devices */
+
+    if(
+      window.innerWidth <= 360
+    ){
+
+      document.body.classList.add(
+        "TEM9MicroDevice"
+      );
+
+    }
+
+  }
+
+
+  /* =======================================================
+     M9 — SAVE LAST VISITED SECTION
+  ======================================================= */
+
+  document.addEventListener(
+    "click",
+    function(e){
+
+      if(!mobile()) return;
+
+
+      const link =
+        e.target.closest(
+          "a[href^='#']"
+        );
+
+
+      if(!link) return;
+
+
+      const target =
+        link.getAttribute(
+          "href"
+        );
+
+
+      if(
+        target &&
+        target !== "#"
+      ){
+
+        safeSet(
+          "TE_M9_LAST_SECTION",
+          target
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     M10 — PWA INSTALL
+  ======================================================= */
+
+  let deferredPrompt = null;
+
+
+  const installCard =
+    document.getElementById(
+      "TEM10InstallCard"
+    );
+
+  const installButton =
+    document.getElementById(
+      "TEM10InstallBtn"
+    );
+
+  const installClose =
+    document.getElementById(
+      "TEM10InstallClose"
+    );
+
+
+  window.addEventListener(
+    "beforeinstallprompt",
+    function(e){
+
+      e.preventDefault();
+
+      deferredPrompt = e;
+
+
+      if(
+        mobile() &&
+        !safeGet(
+          "TE_M10_INSTALL_DISMISSED"
+        )
+      ){
+
+        setTimeout(
+          function(){
+
+            if(installCard){
+
+              installCard.classList.add(
+                "TEM10Show"
+              );
+
+            }
+
+          },
+          5000
+        );
+
+      }
+
+    }
+  );
+
+
+  if(installButton){
+
+    installButton.addEventListener(
+      "click",
+      async function(){
+
+        if(!deferredPrompt){
+
+          if(
+            window.TE_MobileToast
+          ){
+
+            window.TE_MobileToast(
+              "Browser menu থেকে Add to Home Screen ব্যবহার করুন।"
+            );
+
+          }
+
+          return;
+
+        }
+
+
+        deferredPrompt.prompt();
+
+        try{
+
+          await deferredPrompt.userChoice;
+
+        }catch(e){}
+
+
+        deferredPrompt =
+          null;
+
+
+        if(installCard){
+
+          installCard.classList.remove(
+            "TEM10Show"
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  if(installClose){
+
+    installClose.addEventListener(
+      "click",
+      function(){
+
+        if(installCard){
+
+          installCard.classList.remove(
+            "TEM10Show"
+          );
+
+        }
+
+        safeSet(
+          "TE_M10_INSTALL_DISMISSED",
+          "1"
+        );
+
+      }
+    );
+
+  }
+
+
+  window.addEventListener(
+    "appinstalled",
+    function(){
+
+      if(installCard){
+
+        installCard.classList.remove(
+          "TEM10Show"
+        );
+
+      }
+
+      if(
+        window.TE_MobileToast
+      ){
+
+        window.TE_MobileToast(
+          "Textile Explorer Home Screen-এ যোগ হয়েছে ✓"
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =======================================================
+     INITIALIZE
+  ======================================================= */
+
+  function init(){
+
+    optimizeMobile();
+
+  }
+
+
+  if(
+    document.readyState ===
+    "loading"
+  ){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      init
+    );
+
+  }else{
+
+    init();
+
+  }
+
+
+  /* =======================================================
+     RESIZE
+  ======================================================= */
+
+  let resizeTimer;
+
+  window.addEventListener(
+    "resize",
+    function(){
+
+      clearTimeout(
+        resizeTimer
+      );
+
+      resizeTimer =
+        setTimeout(
+          optimizeMobile,
+          200
+        );
+
+    }
+  );
+
+
+})();
+
+</script>
+
+<!-- =========================================================
+ END M6-M10
+========================================================= -->
 </body>
 </html>
