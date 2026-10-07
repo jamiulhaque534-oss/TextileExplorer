@@ -22223,5 +22223,10182 @@ TESH.refresh();
 </script>
 
 <!-- ===== END STUDENT SUPER HUB ===== -->
+  <!-- =========================================================
+ 🎓 TEXTILE EXPLORER — STUDENT SUPER HUB V2
+ Advanced Student Management Module
+ Prefix: TESH2
+ ========================================================= -->
+
+<style>
+/* ================= TESH2 ================= */
+
+.tesh2-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000000;
+  display:none;
+  overflow:auto;
+  padding:18px;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(8px);
+}
+
+.tesh2-overlay.show{
+  display:block;
+}
+
+.tesh2-modal{
+  width:min(1250px,100%);
+  margin:15px auto;
+  border-radius:24px;
+  overflow:hidden;
+  background:var(--bg,#fff);
+  color:var(--text,#111);
+  box-shadow:0 30px 90px rgba(0,0,0,.4);
+}
+
+/* HEADER */
+
+.tesh2-header{
+  position:relative;
+  padding:28px;
+  color:#fff;
+  background:linear-gradient(135deg,#0f766e,#2563eb,#7c3aed);
+}
+
+.tesh2-header h2{
+  margin:0 50px 6px 0;
+  font-size:28px;
+}
+
+.tesh2-header p{
+  margin:0;
+  opacity:.9;
+}
+
+.tesh2-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.2);
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* TOP DASHBOARD */
+
+.tesh2-dashboard{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:10px;
+  padding:18px;
+  background:rgba(127,127,127,.05);
+}
+
+.tesh2-stat{
+  padding:15px;
+  border-radius:15px;
+  border:1px solid rgba(127,127,127,.16);
+  background:rgba(255,255,255,.6);
+}
+
+.tesh2-stat strong{
+  display:block;
+  font-size:23px;
+}
+
+.tesh2-stat span{
+  font-size:12px;
+  opacity:.7;
+}
+
+/* CONTENT */
+
+.tesh2-content{
+  padding:20px;
+}
+
+.tesh2-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.tesh2-card{
+  padding:20px;
+  border-radius:18px;
+  border:1px solid rgba(127,127,127,.17);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.tesh2-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.tesh2-icon{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.tesh2-card h3{
+  margin:0 0 7px;
+  font-size:17px;
+}
+
+.tesh2-card p{
+  margin:0;
+  font-size:13px;
+  opacity:.7;
+  line-height:1.5;
+}
+
+/* PANELS */
+
+.tesh2-panel{
+  display:none;
+}
+
+.tesh2-panel.active{
+  display:block;
+}
+
+.tesh2-back{
+  border:0;
+  background:none;
+  cursor:pointer;
+  font-size:15px;
+  padding:4px 0;
+  margin-bottom:18px;
+}
+
+/* FORMS */
+
+.tesh2-form{
+  display:grid;
+  gap:11px;
+}
+
+.tesh2-form input,
+.tesh2-form select,
+.tesh2-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid #ccc;
+  border-radius:11px;
+  background:transparent;
+  color:inherit;
+}
+
+.tesh2-form textarea{
+  min-height:90px;
+}
+
+.tesh2-btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  background:#2563eb;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.tesh2-btn.red{
+  background:#dc2626;
+}
+
+.tesh2-btn.gray{
+  background:#64748b;
+}
+
+/* ITEMS */
+
+.tesh2-list{
+  display:grid;
+  gap:10px;
+  margin-top:18px;
+}
+
+.tesh2-item{
+  padding:15px;
+  border:1px solid rgba(127,127,127,.17);
+  border-radius:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.tesh2-item-title{
+  font-weight:700;
+}
+
+.tesh2-small{
+  font-size:12px;
+  opacity:.65;
+}
+
+/* PROGRESS */
+
+.tesh2-progress{
+  height:10px;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(127,127,127,.18);
+  margin:7px 0;
+}
+
+.tesh2-progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#2563eb;
+  transition:.3s;
+}
+
+/* TIMER */
+
+.tesh2-timer{
+  text-align:center;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(127,127,127,.06);
+}
+
+.tesh2-time{
+  font-size:65px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin:15px 0;
+}
+
+/* CALENDAR */
+
+.tesh2-calendar{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:5px;
+  margin-top:15px;
+}
+
+.tesh2-day{
+  min-height:70px;
+  padding:7px;
+  border-radius:9px;
+  border:1px solid rgba(127,127,127,.12);
+  font-size:12px;
+}
+
+.tesh2-day b{
+  display:block;
+  margin-bottom:4px;
+}
+
+/* SEARCH */
+
+.tesh2-search{
+  margin-bottom:18px;
+}
+
+.tesh2-search input{
+  width:100%;
+  box-sizing:border-box;
+  padding:13px 15px;
+  border-radius:12px;
+  border:1px solid #ccc;
+  background:transparent;
+  color:inherit;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .tesh2-dashboard{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .tesh2-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:550px){
+
+  .tesh2-overlay{
+    padding:7px;
+  }
+
+  .tesh2-modal{
+    border-radius:17px;
+  }
+
+  .tesh2-dashboard{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tesh2-grid{
+    grid-template-columns:1fr;
+  }
+
+  .tesh2-time{
+    font-size:45px;
+  }
+
+  .tesh2-calendar{
+    gap:3px;
+  }
+
+  .tesh2-day{
+    min-height:55px;
+    font-size:10px;
+  }
+
+}
+</style>
+
+
+<!-- =========================================================
+     V2 BUTTON
+     ========================================================= -->
+
+<button
+  onclick="TESH2.open()"
+  style="
+    position:fixed;
+    right:20px;
+    bottom:140px;
+    z-index:9998;
+    border:0;
+    border-radius:50px;
+    padding:14px 20px;
+    background:linear-gradient(135deg,#0f766e,#2563eb);
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 8px 28px rgba(0,0,0,.25);
+  ">
+  🚀 Student Hub V2
+</button>
+
+
+<!-- =========================================================
+     MODAL
+     ========================================================= -->
+
+<div id="tesh2Overlay" class="tesh2-overlay">
+
+<div class="tesh2-modal">
+
+<!-- HEADER -->
+
+<div class="tesh2-header">
+
+<button class="tesh2-close"
+        onclick="TESH2.close()">×</button>
+
+<h2>🚀 Student Super Hub V2</h2>
+
+<p>
+Advanced Academic & Student Management Center
+</p>
+
+</div>
+
+
+<!-- DASHBOARD -->
+
+<div class="tesh2-dashboard">
+
+<div class="tesh2-stat">
+<strong id="tesh2Tasks">0</strong>
+<span>📚 Tasks</span>
+</div>
+
+<div class="tesh2-stat">
+<strong id="tesh2Done">0</strong>
+<span>✅ Completed</span>
+</div>
+
+<div class="tesh2-stat">
+<strong id="tesh2Exams">0</strong>
+<span>📝 Exams</span>
+</div>
+
+<div class="tesh2-stat">
+<strong id="tesh2Assignments">0</strong>
+<span>📋 Assignments</span>
+</div>
+
+<div class="tesh2-stat">
+<strong id="tesh2Expenses">৳0</strong>
+<span>💰 Expenses</span>
+</div>
+
+<div class="tesh2-stat">
+<strong id="tesh2Streak">0</strong>
+<span>🔥 Study Streak</span>
+</div>
+
+</div>
+
+
+<!-- HOME -->
+
+<div id="tesh2Home" class="tesh2-content">
+
+<div class="tesh2-search">
+
+<input
+id="tesh2Search"
+placeholder="🔍 Search Student Hub..."
+oninput="TESH2.search(this.value)"
+>
+
+</div>
+
+
+<div class="tesh2-grid">
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('calendar')">
+
+<div class="tesh2-icon">📅</div>
+
+<h3>Smart Calendar</h3>
+
+<p>
+Exam, assignment, study task এবং deadline এক জায়গায়।
+</p>
+
+</div>
+
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('timer')">
+
+<div class="tesh2-icon">⏱️</div>
+
+<h3>Focus Timer</h3>
+
+<p>
+Pomodoro, Deep Study এবং custom focus session।
+</p>
+
+</div>
+
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('subject')">
+
+<div class="tesh2-icon">📈</div>
+
+<h3>Subject Progress</h3>
+
+<p>
+প্রতিটি subject-এর preparation progress track করো।
+</p>
+
+</div>
+
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('assignment')">
+
+<div class="tesh2-icon">📋</div>
+
+<h3>Assignment Manager</h3>
+
+<p>
+Assignment, deadline, priority এবং status।
+</p>
+
+</div>
+
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('streak')">
+
+<div class="tesh2-icon">🔥</div>
+
+<h3>Study Streak</h3>
+
+<p>
+Daily study record এবং longest streak।
+</p>
+
+</div>
+
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('expense')">
+
+<div class="tesh2-icon">💰</div>
+
+<h3>Expense Tracker</h3>
+
+<p>
+Student life-এর খরচ track ও monthly total।
+</p>
+
+</div>
+
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('backup')">
+
+<div class="tesh2-icon">💾</div>
+
+<h3>Backup & Restore</h3>
+
+<p>
+তোমার Hub data export ও import করো।
+</p>
+
+</div>
+
+
+<div class="tesh2-card"
+     onclick="TESH2.panel('analytics')">
+
+<div class="tesh2-icon">📊</div>
+
+<h3>Advanced Analytics</h3>
+
+<p>
+Study, task, assignment ও expense statistics।
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     CALENDAR
+     ===================================================== -->
+
+<div id="tesh2Calendar"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>📅 Smart Calendar</h3>
+
+<div class="tesh2-form">
+
+<input id="tesh2CalTitle"
+       placeholder="Event / Exam / Assignment">
+
+<input id="tesh2CalDate"
+       type="date">
+
+<select id="tesh2CalType">
+
+<option>📝 Exam</option>
+<option>📋 Assignment</option>
+<option>📚 Study</option>
+<option>🎯 Goal</option>
+
+</select>
+
+<button class="tesh2-btn"
+        onclick="TESH2.addCalendar()">
++ Add Event
+</button>
+
+</div>
+
+<div id="tesh2CalendarList"
+     class="tesh2-list"></div>
+
+</div>
+
+
+<!-- =====================================================
+     TIMER
+     ===================================================== -->
+
+<div id="tesh2Timer"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>⏱️ Study Focus Timer</h3>
+
+<div class="tesh2-timer">
+
+<div class="tesh2-time"
+     id="tesh2Time">
+25:00
+</div>
+
+<div class="tesh2-actions">
+
+<button class="tesh2-btn"
+        onclick="TESH2.timerPreset(25)">
+25/5 Pomodoro
+</button>
+
+<button class="tesh2-btn"
+        onclick="TESH2.timerPreset(50)">
+50/10 Deep Study
+</button>
+
+<button class="tesh2-btn gray"
+        onclick="TESH2.timerPreset(60)">
+60 Min
+</button>
+
+</div>
+
+<br>
+
+<button class="tesh2-btn"
+        onclick="TESH2.startTimer()">
+▶ Start
+</button>
+
+<button class="tesh2-btn gray"
+        onclick="TESH2.pauseTimer()">
+⏸ Pause
+</button>
+
+<button class="tesh2-btn red"
+        onclick="TESH2.resetTimer()">
+↻ Reset
+</button>
+
+<div style="margin-top:15px">
+
+Completed Sessions:
+<strong id="tesh2Sessions">0</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     SUBJECT PROGRESS
+     ===================================================== -->
+
+<div id="tesh2Subject"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>📈 Subject Progress</h3>
+
+<div class="tesh2-form">
+
+<input id="tesh2SubjectName"
+       placeholder="Subject name">
+
+<input id="tesh2SubjectProgress"
+       type="number"
+       min="0"
+       max="100"
+       placeholder="Progress %">
+
+<button class="tesh2-btn"
+        onclick="TESH2.addSubject()">
++ Add Subject
+</button>
+
+</div>
+
+<div id="tesh2SubjectList"
+     class="tesh2-list"></div>
+
+</div>
+
+
+<!-- =====================================================
+     ASSIGNMENT
+     ===================================================== -->
+
+<div id="tesh2Assignment"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>📋 Assignment Manager</h3>
+
+<div class="tesh2-form">
+
+<input id="tesh2AssignmentTitle"
+       placeholder="Assignment title">
+
+<input id="tesh2AssignmentSubject"
+       placeholder="Subject">
+
+<input id="tesh2AssignmentDate"
+       type="date">
+
+<select id="tesh2AssignmentPriority">
+
+<option>🔴 High</option>
+<option>🟡 Medium</option>
+<option>🟢 Low</option>
+
+</select>
+
+<button class="tesh2-btn"
+        onclick="TESH2.addAssignment()">
++ Add Assignment
+</button>
+
+</div>
+
+<div id="tesh2AssignmentList"
+     class="tesh2-list"></div>
+
+</div>
+
+
+<!-- =====================================================
+     STREAK
+     ===================================================== -->
+
+<div id="tesh2StreakPanel"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>🔥 Study Streak</h3>
+
+<div style="
+padding:25px;
+text-align:center;
+border-radius:18px;
+background:rgba(127,127,127,.06);
+">
+
+<div style="font-size:55px">
+🔥
+</div>
+
+<div style="font-size:40px;font-weight:800"
+     id="tesh2CurrentStreak">
+0
+</div>
+
+<div>
+Current Study Streak
+</div>
+
+<hr>
+
+<div>
+Best Streak:
+<strong id="tesh2BestStreak">0</strong> days
+</div>
+
+<br>
+
+<button class="tesh2-btn"
+        onclick="TESH2.markStudyToday()">
+✅ Mark Study Today
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     EXPENSE
+     ===================================================== -->
+
+<div id="tesh2Expense"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>💰 Student Expense Tracker</h3>
+
+<div class="tesh2-form">
+
+<input id="tesh2ExpenseTitle"
+       placeholder="Expense name">
+
+<select id="tesh2ExpenseCategory">
+
+<option>🍚 Food</option>
+<option>🚌 Transport</option>
+<option>📚 Books</option>
+<option>💻 Course</option>
+<option>📱 Internet</option>
+<option>📦 Other</option>
+
+</select>
+
+<input id="tesh2ExpenseAmount"
+       type="number"
+       placeholder="Amount ৳">
+
+<button class="tesh2-btn"
+        onclick="TESH2.addExpense()">
++ Add Expense
+</button>
+
+</div>
+
+<div style="
+margin-top:20px;
+font-size:23px;
+font-weight:700;
+">
+
+Monthly Total:
+৳<span id="tesh2ExpenseTotal">0</span>
+
+</div>
+
+<div id="tesh2ExpenseList"
+     class="tesh2-list"></div>
+
+</div>
+
+
+<!-- =====================================================
+     BACKUP
+     ===================================================== -->
+
+<div id="tesh2Backup"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>💾 Backup & Restore</h3>
+
+<p>
+তোমার Student Hub-এর data browser-এ save থাকে।
+এখান থেকে backup file তৈরি করতে পারবে।
+</p>
+
+<div class="tesh2-actions">
+
+<button class="tesh2-btn"
+        onclick="TESH2.exportData()">
+⬇️ Export Backup
+</button>
+
+<label class="tesh2-btn"
+       style="display:inline-block">
+
+⬆️ Import Backup
+
+<input
+type="file"
+accept=".json"
+onchange="TESH2.importData(event)"
+style="display:none">
+
+</label>
+
+<button class="tesh2-btn red"
+        onclick="TESH2.clearAll()">
+🗑 Clear Hub Data
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     ANALYTICS
+     ===================================================== -->
+
+<div id="tesh2Analytics"
+     class="tesh2-content tesh2-panel">
+
+<button class="tesh2-back"
+        onclick="TESH2.home()">
+← Back
+</button>
+
+<h3>📊 Advanced Analytics</h3>
+
+<div class="tesh2-dashboard"
+     style="padding:0;background:none">
+
+<div class="tesh2-stat">
+
+<strong id="tesh2AEvents">
+0
+</strong>
+
+<span>Calendar Events</span>
+
+</div>
+
+<div class="tesh2-stat">
+
+<strong id="tesh2ASubjects">
+0
+</strong>
+
+<span>Subjects</span>
+
+</div>
+
+<div class="tesh2-stat">
+
+<strong id="tesh2AAssignments">
+0
+</strong>
+
+<span>Assignments</span>
+
+</div>
+
+<div class="tesh2-stat">
+
+<strong id="tesh2AExpenses">
+৳0
+</strong>
+
+<span>Total Expenses</span>
+
+</div>
+
+</div>
+
+<div style="margin-top:25px">
+
+<h4>📈 Overall Subject Progress</h4>
+
+<div class="tesh2-progress">
+
+<span id="tesh2OverallSubject"></span>
+
+</div>
+
+<div id="tesh2OverallText">
+0%
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+/* =========================================================
+   TESH2 ENGINE
+   ========================================================= */
+
+const TESH2 = {
+
+data:{
+  calendar:JSON.parse(localStorage.getItem("tesh2Calendar")||"[]"),
+  subjects:JSON.parse(localStorage.getItem("tesh2Subjects")||"[]"),
+  assignments:JSON.parse(localStorage.getItem("tesh2Assignments")||"[]"),
+  expenses:JSON.parse(localStorage.getItem("tesh2Expenses")||"[]"),
+  streak:JSON.parse(localStorage.getItem("tesh2Streak")||'{"current":0,"best":0,"last":""}')
+},
+
+timer:null,
+seconds:1500,
+running:false,
+sessions:Number(localStorage.getItem("tesh2Sessions")||0),
+
+save(){
+
+localStorage.setItem(
+"tesh2Calendar",
+JSON.stringify(this.data.calendar)
+);
+
+localStorage.setItem(
+"tesh2Subjects",
+JSON.stringify(this.data.subjects)
+);
+
+localStorage.setItem(
+"tesh2Assignments",
+JSON.stringify(this.data.assignments)
+);
+
+localStorage.setItem(
+"tesh2Expenses",
+JSON.stringify(this.data.expenses)
+);
+
+localStorage.setItem(
+"tesh2Streak",
+JSON.stringify(this.data.streak)
+);
+
+this.refresh();
+
+},
+
+open(){
+
+document
+.getElementById("tesh2Overlay")
+.classList.add("show");
+
+document.body.style.overflow="hidden";
+
+this.home();
+this.refresh();
+
+},
+
+close(){
+
+document
+.getElementById("tesh2Overlay")
+.classList.remove("show");
+
+document.body.style.overflow="";
+
+},
+
+home(){
+
+document
+.querySelectorAll(".tesh2-panel")
+.forEach(x=>x.classList.remove("active"));
+
+document.getElementById("tesh2Home").style.display="block";
+
+this.refresh();
+
+},
+
+panel(name){
+
+document.getElementById("tesh2Home").style.display="none";
+
+document
+.querySelectorAll(".tesh2-panel")
+.forEach(x=>x.classList.remove("active"));
+
+const map={
+
+calendar:"tesh2Calendar",
+timer:"tesh2Timer",
+subject:"tesh2Subject",
+assignment:"tesh2Assignment",
+streak:"tesh2StreakPanel",
+expense:"tesh2Expense",
+backup:"tesh2Backup",
+analytics:"tesh2Analytics"
+
+};
+
+document
+.getElementById(map[name])
+.classList.add("active");
+
+this.refresh();
+
+},
+
+
+/* ================= CALENDAR ================= */
+
+addCalendar(){
+
+const title=document
+.getElementById("tesh2CalTitle").value.trim();
+
+const date=document
+.getElementById("tesh2CalDate").value;
+
+const type=document
+.getElementById("tesh2CalType").value;
+
+if(!title||!date){
+
+alert("Title এবং date দিন।");
+return;
+
+}
+
+this.data.calendar.push({
+id:Date.now(),
+title,
+date,
+type
+});
+
+this.save();
+
+document.getElementById("tesh2CalTitle").value="";
+document.getElementById("tesh2CalDate").value="";
+
+},
+
+deleteCalendar(id){
+
+this.data.calendar=
+this.data.calendar.filter(x=>x.id!==id);
+
+this.save();
+
+},
+
+renderCalendar(){
+
+const box=
+document.getElementById("tesh2CalendarList");
+
+if(!this.data.calendar.length){
+
+box.innerHTML=
+"<p style='opacity:.6'>কোনো event নেই।</p>";
+
+return;
+
+}
+
+const arr=[...this.data.calendar]
+.sort((a,b)=>a.date.localeCompare(b.date));
+
+box.innerHTML=arr.map(x=>`
+
+<div class="tesh2-item">
+
+<div>
+
+<div class="tesh2-item-title">
+
+${this.safe(x.type)}
+${this.safe(x.title)}
+
+</div>
+
+<div class="tesh2-small">
+
+📅 ${this.safe(x.date)}
+
+</div>
+
+</div>
+
+<button
+class="tesh2-btn red"
+onclick="TESH2.deleteCalendar(${x.id})">
+
+🗑
+
+</button>
+
+</div>
+
+`).join("");
+
+},
+
+
+/* ================= TIMER ================= */
+
+timerPreset(minutes){
+
+this.pauseTimer();
+
+this.seconds=minutes*60;
+
+this.updateTimer();
+
+},
+
+updateTimer(){
+
+const min=
+String(Math.floor(this.seconds/60)).padStart(2,"0");
+
+const sec=
+String(this.seconds%60).padStart(2,"0");
+
+document.getElementById("tesh2Time")
+.textContent=`${min}:${sec}`;
+
+},
+
+startTimer(){
+
+if(this.running)return;
+
+this.running=true;
+
+this.timer=setInterval(()=>{
+
+if(this.seconds<=0){
+
+this.pauseTimer();
+
+this.sessions++;
+
+localStorage.setItem(
+"tesh2Sessions",
+this.sessions
+);
+
+alert("🔥 Study session complete!");
+
+this.seconds=1500;
+
+this.updateTimer();
+
+this.refresh();
+
+return;
+
+}
+
+this.seconds--;
+
+this.updateTimer();
+
+},1000);
+
+},
+
+pauseTimer(){
+
+this.running=false;
+
+if(this.timer){
+
+clearInterval(this.timer);
+
+this.timer=null;
+
+}
+
+},
+
+resetTimer(){
+
+this.pauseTimer();
+
+this.seconds=1500;
+
+this.updateTimer();
+
+},
+
+
+/* ================= SUBJECT ================= */
+
+addSubject(){
+
+const name=document
+.getElementById("tesh2SubjectName")
+.value.trim();
+
+const progress=Number(
+document.getElementById("tesh2SubjectProgress").value
+);
+
+if(!name||isNaN(progress)||progress<0||progress>100){
+
+alert("Subject এবং 0-100% progress দিন.");
+
+return;
+
+}
+
+this.data.subjects.push({
+id:Date.now(),
+name,
+progress
+});
+
+this.save();
+
+document.getElementById("tesh2SubjectName").value="";
+document.getElementById("tesh2SubjectProgress").value="";
+
+},
+
+deleteSubject(id){
+
+this.data.subjects=
+this.data.subjects.filter(x=>x.id!==id);
+
+this.save();
+
+},
+
+renderSubjects(){
+
+const box=
+document.getElementById("tesh2SubjectList");
+
+if(!this.data.subjects.length){
+
+box.innerHTML=
+"<p style='opacity:.6'>কোনো subject নেই।</p>";
+
+return;
+
+}
+
+box.innerHTML=this.data.subjects.map(x=>`
+
+<div class="tesh2-item">
+
+<div style="flex:1">
+
+<div class="tesh2-item-title">
+${this.safe(x.name)}
+</div>
+
+<div class="tesh2-progress">
+
+<span style="width:${x.progress}%"></span>
+
+</div>
+
+<div class="tesh2-small">
+${x.progress}% completed
+</div>
+
+</div>
+
+<button
+class="tesh2-btn red"
+onclick="TESH2.deleteSubject(${x.id})">
+
+🗑
+
+</button>
+
+</div>
+
+`).join("");
+
+},
+
+
+/* ================= ASSIGNMENT ================= */
+
+addAssignment(){
+
+const title=document
+.getElementById("tesh2AssignmentTitle")
+.value.trim();
+
+const subject=document
+.getElementById("tesh2AssignmentSubject")
+.value.trim();
+
+const date=document
+.getElementById("tesh2AssignmentDate")
+.value;
+
+const priority=document
+.getElementById("tesh2AssignmentPriority")
+.value;
+
+if(!title||!subject||!date){
+
+alert("সব তথ্য দিন.");
+
+return;
+
+}
+
+this.data.assignments.push({
+id:Date.now(),
+title,
+subject,
+date,
+priority,
+done:false
+});
+
+this.save();
+
+document.getElementById("tesh2AssignmentTitle").value="";
+document.getElementById("tesh2AssignmentSubject").value="";
+document.getElementById("tesh2AssignmentDate").value="";
+
+},
+
+toggleAssignment(id){
+
+const x=this.data.assignments
+.find(a=>a.id===id);
+
+if(x)x.done=!x.done;
+
+this.save();
+
+},
+
+deleteAssignment(id){
+
+this.data.assignments=
+this.data.assignments.filter(x=>x.id!==id);
+
+this.save();
+
+},
+
+renderAssignments(){
+
+const box=
+document.getElementById("tesh2AssignmentList");
+
+if(!this.data.assignments.length){
+
+box.innerHTML=
+"<p style='opacity:.6'>কোনো assignment নেই।</p>";
+
+return;
+
+}
+
+box.innerHTML=this.data.assignments.map(x=>`
+
+<div class="tesh2-item">
+
+<div>
+
+<div
+class="tesh2-item-title"
+style="${x.done?'text-decoration:line-through':''}">
+
+${x.done?"✅":"📋"}
+${this.safe(x.title)}
+
+</div>
+
+<div class="tesh2-small">
+
+${this.safe(x.subject)}
+•
+${this.safe(x.date)}
+•
+${this.safe(x.priority)}
+
+</div>
+
+</div>
+
+<div>
+
+<button
+class="tesh2-btn"
+onclick="TESH2.toggleAssignment(${x.id})">
+
+${x.done?"↩️":"✓"}
+
+</button>
+
+<button
+class="tesh2-btn red"
+onclick="TESH2.deleteAssignment(${x.id})">
+
+🗑
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+},
+
+
+/* ================= STREAK ================= */
+
+markStudyToday(){
+
+const today=
+new Date().toISOString().slice(0,10);
+
+const last=this.data.streak.last;
+
+if(last===today){
+
+alert("আজকের study already marked হয়েছে.");
+
+return;
+
+}
+
+if(last){
+
+const d1=new Date(last);
+const d2=new Date(today);
+
+const diff=Math.round(
+(d2-d1)/(1000*60*60*24)
+);
+
+if(diff===1){
+
+this.data.streak.current++;
+
+}else{
+
+this.data.streak.current=1;
+
+}
+
+}else{
+
+this.data.streak.current=1;
+
+}
+
+if(
+this.data.streak.current>
+this.data.streak.best
+){
+
+this.data.streak.best=
+this.data.streak.current;
+
+}
+
+this.data.streak.last=today;
+
+this.save();
+
+alert("🔥 আজকের study streak updated!");
+
+},
+
+renderStreak(){
+
+document.getElementById(
+"tesh2CurrentStreak"
+).textContent=
+this.data.streak.current;
+
+document.getElementById(
+"tesh2BestStreak"
+).textContent=
+this.data.streak.best;
+
+},
+
+
+/* ================= EXPENSE ================= */
+
+addExpense(){
+
+const title=document
+.getElementById("tesh2ExpenseTitle")
+.value.trim();
+
+const category=document
+.getElementById("tesh2ExpenseCategory")
+.value;
+
+const amount=Number(
+document.getElementById("tesh2ExpenseAmount")
+.value
+);
+
+if(!title||!amount||amount<0){
+
+alert("Expense name এবং amount দিন.");
+
+return;
+
+}
+
+this.data.expenses.push({
+id:Date.now(),
+title,
+category,
+amount,
+date:new Date().toISOString()
+});
+
+this.save();
+
+document.getElementById("tesh2ExpenseTitle").value="";
+document.getElementById("tesh2ExpenseAmount").value="";
+
+},
+
+deleteExpense(id){
+
+this.data.expenses=
+this.data.expenses.filter(x=>x.id!==id);
+
+this.save();
+
+},
+
+renderExpenses(){
+
+const box=
+document.getElementById("tesh2ExpenseList");
+
+if(!this.data.expenses.length){
+
+box.innerHTML=
+"<p style='opacity:.6'>কোনো expense নেই।</p>";
+
+}else{
+
+box.innerHTML=this.data.expenses
+.slice()
+.reverse()
+.map(x=>`
+
+<div class="tesh2-item">
+
+<div>
+
+<div class="tesh2-item-title">
+${this.safe(x.category)}
+${this.safe(x.title)}
+</div>
+
+<div class="tesh2-small">
+${new Date(x.date).toLocaleDateString()}
+</div>
+
+</div>
+
+<div>
+
+<strong>৳${x.amount}</strong>
+
+<button
+class="tesh2-btn red"
+onclick="TESH2.deleteExpense(${x.id})">
+
+🗑
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+const total=
+this.data.expenses
+.reduce((sum,x)=>sum+Number(x.amount),0);
+
+document.getElementById(
+"tesh2ExpenseTotal"
+).textContent=total.toFixed(0);
+
+},
+
+
+/* ================= BACKUP ================= */
+
+exportData(){
+
+const backup={
+version:"TESH2",
+date:new Date().toISOString(),
+data:this.data
+};
+
+const blob=new Blob(
+[JSON.stringify(backup,null,2)],
+{type:"application/json"}
+);
+
+const url=URL.createObjectURL(blob);
+
+const a=document.createElement("a");
+
+a.href=url;
+
+a.download=
+"textile-explorer-student-hub-backup.json";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+},
+
+importData(event){
+
+const file=event.target.files[0];
+
+if(!file)return;
+
+const reader=new FileReader();
+
+reader.onload=e=>{
+
+try{
+
+const backup=
+JSON.parse(e.target.result);
+
+if(!backup.data){
+
+alert("Invalid backup file.");
+
+return;
+
+}
+
+this.data=backup.data;
+
+this.save();
+
+alert("✅ Backup successfully restored!");
+
+}catch(err){
+
+alert("Backup file পড়তে সমস্যা হয়েছে.");
+
+}
+
+};
+
+reader.readAsText(file);
+
+},
+
+clearAll(){
+
+if(!confirm(
+"Student Hub-এর সব data delete করবেন?"
+))return;
+
+this.data={
+calendar:[],
+subjects:[],
+assignments:[],
+expenses:[],
+streak:{
+current:0,
+best:0,
+last:""
+}
+};
+
+this.save();
+
+},
+
+
+/* ================= ANALYTICS ================= */
+
+renderAnalytics(){
+
+document.getElementById(
+"tesh2AEvents"
+).textContent=
+this.data.calendar.length;
+
+document.getElementById(
+"tesh2ASubjects"
+).textContent=
+this.data.subjects.length;
+
+document.getElementById(
+"tesh2AAssignments"
+).textContent=
+this.data.assignments.length;
+
+const total=
+this.data.expenses
+.reduce((a,b)=>a+Number(b.amount),0);
+
+document.getElementById(
+"tesh2AExpenses"
+).textContent=
+"৳"+total.toFixed(0);
+
+let avg=0;
+
+if(this.data.subjects.length){
+
+avg=
+this.data.subjects
+.reduce((a,b)=>a+Number(b.progress),0)
+/
+this.data.subjects.length;
+
+}
+
+avg=Math.round(avg);
+
+document.getElementById(
+"tesh2OverallSubject"
+).style.width=
+avg+"%";
+
+document.getElementById(
+"tesh2OverallText"
+).textContent=
+avg+"% overall subject progress";
+
+},
+
+
+/* ================= SEARCH ================= */
+
+search(query){
+
+query=query.toLowerCase().trim();
+
+const cards=
+document.querySelectorAll(".tesh2-card");
+
+cards.forEach(card=>{
+
+const text=
+card.innerText.toLowerCase();
+
+card.style.display=
+(!query||text.includes(query))
+?"block"
+:"none";
+
+});
+
+},
+
+
+/* ================= REFRESH ================= */
+
+refresh(){
+
+const tasks=
+this.data.assignments.length+
+this.data.calendar.length+
+this.data.subjects.length;
+
+const done=
+this.data.assignments
+.filter(x=>x.done).length;
+
+document.getElementById(
+"tesh2Tasks"
+).textContent=tasks;
+
+document.getElementById(
+"tesh2Done"
+).textContent=done;
+
+document.getElementById(
+"tesh2Exams"
+).textContent=
+this.data.calendar
+.filter(x=>x.type.includes("Exam"))
+.length;
+
+document.getElementById(
+"tesh2Assignments"
+).textContent=
+this.data.assignments.length;
+
+const total=
+this.data.expenses
+.reduce((a,b)=>a+Number(b.amount),0);
+
+document.getElementById(
+"tesh2Expenses"
+).textContent=
+"৳"+total.toFixed(0);
+
+document.getElementById(
+"tesh2Streak"
+).textContent=
+this.data.streak.current;
+
+this.renderCalendar();
+this.renderSubjects();
+this.renderAssignments();
+this.renderStreak();
+this.renderExpenses();
+this.renderAnalytics();
+
+document.getElementById(
+"tesh2Sessions"
+).textContent=
+this.sessions;
+
+},
+
+safe(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+};
+
+
+/* ESC KEY */
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+TESH2.close();
+
+}
+
+});
+
+
+/* INITIAL */
+
+TESH2.refresh();
+TESH2.updateTimer();
+</script>
+
+<!-- ================= END TESH2 ================= -->
+  <!-- =========================================================
+ 👤 TEXTILE EXPLORER — STUDENT PROFILE V3
+ Digital Student ID + Portfolio Profile
+ Prefix: TESHP3
+ ========================================================= -->
+
+<style>
+/* ================= TESHP3 ================= */
+
+.teshp3-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000001;
+  display:none;
+  overflow:auto;
+  padding:18px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(9px);
+}
+
+.teshp3-overlay.show{
+  display:block;
+}
+
+.teshp3-modal{
+  width:min(1100px,100%);
+  margin:15px auto;
+  background:var(--bg,#fff);
+  color:var(--text,#111);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.4);
+}
+
+.teshp3-header{
+  position:relative;
+  padding:28px;
+  color:#fff;
+  background:linear-gradient(135deg,#111827,#2563eb,#7c3aed);
+}
+
+.teshp3-header h2{
+  margin:0 50px 5px 0;
+  font-size:28px;
+}
+
+.teshp3-header p{
+  margin:0;
+  opacity:.85;
+}
+
+.teshp3-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.teshp3-content{
+  padding:22px;
+}
+
+.teshp3-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.teshp3-card{
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:20px;
+  padding:20px;
+}
+
+.teshp3-card h3{
+  margin-top:0;
+}
+
+.teshp3-form{
+  display:grid;
+  gap:10px;
+}
+
+.teshp3-form input,
+.teshp3-form select,
+.teshp3-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  background:transparent;
+  color:inherit;
+}
+
+.teshp3-form textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.teshp3-btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  cursor:pointer;
+  background:#2563eb;
+  color:#fff;
+  font-weight:700;
+}
+
+.teshp3-btn.gray{
+  background:#64748b;
+}
+
+.teshp3-btn.red{
+  background:#dc2626;
+}
+
+.teshp3-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.teshp3-profile{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:25px;
+  align-items:center;
+}
+
+.teshp3-photo{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin:auto;
+  border:5px solid rgba(37,99,235,.2);
+  background:#eee;
+}
+
+.teshp3-name{
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.teshp3-role{
+  opacity:.7;
+  margin-bottom:15px;
+}
+
+.teshp3-info{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.teshp3-info div{
+  padding:12px;
+  border-radius:12px;
+  background:rgba(127,127,127,.07);
+}
+
+.teshp3-info small{
+  display:block;
+  opacity:.6;
+  margin-bottom:3px;
+}
+
+.teshp3-info strong{
+  font-size:15px;
+}
+
+.teshp3-skill{
+  margin-bottom:15px;
+}
+
+.teshp3-skill-head{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:5px;
+}
+
+.teshp3-progress{
+  height:9px;
+  border-radius:20px;
+  background:rgba(127,127,127,.18);
+  overflow:hidden;
+}
+
+.teshp3-progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#2563eb;
+}
+
+.teshp3-id{
+  width:min(650px,100%);
+  margin:20px auto;
+  padding:25px;
+  border-radius:22px;
+  color:#fff;
+  background:linear-gradient(135deg,#111827,#2563eb);
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+.teshp3-id-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+}
+
+.teshp3-id-logo{
+  font-size:30px;
+  font-weight:800;
+}
+
+.teshp3-id-photo{
+  width:90px;
+  height:90px;
+  border-radius:14px;
+  object-fit:cover;
+  background:#fff;
+}
+
+.teshp3-id-name{
+  font-size:25px;
+  font-weight:800;
+  margin-top:20px;
+}
+
+.teshp3-id-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:18px;
+}
+
+.teshp3-id-box{
+  padding:10px;
+  border-radius:10px;
+  background:rgba(255,255,255,.12);
+}
+
+.teshp3-id-box small{
+  display:block;
+  opacity:.7;
+}
+
+.teshp3-achievement{
+  padding:14px;
+  border-radius:14px;
+  border:1px solid rgba(127,127,127,.16);
+  margin-bottom:10px;
+}
+
+.teshp3-achievement.unlocked{
+  border-color:#2563eb;
+}
+
+.teshp3-hidden{
+  display:none;
+}
+
+@media(max-width:700px){
+
+  .teshp3-grid{
+    grid-template-columns:1fr;
+  }
+
+  .teshp3-profile{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .teshp3-info{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+
+  .teshp3-name{
+    font-size:24px;
+  }
+
+  .teshp3-id-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+</style>
+
+
+<!-- =========================================================
+ BUTTON
+ ========================================================= -->
+
+<button
+onclick="TESHP3.open()"
+style="
+position:fixed;
+right:20px;
+bottom:195px;
+z-index:9997;
+border:0;
+border-radius:50px;
+padding:14px 20px;
+background:linear-gradient(135deg,#111827,#2563eb);
+color:#fff;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 8px 28px rgba(0,0,0,.25);
+">
+👤 Student Profile
+</button>
+
+
+<!-- =========================================================
+ MODAL
+ ========================================================= -->
+
+<div id="teshp3Overlay" class="teshp3-overlay">
+
+<div class="teshp3-modal">
+
+<div class="teshp3-header">
+
+<button
+class="teshp3-close"
+onclick="TESHP3.close()">
+×
+</button>
+
+<h2>👤 Student Profile Center</h2>
+
+<p>
+Digital Student ID • Skills • Career • Portfolio
+</p>
+
+</div>
+
+
+<div class="teshp3-content">
+
+
+<!-- PROFILE -->
+
+<div class="teshp3-card">
+
+<div class="teshp3-profile">
+
+<img
+id="teshp3Photo"
+class="teshp3-photo"
+src=""
+alt="Student Photo">
+
+<div>
+
+<div
+id="teshp3DisplayName"
+class="teshp3-name">
+Your Name
+</div>
+
+<div
+id="teshp3DisplayRole"
+class="teshp3-role">
+Diploma in Textile Engineering Student
+</div>
+
+<div class="teshp3-info">
+
+<div>
+<small>Institute</small>
+<strong id="teshp3Institute">—</strong>
+</div>
+
+<div>
+<small>Department</small>
+<strong id="teshp3Department">—</strong>
+</div>
+
+<div>
+<small>Semester</small>
+<strong id="teshp3Semester">—</strong>
+</div>
+
+<div>
+<small>CGPA</small>
+<strong id="teshp3CGPA">—</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<div class="teshp3-grid">
+
+
+<!-- EDIT PROFILE -->
+
+<div class="teshp3-card">
+
+<h3>✏️ Edit Profile</h3>
+
+<div class="teshp3-form">
+
+<input
+id="teshp3Name"
+placeholder="Full Name">
+
+<input
+id="teshp3InstituteInput"
+placeholder="Institute">
+
+<input
+id="teshp3DepartmentInput"
+placeholder="Department">
+
+<select id="teshp3SemesterInput">
+
+<option value="">Select Semester</option>
+<option>1st Semester</option>
+<option>2nd Semester</option>
+<option>3rd Semester</option>
+<option>4th Semester</option>
+<option>5th Semester</option>
+<option>6th Semester</option>
+<option>7th Semester</option>
+<option>8th Semester</option>
+
+</select>
+
+<input
+id="teshp3CGPAInput"
+type="number"
+step="0.01"
+min="0"
+max="4"
+placeholder="Current CGPA">
+
+<input
+id="teshp3CareerInput"
+placeholder="Career Goal">
+
+<input
+id="teshp3LinkedinInput"
+placeholder="LinkedIn URL">
+
+<input
+id="teshp3PortfolioInput"
+placeholder="Portfolio URL">
+
+<textarea
+id="teshp3BioInput"
+placeholder="Short student bio"></textarea>
+
+<input
+id="teshp3PhotoInput"
+type="file"
+accept="image/*">
+
+<button
+class="teshp3-btn"
+onclick="TESHP3.saveProfile()">
+
+💾 Save Profile
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CAREER -->
+
+<div class="teshp3-card">
+
+<h3>💼 Career Profile</h3>
+
+<div
+style="
+padding:18px;
+border-radius:15px;
+background:rgba(127,127,127,.07);
+">
+
+<div>
+<strong>Career Goal</strong>
+
+<p id="teshp3CareerDisplay">
+Not set
+</p>
+
+</div>
+
+<hr>
+
+<div>
+<strong>LinkedIn</strong>
+
+<p id="teshp3LinkedinDisplay">
+Not added
+</p>
+
+</div>
+
+<hr>
+
+<div>
+<strong>Portfolio</strong>
+
+<p id="teshp3PortfolioDisplay">
+Not added
+</p>
+
+</div>
+
+</div>
+
+<br>
+
+<div
+id="teshp3BioDisplay"
+style="line-height:1.6;opacity:.75">
+Write your student bio from Edit Profile.
+</div>
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<!-- SKILLS -->
+
+<div class="teshp3-card">
+
+<h3>🧵 Textile & Professional Skills</h3>
+
+<div class="teshp3-form">
+
+<input
+id="teshp3SkillName"
+placeholder="Skill name e.g. Merchandising">
+
+<input
+id="teshp3SkillPercent"
+type="number"
+min="0"
+max="100"
+placeholder="Skill level %">
+
+<button
+class="teshp3-btn"
+onclick="TESHP3.addSkill()">
+
++ Add Skill
+
+</button>
+
+</div>
+
+<div
+id="teshp3SkillList"
+style="margin-top:20px">
+</div>
+
+</div>
+
+
+<br>
+
+
+<!-- DIGITAL ID -->
+
+<div class="teshp3-card">
+
+<h3>🪪 Digital Student ID</h3>
+
+<div class="teshp3-id"
+id="teshp3IDCard">
+
+<div class="teshp3-id-top">
+
+<div class="teshp3-id-logo">
+TEXTILE EXPLORER
+</div>
+
+<img
+id="teshp3IDPhoto"
+class="teshp3-id-photo"
+src=""
+alt="Photo">
+
+</div>
+
+<div class="teshp3-id-name"
+id="teshp3IDName">
+Student Name
+</div>
+
+<div style="opacity:.8">
+Student Profile Card
+</div>
+
+<div class="teshp3-id-grid">
+
+<div class="teshp3-id-box">
+
+<small>Institute</small>
+
+<span id="teshp3IDInstitute">—</span>
+
+</div>
+
+<div class="teshp3-id-box">
+
+<small>Department</small>
+
+<span id="teshp3IDDepartment">—</span>
+
+</div>
+
+<div class="teshp3-id-box">
+
+<small>Semester</small>
+
+<span id="teshp3IDSemester">—</span>
+
+</div>
+
+<div class="teshp3-id-box">
+
+<small>CGPA</small>
+
+<span id="teshp3IDCGPA">—</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="teshp3-actions">
+
+<button
+class="teshp3-btn"
+onclick="TESHP3.printID()">
+
+🖨️ Print ID
+
+</button>
+
+<button
+class="teshp3-btn gray"
+onclick="TESHP3.exportProfile()">
+
+⬇️ Export Profile
+
+</button>
+
+</div>
+
+</div>
+
+
+<br>
+
+
+<!-- ACHIEVEMENTS -->
+
+<div class="teshp3-card">
+
+<h3>🏆 Profile Achievements</h3>
+
+<div id="teshp3Achievements"></div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+/* =========================================================
+ TESHP3 ENGINE
+ ========================================================= */
+
+const TESHP3 = {
+
+data:JSON.parse(
+localStorage.getItem("teshp3Profile") ||
+'{"profile":{},"skills":[]}'
+),
+
+
+open(){
+
+document
+.getElementById("teshp3Overlay")
+.classList.add("show");
+
+document.body.style.overflow="hidden";
+
+this.refresh();
+
+},
+
+
+close(){
+
+document
+.getElementById("teshp3Overlay")
+.classList.remove("show");
+
+document.body.style.overflow="";
+
+},
+
+
+save(){
+
+localStorage.setItem(
+"teshp3Profile",
+JSON.stringify(this.data)
+);
+
+},
+
+
+saveProfile(){
+
+const p=this.data.profile;
+
+p.name=
+document.getElementById("teshp3Name").value.trim();
+
+p.institute=
+document.getElementById("teshp3InstituteInput").value.trim();
+
+p.department=
+document.getElementById("teshp3DepartmentInput").value.trim();
+
+p.semester=
+document.getElementById("teshp3SemesterInput").value;
+
+p.cgpa=
+document.getElementById("teshp3CGPAInput").value;
+
+p.career=
+document.getElementById("teshp3CareerInput").value.trim();
+
+p.linkedin=
+document.getElementById("teshp3LinkedinInput").value.trim();
+
+p.portfolio=
+document.getElementById("teshp3PortfolioInput").value.trim();
+
+p.bio=
+document.getElementById("teshp3BioInput").value.trim();
+
+
+const file=
+document.getElementById("teshp3PhotoInput")
+.files[0];
+
+if(file){
+
+const reader=new FileReader();
+
+reader.onload=e=>{
+
+p.photo=e.target.result;
+
+this.save();
+
+this.refresh();
+
+};
+
+reader.readAsDataURL(file);
+
+}else{
+
+this.save();
+
+this.refresh();
+
+}
+
+alert("✅ Student profile saved!");
+
+},
+
+
+addSkill(){
+
+const name=
+document.getElementById("teshp3SkillName")
+.value.trim();
+
+const percent=Number(
+document.getElementById("teshp3SkillPercent")
+.value
+);
+
+if(
+!name ||
+isNaN(percent) ||
+percent<0 ||
+percent>100
+){
+
+alert("Skill name এবং 0-100% level দিন.");
+
+return;
+
+}
+
+this.data.skills.push({
+id:Date.now(),
+name,
+percent
+});
+
+this.save();
+
+document.getElementById(
+"teshp3SkillName"
+).value="";
+
+document.getElementById(
+"teshp3SkillPercent"
+).value="";
+
+this.refresh();
+
+},
+
+
+deleteSkill(id){
+
+this.data.skills=
+this.data.skills.filter(
+x=>x.id!==id
+);
+
+this.save();
+
+this.refresh();
+
+},
+
+
+renderProfile(){
+
+const p=this.data.profile||{};
+
+document.getElementById(
+"teshp3DisplayName"
+).textContent=
+p.name||"Your Name";
+
+document.getElementById(
+"teshp3DisplayRole"
+).textContent=
+p.department ||
+"Diploma in Textile Engineering Student";
+
+document.getElementById(
+"teshp3Institute"
+).textContent=
+p.institute||"—";
+
+document.getElementById(
+"teshp3Department"
+).textContent=
+p.department||"—";
+
+document.getElementById(
+"teshp3Semester"
+).textContent=
+p.semester||"—";
+
+document.getElementById(
+"teshp3CGPA"
+).textContent=
+p.cgpa||"—";
+
+
+document.getElementById(
+"teshp3CareerDisplay"
+).textContent=
+p.career||"Not set";
+
+document.getElementById(
+"teshp3BioDisplay"
+).textContent=
+p.bio||"Write your student bio from Edit Profile.";
+
+
+const linkedin=
+document.getElementById(
+"teshp3LinkedinDisplay"
+);
+
+if(p.linkedin){
+
+linkedin.innerHTML=
+`<a href="${this.safeURL(p.linkedin)}"
+target="_blank"
+rel="noopener">
+Open LinkedIn Profile
+</a>`;
+
+}else{
+
+linkedin.textContent="Not added";
+
+}
+
+
+const portfolio=
+document.getElementById(
+"teshp3PortfolioDisplay"
+);
+
+if(p.portfolio){
+
+portfolio.innerHTML=
+`<a href="${this.safeURL(p.portfolio)}"
+target="_blank"
+rel="noopener">
+Open Portfolio
+</a>`;
+
+}else{
+
+portfolio.textContent="Not added";
+
+}
+
+
+const photo=
+p.photo ||
+"data:image/svg+xml;charset=UTF-8,"+
+encodeURIComponent(
+`<svg xmlns="http://www.w3.org/2000/svg"
+width="200" height="200">
+<rect width="100%" height="100%"
+fill="#e5e7eb"/>
+<text x="50%" y="50%"
+dominant-baseline="middle"
+text-anchor="middle"
+font-size="55">👤</text>
+</svg>`
+);
+
+document.getElementById(
+"teshp3Photo"
+).src=photo;
+
+document.getElementById(
+"teshp3IDPhoto"
+).src=photo;
+
+
+/* ID */
+
+document.getElementById(
+"teshp3IDName"
+).textContent=
+p.name||"Student Name";
+
+document.getElementById(
+"teshp3IDInstitute"
+).textContent=
+p.institute||"—";
+
+document.getElementById(
+"teshp3IDDepartment"
+).textContent=
+p.department||"—";
+
+document.getElementById(
+"teshp3IDSemester"
+).textContent=
+p.semester||"—";
+
+document.getElementById(
+"teshp3IDCGPA"
+).textContent=
+p.cgpa||"—";
+
+
+/* INPUTS */
+
+document.getElementById(
+"teshp3Name"
+).value=p.name||"";
+
+document.getElementById(
+"teshp3InstituteInput"
+).value=p.institute||"";
+
+document.getElementById(
+"teshp3DepartmentInput"
+).value=p.department||"";
+
+document.getElementById(
+"teshp3SemesterInput"
+).value=p.semester||"";
+
+document.getElementById(
+"teshp3CGPAInput"
+).value=p.cgpa||"";
+
+document.getElementById(
+"teshp3CareerInput"
+).value=p.career||"";
+
+document.getElementById(
+"teshp3LinkedinInput"
+).value=p.linkedin||"";
+
+document.getElementById(
+"teshp3PortfolioInput"
+).value=p.portfolio||"";
+
+document.getElementById(
+"teshp3BioInput"
+).value=p.bio||"";
+
+},
+
+
+renderSkills(){
+
+const box=
+document.getElementById(
+"teshp3SkillList"
+);
+
+if(!this.data.skills.length){
+
+box.innerHTML=
+"<p style='opacity:.6'>এখনও কোনো skill যোগ করা হয়নি।</p>";
+
+return;
+
+}
+
+box.innerHTML=
+this.data.skills.map(x=>`
+
+<div class="teshp3-skill">
+
+<div class="teshp3-skill-head">
+
+<strong>
+${this.safe(x.name)}
+</strong>
+
+<span>
+${x.percent}%
+</span>
+
+</div>
+
+<div class="teshp3-progress">
+
+<span style="width:${x.percent}%"></span>
+
+</div>
+
+<div style="margin-top:7px">
+
+<button
+class="teshp3-btn red"
+style="padding:6px 10px;font-size:12px"
+onclick="TESHP3.deleteSkill(${x.id})">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+},
+
+
+renderAchievements(){
+
+const p=this.data.profile||{};
+
+const achievements=[
+
+{
+icon:"👤",
+title:"Profile Created",
+unlocked:!!p.name
+},
+
+{
+icon:"🎓",
+title:"Academic Profile",
+unlocked:!!p.institute && !!p.semester
+},
+
+{
+icon:"📊",
+title:"CGPA Added",
+unlocked:!!p.cgpa
+},
+
+{
+icon:"🧵",
+title:"First Skill",
+unlocked:this.data.skills.length>=1
+},
+
+{
+icon:"💼",
+title:"Career Ready",
+unlocked:!!p.career
+},
+
+{
+icon:"🌐",
+title:"Portfolio Ready",
+unlocked:!!p.portfolio
+},
+
+{
+icon:"🏆",
+title:"Skill Master",
+unlocked:this.data.skills.length>=5
+}
+
+];
+
+
+document.getElementById(
+"teshp3Achievements"
+).innerHTML=
+achievements.map(a=>`
+
+<div
+class="teshp3-achievement
+${a.unlocked?"unlocked":""}">
+
+<div style="font-size:25px">
+
+${a.unlocked?"🏆":"🔒"}
+${a.icon}
+
+</div>
+
+<strong>
+${this.safe(a.title)}
+</strong>
+
+<div style="opacity:.65">
+${a.unlocked?"Unlocked":"Locked"}
+</div>
+
+</div>
+
+`).join("");
+
+},
+
+
+exportProfile(){
+
+const data={
+type:"Textile Explorer Student Profile",
+version:"3.0",
+exported:new Date().toISOString(),
+profile:this.data.profile,
+skills:this.data.skills
+};
+
+const blob=new Blob(
+[JSON.stringify(data,null,2)],
+{type:"application/json"}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+const a=
+document.createElement("a");
+
+a.href=url;
+
+a.download=
+"textile-explorer-student-profile.json";
+
+a.click();
+
+URL.revokeObjectURL(url);
+
+},
+
+
+printID(){
+
+const p=this.data.profile||{};
+
+const photo=
+p.photo||"";
+
+const html=`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Textile Explorer Student ID</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+padding:40px;
+}
+
+.card{
+width:600px;
+padding:28px;
+border-radius:25px;
+color:#fff;
+background:linear-gradient(135deg,#111827,#2563eb);
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.photo{
+width:100px;
+height:100px;
+border-radius:15px;
+object-fit:cover;
+background:#fff;
+}
+
+.name{
+font-size:30px;
+font-weight:bold;
+margin-top:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:20px;
+}
+
+.box{
+padding:12px;
+background:rgba(255,255,255,.12);
+border-radius:10px;
+}
+
+small{
+display:block;
+opacity:.7;
+margin-bottom:4px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="top">
+
+<div>
+<strong style="font-size:28px">
+TEXTILE EXPLORER
+</strong>
+
+<div style="opacity:.7">
+Digital Student ID
+</div>
+</div>
+
+<img
+class="photo"
+src="${photo}">
+
+</div>
+
+<div class="name">
+${this.safe(p.name||"Student Name")}
+</div>
+
+<div class="grid">
+
+<div class="box">
+<small>Institute</small>
+${this.safe(p.institute||"—")}
+</div>
+
+<div class="box">
+<small>Department</small>
+${this.safe(p.department||"—")}
+</div>
+
+<div class="box">
+<small>Semester</small>
+${this.safe(p.semester||"—")}
+</div>
+
+<div class="box">
+<small>CGPA</small>
+${this.safe(p.cgpa||"—")}
+</div>
+
+</div>
+
+</div>
+
+<script>
+window.onload=function(){
+window.print();
+}
+<\/script>
+
+</body>
+
+</html>
+`;
+
+const win=
+window.open("","_blank");
+
+if(!win){
+
+alert(
+"Popup blocked হয়েছে। Browser popup allow করুন।"
+);
+
+return;
+
+}
+
+win.document.open();
+
+win.document.write(html);
+
+win.document.close();
+
+},
+
+
+safe(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+},
+
+safeURL(url){
+
+try{
+
+const u=new URL(url);
+
+if(
+u.protocol!=="http:" &&
+u.protocol!=="https:"
+){
+
+return "#";
+
+}
+
+return this.safe(u.href);
+
+}catch(e){
+
+return "#";
+
+}
+
+},
+
+
+refresh(){
+
+this.renderProfile();
+this.renderSkills();
+this.renderAchievements();
+
+}
+
+};
+
+
+/* ESC */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Escape"){
+TESHP3.close();
+}
+
+});
+
+
+/* INITIAL */
+
+TESHP3.refresh();
+
+</script>
+
+<!-- ================= END TESHP3 ================= -->
+  <!-- =========================================================
+ 🧵 TEXTILE EXPLORER — TEXTILE ENGINEERING MASTER HUB V4
+ Prefix: TETM4
+ ========================================================= -->
+
+<style>
+.tetm4-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000002;
+  display:none;
+  overflow:auto;
+  padding:18px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(9px);
+}
+
+.tetm4-overlay.show{display:block}
+
+.tetm4-modal{
+  width:min(1250px,100%);
+  margin:15px auto;
+  background:var(--bg,#fff);
+  color:var(--text,#111);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.4);
+}
+
+.tetm4-header{
+  position:relative;
+  padding:30px;
+  color:#fff;
+  background:linear-gradient(135deg,#064e3b,#0f766e,#2563eb);
+}
+
+.tetm4-header h2{
+  margin:0 50px 6px 0;
+  font-size:29px;
+}
+
+.tetm4-header p{
+  margin:0;
+  opacity:.88;
+}
+
+.tetm4-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.2);
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.tetm4-content{padding:22px}
+
+.tetm4-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.tetm4-card{
+  padding:20px;
+  border-radius:18px;
+  border:1px solid rgba(127,127,127,.18);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.tetm4-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.tetm4-icon{
+  font-size:32px;
+  margin-bottom:9px;
+}
+
+.tetm4-card h3{
+  margin:0 0 7px;
+  font-size:17px;
+}
+
+.tetm4-card p{
+  margin:0;
+  font-size:13px;
+  opacity:.7;
+  line-height:1.5;
+}
+
+.tetm4-panel{display:none}
+.tetm4-panel.active{display:block}
+
+.tetm4-back{
+  border:0;
+  background:none;
+  cursor:pointer;
+  padding:4px 0;
+  margin-bottom:18px;
+  font-size:15px;
+}
+
+.tetm4-form{
+  display:grid;
+  gap:11px;
+}
+
+.tetm4-form input,
+.tetm4-form select{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:transparent;
+  color:inherit;
+}
+
+.tetm4-btn{
+  border:0;
+  border-radius:10px;
+  padding:12px 17px;
+  background:#2563eb;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.tetm4-result{
+  margin-top:18px;
+  padding:20px;
+  border-radius:16px;
+  background:rgba(37,99,235,.08);
+  font-size:18px;
+  line-height:1.7;
+}
+
+.tetm4-info{
+  padding:16px;
+  border-radius:15px;
+  background:rgba(127,127,127,.07);
+  margin-top:15px;
+}
+
+.tetm4-question{
+  padding:20px;
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:18px;
+}
+
+.tetm4-option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:13px;
+  margin-top:8px;
+  border:1px solid rgba(127,127,127,.2);
+  border-radius:10px;
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+}
+
+.tetm4-option:hover{
+  background:rgba(37,99,235,.08);
+}
+
+.tetm4-score{
+  font-size:30px;
+  font-weight:800;
+  text-align:center;
+  margin:20px 0;
+}
+
+.tetm4-test-card{
+  padding:16px;
+  border:1px solid rgba(127,127,127,.17);
+  border-radius:15px;
+  margin-bottom:10px;
+}
+
+.tetm4-search{
+  width:100%;
+  box-sizing:border-box;
+  padding:13px 15px;
+  border:1px solid #ccc;
+  border-radius:11px;
+  background:transparent;
+  color:inherit;
+  margin-bottom:18px;
+}
+
+@media(max-width:900px){
+  .tetm4-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:550px){
+  .tetm4-grid{
+    grid-template-columns:1fr;
+  }
+
+  .tetm4-overlay{
+    padding:7px;
+  }
+
+  .tetm4-header h2{
+    font-size:23px;
+  }
+}
+</style>
+
+
+<!-- =========================================================
+ BUTTON
+ ========================================================= -->
+
+<button
+onclick="TETM4.open()"
+style="
+position:fixed;
+right:20px;
+bottom:250px;
+z-index:9996;
+border:0;
+border-radius:50px;
+padding:14px 20px;
+background:linear-gradient(135deg,#064e3b,#2563eb);
+color:#fff;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 8px 28px rgba(0,0,0,.25);
+">
+🧵 Textile Master Hub
+</button>
+
+
+<!-- =========================================================
+ MODAL
+ ========================================================= -->
+
+<div id="tetm4Overlay" class="tetm4-overlay">
+
+<div class="tetm4-modal">
+
+<div class="tetm4-header">
+
+<button
+class="tetm4-close"
+onclick="TETM4.close()">
+×
+</button>
+
+<h2>🧵 Textile Engineering Master Hub</h2>
+
+<p>
+Textile Calculators • Testing • Viva • MCQ • Career Skills
+</p>
+
+</div>
+
+
+<!-- ================= HOME ================= -->
+
+<div id="tetm4Home" class="tetm4-content">
+
+<div class="tetm4-grid">
+
+<div class="tetm4-card"
+onclick="TETM4.panel('calculators')">
+
+<div class="tetm4-icon">🧮</div>
+
+<h3>Calculator Lab</h3>
+
+<p>
+GSM, Yarn Count, EPI/PPI, Crimp, Cover Factor এবং আরও অনেক calculation।
+</p>
+
+</div>
+
+
+<div class="tetm4-card"
+onclick="TETM4.panel('production')">
+
+<div class="tetm4-icon">🏭</div>
+
+<h3>Production Lab</h3>
+
+<p>
+Production, efficiency, RPM এবং machine calculation।
+</p>
+
+</div>
+
+
+<div class="tetm4-card"
+onclick="TETM4.panel('garment')">
+
+<div class="tetm4-icon">👕</div>
+
+<h3>Garment Lab</h3>
+
+<p>
+Garment consumption এবং fabric costing calculation।
+</p>
+
+</div>
+
+
+<div class="tetm4-card"
+onclick="TETM4.panel('testing')">
+
+<div class="tetm4-icon">🧪</div>
+
+<h3>Testing Lab</h3>
+
+<p>
+Textile testing-এর basic procedure, formula ও purpose।
+</p>
+
+</div>
+
+
+<div class="tetm4-card"
+onclick="TETM4.panel('viva')">
+
+<div class="tetm4-icon">🎤</div>
+
+<h3>Viva Simulator</h3>
+
+<p>
+Textile viva questions দিয়ে নিজের preparation test করো।
+</p>
+
+</div>
+
+
+<div class="tetm4-card"
+onclick="TETM4.panel('mcq')">
+
+<div class="tetm4-icon">❓</div>
+
+<h3>MCQ Exam</h3>
+
+<p>
+Textile Engineering MCQ practice এবং score tracking।
+</p>
+
+</div>
+
+
+<div class="tetm4-card"
+onclick="TETM4.panel('glossary')">
+
+<div class="tetm4-icon">📖</div>
+
+<h3>Textile Glossary</h3>
+
+<p>
+Important textile terms ও সহজ explanation।
+</p>
+
+</div>
+
+
+<div class="tetm4-card"
+onclick="TETM4.panel('skill')">
+
+<div class="tetm4-icon">🏆</div>
+
+<h3>Skill Progress</h3>
+
+<p>
+Textile skill-এর learning progress track করো।
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ CALCULATOR LAB
+ ===================================================== -->
+
+<div id="tetm4Calculators"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>🧮 Textile Calculator Lab</h3>
+
+<div class="tetm4-form">
+
+<select id="tetm4CalcType"
+onchange="TETM4.showCalc()">
+
+<option value="gsm">GSM</option>
+<option value="yarn">Yarn Count</option>
+<option value="epi">EPI</option>
+<option value="ppi">PPI</option>
+<option value="crimp">Crimp %</option>
+<option value="cover">Cover Factor</option>
+
+</select>
+
+</div>
+
+<div id="tetm4CalcFields"
+style="margin-top:15px">
+</div>
+
+<div id="tetm4CalcResult"
+class="tetm4-result">
+Select a calculator.
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ PRODUCTION
+ ===================================================== -->
+
+<div id="tetm4Production"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>🏭 Production Lab</h3>
+
+<div class="tetm4-form">
+
+<select id="tetm4ProdType">
+
+<option value="loom">
+Loom Production
+</option>
+
+<option value="efficiency">
+Machine Efficiency
+</option>
+
+<option value="rpm">
+Machine RPM
+</option>
+
+</select>
+
+<input
+id="tetm4ProdA"
+type="number"
+placeholder="Input 1">
+
+<input
+id="tetm4ProdB"
+type="number"
+placeholder="Input 2">
+
+<input
+id="tetm4ProdC"
+type="number"
+placeholder="Input 3">
+
+<button
+class="tetm4-btn"
+onclick="TETM4.productionCalc()">
+
+Calculate
+
+</button>
+
+</div>
+
+<div id="tetm4ProdResult"
+class="tetm4-result">
+Result will appear here.
+</div>
+
+<div class="tetm4-info">
+
+<strong>Tip:</strong>
+
+প্রতিটি calculation-এর input কী বোঝায় তা formula অনুযায়ী ব্যবহার করো।
+প্রয়োজনে calculator-এর পাশে formula reference রাখা যাবে।
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ GARMENT
+ ===================================================== -->
+
+<div id="tetm4Garment"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>👕 Garment & Costing Lab</h3>
+
+<div class="tetm4-form">
+
+<select id="tetm4GarmentType">
+
+<option value="consumption">
+Garment Consumption
+</option>
+
+<option value="cost">
+Fabric Cost
+</option>
+
+</select>
+
+<input
+id="tetm4GarA"
+type="number"
+placeholder="Input 1">
+
+<input
+id="tetm4GarB"
+type="number"
+placeholder="Input 2">
+
+<input
+id="tetm4GarC"
+type="number"
+placeholder="Input 3">
+
+<button
+class="tetm4-btn"
+onclick="TETM4.garmentCalc()">
+
+Calculate
+
+</button>
+
+</div>
+
+<div
+id="tetm4GarResult"
+class="tetm4-result">
+Result will appear here.
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ TESTING LAB
+ ===================================================== -->
+
+<div id="tetm4Testing"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>🧪 Textile Testing Lab</h3>
+
+<input
+class="tetm4-search"
+id="tetm4TestSearch"
+placeholder="🔍 Search testing method..."
+oninput="TETM4.filterTests(this.value)">
+
+<div id="tetm4TestList"></div>
+
+</div>
+
+
+<!-- =====================================================
+ VIVA
+ ===================================================== -->
+
+<div id="tetm4Viva"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>🎤 Textile Viva Simulator</h3>
+
+<div id="tetm4VivaBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ MCQ
+ ===================================================== -->
+
+<div id="tetm4Mcq"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>❓ Textile MCQ Exam</h3>
+
+<div id="tetm4McqBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ GLOSSARY
+ ===================================================== -->
+
+<div id="tetm4Glossary"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>📖 Textile Glossary</h3>
+
+<input
+class="tetm4-search"
+placeholder="🔍 Search textile term..."
+oninput="TETM4.filterGlossary(this.value)"
+>
+
+<div id="tetm4GlossaryList"></div>
+
+</div>
+
+
+<!-- =====================================================
+ SKILL
+ ===================================================== -->
+
+<div id="tetm4Skill"
+class="tetm4-content tetm4-panel">
+
+<button class="tetm4-back"
+onclick="TETM4.home()">
+← Back
+</button>
+
+<h3>🏆 Textile Skill Progress</h3>
+
+<div class="tetm4-form">
+
+<input
+id="tetm4SkillName"
+placeholder="Skill name">
+
+<input
+id="tetm4SkillPercent"
+type="number"
+min="0"
+max="100"
+placeholder="Progress %">
+
+<button
+class="tetm4-btn"
+onclick="TETM4.addSkill()">
+
++ Add Skill
+
+</button>
+
+</div>
+
+<div
+id="tetm4SkillList"
+style="margin-top:20px">
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+
+<script>
+/* =========================================================
+ TETM4 ENGINE
+ ========================================================= */
+
+const TETM4={
+
+data:{
+skills:JSON.parse(
+localStorage.getItem("tetm4Skills")||"[]"
+)
+},
+
+
+open(){
+
+document
+.getElementById("tetm4Overlay")
+.classList.add("show");
+
+document.body.style.overflow="hidden";
+
+this.home();
+
+},
+
+
+close(){
+
+document
+.getElementById("tetm4Overlay")
+.classList.remove("show");
+
+document.body.style.overflow="";
+
+},
+
+
+home(){
+
+document
+.querySelectorAll(".tetm4-panel")
+.forEach(x=>x.classList.remove("active"));
+
+document.getElementById("tetm4Home")
+.style.display="block";
+
+},
+
+
+panel(name){
+
+document.getElementById("tetm4Home")
+.style.display="none";
+
+document
+.querySelectorAll(".tetm4-panel")
+.forEach(x=>x.classList.remove("active"));
+
+const map={
+
+calculators:"tetm4Calculators",
+production:"tetm4Production",
+garment:"tetm4Garment",
+testing:"tetm4Testing",
+viva:"tetm4Viva",
+mcq:"tetm4Mcq",
+glossary:"tetm4Glossary",
+skill:"tetm4Skill"
+
+};
+
+document
+.getElementById(map[name])
+.classList.add("active");
+
+
+if(name==="calculators")
+this.showCalc();
+
+if(name==="testing")
+this.renderTests();
+
+if(name==="viva")
+this.startViva();
+
+if(name==="mcq")
+this.startMCQ();
+
+if(name==="glossary")
+this.renderGlossary();
+
+if(name==="skill")
+this.renderSkills();
+
+},
+
+
+/* ================= CALCULATORS ================= */
+
+showCalc(){
+
+const type=
+document.getElementById("tetm4CalcType")
+.value;
+
+const box=
+document.getElementById("tetm4CalcFields");
+
+let html="";
+
+if(type==="gsm"){
+
+html=`
+
+<input id="tetm4a"
+type="number"
+placeholder="Weight (g)">
+
+<input id="tetm4b"
+type="number"
+placeholder="Length (cm)">
+
+<input id="tetm4c"
+type="number"
+placeholder="Width (cm)">
+
+<button class="tetm4-btn"
+onclick="TETM4.calculate('gsm')">
+
+Calculate GSM
+
+</button>
+
+`;
+
+}
+
+if(type==="yarn"){
+
+html=`
+
+<input id="tetm4a"
+type="number"
+placeholder="Length">
+
+<input id="tetm4b"
+type="number"
+placeholder="Weight">
+
+<select id="tetm4yarnType">
+
+<option value="tex">Tex</option>
+<option value="denier">Denier</option>
+<option value="ne">English Count (Ne)</option>
+
+</select>
+
+<button class="tetm4-btn"
+onclick="TETM4.calculate('yarn')">
+
+Calculate
+
+</button>
+
+`;
+
+}
+
+if(type==="epi"){
+
+html=`
+
+<input id="tetm4a"
+type="number"
+placeholder="Number of Ends">
+
+<input id="tetm4b"
+type="number"
+placeholder="Fabric Width">
+
+<button class="tetm4-btn"
+onclick="TETM4.calculate('epi')">
+
+Calculate EPI
+
+</button>
+
+`;
+
+}
+
+if(type==="ppi"){
+
+html=`
+
+<input id="tetm4a"
+type="number"
+placeholder="Number of Picks">
+
+<input id="tetm4b"
+type="number"
+placeholder="Fabric Length">
+
+<button class="tetm4-btn"
+onclick="TETM4.calculate('ppi')">
+
+Calculate PPI
+
+</button>
+
+`;
+
+}
+
+if(type==="crimp"){
+
+html=`
+
+<input id="tetm4a"
+type="number"
+placeholder="Crimped Yarn Length">
+
+<input id="tetm4b"
+type="number"
+placeholder="Straight Yarn Length">
+
+<button class="tetm4-btn"
+onclick="TETM4.calculate('crimp')">
+
+Calculate Crimp %
+
+</button>
+
+`;
+
+}
+
+if(type==="cover"){
+
+html=`
+
+<input id="tetm4a"
+type="number"
+placeholder="EPI">
+
+<input id="tetm4b"
+type="number"
+placeholder="PPI">
+
+<input id="tetm4c"
+type="number"
+placeholder="Warp Yarn Count">
+
+<input id="tetm4d"
+type="number"
+placeholder="Weft Yarn Count">
+
+<button class="tetm4-btn"
+onclick="TETM4.calculate('cover')">
+
+Calculate Cover Factor
+
+</button>
+
+`;
+
+}
+
+box.innerHTML=
+`<div class="tetm4-form">${html}</div>`;
+
+},
+
+
+calculate(type){
+
+const a=Number(
+document.getElementById("tetm4a")?.value
+);
+
+const b=Number(
+document.getElementById("tetm4b")?.value
+);
+
+const c=Number(
+document.getElementById("tetm4c")?.value
+);
+
+const d=Number(
+document.getElementById("tetm4d")?.value
+);
+
+let result="";
+
+
+if(type==="gsm"){
+
+if(!a||!b||!c){
+
+alert("সব input দিন.");
+return;
+
+}
+
+const gsm=
+(a*10000)/(b*c);
+
+result=
+`⚖️ GSM = <strong>${gsm.toFixed(2)} g/m²</strong>`;
+
+}
+
+
+if(type==="yarn"){
+
+if(!a||!b){
+
+alert("Length এবং Weight দিন.");
+return;
+
+}
+
+const typeY=
+document.getElementById("tetm4yarnType")
+.value;
+
+let value;
+
+if(typeY==="tex"){
+
+value=(b*1000)/a;
+
+result=
+`🧵 Tex = <strong>${value.toFixed(2)}</strong>`;
+
+}
+
+if(typeY==="denier"){
+
+value=(b*9000)/a;
+
+result=
+`🧵 Denier = <strong>${value.toFixed(2)}</strong>`;
+
+}
+
+if(typeY==="ne"){
+
+value=a/(b*840);
+
+result=
+`🧵 Ne = <strong>${value.toFixed(2)}</strong>`;
+
+}
+
+}
+
+
+if(type==="epi"){
+
+if(!a||!b){
+
+alert("সব input দিন.");
+return;
+
+}
+
+const epi=a/b;
+
+result=
+`📐 EPI = <strong>${epi.toFixed(2)}</strong>`;
+
+}
+
+
+if(type==="ppi"){
+
+if(!a||!b){
+
+alert("সব input দিন.");
+return;
+
+}
+
+const ppi=a/b;
+
+result=
+`📐 PPI = <strong>${ppi.toFixed(2)}</strong>`;
+
+}
+
+
+if(type==="crimp"){
+
+if(!a||!b){
+
+alert("সব input দিন.");
+return;
+
+}
+
+const crimp=
+((a-b)/b)*100;
+
+result=
+`🔄 Crimp = <strong>${crimp.toFixed(2)}%</strong>`;
+
+}
+
+
+if(type==="cover"){
+
+if(!a||!b||!c||!d){
+
+alert("সব input দিন.");
+return;
+
+}
+
+const warp=
+a/(Math.sqrt(c));
+
+const weft=
+b/(Math.sqrt(d));
+
+const total=warp+weft;
+
+result=
+`🧶 Warp Cover Factor = <strong>${warp.toFixed(2)}</strong><br>
+🧶 Weft Cover Factor = <strong>${weft.toFixed(2)}</strong><br>
+📊 Combined value = <strong>${total.toFixed(2)}</strong>`;
+
+}
+
+
+document.getElementById(
+"tetm4CalcResult"
+).innerHTML=result;
+
+},
+
+
+/* ================= PRODUCTION ================= */
+
+productionCalc(){
+
+const type=
+document.getElementById("tetm4ProdType")
+.value;
+
+const a=Number(
+document.getElementById("tetm4ProdA").value
+);
+
+const b=Number(
+document.getElementById("tetm4ProdB").value
+);
+
+const c=Number(
+document.getElementById("tetm4ProdC").value
+);
+
+if(!a||!b){
+
+alert("Required input দিন.");
+return;
+
+}
+
+let result;
+
+
+if(type==="efficiency"){
+
+result=
+`📊 Efficiency =
+<strong>${((a/b)*100).toFixed(2)}%</strong>`;
+
+}
+
+else if(type==="rpm"){
+
+result=
+`⚙️ RPM =
+<strong>${(a*b).toFixed(2)}</strong>`;
+
+}
+
+else{
+
+result=
+`🏭 Production reference result =
+<strong>${(a*b*c).toFixed(2)}</strong>`;
+
+}
+
+
+document.getElementById(
+"tetm4ProdResult"
+).innerHTML=result;
+
+},
+
+
+/* ================= GARMENT ================= */
+
+garmentCalc(){
+
+const type=
+document.getElementById("tetm4GarmentType")
+.value;
+
+const a=Number(
+document.getElementById("tetm4GarA").value
+);
+
+const b=Number(
+document.getElementById("tetm4GarB").value
+);
+
+const c=Number(
+document.getElementById("tetm4GarC").value
+);
+
+if(!a||!b){
+
+alert("Required input দিন.");
+return;
+
+}
+
+let result;
+
+if(type==="consumption"){
+
+result=
+`👕 Estimated Consumption =
+<strong>${(a*b*c).toFixed(3)}</strong>`;
+
+}else{
+
+result=
+`💰 Estimated Fabric Cost =
+<strong>৳${(a*b*c).toFixed(2)}</strong>`;
+
+}
+
+document.getElementById(
+"tetm4GarResult"
+).innerHTML=result;
+
+},
+
+
+/* ================= TESTING ================= */
+
+tests:[
+
+{
+name:"GSM Test",
+purpose:"Fabric-এর mass per unit area নির্ণয় করা।",
+procedure:"Sample নির্দিষ্ট size অনুযায়ী cut করে weight নেওয়া হয়।",
+formula:"GSM = Weight × 10000 / Area(cm²)"
+},
+
+{
+name:"Fabric Thickness",
+purpose:"Fabric thickness নির্ণয় করা।",
+procedure:"Thickness tester ব্যবহার করে নির্দিষ্ট pressure-এ measurement নেওয়া হয়।",
+formula:"Instrument reading অনুযায়ী result।"
+},
+
+{
+name:"Tensile Strength",
+purpose:"Fabric কত force সহ্য করতে পারে তা নির্ণয় করা।",
+procedure:"Specimen prepare করে tensile testing machine-এ test করা হয়।",
+formula:"Maximum breaking force অনুযায়ী result।"
+},
+
+{
+name:"Tear Strength",
+purpose:"Fabric tearing resistance নির্ণয় করা।",
+procedure:"Tear tester দিয়ে specimen-এর tearing force measure করা হয়।",
+formula:"Average tearing force।"
+},
+
+{
+name:"Color Fastness",
+purpose:"Wash/light/rubbing-এর পরে colour change বা staining দেখা।",
+procedure:"Standard test method অনুযায়ী sample test করা হয়।",
+formula:"Rating scale অনুযায়ী result।"
+},
+
+{
+name:"Shrinkage",
+purpose:"Wash-এর পরে fabric dimensional change নির্ণয় করা।",
+procedure:"Before এবং after measurement compare করা হয়।",
+formula:"Shrinkage % = (Original-Final)/Original ×100"
+}
+
+],
+
+
+renderTests(){
+
+const box=
+document.getElementById("tetm4TestList");
+
+box.innerHTML=this.tests.map((x,i)=>`
+
+<div class="tetm4-test-card">
+
+<h4>
+🧪 ${this.safe(x.name)}
+</h4>
+
+<p>
+<strong>Purpose:</strong>
+${this.safe(x.purpose)}
+</p>
+
+<p>
+<strong>Procedure:</strong>
+${this.safe(x.procedure)}
+</p>
+
+<p>
+<strong>Formula:</strong>
+${this.safe(x.formula)}
+</p>
+
+</div>
+
+`).join("");
+
+},
+
+
+filterTests(q){
+
+q=q.toLowerCase();
+
+const cards=
+document.querySelectorAll(".tetm4-test-card");
+
+cards.forEach(card=>{
+
+card.style.display=
+card.innerText.toLowerCase()
+.includes(q)
+?"block"
+:"none";
+
+});
+
+},
+
+
+/* ================= VIVA ================= */
+
+vivaQuestions:[
+
+"Why is GSM important in fabric?",
+"What is yarn count?",
+"What is EPI?",
+"What is PPI?",
+"What is crimp?",
+"What is fabric cover factor?",
+"What is weaving?",
+"What is knitting?",
+"What is warp?",
+"What is weft?"
+
+],
+
+vivaIndex:0,
+
+startViva(){
+
+this.vivaIndex=0;
+
+this.renderViva();
+
+},
+
+renderViva(){
+
+const q=
+this.vivaQuestions[this.vivaIndex];
+
+document.getElementById(
+"tetm4VivaBox"
+).innerHTML=`
+
+<div class="tetm4-question">
+
+<h3>
+🎤 Viva Question ${this.vivaIndex+1}
+</h3>
+
+<p style="font-size:20px;font-weight:700">
+
+${this.safe(q)}
+
+</p>
+
+<div class="tetm4-info">
+
+নিজের ভাষায় উত্তর দেওয়ার চেষ্টা করো।
+তারপর next question দেখো।
+
+</div>
+
+<br>
+
+<button
+class="tetm4-btn"
+onclick="TETM4.nextViva()">
+
+Next Question →
+
+</button>
+
+</div>
+
+`;
+
+},
+
+nextViva(){
+
+this.vivaIndex++;
+
+if(this.vivaIndex>=this.vivaQuestions.length){
+
+this.vivaIndex=0;
+
+alert("🎉 Viva set complete!");
+
+}
+
+this.renderViva();
+
+},
+
+
+/* ================= MCQ ================= */
+
+mcqs:[
+
+{
+q:"GSM means?",
+o:["Gram per Square Meter","Gram per Square Millimeter","Gross Square Meter","General Standard Material"],
+a:0
+},
+
+{
+q:"EPI means?",
+o:["Ends Per Inch","Ends Per Item","Edge Per Inch","Ends Production Index"],
+a:0
+},
+
+{
+q:"PPI means?",
+o:["Picks Per Inch","Picks Per Item","Production Per Inch","Picks Production Index"],
+a:0
+},
+
+{
+q:"Warp yarn is generally?",
+o:["Lengthwise yarn","Widthwise yarn","Diagonal yarn","Circular yarn"],
+a:0
+},
+
+{
+q:"Which machine is used for tensile testing?",
+o:["Tensile tester","Microscope","GSM cutter","pH meter"],
+a:0
+}
+
+],
+
+mcqIndex:0,
+mcqScore:0,
+
+startMCQ(){
+
+this.mcqIndex=0;
+this.mcqScore=0;
+
+this.renderMCQ();
+
+},
+
+renderMCQ(){
+
+const q=
+this.mcqs[this.mcqIndex];
+
+document.getElementById(
+"tetm4McqBox"
+).innerHTML=`
+
+<div class="tetm4-question">
+
+<div class="tetm4-score">
+
+Question ${this.mcqIndex+1}
+/
+${this.mcqs.length}
+
+</div>
+
+<h3>
+${this.safe(q.q)}
+</h3>
+
+${q.o.map((x,i)=>`
+
+<button
+class="tetm4-option"
+onclick="TETM4.answerMCQ(${i})">
+
+${String.fromCharCode(65+i)}.
+${this.safe(x)}
+
+</button>
+
+`).join("")}
+
+</div>
+
+`;
+
+},
+
+answerMCQ(answer){
+
+if(answer===
+this.mcqs[this.mcqIndex].a){
+
+this.mcqScore++;
+
+}
+
+this.mcqIndex++;
+
+if(this.mcqIndex>=this.mcqs.length){
+
+document.getElementById(
+"tetm4McqBox"
+).innerHTML=`
+
+<div class="tetm4-score">
+
+🎉 Test Complete!
+
+<br>
+
+${this.mcqScore}
+/
+${this.mcqs.length}
+
+</div>
+
+<button
+class="tetm4-btn"
+onclick="TETM4.startMCQ()">
+
+🔄 Try Again
+
+</button>
+
+`;
+
+return;
+
+}
+
+this.renderMCQ();
+
+},
+
+
+/* ================= GLOSSARY ================= */
+
+glossary:[
+
+["GSM","Grams per Square Meter"],
+["EPI","Ends per Inch"],
+["PPI","Picks per Inch"],
+["Warp","Lengthwise yarn in woven fabric"],
+["Weft","Widthwise yarn in woven fabric"],
+["Crimp","Increase in yarn length due to waviness"],
+["Denier","Mass in grams per 9000 meters"],
+["Tex","Mass in grams per 1000 meters"],
+["Dyeing","Process of imparting colour to textile material"],
+["Finishing","Processes applied to improve fabric properties"],
+["Knitting","Fabric formation using loops"],
+["Weaving","Fabric formation by interlacing warp and weft"]
+],
+
+renderGlossary(){
+
+const box=
+document.getElementById("tetm4GlossaryList");
+
+box.innerHTML=this.glossary.map(x=>`
+
+<div class="tetm4-test-card">
+
+<h4>
+📖 ${this.safe(x[0])}
+</h4>
+
+<p>
+${this.safe(x[1])}
+</p>
+
+</div>
+
+`).join("");
+
+},
+
+filterGlossary(q){
+
+q=q.toLowerCase();
+
+const cards=
+document.querySelectorAll(
+"#tetm4GlossaryList .tetm4-test-card"
+);
+
+cards.forEach(card=>{
+
+card.style.display=
+card.innerText.toLowerCase()
+.includes(q)
+?"block"
+:"none";
+
+});
+
+},
+
+
+/* ================= SKILLS ================= */
+
+addSkill(){
+
+const name=
+document.getElementById(
+"tetm4SkillName"
+).value.trim();
+
+const percent=Number(
+document.getElementById(
+"tetm4SkillPercent"
+).value
+);
+
+if(
+!name ||
+isNaN(percent) ||
+percent<0 ||
+percent>100
+){
+
+alert("Skill এবং 0-100% দিন.");
+
+return;
+
+}
+
+this.data.skills.push({
+id:Date.now(),
+name,
+percent
+});
+
+localStorage.setItem(
+"tetm4Skills",
+JSON.stringify(this.data.skills)
+);
+
+document.getElementById(
+"tetm4SkillName"
+).value="";
+
+document.getElementById(
+"tetm4SkillPercent"
+).value="";
+
+this.renderSkills();
+
+},
+
+deleteSkill(id){
+
+this.data.skills=
+this.data.skills.filter(
+x=>x.id!==id
+);
+
+localStorage.setItem(
+"tetm4Skills",
+JSON.stringify(this.data.skills)
+);
+
+this.renderSkills();
+
+},
+
+renderSkills(){
+
+const box=
+document.getElementById(
+"tetm4SkillList"
+);
+
+if(!this.data.skills.length){
+
+box.innerHTML=
+"<p style='opacity:.6'>কোনো skill নেই।</p>";
+
+return;
+
+}
+
+box.innerHTML=
+this.data.skills.map(x=>`
+
+<div class="tetm4-test-card">
+
+<div style="
+display:flex;
+justify-content:space-between;
+">
+
+<strong>
+${this.safe(x.name)}
+</strong>
+
+<strong>
+${x.percent}%
+</strong>
+
+</div>
+
+<div style="
+height:9px;
+background:rgba(127,127,127,.18);
+border-radius:20px;
+overflow:hidden;
+margin-top:8px;
+">
+
+<div style="
+height:100%;
+width:${x.percent}%;
+background:#2563eb;
+"></div>
+
+</div>
+
+<br>
+
+<button
+class="tetm4-btn"
+style="padding:7px 11px"
+onclick="TETM4.deleteSkill(${x.id})">
+
+Delete
+
+</button>
+
+</div>
+
+`).join("");
+
+},
+
+
+safe(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+};
+
+
+/* ESC */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Escape"){
+TETM4.close();
+}
+
+});
+
+</script>
+
+<!-- ================= END TETM4 ================= -->
+  <!-- =========================================================
+ 🏭 TEXTILE EXPLORER — V5 VIRTUAL TEXTILE FACTORY
+ Prefix: TETF5
+ ========================================================= -->
+
+<style>
+.tetf5-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000005;
+  display:none;
+  overflow:auto;
+  padding:16px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(10px);
+}
+.tetf5-overlay.show{display:block}
+
+.tetf5-modal{
+  width:min(1250px,100%);
+  margin:15px auto;
+  background:var(--bg,#fff);
+  color:var(--text,#111);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 30px 100px rgba(0,0,0,.45);
+}
+
+.tetf5-header{
+  position:relative;
+  padding:30px;
+  color:#fff;
+  background:linear-gradient(135deg,#111827,#1d4ed8,#047857);
+}
+
+.tetf5-header h2{
+  margin:0 50px 7px 0;
+  font-size:29px;
+}
+
+.tetf5-header p{
+  margin:0;
+  opacity:.85;
+}
+
+.tetf5-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.tetf5-content{padding:22px}
+
+.tetf5-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.tetf5-card{
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:18px;
+  padding:20px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.tetf5-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,.1);
+}
+
+.tetf5-icon{
+  font-size:32px;
+  margin-bottom:9px;
+}
+
+.tetf5-card h3{
+  margin:0 0 7px;
+  font-size:17px;
+}
+
+.tetf5-card p{
+  margin:0;
+  font-size:13px;
+  line-height:1.5;
+  opacity:.7;
+}
+
+.tetf5-panel{display:none}
+.tetf5-panel.active{display:block}
+
+.tetf5-back{
+  border:0;
+  background:none;
+  color:inherit;
+  cursor:pointer;
+  padding:4px 0;
+  margin-bottom:18px;
+  font-size:15px;
+}
+
+.tetf5-flow{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:12px 2px 20px;
+}
+
+.tetf5-step{
+  min-width:145px;
+  padding:17px;
+  border-radius:15px;
+  text-align:center;
+  background:rgba(37,99,235,.08);
+  border:1px solid rgba(37,99,235,.15);
+}
+
+.tetf5-arrow{
+  display:flex;
+  align-items:center;
+  font-size:22px;
+}
+
+.tetf5-info{
+  padding:18px;
+  margin-top:15px;
+  border-radius:16px;
+  background:rgba(127,127,127,.07);
+  line-height:1.7;
+}
+
+.tetf5-form{
+  display:grid;
+  gap:11px;
+}
+
+.tetf5-form input,
+.tetf5-form select{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:transparent;
+  color:inherit;
+}
+
+.tetf5-btn{
+  border:0;
+  border-radius:10px;
+  padding:12px 17px;
+  background:#2563eb;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.tetf5-result{
+  margin-top:17px;
+  padding:19px;
+  border-radius:16px;
+  background:rgba(37,99,235,.08);
+  line-height:1.8;
+}
+
+.tetf5-dept{
+  margin-bottom:12px;
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.tetf5-dept-head{
+  padding:16px;
+  cursor:pointer;
+  font-weight:700;
+  background:rgba(127,127,127,.05);
+}
+
+.tetf5-dept-body{
+  display:none;
+  padding:17px;
+  line-height:1.7;
+}
+
+.tetf5-dept.open .tetf5-dept-body{
+  display:block;
+}
+
+.tetf5-badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:12px;
+  background:rgba(37,99,235,.1);
+  margin:3px;
+}
+
+.tetf5-progress{
+  height:10px;
+  background:rgba(127,127,127,.18);
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.tetf5-progress div{
+  height:100%;
+  background:#2563eb;
+}
+
+.tetf5-machine{
+  padding:16px;
+  margin-top:10px;
+  border:1px solid rgba(127,127,127,.16);
+  border-radius:14px;
+}
+
+.tetf5-search{
+  width:100%;
+  box-sizing:border-box;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:transparent;
+  color:inherit;
+  margin-bottom:15px;
+}
+
+@media(max-width:900px){
+  .tetf5-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:550px){
+  .tetf5-grid{
+    grid-template-columns:1fr;
+  }
+
+  .tetf5-overlay{
+    padding:6px;
+  }
+
+  .tetf5-header h2{
+    font-size:23px;
+  }
+}
+</style>
+
+
+<!-- =========================================================
+ BUTTON
+ ========================================================= -->
+
+<button
+onclick="TETF5.open()"
+style="
+position:fixed;
+right:20px;
+bottom:310px;
+z-index:9995;
+border:0;
+border-radius:50px;
+padding:14px 20px;
+background:linear-gradient(135deg,#111827,#1d4ed8,#047857);
+color:#fff;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 8px 28px rgba(0,0,0,.25);
+">
+🏭 Virtual Textile Factory
+</button>
+
+
+<!-- =========================================================
+ MODAL
+ ========================================================= -->
+
+<div id="tetf5Overlay" class="tetf5-overlay">
+
+<div class="tetf5-modal">
+
+<div class="tetf5-header">
+
+<button
+class="tetf5-close"
+onclick="TETF5.close()">
+×
+</button>
+
+<h2>🏭 Virtual Textile Factory</h2>
+
+<p>
+From Fiber to Fashion — Learn the Complete Textile Industry Flow
+</p>
+
+</div>
+
+
+<!-- ================= HOME ================= -->
+
+<div id="tetf5Home" class="tetf5-content">
+
+<div class="tetf5-grid">
+
+<div class="tetf5-card"
+onclick="TETF5.panel('flow')">
+
+<div class="tetf5-icon">🔄</div>
+
+<h3>Complete Production Flow</h3>
+
+<p>
+Fiber → Yarn → Fabric → Dyeing → Finishing → Garments → Shipment
+</p>
+
+</div>
+
+
+<div class="tetf5-card"
+onclick="TETF5.panel('departments')">
+
+<div class="tetf5-icon">🏢</div>
+
+<h3>Factory Departments</h3>
+
+<p>
+প্রতিটি department-এর কাজ, input, output এবং QC point।
+</p>
+
+</div>
+
+
+<div class="tetf5-card"
+onclick="TETF5.panel('machines')">
+
+<div class="tetf5-icon">⚙️</div>
+
+<h3>Machine Library</h3>
+
+<p>
+Important textile machines ও তাদের কাজ।
+</p>
+
+</div>
+
+
+<div class="tetf5-card"
+onclick="TETF5.panel('defects')">
+
+<div class="tetf5-icon">🔍</div>
+
+<h3>Defect Detective</h3>
+
+<p>
+Fabric defects দেখে সম্ভাব্য cause ও corrective action খুঁজে বের করো।
+</p>
+
+</div>
+
+
+<div class="tetf5-card"
+onclick="TETF5.panel('quality')">
+
+<div class="tetf5-icon">✅</div>
+
+<h3>Quality Control</h3>
+
+<p>
+Incoming → Process → Final inspection-এর basic system।
+</p>
+
+</div>
+
+
+<div class="tetf5-card"
+onclick="TETF5.panel('factory')">
+
+<div class="tetf5-icon">📊</div>
+
+<h3>Factory KPI</h3>
+
+<p>
+Efficiency, rejection, productivity এবং quality KPI বুঝে নাও।
+</p>
+
+</div>
+
+
+<div class="tetf5-card"
+onclick="TETF5.panel('career')">
+
+<div class="tetf5-icon">👷</div>
+
+<h3>Factory Career Map</h3>
+
+<p>
+Textile factory-তে কোন department-এ কী career path আছে।
+</p>
+
+</div>
+
+
+<div class="tetf5-card"
+onclick="TETF5.panel('quiz')">
+
+<div class="tetf5-icon">🎯</div>
+
+<h3>Factory Challenge</h3>
+
+<p>
+Production situation দেখে decision নেওয়ার practice।
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ COMPLETE FLOW
+ ===================================================== -->
+
+<div id="tetf5Flow"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>🔄 Complete Textile Production Flow</h3>
+
+<div class="tetf5-flow">
+
+<div class="tetf5-step">
+🧶<br>
+<strong>Fiber</strong><br>
+Raw Material
+</div>
+
+<div class="tetf5-arrow">→</div>
+
+<div class="tetf5-step">
+🧵<br>
+<strong>Spinning</strong><br>
+Yarn
+</div>
+
+<div class="tetf5-arrow">→</div>
+
+<div class="tetf5-step">
+📐<br>
+<strong>Warping</strong><br>
+Warp Preparation
+</div>
+
+<div class="tetf5-arrow">→</div>
+
+<div class="tetf5-step">
+⚙️<br>
+<strong>Sizing</strong><br>
+Yarn Protection
+</div>
+
+<div class="tetf5-arrow">→</div>
+
+<div class="tetf5-step">
+🏭<br>
+<strong>Weaving</strong><br>
+Grey Fabric
+</div>
+
+<div class="tetf5-arrow">→</div>
+
+<div class="tetf5-step">
+🎨<br>
+<strong>Dyeing</strong><br>
+Colour
+</div>
+
+<div class="tetf5-arrow">→</div>
+
+<div class="tetf5-step">
+✨<br>
+<strong>Finishing</strong><br>
+Final Fabric
+</div>
+
+<div class="tetf5-arrow">→</div>
+
+<div class="tetf5-step">
+👕<br>
+<strong>Garments</strong><br>
+Finished Product
+</div>
+
+</div>
+
+<div class="tetf5-info">
+
+<strong>Industry concept:</strong><br>
+
+Raw material থেকে finished product পর্যন্ত প্রতিটি stage-এ
+quality, productivity, cost এবং delivery control করা হয়।
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ DEPARTMENTS
+ ===================================================== -->
+
+<div id="tetf5Departments"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>🏢 Factory Departments</h3>
+
+<div id="tetf5DeptList"></div>
+
+</div>
+
+
+<!-- =====================================================
+ MACHINES
+ ===================================================== -->
+
+<div id="tetf5Machines"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>⚙️ Textile Machine Library</h3>
+
+<input
+class="tetf5-search"
+placeholder="🔍 Search machine..."
+oninput="TETF5.filterMachines(this.value)"
+>
+
+<div id="tetf5MachineList"></div>
+
+</div>
+
+
+<!-- =====================================================
+ DEFECTS
+ ===================================================== -->
+
+<div id="tetf5Defects"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>🔍 Defect Detective</h3>
+
+<div id="tetf5DefectBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ QUALITY
+ ===================================================== -->
+
+<div id="tetf5Quality"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>✅ Quality Control System</h3>
+
+<div class="tetf5-dept open">
+
+<div class="tetf5-dept-head">
+📥 Incoming Quality Control
+</div>
+
+<div class="tetf5-dept-body">
+
+Raw material inspection, yarn quality,
+shade/material verification এবং supplier documents check করা হয়।
+
+<br><br>
+
+<span class="tetf5-badge">Raw Material</span>
+<span class="tetf5-badge">Yarn</span>
+<span class="tetf5-badge">Shade</span>
+<span class="tetf5-badge">Specification</span>
+
+</div>
+
+</div>
+
+
+<div class="tetf5-dept">
+
+<div class="tetf5-dept-head">
+⚙️ In-Process Quality Control
+</div>
+
+<div class="tetf5-dept-body">
+
+Production চলাকালীন defects, machine condition,
+process parameters এবং quality checkpoints monitor করা হয়।
+
+</div>
+
+</div>
+
+
+<div class="tetf5-dept">
+
+<div class="tetf5-dept-head">
+📦 Final Inspection
+</div>
+
+<div class="tetf5-dept-body">
+
+Finished product specification অনুযায়ী আছে কি না,
+measurement, appearance, defects এবং packing check করা হয়।
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ FACTORY KPI
+ ===================================================== -->
+
+<div id="tetf5Factory"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>📊 Factory KPI Calculator</h3>
+
+<div class="tetf5-form">
+
+<select id="tetf5KpiType">
+
+<option value="efficiency">
+Efficiency %
+</option>
+
+<option value="rejection">
+Rejection %
+</option>
+
+<option value="achievement">
+Production Achievement %
+</option>
+
+</select>
+
+<input
+id="tetf5KpiA"
+type="number"
+placeholder="Actual / Accepted">
+
+<input
+id="tetf5KpiB"
+type="number"
+placeholder="Target / Total">
+
+<button
+class="tetf5-btn"
+onclick="TETF5.kpi()">
+
+Calculate KPI
+
+</button>
+
+</div>
+
+<div
+id="tetf5KpiResult"
+class="tetf5-result">
+
+Result will appear here.
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ CAREER
+ ===================================================== -->
+
+<div id="tetf5Career"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>👷 Factory Career Map</h3>
+
+<div class="tetf5-grid">
+
+<div class="tetf5-card">
+🏭<br>
+<strong>Production</strong>
+<p>
+Production Officer → Executive → Manager
+</p>
+</div>
+
+<div class="tetf5-card">
+✅<br>
+<strong>Quality</strong>
+<p>
+QC → QA → Quality Manager
+</p>
+</div>
+
+<div class="tetf5-card">
+📈<br>
+<strong>IE</strong>
+<p>
+IE → Senior IE → IE Manager
+</p>
+</div>
+
+<div class="tetf5-card">
+🧾<br>
+<strong>Merchandising</strong>
+<p>
+Merchandiser → Senior → Manager
+</p>
+</div>
+
+<div class="tetf5-card">
+🎨<br>
+<strong>CAD & Design</strong>
+<p>
+CAD Designer → Senior Designer → Design Lead
+</p>
+</div>
+
+<div class="tetf5-card">
+⚙️<br>
+<strong>Maintenance</strong>
+<p>
+Technician → Engineer → Maintenance Manager
+</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ QUIZ
+ ===================================================== -->
+
+<div id="tetf5Quiz"
+class="tetf5-content tetf5-panel">
+
+<button
+class="tetf5-back"
+onclick="TETF5.home()">
+← Back
+</button>
+
+<h3>🎯 Factory Challenge</h3>
+
+<div id="tetf5QuizBox"></div>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+const TETF5={
+
+open(){
+
+document
+.getElementById("tetf5Overlay")
+.classList.add("show");
+
+document.body.style.overflow="hidden";
+
+this.home();
+
+},
+
+close(){
+
+document
+.getElementById("tetf5Overlay")
+.classList.remove("show");
+
+document.body.style.overflow="";
+
+},
+
+home(){
+
+document.getElementById("tetf5Home")
+.style.display="block";
+
+document
+.querySelectorAll(".tetf5-panel")
+.forEach(x=>x.classList.remove("active"));
+
+},
+
+panel(name){
+
+document.getElementById("tetf5Home")
+.style.display="none";
+
+document
+.querySelectorAll(".tetf5-panel")
+.forEach(x=>x.classList.remove("active"));
+
+const map={
+
+flow:"tetf5Flow",
+departments:"tetf5Departments",
+machines:"tetf5Machines",
+defects:"tetf5Defects",
+quality:"tetf5Quality",
+factory:"tetf5Factory",
+career:"tetf5Career",
+quiz:"tetf5Quiz"
+
+};
+
+document
+.getElementById(map[name])
+.classList.add("active");
+
+
+if(name==="departments")
+this.renderDepartments();
+
+if(name==="machines")
+this.renderMachines();
+
+if(name==="defects")
+this.renderDefects();
+
+if(name==="quiz")
+this.startQuiz();
+
+},
+
+
+/* ================= DEPARTMENTS ================= */
+
+departments:[
+
+{
+icon:"🧶",
+name:"Spinning",
+input:"Fiber",
+output:"Yarn",
+qc:"Count, strength, unevenness, hairiness",
+work:"Fiber থেকে yarn তৈরি করা।"
+},
+
+{
+icon:"📐",
+name:"Warping",
+input:"Yarn",
+output:"Warp beam",
+qc:"Ends, tension, package quality",
+work:"Multiple yarn packages থেকে warp sheet তৈরি করা।"
+},
+
+{
+icon:"⚙️",
+name:"Sizing",
+input:"Warp yarn",
+output:"Sized beam",
+qc:"Size pick-up, moisture, yarn strength",
+work:"Warp yarn-এ protective size প্রয়োগ করা।"
+},
+
+{
+icon:"🏭",
+name:"Weaving",
+input:"Warp + Weft",
+output:"Grey fabric",
+qc:"EPI, PPI, GSM, defects",
+work:"Warp এবং weft interlace করে woven fabric তৈরি করা।"
+},
+
+{
+icon:"🎨",
+name:"Dyeing",
+input:"Grey fabric",
+output:"Dyed fabric",
+qc:"Shade, fastness, pH, process parameters",
+work:"Fabric-এ desired colour এবং properties দেওয়া।"
+},
+
+{
+icon:"✨",
+name:"Finishing",
+input:"Dyed fabric",
+output:"Finished fabric",
+qc:"GSM, width, appearance, handle",
+work:"Final fabric properties ও appearance improve করা।"
+},
+
+{
+icon:"👕",
+name:"Garments",
+input:"Fabric",
+output:"Garment",
+qc:"Measurement, stitching, appearance",
+work:"Fabric থেকে finished apparel তৈরি করা।"
+},
+
+{
+icon:"📦",
+name:"Packing & Shipment",
+input:"Finished goods",
+output:"Shipment",
+qc:"Quantity, packing, documentation",
+work:"Final product buyer-এর জন্য prepare এবং dispatch করা।"
+}
+
+],
+
+
+renderDepartments(){
+
+const box=
+document.getElementById("tetf5DeptList");
+
+box.innerHTML=
+this.departments.map((x,i)=>`
+
+<div class="tetf5-dept">
+
+<div
+class="tetf5-dept-head"
+onclick="this.parentElement.classList.toggle('open')">
+
+${x.icon} ${this.safe(x.name)}
+
+</div>
+
+<div class="tetf5-dept-body">
+
+<strong>Input:</strong>
+${this.safe(x.input)}
+<br>
+
+<strong>Output:</strong>
+${this.safe(x.output)}
+<br>
+
+<strong>Main Work:</strong>
+${this.safe(x.work)}
+<br>
+
+<strong>QC Points:</strong>
+${this.safe(x.qc)}
+
+</div>
+
+</div>
+
+`).join("");
+
+},
+
+
+/* ================= MACHINES ================= */
+
+machines:[
+
+["Blow Room Machine",
+"Spinning",
+"Fiber opening, cleaning and blending."],
+
+["Carding Machine",
+"Spinning",
+"Individualization and cleaning of fibers."],
+
+["Drawing Frame",
+"Spinning",
+"Slivers combine করে evenness improve করা।"],
+
+["Ring Spinning Machine",
+"Spinning",
+"Roving থেকে yarn তৈরি করা।"],
+
+["Autoconer",
+"Spinning",
+"Yarn winding ও electronic yarn clearing."],
+
+["Warping Machine",
+"Weaving Preparation",
+"Yarnকে warp beam-এর জন্য prepare করা।"],
+
+["Sizing Machine",
+"Weaving Preparation",
+"Warp yarn-এ size apply করা।"],
+
+["Rapier Loom",
+"Weaving",
+"Rapier দিয়ে weft insertion করা।"],
+
+["Air Jet Loom",
+"Weaving",
+"Air stream ব্যবহার করে weft insertion।"],
+
+["Stenter Machine",
+"Finishing",
+"Fabric width, drying ও heat-setting control।"],
+
+["Compacting Machine",
+"Finishing",
+"Knitted fabric-এর shrinkage ও dimensional stability improve করা।"],
+
+["Fabric Inspection Machine",
+"Quality",
+"Fabric defects identify ও classify করা।"]
+
+],
+
+
+renderMachines(){
+
+const box=
+document.getElementById("tetf5MachineList");
+
+box.innerHTML=this.machines.map(x=>`
+
+<div class="tetf5-machine">
+
+<h4>⚙️ ${this.safe(x[0])}</h4>
+
+<span class="tetf5-badge">
+${this.safe(x[1])}
+</span>
+
+<p>
+${this.safe(x[2])}
+</p>
+
+</div>
+
+`).join("");
+
+},
+
+
+filterMachines(q){
+
+q=q.toLowerCase();
+
+document
+.querySelectorAll(".tetf5-machine")
+.forEach(card=>{
+
+card.style.display=
+card.innerText.toLowerCase()
+.includes(q)
+?"block"
+:"none";
+
+});
+
+},
+
+
+/* ================= DEFECTS ================= */
+
+defects:[
+
+{
+name:"Streak",
+cause:"Roller, machine setting বা process issue হতে পারে।",
+action:"Machine condition এবং process parameter inspect করতে হবে।"
+},
+
+{
+name:"Hole",
+cause:"Mechanical damage, yarn break বা sharp object।",
+action:"Machine parts এবং material path inspect করতে হবে।"
+},
+
+{
+name:"Slub",
+cause:"Yarn irregularity বা foreign fiber।",
+action:"Yarn quality এবং spinning process check করতে হবে।"
+},
+
+{
+name:"Thick Place",
+cause:"Yarn/fabric thickness variation।",
+action:"Yarn evenness এবং machine setting investigate করতে হবে।"
+},
+
+{
+name:"Thin Place",
+cause:"Low material density বা yarn fault।",
+action:"Yarn quality ও process parameters check করতে হবে।"
+},
+
+{
+name:"Shade Variation",
+cause:"Dyeing recipe, temperature, liquor ratio বা process variation।",
+action:"Lab dip, recipe এবং dyeing parameters verify করতে হবে।"
+},
+
+{
+name:"Pilling",
+cause:"Loose fibers ও rubbing।",
+action:"Fiber/yarn selection এবং finishing process review করতে হবে।"
+},
+
+{
+name:"Oil Stain",
+cause:"Machine oil contamination।",
+action:"Machine leakage identify এবং cleaning control করতে হবে।"
+}
+
+],
+
+
+renderDefects(){
+
+const box=
+document.getElementById("tetf5DefectBox");
+
+box.innerHTML=this.defects.map(x=>`
+
+<div class="tetf5-machine">
+
+<h4>🔍 ${this.safe(x.name)}</h4>
+
+<p>
+<strong>Possible Cause:</strong><br>
+${this.safe(x.cause)}
+</p>
+
+<p>
+<strong>Corrective Direction:</strong><br>
+${this.safe(x.action)}
+</p>
+
+</div>
+
+`).join("");
+
+},
+
+
+/* ================= KPI ================= */
+
+kpi(){
+
+const type=
+document.getElementById("tetf5KpiType")
+.value;
+
+const a=Number(
+document.getElementById("tetf5KpiA").value
+);
+
+const b=Number(
+document.getElementById("tetf5KpiB").value
+);
+
+if(!a || !b){
+
+alert("দুইটি input দিন.");
+
+return;
+
+}
+
+let result;
+
+if(type==="efficiency"){
+
+result=
+`⚙️ Efficiency =
+<strong>${((a/b)*100).toFixed(2)}%</strong>`;
+
+}
+
+else if(type==="rejection"){
+
+result=
+`❌ Rejection =
+<strong>${((a/b)*100).toFixed(2)}%</strong>`;
+
+}
+
+else{
+
+result=
+`📈 Production Achievement =
+<strong>${((a/b)*100).toFixed(2)}%</strong>`;
+
+}
+
+document.getElementById(
+"tetf5KpiResult"
+).innerHTML=result;
+
+},
+
+
+/* ================= QUIZ ================= */
+
+quiz:[
+
+{
+q:"Weaving-এর প্রধান দুইটি yarn system কোনগুলো?",
+o:["Warp & Weft","Knit & Pile","Fiber & Dye","Warp & GSM"],
+a:0
+},
+
+{
+q:"Sizing মূলত কোন yarn-এর জন্য করা হয়?",
+o:["Warp yarn","Only weft yarn","Fabric only","Garment"],
+a:0
+},
+
+{
+q:"Fabric inspection-এর প্রধান উদ্দেশ্য কী?",
+o:["Defect identify করা","Yarn spin করা","Dye তৈরি করা","Garment sew করা"],
+a:0
+},
+
+{
+q:"Stenter machine সাধারণত কোন section-এ গুরুত্বপূর্ণ?",
+o:["Finishing","Spinning","Garments cutting","Packing"],
+a:0
+},
+
+{
+q:"EPI বলতে কী বোঝায়?",
+o:["Ends Per Inch","Efficiency Per Item","Ends Production Index","Elasticity Per Inch"],
+a:0
+}
+
+],
+
+quizIndex:0,
+quizScore:0,
+
+startQuiz(){
+
+this.quizIndex=0;
+this.quizScore=0;
+
+this.renderQuiz();
+
+},
+
+renderQuiz(){
+
+const q=
+this.quiz[this.quizIndex];
+
+document.getElementById(
+"tetf5QuizBox"
+).innerHTML=`
+
+<div class="tetf5-info">
+
+<strong>
+Factory Challenge ${this.quizIndex+1}
+/
+${this.quiz.length}
+</strong>
+
+<h3>
+${this.safe(q.q)}
+</h3>
+
+${q.o.map((x,i)=>`
+
+<button
+class="tetf5-btn"
+style="
+display:block;
+width:100%;
+margin-top:9px;
+text-align:left;
+"
+onclick="TETF5.answerQuiz(${i})">
+
+${String.fromCharCode(65+i)}.
+${this.safe(x)}
+
+</button>
+
+`).join("")}
+
+</div>
+
+`;
+
+},
+
+answerQuiz(answer){
+
+if(answer===
+this.quiz[this.quizIndex].a){
+
+this.quizScore++;
+
+}
+
+this.quizIndex++;
+
+if(this.quizIndex>=this.quiz.length){
+
+document.getElementById(
+"tetf5QuizBox"
+).innerHTML=`
+
+<div class="tetf5-result"
+style="text-align:center">
+
+<h2>🏆 Challenge Complete</h2>
+
+<div style="font-size:34px;font-weight:800">
+
+${this.quizScore}
+/
+${this.quiz.length}
+
+</div>
+
+<p>
+${this.quizScore===this.quiz.length
+?"Excellent! 🔥"
+:"Keep practicing! 💪"}
+</p>
+
+<button
+class="tetf5-btn"
+onclick="TETF5.startQuiz()">
+
+🔄 Try Again
+
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+this.renderQuiz();
+
+},
+
+
+safe(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+};
+
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Escape"){
+TETF5.close();
+}
+
+});
+
+</script>
+
+<!-- ================= END TETF5 ================= -->
+  <!-- =========================================================
+ 🎤 TEXTILE EXPLORER — V6 VIVA & INTERVIEW SIMULATOR
+ Prefix: TEVI6
+ ========================================================= -->
+
+<style>
+.tevi6-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000006;
+  display:none;
+  overflow:auto;
+  padding:16px;
+  background:rgba(0,0,0,.8);
+  backdrop-filter:blur(10px);
+}
+.tevi6-overlay.show{display:block}
+
+.tevi6-modal{
+  width:min(1200px,100%);
+  margin:15px auto;
+  background:var(--bg,#fff);
+  color:var(--text,#111);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 30px 100px rgba(0,0,0,.45);
+}
+
+.tevi6-header{
+  position:relative;
+  padding:30px;
+  color:#fff;
+  background:linear-gradient(135deg,#312e81,#2563eb,#047857);
+}
+
+.tevi6-header h2{
+  margin:0 50px 6px 0;
+  font-size:29px;
+}
+
+.tevi6-header p{
+  margin:0;
+  opacity:.85;
+}
+
+.tevi6-close{
+  position:absolute;
+  right:18px;
+  top:18px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.tevi6-content{
+  padding:22px;
+}
+
+.tevi6-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.tevi6-card{
+  padding:20px;
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:18px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.tevi6-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+
+.tevi6-icon{
+  font-size:32px;
+  margin-bottom:9px;
+}
+
+.tevi6-card h3{
+  margin:0 0 7px;
+  font-size:17px;
+}
+
+.tevi6-card p{
+  margin:0;
+  font-size:13px;
+  line-height:1.5;
+  opacity:.7;
+}
+
+.tevi6-panel{
+  display:none;
+}
+
+.tevi6-panel.active{
+  display:block;
+}
+
+.tevi6-back{
+  border:0;
+  background:none;
+  color:inherit;
+  cursor:pointer;
+  padding:4px 0;
+  margin-bottom:18px;
+  font-size:15px;
+}
+
+.tevi6-form{
+  display:grid;
+  gap:11px;
+}
+
+.tevi6-form input,
+.tevi6-form select,
+.tevi6-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 14px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:transparent;
+  color:inherit;
+}
+
+.tevi6-btn{
+  border:0;
+  border-radius:10px;
+  padding:12px 17px;
+  background:#2563eb;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.tevi6-btn.secondary{
+  background:#374151;
+}
+
+.tevi6-question{
+  padding:25px;
+  border-radius:20px;
+  border:1px solid rgba(127,127,127,.18);
+}
+
+.tevi6-question-number{
+  font-size:13px;
+  opacity:.65;
+  margin-bottom:10px;
+}
+
+.tevi6-question h3{
+  line-height:1.5;
+}
+
+.tevi6-answer{
+  display:none;
+  padding:18px;
+  margin-top:15px;
+  border-radius:14px;
+  background:rgba(16,185,129,.09);
+  line-height:1.7;
+}
+
+.tevi6-answer.show{
+  display:block;
+}
+
+.tevi6-score{
+  text-align:center;
+  padding:25px;
+  font-size:34px;
+  font-weight:800;
+}
+
+.tevi6-rating{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.tevi6-rating button{
+  border:1px solid rgba(127,127,127,.2);
+  background:transparent;
+  color:inherit;
+  padding:9px 13px;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.tevi6-rating button.selected{
+  background:#2563eb;
+  color:#fff;
+}
+
+.tevi6-info{
+  padding:18px;
+  border-radius:16px;
+  background:rgba(127,127,127,.07);
+  line-height:1.7;
+  margin-top:15px;
+}
+
+.tevi6-progress{
+  height:10px;
+  background:rgba(127,127,127,.18);
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:8px;
+}
+
+.tevi6-progress div{
+  height:100%;
+  background:#2563eb;
+}
+
+@media(max-width:900px){
+  .tevi6-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:550px){
+  .tevi6-grid{
+    grid-template-columns:1fr;
+  }
+
+  .tevi6-overlay{
+    padding:6px;
+  }
+
+  .tevi6-header h2{
+    font-size:23px;
+  }
+}
+</style>
+
+
+<!-- =========================================================
+ BUTTON
+ ========================================================= -->
+
+<button
+onclick="TEVI6.open()"
+style="
+position:fixed;
+right:20px;
+bottom:370px;
+z-index:9994;
+border:0;
+border-radius:50px;
+padding:14px 20px;
+background:linear-gradient(135deg,#312e81,#2563eb,#047857);
+color:#fff;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 8px 28px rgba(0,0,0,.25);
+">
+🎤 Viva & Interview
+</button>
+
+
+<!-- =========================================================
+ MODAL
+ ========================================================= -->
+
+<div id="tevi6Overlay" class="tevi6-overlay">
+
+<div class="tevi6-modal">
+
+<div class="tevi6-header">
+
+<button
+class="tevi6-close"
+onclick="TEVI6.close()">
+×
+</button>
+
+<h2>🎤 Textile Viva & Interview Simulator</h2>
+
+<p>
+Viva • Technical Interview • HR • Factory Interview • Self Assessment
+</p>
+
+</div>
+
+
+<!-- ================= HOME ================= -->
+
+<div id="tevi6Home" class="tevi6-content">
+
+<div class="tevi6-grid">
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('technical')">
+
+<div class="tevi6-icon">🧵</div>
+
+<h3>Technical Viva</h3>
+
+<p>
+Textile Engineering-এর technical questions practice করো।
+</p>
+
+</div>
+
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('spinning')">
+
+<div class="tevi6-icon">🧶</div>
+
+<h3>Spinning Viva</h3>
+
+<p>
+Fiber, yarn, count, spinning process এবং machine।
+</p>
+
+</div>
+
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('weaving')">
+
+<div class="tevi6-icon">🏭</div>
+
+<h3>Weaving Viva</h3>
+
+<p>
+Warp, weft, loom, EPI, PPI, defects এবং process।
+</p>
+
+</div>
+
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('dyeing')">
+
+<div class="tevi6-icon">🎨</div>
+
+<h3>Dyeing Viva</h3>
+
+<p>
+Dyeing process, chemicals, shade ও fastness।
+</p>
+
+</div>
+
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('garments')">
+
+<div class="tevi6-icon">👕</div>
+
+<h3>Garments Viva</h3>
+
+<p>
+Cutting, sewing, finishing, measurement ও defects।
+</p>
+
+</div>
+
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('merchandising')">
+
+<div class="tevi6-icon">📋</div>
+
+<h3>Merchandising</h3>
+
+<p>
+Buyer, order, costing, T&A এবং communication।
+</p>
+
+</div>
+
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('hr')">
+
+<div class="tevi6-icon">👔</div>
+
+<h3>HR Interview</h3>
+
+<p>
+Self introduction, strengths, weakness এবং career goal।
+</p>
+
+</div>
+
+
+<div
+class="tevi6-card"
+onclick="TEVI6.panel('mock')">
+
+<div class="tevi6-icon">🎯</div>
+
+<h3>Mock Interview</h3>
+
+<p>
+Real interview-এর মতো question-by-question practice।
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+ TECHNICAL
+ ===================================================== -->
+
+<div
+id="tevi6Technical"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>🧵 Technical Viva</h3>
+
+<div id="tevi6TechnicalBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ SPINNING
+ ===================================================== -->
+
+<div
+id="tevi6Spinning"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>🧶 Spinning Viva</h3>
+
+<div id="tevi6SpinningBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ WEAVING
+ ===================================================== -->
+
+<div
+id="tevi6Weaving"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>🏭 Weaving Viva</h3>
+
+<div id="tevi6WeavingBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ DYEING
+ ===================================================== -->
+
+<div
+id="tevi6Dyeing"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>🎨 Dyeing Viva</h3>
+
+<div id="tevi6DyeingBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ GARMENTS
+ ===================================================== -->
+
+<div
+id="tevi6Garments"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>👕 Garments Viva</h3>
+
+<div id="tevi6GarmentsBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ MERCHANDISING
+ ===================================================== -->
+
+<div
+id="tevi6Merchandising"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>📋 Merchandising Interview</h3>
+
+<div id="tevi6MerchBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ HR
+ ===================================================== -->
+
+<div
+id="tevi6Hr"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>👔 HR Interview Preparation</h3>
+
+<div id="tevi6HrBox"></div>
+
+</div>
+
+
+<!-- =====================================================
+ MOCK
+ ===================================================== -->
+
+<div
+id="tevi6Mock"
+class="tevi6-content tevi6-panel">
+
+<button
+class="tevi6-back"
+onclick="TEVI6.home()">
+← Back
+</button>
+
+<h3>🎯 Mock Interview</h3>
+
+<div id="tevi6MockBox"></div>
+
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+const TEVI6={
+
+open(){
+
+document
+.getElementById("tevi6Overlay")
+.classList.add("show");
+
+document.body.style.overflow="hidden";
+
+this.home();
+
+},
+
+close(){
+
+document
+.getElementById("tevi6Overlay")
+.classList.remove("show");
+
+document.body.style.overflow="";
+
+},
+
+home(){
+
+document.getElementById("tevi6Home")
+.style.display="block";
+
+document
+.querySelectorAll(".tevi6-panel")
+.forEach(x=>x.classList.remove("active"));
+
+},
+
+panel(name){
+
+document.getElementById("tevi6Home")
+.style.display="none";
+
+document
+.querySelectorAll(".tevi6-panel")
+.forEach(x=>x.classList.remove("active"));
+
+const map={
+
+technical:"tevi6Technical",
+spinning:"tevi6Spinning",
+weaving:"tevi6Weaving",
+dyeing:"tevi6Dyeing",
+garments:"tevi6Garments",
+merchandising:"tevi6Merchandising",
+hr:"tevi6Hr",
+mock:"tevi6Mock"
+
+};
+
+document
+.getElementById(map[name])
+.classList.add("active");
+
+
+if(name==="technical")
+this.renderCategory("Technical",this.technical);
+
+if(name==="spinning")
+this.renderCategory("Spinning",this.spinning);
+
+if(name==="weaving")
+this.renderCategory("Weaving",this.weaving);
+
+if(name==="dyeing")
+this.renderCategory("Dyeing",this.dyeing);
+
+if(name==="garments")
+this.renderCategory("Garments",this.garments);
+
+if(name==="merchandising")
+this.renderCategory("Merchandising",this.merchandising);
+
+if(name==="hr")
+this.renderHR();
+
+if(name==="mock")
+this.startMock();
+
+},
+
+
+/* ================= QUESTION ENGINE ================= */
+
+technical:[
+
+["What is GSM?","GSM means grams per square meter. It represents the mass of fabric per unit area."],
+
+["What is yarn count?","Yarn count indicates the fineness or coarseness of yarn using a specific numbering system."],
+
+["What is EPI?","EPI means Ends Per Inch — the number of warp ends present in one inch of fabric."],
+
+["What is PPI?","PPI means Picks Per Inch — the number of weft picks present in one inch of fabric."],
+
+["What is crimp?","Crimp is the waviness or excess length of yarn present in a fabric compared with its straight length."],
+
+["What is cover factor?","Cover factor indicates the degree to which yarns cover the fabric surface."],
+
+["What is weaving?","Weaving is fabric formation by interlacing warp and weft yarns."],
+
+["What is knitting?","Knitting is fabric formation by forming interconnected loops of yarn."],
+
+["What is fabric GSM important for?","GSM helps identify fabric weight and is important for specification, costing and quality control."]
+
+],
+
+
+spinning:[
+
+["What is spinning?","Spinning is the process of converting textile fibers into yarn."],
+
+["What is carding?","Carding opens, cleans and individualizes fibers and forms a sliver."],
+
+["What is drawing?","Drawing combines and drafts slivers to improve evenness."],
+
+["What is roving?","Roving is an intermediate strand prepared before final spinning."],
+
+["What is ring spinning?","Ring spinning produces yarn by drafting, twisting and winding the fiber strand."],
+
+["What is yarn twist?","Twist is the number of turns inserted into yarn per unit length."],
+
+["What is yarn strength?","Yarn strength is the force required to break the yarn."]
+
+],
+
+
+weaving:[
+
+["What is warp?","Warp yarns run in the lengthwise direction of woven fabric."],
+
+["What is weft?","Weft yarns run across the width of woven fabric."],
+
+["What is a loom?","A loom is a machine used to produce woven fabric."],
+
+["What is shedding?","Shedding creates an opening between warp yarns for weft insertion."],
+
+["What is picking?","Picking is the insertion of weft yarn across the warp shed."],
+
+["What is beat-up?","Beat-up pushes the inserted weft yarn into the fabric fell."],
+
+["What is loom efficiency?","Loom efficiency compares actual production time/output with the theoretical or available capacity."]
+
+],
+
+
+dyeing:[
+
+["What is dyeing?","Dyeing is the process of imparting colour to textile material."],
+
+["What is shade matching?","Shade matching means achieving the required colour compared with a standard."],
+
+["What is colour fastness?","Colour fastness indicates resistance of colour to different agencies such as washing, rubbing or light."],
+
+["Why is pH important in dyeing?","pH affects dye-fiber interaction, chemical reactions and final shade quality."],
+
+["What is liquor ratio?","Liquor ratio represents the relationship between textile material weight and dye bath liquor quantity."]
+
+],
+
+
+garments:[
+
+["What is SMV?","SMV means Standard Minute Value, the standard time required to complete a garment operation."],
+
+["What is line balancing?","Line balancing distributes work among operators/workstations to improve production flow."],
+
+["What is sewing defect?","A sewing defect is a quality problem caused by stitch, machine, handling or operation issues."],
+
+["What is garment consumption?","Garment consumption is the amount of fabric required to produce a garment."],
+
+["What is inline inspection?","Inline inspection checks quality during production rather than only at the end."]
+
+],
+
+
+merchandising:[
+
+["What does a merchandiser do?","A merchandiser coordinates buyer requirements, development, costing, production follow-up and shipment."],
+
+["What is T&A?","T&A means Time and Action calendar, which tracks important order milestones."],
+
+["What is buyer communication?","It involves professional communication regarding product details, samples, approvals, production and shipment."],
+
+["What is costing?","Costing estimates the total cost of producing and delivering a product."],
+
+["What is lead time?","Lead time is the time required from order/development stages to delivery."]
+
+],
+
+
+renderCategory(name,data){
+
+const boxMap={
+
+Technical:"tevi6TechnicalBox",
+Spinning:"tevi6SpinningBox",
+Weaving:"tevi6WeavingBox",
+Dyeing:"tevi6DyeingBox",
+Garments:"tevi6GarmentsBox",
+Merchandising:"tevi6MerchBox"
+
+};
+
+const box=
+document.getElementById(boxMap[name]);
+
+box.innerHTML=data.map((x,i)=>`
+
+<div
+class="tevi6-question"
+style="margin-bottom:14px">
+
+<div class="tevi6-question-number">
+Question ${i+1}
+</div>
+
+<h3>
+${this.safe(x[0])}
+</h3>
+
+<button
+class="tevi6-btn"
+onclick="this.nextElementSibling.classList.toggle('show')">
+
+💡 Show Answer
+
+</button>
+
+<div class="tevi6-answer">
+
+<strong>Answer:</strong><br>
+
+${this.safe(x[1])}
+
+</div>
+
+</div>
+
+`).join("");
+
+},
+
+
+/* ================= HR ================= */
+
+hrQuestions:[
+
+["Tell me about yourself.","নিজের education, relevant skills, practical knowledge এবং career goal সংক্ষেপে বলো।"],
+
+["Why should we hire you?","তোমার technical knowledge, willingness to learn, discipline এবং role-related skills-এর ওপর focus করো।"],
+
+["What are your strengths?","যে strengths সত্যিই তোমার আছে সেগুলো বলো—যেমন responsibility, communication, problem solving বা learning ability।"],
+
+["What is your weakness?","একটি genuine but manageable weakness বলো এবং কীভাবে improve করছো সেটাও বলো।"],
+
+["Where do you see yourself in five years?","Role-এর সঙ্গে aligned একটি realistic career goal বলো।"],
+
+["Why do you want to work in the textile industry?","Textile engineering-এর প্রতি interest এবং industry-তে contribution করার motivation ব্যাখ্যা করো।"],
+
+["Can you work under pressure?","বাস্তব উদাহরণ দিয়ে দেখাও কীভাবে priority ঠিক করে কাজ করতে পারো।"],
+
+["Are you willing to work in a factory environment?","Factory discipline, teamwork, production target এবং practical learning-এর প্রতি willingness দেখাও।"]
+
+],
+
+
+renderHR(){
+
+const box=
+document.getElementById("tevi6HrBox");
+
+box.innerHTML=this.hrQuestions.map((x,i)=>`
+
+<div
+class="tevi6-question"
+style="margin-bottom:14px">
+
+<div class="tevi6-question-number">
+HR Question ${i+1}
+</div>
+
+<h3>
+${this.safe(x[0])}
+</h3>
+
+<button
+class="tevi6-btn"
+onclick="this.nextElementSibling.classList.toggle('show')">
+
+💡 Suggested Direction
+
+</button>
+
+<div class="tevi6-answer">
+
+${this.safe(x[1])}
+
+</div>
+
+</div>
+
+`).join("");
+
+},
+
+
+/* ================= MOCK ================= */
+
+mockQuestions:[
+
+"Tell me about yourself.",
+
+"What is GSM?",
+
+"What is the difference between warp and weft?",
+
+"What is yarn count?",
+
+"What is EPI and PPI?",
+
+"Which textile department interests you most and why?",
+
+"How do you handle a production problem?",
+
+"Why should we hire you?"
+
+],
+
+mockIndex:0,
+mockRatings:[],
+mockAnswers:[],
+
+startMock(){
+
+this.mockIndex=0;
+this.mockRatings=[];
+this.mockAnswers=[];
+
+this.renderMock();
+
+},
+
+renderMock(){
+
+const q=
+this.mockQuestions[this.mockIndex];
+
+document.getElementById(
+"tevi6MockBox"
+).innerHTML=`
+
+<div class="tevi6-question">
+
+<div class="tevi6-question-number">
+
+Mock Interview
+<br>
+Question ${this.mockIndex+1}
+/
+${this.mockQuestions.length}
+
+</div>
+
+<h2>
+${this.safe(q)}
+</h2>
+
+<textarea
+id="tevi6MockAnswer"
+rows="6"
+placeholder="এখানে নিজের উত্তর লিখে practice করো...">
+</textarea>
+
+<br><br>
+
+<strong>
+নিজের উত্তর কতটা confident মনে হয়েছে?
+</strong>
+
+<div class="tevi6-rating">
+
+${[1,2,3,4,5].map(x=>`
+
+<button
+id="tevi6Rate${x}"
+onclick="TEVI6.rate(${x})">
+
+${x} ⭐
+
+</button>
+
+`).join("")}
+
+</div>
+
+<br>
+
+<button
+class="tevi6-btn"
+onclick="TEVI6.nextMock()">
+
+Next →
+
+</button>
+
+</div>
+
+`;
+
+},
+
+rate(value){
+
+this.currentRating=value;
+
+document
+.querySelectorAll(".tevi6-rating button")
+.forEach((x,i)=>{
+
+x.classList.toggle(
+"selected",
+i+1===value
+);
+
+});
+
+},
+
+nextMock(){
+
+const answer=
+document.getElementById(
+"tevi6MockAnswer"
+).value.trim();
+
+if(!answer){
+
+alert("আগে নিজের উত্তর লিখো.");
+
+return;
+
+}
+
+this.mockAnswers.push(answer);
+
+this.mockRatings.push(
+this.currentRating||3
+);
+
+this.currentRating=0;
+
+this.mockIndex++;
+
+if(this.mockIndex>=this.mockQuestions.length){
+
+this.finishMock();
+
+return;
+
+}
+
+this.renderMock();
+
+},
+
+finishMock(){
+
+const total=
+this.mockRatings.reduce(
+(a,b)=>a+b,0
+);
+
+const average=
+total/this.mockRatings.length;
+
+let level;
+
+if(average>=4.5)
+level="🔥 Excellent";
+
+else if(average>=3.5)
+level="💪 Good";
+
+else if(average>=2.5)
+level="📚 Needs More Practice";
+
+else
+level="🎯 Beginner — Practice More";
+
+document.getElementById(
+"tevi6MockBox"
+).innerHTML=`
+
+<div class="tevi6-score">
+
+🎉 Mock Interview Complete
+
+<br>
+
+${average.toFixed(1)}
+/ 5 ⭐
+
+<p style="font-size:18px">
+${level}
+</p>
+
+<button
+class="tevi6-btn"
+onclick="TEVI6.startMock()">
+
+🔄 Restart Interview
+
+</button>
+
+</div>
+
+`;
+
+},
+
+
+safe(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+};
+
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Escape"){
+TEVI6.close();
+}
+
+});
+
+</script>
+
+<!-- ================= END TEVI6 ================= -->
+  <!-- =========================================================
+     TEXTILE EXPLORER — UNIVERSITY & STUDY ABROAD HUB V7
+     Prefix: TEUA7
+     ========================================================= -->
+
+<style>
+.teua7-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(6px);
+  z-index:99999;
+  display:none;
+  overflow:auto;
+  padding:20px;
+}
+
+.teua7-modal{
+  max-width:1200px;
+  margin:30px auto;
+  background:var(--card-bg,#fff);
+  color:var(--text-color,#111);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+}
+
+.teua7-head{
+  padding:22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  background:linear-gradient(135deg,#0f766e,#2563eb);
+  color:#fff;
+}
+
+.teua7-head h2{
+  margin:0;
+  font-size:24px;
+}
+
+.teua7-close{
+  border:0;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.teua7-body{
+  padding:22px;
+}
+
+.teua7-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.teua7-card{
+  padding:20px;
+  border:1px solid rgba(127,127,127,.18);
+  border-radius:18px;
+  background:rgba(127,127,127,.06);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.teua7-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.teua7-card h3{
+  margin:8px 0;
+}
+
+.teua7-icon{
+  font-size:30px;
+}
+
+.teua7-panel{
+  display:none;
+  margin-top:18px;
+  padding:20px;
+  border-radius:18px;
+  background:rgba(127,127,127,.06);
+  border:1px solid rgba(127,127,127,.15);
+}
+
+.teua7-panel.active{
+  display:block;
+}
+
+.teua7-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.teua7-input,
+.teua7-select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #bbb;
+  background:transparent;
+  color:inherit;
+  box-sizing:border-box;
+}
+
+.teua7-btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  cursor:pointer;
+  background:#2563eb;
+  color:#fff;
+  font-weight:600;
+  margin:4px;
+}
+
+.teua7-btn.secondary{
+  background:#64748b;
+}
+
+.teua7-result{
+  margin-top:15px;
+  padding:15px;
+  border-radius:12px;
+  background:rgba(37,99,235,.09);
+}
+
+.teua7-list{
+  display:grid;
+  gap:12px;
+  margin-top:15px;
+}
+
+.teua7-item{
+  padding:15px;
+  border-radius:14px;
+  border:1px solid rgba(127,127,127,.18);
+  background:rgba(127,127,127,.04);
+}
+
+.teua7-item strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.teua7-check{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:9px 0;
+}
+
+.teua7-progress{
+  height:10px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+  margin:10px 0;
+}
+
+.teua7-progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#2563eb;
+  transition:.3s;
+}
+
+.teua7-search{
+  margin-bottom:18px;
+}
+
+.teua7-search input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #bbb;
+  box-sizing:border-box;
+  background:transparent;
+  color:inherit;
+}
+
+.teua7-stat{
+  text-align:center;
+  padding:16px;
+  border-radius:15px;
+  background:rgba(37,99,235,.08);
+}
+
+.teua7-stat b{
+  display:block;
+  font-size:25px;
+}
+
+@media(max-width:600px){
+  .teua7-overlay{
+    padding:8px;
+  }
+
+  .teua7-modal{
+    margin:8px auto;
+    border-radius:16px;
+  }
+
+  .teua7-body{
+    padding:14px;
+  }
+
+  .teua7-head h2{
+    font-size:18px;
+  }
+}
+</style>
+
+<button class="teua7-main-btn" onclick="TEUA7.open()">
+  🌍 University & Study Abroad
+</button>
+
+<div class="teua7-overlay" id="teua7Overlay">
+  <div class="teua7-modal">
+
+    <div class="teua7-head">
+      <h2>🌍 University & Study Abroad Hub</h2>
+      <button class="teua7-close" onclick="TEUA7.close()">×</button>
+    </div>
+
+    <div class="teua7-body">
+
+      <div class="teua7-grid">
+
+        <div class="teua7-card" onclick="TEUA7.show('countries')">
+          <div class="teua7-icon">🌍</div>
+          <h3>Country Explorer</h3>
+          <p>দেশ অনুযায়ী Study Abroad তথ্য</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('universities')">
+          <div class="teua7-icon">🏫</div>
+          <h3>University Finder</h3>
+          <p>University ও program খুঁজুন</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('scholarship')">
+          <div class="teua7-icon">🎓</div>
+          <h3>Scholarship Finder</h3>
+          <p>Scholarship preparation</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('ielts')">
+          <div class="teua7-icon">🗣️</div>
+          <h3>IELTS Guide</h3>
+          <p>Band target ও preparation</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('documents')">
+          <div class="teua7-icon">📄</div>
+          <h3>Documents</h3>
+          <p>Application document checklist</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('roadmap')">
+          <div class="teua7-icon">🛣️</div>
+          <h3>Application Roadmap</h3>
+          <p>Step-by-step application</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('cost')">
+          <div class="teua7-icon">💰</div>
+          <h3>Cost Calculator</h3>
+          <p>Study abroad budget estimate</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('compare')">
+          <div class="teua7-icon">⚖️</div>
+          <h3>Compare Countries</h3>
+          <p>দেশগুলোর basic comparison</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('departure')">
+          <div class="teua7-icon">✈️</div>
+          <h3>Pre-Departure</h3>
+          <p>বিদেশ যাওয়ার প্রস্তুতি</p>
+        </div>
+
+        <div class="teua7-card" onclick="TEUA7.show('dashboard')">
+          <div class="teua7-icon">📊</div>
+          <h3>My Application</h3>
+          <p>নিজের preparation track করুন</p>
+        </div>
+
+      </div>
+
+      <!-- COUNTRY -->
+      <div class="teua7-panel" id="teua7-countries">
+        <h3>🌍 Country Explorer</h3>
+
+        <div class="teua7-row">
+          <select class="teua7-select" id="teua7Country">
+            <option value="">দেশ নির্বাচন করুন</option>
+            <option>Germany</option>
+            <option>Malaysia</option>
+            <option>Japan</option>
+            <option>South Korea</option>
+            <option>Canada</option>
+            <option>Australia</option>
+            <option>UK</option>
+            <option>USA</option>
+          </select>
+        </div>
+
+        <button class="teua7-btn" onclick="TEUA7.countryInfo()">
+          তথ্য দেখুন
+        </button>
+
+        <div id="teua7CountryResult"></div>
+      </div>
+
+      <!-- UNIVERSITY -->
+      <div class="teua7-panel" id="teua7-universities">
+        <h3>🏫 University Finder</h3>
+
+        <div class="teua7-search">
+          <input
+            id="teua7UniSearch"
+            placeholder="University / Subject / Country লিখুন..."
+            oninput="TEUA7.searchUni()"
+          >
+        </div>
+
+        <div id="teua7UniList" class="teua7-list"></div>
+      </div>
+
+      <!-- SCHOLARSHIP -->
+      <div class="teua7-panel" id="teua7-scholarship">
+        <h3>🎓 Scholarship Finder</h3>
+
+        <div class="teua7-row">
+          <select id="teua7ScholarCountry" class="teua7-select">
+            <option>Germany</option>
+            <option>Japan</option>
+            <option>South Korea</option>
+            <option>Canada</option>
+            <option>Australia</option>
+            <option>UK</option>
+          </select>
+
+          <select id="teua7ScholarLevel" class="teua7-select">
+            <option>Undergraduate</option>
+            <option>Masters</option>
+            <option>PhD</option>
+          </select>
+        </div>
+
+        <button class="teua7-btn" onclick="TEUA7.scholarships()">
+          🔎 Find Scholarships
+        </button>
+
+        <div id="teua7ScholarResult"></div>
+      </div>
+
+      <!-- IELTS -->
+      <div class="teua7-panel" id="teua7-ielts">
+        <h3>🗣️ IELTS Preparation</h3>
+
+        <div class="teua7-row">
+          <input class="teua7-input" id="teua7IELTSTarget"
+                 type="number" min="1" max="9" step=".5"
+                 placeholder="Target Band">
+          <input class="teua7-input" id="teua7IELTSCurrent"
+                 type="number" min="1" max="9" step=".5"
+                 placeholder="Current Band">
+        </div>
+
+        <button class="teua7-btn" onclick="TEUA7.ieltsPlan()">
+          📚 Create Plan
+        </button>
+
+        <div id="teua7IELTSResult"></div>
+      </div>
+
+      <!-- DOCUMENTS -->
+      <div class="teua7-panel" id="teua7-documents">
+        <h3>📄 Application Documents</h3>
+
+        <div id="teua7Docs"></div>
+
+        <div class="teua7-progress">
+          <span id="teua7DocProgress"></span>
+        </div>
+
+        <div id="teua7DocPercent">0% completed</div>
+      </div>
+
+      <!-- ROADMAP -->
+      <div class="teua7-panel" id="teua7-roadmap">
+        <h3>🛣️ Study Abroad Roadmap</h3>
+
+        <div class="teua7-list">
+          <div class="teua7-item">1️⃣ Target Country & Degree নির্বাচন</div>
+          <div class="teua7-item">2️⃣ University shortlist তৈরি</div>
+          <div class="teua7-item">3️⃣ IELTS / Language preparation</div>
+          <div class="teua7-item">4️⃣ Documents প্রস্তুত</div>
+          <div class="teua7-item">5️⃣ Scholarship খোঁজা</div>
+          <div class="teua7-item">6️⃣ University application</div>
+          <div class="teua7-item">7️⃣ Admission decision</div>
+          <div class="teua7-item">8️⃣ Financial preparation</div>
+          <div class="teua7-item">9️⃣ Visa application</div>
+          <div class="teua7-item">🔟 Pre-departure preparation</div>
+        </div>
+      </div>
+
+      <!-- COST -->
+      <div class="teua7-panel" id="teua7-cost">
+        <h3>💰 Study Abroad Cost Calculator</h3>
+
+        <div class="teua7-row">
+          <input class="teua7-input" id="teua7Tuition"
+                 type="number" placeholder="Yearly Tuition">
+          <input class="teua7-input" id="teua7Living"
+                 type="number" placeholder="Monthly Living Cost">
+          <input class="teua7-input" id="teua7Months"
+                 type="number" value="12" placeholder="Months">
+          <input class="teua7-input" id="teua7Visa"
+                 type="number" placeholder="Visa + Other Cost">
+        </div>
+
+        <button class="teua7-btn" onclick="TEUA7.cost()">
+          🧮 Calculate
+        </button>
+
+        <div id="teua7CostResult"></div>
+      </div>
+
+      <!-- COMPARE -->
+      <div class="teua7-panel" id="teua7-compare">
+        <h3>⚖️ Country Comparison</h3>
+
+        <div class="teua7-row">
+          <select id="teua7CompareA" class="teua7-select">
+            <option>Germany</option>
+            <option>Malaysia</option>
+            <option>Japan</option>
+            <option>Canada</option>
+            <option>Australia</option>
+          </select>
+
+          <select id="teua7CompareB" class="teua7-select">
+            <option>Canada</option>
+            <option>Germany</option>
+            <option>Japan</option>
+            <option>Malaysia</option>
+            <option>Australia</option>
+          </select>
+        </div>
+
+        <button class="teua7-btn" onclick="TEUA7.compare()">
+          ⚖️ Compare
+        </button>
+
+        <div id="teua7CompareResult"></div>
+      </div>
+
+      <!-- PRE-DEPARTURE -->
+      <div class="teua7-panel" id="teua7-departure">
+        <h3>✈️ Pre-Departure Checklist</h3>
+
+        <div id="teua7Departure"></div>
+
+        <div class="teua7-progress">
+          <span id="teua7DepartureProgress"></span>
+        </div>
+
+        <div id="teua7DeparturePercent">0% completed</div>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div class="teua7-panel" id="teua7-dashboard">
+        <h3>📊 My Study Abroad Dashboard</h3>
+
+        <div class="teua7-grid">
+
+          <div class="teua7-stat">
+            <b id="teua7DashDocs">0%</b>
+            Documents
+          </div>
+
+          <div class="teua7-stat">
+            <b id="teua7DashDeparture">0%</b>
+            Pre-Departure
+          </div>
+
+          <div class="teua7-stat">
+            <b id="teua7DashTasks">10</b>
+            Roadmap Steps
+          </div>
+
+        </div>
+
+        <p>
+          💡 আপনার preparation ধীরে ধীরে complete করুন।
+          এই dashboard আপনার browser-এ progress save রাখবে।
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const TEUA7 = (() => {
+
+  const countries = {
+    Germany:{
+      tuition:"অনেক public university-তে tuition তুলনামূলক কম; তবে program/state অনুযায়ী ভিন্ন হতে পারে।",
+      language:"English / German",
+      note:"Engineering ও research-এর জন্য জনপ্রিয়।"
+    },
+    Malaysia:{
+      tuition:"University ও program অনুযায়ী পরিবর্তন হয়।",
+      language:"English / Malay",
+      note:"বাংলাদেশি শিক্ষার্থীদের জন্য comparatively accessible option।"
+    },
+    Japan:{
+      tuition:"University ও program অনুযায়ী পরিবর্তন হয়।",
+      language:"Japanese / English",
+      note:"Technology, engineering ও scholarship-এর জন্য ভালো option।"
+    },
+    "South Korea":{
+      tuition:"University ও program অনুযায়ী পরিবর্তন হয়।",
+      language:"Korean / English",
+      note:"Technology, engineering ও research-এর জন্য শক্তিশালী।"
+    },
+    Canada:{
+      tuition:"International students-এর জন্য tuition সাধারণত বেশি।",
+      language:"English / French",
+      note:"Study + career pathway-এর জন্য পরিচিত।"
+    },
+    Australia:{
+      tuition:"International tuition সাধারণত বেশি।",
+      language:"English",
+      note:"Engineering ও professional education-এর জন্য জনপ্রিয়।"
+    },
+    UK:{
+      tuition:"International tuition university ও course অনুযায়ী ভিন্ন।",
+      language:"English",
+      note:"Shorter master's programs-এর জন্য জনপ্রিয়।"
+    },
+    USA:{
+      tuition:"University অনুযায়ী tuition-এর বড় পার্থক্য থাকে।",
+      language:"English",
+      note:"Research ও advanced engineering-এর জন্য শক্তিশালী।"
+    }
+  };
+
+  const universities = [
+    {
+      name:"RWTH Aachen University",
+      country:"Germany",
+      subject:"Engineering"
+    },
+    {
+      name:"Technical University of Munich",
+      country:"Germany",
+      subject:"Engineering / Technology"
+    },
+    {
+      name:"University of Malaya",
+      country:"Malaysia",
+      subject:"Engineering / Science"
+    },
+    {
+      name:"Universiti Teknologi Malaysia",
+      country:"Malaysia",
+      subject:"Engineering / Technology"
+    },
+    {
+      name:"University of Tokyo",
+      country:"Japan",
+      subject:"Engineering / Science"
+    },
+    {
+      name:"KAIST",
+      country:"South Korea",
+      subject:"Technology / Engineering"
+    },
+    {
+      name:"University of Toronto",
+      country:"Canada",
+      subject:"Engineering / Science"
+    },
+    {
+      name:"University of Melbourne",
+      country:"Australia",
+      subject:"Engineering / Science"
+    },
+    {
+      name:"University of Manchester",
+      country:"UK",
+      subject:"Engineering / Technology"
+    },
+    {
+      name:"MIT",
+      country:"USA",
+      subject:"Engineering / Technology"
+    }
+  ];
+
+  const docs = [
+    "Passport",
+    "Academic Certificates",
+    "Academic Transcripts",
+    "CV / Resume",
+    "Statement of Purpose",
+    "Recommendation Letter",
+    "English Language Test",
+    "Passport Size Photo",
+    "Financial Documents",
+    "University Application Documents"
+  ];
+
+  const departure = [
+    "Passport & visa",
+    "Flight ticket",
+    "Accommodation",
+    "Travel insurance",
+    "Important documents",
+    "Bank / payment method",
+    "Emergency contacts",
+    "University contact details",
+    "Basic medicines",
+    "Luggage preparation"
+  ];
+
+  function open(){
+    document.getElementById("teua7Overlay").style.display="block";
+    renderDocs();
+    renderDeparture();
+    updateDashboard();
+  }
+
+  function close(){
+    document.getElementById("teua7Overlay").style.display="none";
+  }
+
+  function show(id){
+
+    document.querySelectorAll(".teua7-panel")
+      .forEach(x => x.classList.remove("active"));
+
+    const panel=document.getElementById("teua7-"+id);
+
+    if(panel){
+      panel.classList.add("active");
+    }
+
+    if(id==="universities") searchUni();
+    if(id==="documents") renderDocs();
+    if(id==="departure") renderDeparture();
+    if(id==="dashboard") updateDashboard();
+  }
+
+  function countryInfo(){
+
+    const c=document.getElementById("teua7Country").value;
+    const box=document.getElementById("teua7CountryResult");
+
+    if(!c){
+      box.innerHTML="<div class='teua7-result'>একটি দেশ নির্বাচন করুন।</div>";
+      return;
+    }
+
+    const d=countries[c];
+
+    box.innerHTML=`
+      <div class="teua7-result">
+        <h3>🌍 ${c}</h3>
+        <p><strong>💰 Tuition:</strong> ${d.tuition}</p>
+        <p><strong>🗣️ Language:</strong> ${d.language}</p>
+        <p><strong>📌 Note:</strong> ${d.note}</p>
+      </div>
+    `;
+  }
+
+  function searchUni(){
+
+    const q=(document.getElementById("teua7UniSearch")?.value || "")
+      .toLowerCase()
+      .trim();
+
+    const list=universities.filter(u =>
+      !q ||
+      u.name.toLowerCase().includes(q) ||
+      u.country.toLowerCase().includes(q) ||
+      u.subject.toLowerCase().includes(q)
+    );
+
+    document.getElementById("teua7UniList").innerHTML =
+      list.map(u=>`
+        <div class="teua7-item">
+          <strong>🏫 ${u.name}</strong>
+          <span>🌍 ${u.country}</span><br>
+          <span>🎓 ${u.subject}</span>
+        </div>
+      `).join("") ||
+      "<div class='teua7-result'>কোনো result পাওয়া যায়নি।</div>";
+  }
+
+  function scholarships(){
+
+    const country=document.getElementById("teua7ScholarCountry").value;
+    const level=document.getElementById("teua7ScholarLevel").value;
+
+    const data={
+      Germany:[
+        "DAAD Scholarships",
+        "University Scholarships",
+        "Research Funding"
+      ],
+      Japan:[
+        "MEXT Scholarship",
+        "University Scholarships",
+        "Research Scholarships"
+      ],
+      "South Korea":[
+        "GKS Scholarship",
+        "University Scholarships"
+      ],
+      Canada:[
+        "University Entrance Scholarships",
+        "Graduate Funding",
+        "Research Scholarships"
+      ],
+      Australia:[
+        "Australia Awards",
+        "University Scholarships",
+        "Research Scholarships"
+      ],
+      UK:[
+        "Chevening",
+        "Commonwealth Scholarships",
+        "University Scholarships"
+      ]
+    };
+
+    const result=data[country] || ["University-specific scholarships"];
+
+    document.getElementById("teua7ScholarResult").innerHTML=`
+      <div class="teua7-result">
+        <h3>🎓 ${country} — ${level}</h3>
+        <ul>
+          ${result.map(x=>`<li>${x}</li>`).join("")}
+        </ul>
+        <p>⚠️ Scholarship eligibility ও deadline সবসময় official source থেকে verify করবেন।</p>
+      </div>
+    `;
+  }
+
+  function ieltsPlan(){
+
+    const target=parseFloat(document.getElementById("teua7IELTSTarget").value);
+    const current=parseFloat(document.getElementById("teua7IELTSCurrent").value);
+
+    if(!target || !current){
+      document.getElementById("teua7IELTSResult").innerHTML=
+        "<div class='teua7-result'>Target এবং Current Band দিন।</div>";
+      return;
+    }
+
+    const gap=Math.max(0,target-current);
+
+    document.getElementById("teua7IELTSResult").innerHTML=`
+      <div class="teua7-result">
+        <h3>📚 IELTS Plan</h3>
+        <p>Current Band: <strong>${current}</strong></p>
+        <p>Target Band: <strong>${target}</strong></p>
+        <p>Gap: <strong>${gap}</strong></p>
+        <hr>
+        <p>🎧 Listening — প্রতিদিন practice</p>
+        <p>📖 Reading — vocabulary + passage practice</p>
+        <p>✍️ Writing — Task 1 + Task 2</p>
+        <p>🗣️ Speaking — daily speaking practice</p>
+        <p>📝 প্রতি সপ্তাহে অন্তত ১টি mock test দিন।</p>
+      </div>
+    `;
+  }
+
+  function getChecks(key){
+    return JSON.parse(localStorage.getItem(key) || "[]");
+  }
+
+  function saveChecks(key,data){
+    localStorage.setItem(key,JSON.stringify(data));
+  }
+
+  function renderDocs(){
+
+    const saved=getChecks("teua7Docs");
+
+    document.getElementById("teua7Docs").innerHTML=
+      docs.map((d,i)=>`
+        <label class="teua7-check">
+          <input type="checkbox"
+            ${saved.includes(i) ? "checked":""}
+            onchange="TEUA7.toggleDoc(${i})">
+          ${d}
+        </label>
+      `).join("");
+
+    updateDocProgress();
+  }
+
+  function toggleDoc(i){
+
+    let data=getChecks("teua7Docs");
+
+    if(data.includes(i)){
+      data=data.filter(x=>x!==i);
+    }else{
+      data.push(i);
+    }
+
+    saveChecks("teua7Docs",data);
+    updateDocProgress();
+    updateDashboard();
+  }
+
+  function updateDocProgress(){
+
+    const data=getChecks("teua7Docs");
+    const percent=Math.round((data.length/docs.length)*100);
+
+    document.getElementById("teua7DocProgress").style.width=percent+"%";
+    document.getElementById("teua7DocPercent").innerText=
+      percent+"% completed";
+  }
+
+  function renderDeparture(){
+
+    const saved=getChecks("teua7Departure");
+
+    document.getElementById("teua7Departure").innerHTML=
+      departure.map((d,i)=>`
+        <label class="teua7-check">
+          <input type="checkbox"
+            ${saved.includes(i) ? "checked":""}
+            onchange="TEUA7.toggleDeparture(${i})">
+          ${d}
+        </label>
+      `).join("");
+
+    updateDepartureProgress();
+  }
+
+  function toggleDeparture(i){
+
+    let data=getChecks("teua7Departure");
+
+    if(data.includes(i)){
+      data=data.filter(x=>x!==i);
+    }else{
+      data.push(i);
+    }
+
+    saveChecks("teua7Departure",data);
+    updateDepartureProgress();
+    updateDashboard();
+  }
+
+  function updateDepartureProgress(){
+
+    const data=getChecks("teua7Departure");
+    const percent=Math.round((data.length/departure.length)*100);
+
+    document.getElementById("teua7DepartureProgress").style.width=
+      percent+"%";
+
+    document.getElementById("teua7DeparturePercent").innerText=
+      percent+"% completed";
+  }
+
+  function cost(){
+
+    const tuition=Number(document.getElementById("teua7Tuition").value)||0;
+    const living=Number(document.getElementById("teua7Living").value)||0;
+    const months=Number(document.getElementById("teua7Months").value)||12;
+    const visa=Number(document.getElementById("teua7Visa").value)||0;
+
+    const total=tuition+(living*months)+visa;
+
+    document.getElementById("teua7CostResult").innerHTML=`
+      <div class="teua7-result">
+        <h3>💰 Estimated Yearly Cost</h3>
+        <p>Tuition: ${tuition.toLocaleString()}</p>
+        <p>Living: ${(living*months).toLocaleString()}</p>
+        <p>Visa + Other: ${visa.toLocaleString()}</p>
+        <hr>
+        <h2>Total: ${total.toLocaleString()}</h2>
+        <small>এটি শুধু estimate; actual cost দেশ/বিশ্ববিদ্যালয়/শহর অনুযায়ী পরিবর্তিত হবে।</small>
+      </div>
+    `;
+  }
+
+  function compare(){
+
+    const a=document.getElementById("teua7CompareA").value;
+    const b=document.getElementById("teua7CompareB").value;
+
+    document.getElementById("teua7CompareResult").innerHTML=`
+      <div class="teua7-grid">
+        <div class="teua7-item">
+          <h3>🌍 ${a}</h3>
+          <p>${countries[a]?.tuition || "Program অনুযায়ী পরিবর্তিত হয়।"}</p>
+          <p>${countries[a]?.language || ""}</p>
+        </div>
+
+        <div class="teua7-item">
+          <h3>🌍 ${b}</h3>
+          <p>${countries[b]?.tuition || "Program অনুযায়ী পরিবর্তিত হয়।"}</p>
+          <p>${countries[b]?.language || ""}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  function updateDashboard(){
+
+    const docsDone=getChecks("teua7Docs").length;
+    const depDone=getChecks("teua7Departure").length;
+
+    const docPercent=Math.round((docsDone/docs.length)*100);
+    const depPercent=Math.round((depDone/departure.length)*100);
+
+    const d=document.getElementById("teua7DashDocs");
+    const p=document.getElementById("teua7DashDeparture");
+
+    if(d) d.innerText=docPercent+"%";
+    if(p) p.innerText=depPercent+"%";
+  }
+
+  return {
+    open,
+    close,
+    show,
+    countryInfo,
+    searchUni,
+    scholarships,
+    ieltsPlan,
+    toggleDoc,
+    toggleDeparture,
+    cost,
+    compare
+  };
+
+})();
+</script>
+  <!-- =========================================================
+     TEXTILE EXPLORER — JOB & CAREER HUB V8
+     Prefix: TEC8
+     ========================================================= -->
+
+<style>
+.tec8-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(6px);
+  z-index:99999;
+  display:none;
+  overflow:auto;
+  padding:20px;
+}
+
+.tec8-modal{
+  max-width:1200px;
+  margin:30px auto;
+  background:var(--card-bg,#fff);
+  color:var(--text-color,#111);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+}
+
+.tec8-head{
+  padding:22px;
+  background:linear-gradient(135deg,#7c3aed,#2563eb);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.tec8-head h2{
+  margin:0;
+  font-size:24px;
+}
+
+.tec8-close{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.tec8-body{
+  padding:22px;
+}
+
+.tec8-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;
+}
+
+.tec8-card{
+  padding:20px;
+  border-radius:18px;
+  border:1px solid rgba(127,127,127,.18);
+  background:rgba(127,127,127,.06);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.tec8-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+.tec8-icon{
+  font-size:30px;
+}
+
+.tec8-card h3{
+  margin:8px 0;
+}
+
+.tec8-panel{
+  display:none;
+  margin-top:20px;
+  padding:20px;
+  border-radius:18px;
+  background:rgba(127,127,127,.06);
+  border:1px solid rgba(127,127,127,.15);
+}
+
+.tec8-panel.active{
+  display:block;
+}
+
+.tec8-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.tec8-input,
+.tec8-select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #bbb;
+  background:transparent;
+  color:inherit;
+  box-sizing:border-box;
+}
+
+.tec8-btn{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  background:#2563eb;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  margin:4px;
+}
+
+.tec8-btn.secondary{
+  background:#64748b;
+}
+
+.tec8-result{
+  margin-top:15px;
+  padding:16px;
+  border-radius:14px;
+  background:rgba(37,99,235,.09);
+}
+
+.tec8-list{
+  display:grid;
+  gap:12px;
+  margin-top:15px;
+}
+
+.tec8-item{
+  padding:15px;
+  border-radius:14px;
+  border:1px solid rgba(127,127,127,.18);
+  background:rgba(127,127,127,.04);
+}
+
+.tec8-item strong{
+  display:block;
+  margin-bottom:6px;
+}
+
+.tec8-check{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:9px 0;
+}
+
+.tec8-progress{
+  height:11px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+  margin:12px 0;
+}
+
+.tec8-progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#2563eb;
+  transition:.3s;
+}
+
+.tec8-score{
+  font-size:42px;
+  font-weight:800;
+  text-align:center;
+  margin:15px;
+}
+
+.tec8-search{
+  margin-bottom:15px;
+}
+
+.tec8-search input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #bbb;
+  background:transparent;
+  color:inherit;
+  box-sizing:border-box;
+}
+
+.tec8-stat{
+  text-align:center;
+  padding:18px;
+  border-radius:15px;
+  background:rgba(37,99,235,.08);
+}
+
+.tec8-stat b{
+  display:block;
+  font-size:26px;
+}
+
+@media(max-width:600px){
+  .tec8-overlay{
+    padding:8px;
+  }
+
+  .tec8-modal{
+    margin:8px auto;
+    border-radius:16px;
+  }
+
+  .tec8-body{
+    padding:14px;
+  }
+
+  .tec8-head h2{
+    font-size:18px;
+  }
+}
+</style>
+
+<button onclick="TEC8.open()">
+  💼 Job & Career Hub
+</button>
+
+<div class="tec8-overlay" id="tec8Overlay">
+
+  <div class="tec8-modal">
+
+    <div class="tec8-head">
+      <h2>💼 Job, Internship & Career Hub</h2>
+      <button class="tec8-close" onclick="TEC8.close()">×</button>
+    </div>
+
+    <div class="tec8-body">
+
+      <div class="tec8-grid">
+
+        <div class="tec8-card" onclick="TEC8.show('jobs')">
+          <div class="tec8-icon">💼</div>
+          <h3>Job Finder</h3>
+          <p>Textile career role খুঁজুন</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('internship')">
+          <div class="tec8-icon">🎓</div>
+          <h3>Internship Finder</h3>
+          <p>Internship preparation</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('departments')">
+          <div class="tec8-icon">🧵</div>
+          <h3>Textile Departments</h3>
+          <p>কোন department আপনার জন্য?</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('matcher')">
+          <div class="tec8-icon">🎯</div>
+          <h3>Career Matcher</h3>
+          <p>নিজের skill অনুযায়ী career</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('skillgap')">
+          <div class="tec8-icon">📊</div>
+          <h3>Skill Gap Analyzer</h3>
+          <p>কোন skill improve করবেন?</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('cv')">
+          <div class="tec8-icon">📄</div>
+          <h3>CV Checklist</h3>
+          <p>CV কতটা ready?</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('portfolio')">
+          <div class="tec8-icon">🌐</div>
+          <h3>Portfolio Builder</h3>
+          <p>Portfolio readiness</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('tracker')">
+          <div class="tec8-icon">📝</div>
+          <h3>Job Tracker</h3>
+          <p>Application track করুন</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('salary')">
+          <div class="tec8-icon">💰</div>
+          <h3>Salary Guide</h3>
+          <p>Career অনুযায়ী ধারণা</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('interview')">
+          <div class="tec8-icon">🎤</div>
+          <h3>Interview Prep</h3>
+          <p>Interview preparation</p>
+        </div>
+
+        <div class="tec8-card" onclick="TEC8.show('dashboard')">
+          <div class="tec8-icon">🏆</div>
+          <h3>Career Readiness</h3>
+          <p>নিজের career score দেখুন</p>
+        </div>
+
+      </div>
+
+
+      <!-- JOB FINDER -->
+
+      <div class="tec8-panel" id="tec8-jobs">
+
+        <h3>💼 Textile Job Finder</h3>
+
+        <div class="tec8-search">
+          <input
+            id="tec8JobSearch"
+            placeholder="যেমন: Merchandising, QC, IE, Production..."
+            oninput="TEC8.searchJobs()"
+          >
+        </div>
+
+        <div id="tec8JobList" class="tec8-list"></div>
+
+      </div>
+
+
+      <!-- INTERNSHIP -->
+
+      <div class="tec8-panel" id="tec8-internship">
+
+        <h3>🎓 Internship Preparation</h3>
+
+        <div class="tec8-list">
+
+          <div class="tec8-item">
+            <strong>1️⃣ Textile Basics</strong>
+            Fiber → Yarn → Fabric → Garments process বুঝুন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>2️⃣ Department Knowledge</strong>
+            Production, QC, IE, Merchandising সম্পর্কে ধারণা নিন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>3️⃣ Excel</strong>
+            Basic থেকে Advanced Excel পর্যন্ত practice করুন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>4️⃣ Communication</strong>
+            English email ও professional communication practice করুন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>5️⃣ CV</strong>
+            এক page professional CV তৈরি করুন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>6️⃣ Factory Visit</strong>
+            Production flow বাস্তবে observe করুন।
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- DEPARTMENTS -->
+
+      <div class="tec8-panel" id="tec8-departments">
+
+        <h3>🧵 Textile Department Explorer</h3>
+
+        <div class="tec8-grid">
+
+          <div class="tec8-item">
+            <strong>🏭 Production</strong>
+            Production planning, machine & output management.
+          </div>
+
+          <div class="tec8-item">
+            <strong>✅ Quality Control</strong>
+            Inspection, defects, testing & quality assurance.
+          </div>
+
+          <div class="tec8-item">
+            <strong>📈 IE</strong>
+            SMV, line balancing, efficiency & productivity.
+          </div>
+
+          <div class="tec8-item">
+            <strong>💼 Merchandising</strong>
+            Buyer communication, costing, T&A & order follow-up.
+          </div>
+
+          <div class="tec8-item">
+            <strong>🎨 CAD & Design</strong>
+            Textile/fashion design, CAD & product development.
+          </div>
+
+          <div class="tec8-item">
+            <strong>⚙️ Maintenance</strong>
+            Machine maintenance, troubleshooting & industrial service.
+          </div>
+
+          <div class="tec8-item">
+            <strong>🧪 Dyeing & Finishing</strong>
+            Dyeing process, shade, chemicals & finishing.
+          </div>
+
+          <div class="tec8-item">
+            <strong>🧶 Spinning</strong>
+            Fiber preparation, spinning, yarn quality & production.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- MATCHER -->
+
+      <div class="tec8-panel" id="tec8-matcher">
+
+        <h3>🎯 Career Matcher</h3>
+
+        <p>আপনার সবচেয়ে strong skill নির্বাচন করুন:</p>
+
+        <div class="tec8-row">
+
+          <select id="tec8Skill1" class="tec8-select">
+            <option>Communication</option>
+            <option>Math & Analysis</option>
+            <option>Production</option>
+            <option>Computer / CAD</option>
+            <option>Quality</option>
+            <option>Management</option>
+          </select>
+
+          <select id="tec8Skill2" class="tec8-select">
+            <option>Excel</option>
+            <option>Communication</option>
+            <option>Machine</option>
+            <option>Design</option>
+            <option>Inspection</option>
+            <option>Leadership</option>
+          </select>
+
+        </div>
+
+        <button class="tec8-btn" onclick="TEC8.matchCareer()">
+          🎯 Find My Career
+        </button>
+
+        <div id="tec8MatcherResult"></div>
+
+      </div>
+
+
+      <!-- SKILL GAP -->
+
+      <div class="tec8-panel" id="tec8-skillgap">
+
+        <h3>📊 Skill Gap Analyzer</h3>
+
+        <p>যে skill আপনার আছে সেগুলো tick দিন:</p>
+
+        <div id="tec8Skills"></div>
+
+        <button class="tec8-btn" onclick="TEC8.analyzeSkills()">
+          🔎 Analyze Skills
+        </button>
+
+        <div id="tec8SkillResult"></div>
+
+      </div>
+
+
+      <!-- CV -->
+
+      <div class="tec8-panel" id="tec8-cv">
+
+        <h3>📄 CV Readiness Checklist</h3>
+
+        <div id="tec8CV"></div>
+
+        <div class="tec8-progress">
+          <span id="tec8CVProgress"></span>
+        </div>
+
+        <div id="tec8CVPercent">0% Ready</div>
+
+      </div>
+
+
+      <!-- PORTFOLIO -->
+
+      <div class="tec8-panel" id="tec8-portfolio">
+
+        <h3>🌐 Portfolio Readiness</h3>
+
+        <div id="tec8Portfolio"></div>
+
+        <div class="tec8-progress">
+          <span id="tec8PortfolioProgress"></span>
+        </div>
+
+        <div id="tec8PortfolioPercent">0% Ready</div>
+
+      </div>
+
+
+      <!-- TRACKER -->
+
+      <div class="tec8-panel" id="tec8-tracker">
+
+        <h3>📝 Job Application Tracker</h3>
+
+        <div class="tec8-row">
+
+          <input
+            id="tec8Company"
+            class="tec8-input"
+            placeholder="Company">
+
+          <input
+            id="tec8Position"
+            class="tec8-input"
+            placeholder="Position">
+
+          <select id="tec8Status" class="tec8-select">
+            <option>Applied</option>
+            <option>Interview</option>
+            <option>Selected</option>
+            <option>Rejected</option>
+            <option>Follow-up</option>
+          </select>
+
+        </div>
+
+        <button class="tec8-btn" onclick="TEC8.addApplication()">
+          ➕ Add Application
+        </button>
+
+        <div id="tec8Applications" class="tec8-list"></div>
+
+      </div>
+
+
+      <!-- SALARY -->
+
+      <div class="tec8-panel" id="tec8-salary">
+
+        <h3>💰 Textile Career Salary Guide</h3>
+
+        <p>এগুলো fixed salary নয়; experience, company, location ও skill অনুযায়ী অনেক পরিবর্তন হতে পারে।</p>
+
+        <div class="tec8-list">
+
+          <div class="tec8-item">
+            <strong>👨‍💻 Trainee / Junior</strong>
+            Entry-level career
+          </div>
+
+          <div class="tec8-item">
+            <strong>💼 Merchandising</strong>
+            Buyer communication + costing + order management
+          </div>
+
+          <div class="tec8-item">
+            <strong>✅ Quality</strong>
+            Inspection + testing + quality assurance
+          </div>
+
+          <div class="tec8-item">
+            <strong>📈 IE</strong>
+            Productivity + efficiency + SMV + line balancing
+          </div>
+
+          <div class="tec8-item">
+            <strong>🏭 Production</strong>
+            Production planning + output + manpower
+          </div>
+
+          <div class="tec8-item">
+            <strong>⚙️ Maintenance</strong>
+            Machine + electrical/mechanical troubleshooting
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- INTERVIEW -->
+
+      <div class="tec8-panel" id="tec8-interview">
+
+        <h3>🎤 Interview Preparation</h3>
+
+        <div class="tec8-list">
+
+          <div class="tec8-item">
+            <strong>Tell me about yourself.</strong>
+            নিজের education, skills ও career goal 30–60 seconds-এ বলার practice করুন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>Why should we hire you?</strong>
+            Skill + attitude + willingness to learn দিয়ে answer তৈরি করুন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>Why Textile Engineering?</strong>
+            Textile industry-এর প্রতি আপনার interest explain করুন।
+          </div>
+
+          <div class="tec8-item">
+            <strong>What is GSM?</strong>
+            Fabric-এর প্রতি square meter-এর weight।
+          </div>
+
+          <div class="tec8-item">
+            <strong>What is SMV?</strong>
+            একটি garment operation সম্পন্ন করতে standard time।
+          </div>
+
+          <div class="tec8-item">
+            <strong>What is line balancing?</strong>
+            Production line-এর operations ও manpower এমনভাবে distribute করা যাতে bottleneck কমে।
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- DASHBOARD -->
+
+      <div class="tec8-panel" id="tec8-dashboard">
+
+        <h3>🏆 Career Readiness Dashboard</h3>
+
+        <div class="tec8-grid">
+
+          <div class="tec8-stat">
+            <b id="tec8CVScore">0%</b>
+            CV
+          </div>
+
+          <div class="tec8-stat">
+            <b id="tec8PortfolioScore">0%</b>
+            Portfolio
+          </div>
+
+          <div class="tec8-stat">
+            <b id="tec8Applications">0</b>
+            Applications
+          </div>
+
+        </div>
+
+        <div class="tec8-result">
+          <div class="tec8-score" id="tec8CareerScore">
+            0%
+          </div>
+
+          <p style="text-align:center;">
+            Career Readiness Score
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+const TEC8 = (() => {
+
+  const jobs = [
+
+    {
+      role:"Merchandising",
+      skills:"Communication, Excel, Costing, Buyer Communication"
+    },
+
+    {
+      role:"Quality Control",
+      skills:"Inspection, Textile Testing, Defect Analysis"
+    },
+
+    {
+      role:"Industrial Engineering",
+      skills:"SMV, Excel, Efficiency, Line Balancing"
+    },
+
+    {
+      role:"Production",
+      skills:"Production Planning, Machine Knowledge, Leadership"
+    },
+
+    {
+      role:"CAD & Design",
+      skills:"CAD, Design, Textile Knowledge"
+    },
+
+    {
+      role:"Maintenance",
+      skills:"Machine, Electrical/Mechanical, Troubleshooting"
+    },
+
+    {
+      role:"Dyeing & Finishing",
+      skills:"Dyeing, Chemicals, Shade Matching, Quality"
+    },
+
+    {
+      role:"Spinning",
+      skills:"Fiber, Yarn, Machine, Production"
+    }
+
+  ];
+
+
+  const skills = [
+    "Textile Fundamentals",
+    "Advanced Excel",
+    "Power BI",
+    "Communication",
+    "English Email",
+    "Merchandising",
+    "Quality Control",
+    "Industrial Engineering",
+    "CAD",
+    "Production",
+    "Textile Testing",
+    "Computer Skills"
+  ];
+
+
+  const cvItems = [
+    "Professional Name",
+    "Career Objective",
+    "Education",
+    "Technical Skills",
+    "Software Skills",
+    "Projects",
+    "Internship / Experience",
+    "Contact Information",
+    "LinkedIn",
+    "Portfolio"
+  ];
+
+
+  const portfolioItems = [
+    "Professional Profile",
+    "Textile Projects",
+    "Calculator / Technical Work",
+    "Design Work",
+    "Certificates",
+    "Skills",
+    "CV",
+    "LinkedIn Profile",
+    "Contact Information"
+  ];
+
+
+  function open(){
+
+    document.getElementById("tec8Overlay").style.display="block";
+
+    renderJobs();
+    renderSkills();
+    renderCV();
+    renderPortfolio();
+    renderApplications();
+    updateDashboard();
+
+  }
+
+
+  function close(){
+
+    document.getElementById("tec8Overlay").style.display="none";
+
+  }
+
+
+  function show(id){
+
+    document.querySelectorAll(".tec8-panel")
+      .forEach(x=>x.classList.remove("active"));
+
+    const panel=document.getElementById("tec8-"+id);
+
+    if(panel){
+      panel.classList.add("active");
+    }
+
+    if(id==="jobs") renderJobs();
+    if(id==="skillgap") renderSkills();
+    if(id==="cv") renderCV();
+    if(id==="portfolio") renderPortfolio();
+    if(id==="tracker") renderApplications();
+    if(id==="dashboard") updateDashboard();
+
+  }
+
+
+  function searchJobs(){
+
+    renderJobs();
+
+  }
+
+
+  function renderJobs(){
+
+    const q=(
+      document.getElementById("tec8JobSearch")?.value || ""
+    ).toLowerCase().trim();
+
+    const list=jobs.filter(j =>
+      !q ||
+      j.role.toLowerCase().includes(q) ||
+      j.skills.toLowerCase().includes(q)
+    );
+
+    document.getElementById("tec8JobList").innerHTML=
+
+      list.map(j=>`
+
+        <div class="tec8-item">
+
+          <strong>💼 ${j.role}</strong>
+
+          <p>
+            <b>Required Skills:</b>
+            ${j.skills}
+          </p>
+
+          <button
+            class="tec8-btn"
+            onclick="TEC8.show('interview')">
+
+            🎤 Prepare Interview
+
+          </button>
+
+        </div>
+
+      `).join("") ||
+
+      "<div class='tec8-result'>কোনো career role পাওয়া যায়নি।</div>";
+
+  }
+
+
+  function matchCareer(){
+
+    const a=document.getElementById("tec8Skill1").value;
+    const b=document.getElementById("tec8Skill2").value;
+
+    let result="";
+
+    if(
+      a.includes("Communication") ||
+      b.includes("Communication")
+    ){
+      result="💼 Merchandising — Communication skill আপনার জন্য গুরুত্বপূর্ণ।";
+    }
+
+    else if(
+      a.includes("Quality") ||
+      b.includes("Inspection")
+    ){
+      result="✅ Quality Control — Quality & inspection আপনার strong area হতে পারে।";
+    }
+
+    else if(
+      a.includes("Math") ||
+      b.includes("Excel") ||
+      a.includes("Production")
+    ){
+      result="📈 IE / Production — Analysis, Excel ও productivity-related career consider করতে পারেন।";
+    }
+
+    else if(
+      a.includes("Computer") ||
+      b.includes("Design")
+    ){
+      result="🎨 CAD & Design — Computer এবং design-based textile career consider করতে পারেন।";
+    }
+
+    else if(
+      a.includes("Management") ||
+      b.includes("Leadership")
+    ){
+      result="🏭 Production / Management — Leadership-based career consider করতে পারেন।";
+    }
+
+    else{
+      result="🧵 Textile Engineering-এর বিভিন্ন department explore করুন এবং internship-এর মাধ্যমে নিজের best fit বের করুন।";
+    }
+
+    document.getElementById("tec8MatcherResult").innerHTML=`
+      <div class="tec8-result">
+        <h3>🎯 Suggested Career</h3>
+        <p>${result}</p>
+      </div>
+    `;
+
+  }
+
+
+  function renderSkills(){
+
+    const saved=JSON.parse(
+      localStorage.getItem("tec8Skills") || "[]"
+    );
+
+    document.getElementById("tec8Skills").innerHTML=
+
+      skills.map((s,i)=>`
+
+        <label class="tec8-check">
+
+          <input
+            type="checkbox"
+            ${saved.includes(i) ? "checked":""}
+            onchange="TEC8.toggleSkill(${i})">
+
+          ${s}
+
+        </label>
+
+      `).join("");
+
+  }
+
+
+  function toggleSkill(i){
+
+    let saved=JSON.parse(
+      localStorage.getItem("tec8Skills") || "[]"
+    );
+
+    if(saved.includes(i)){
+      saved=saved.filter(x=>x!==i);
+    }
+
+    else{
+      saved.push(i);
+    }
+
+    localStorage.setItem(
+      "tec8Skills",
+      JSON.stringify(saved)
+    );
+
+  }
+
+
+  function analyzeSkills(){
+
+    const saved=JSON.parse(
+      localStorage.getItem("tec8Skills") || "[]"
+    );
+
+    const percent=Math.round(
+      (saved.length/skills.length)*100
+    );
+
+    let message="";
+
+    if(percent<40){
+      message="Beginner — foundational skills আরও build করুন।";
+    }
+
+    else if(percent<70){
+      message="Developing — internship ও project দিয়ে skill বাড়ান।";
+    }
+
+    else if(percent<90){
+      message="Career Ready — portfolio ও interview preparation-এ focus করুন।";
+    }
+
+    else{
+      message="Excellent — এখন job application aggressively শুরু করতে পারেন।";
+    }
+
+    document.getElementById("tec8SkillResult").innerHTML=`
+
+      <div class="tec8-result">
+
+        <h3>📊 Skill Score</h3>
+
+        <div class="tec8-score">
+          ${percent}%
+        </div>
+
+        <p style="text-align:center;">
+          ${message}
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+
+  function renderCV(){
+
+    const saved=JSON.parse(
+      localStorage.getItem("tec8CV") || "[]"
+    );
+
+    document.getElementById("tec8CV").innerHTML=
+
+      cvItems.map((x,i)=>`
+
+        <label class="tec8-check">
+
+          <input
+            type="checkbox"
+            ${saved.includes(i) ? "checked":""}
+            onchange="TEC8.toggleCV(${i})">
+
+          ${x}
+
+        </label>
+
+      `).join("");
+
+    updateCV();
+
+  }
+
+
+  function toggleCV(i){
+
+    let saved=JSON.parse(
+      localStorage.getItem("tec8CV") || "[]"
+    );
+
+    if(saved.includes(i)){
+      saved=saved.filter(x=>x!==i);
+    }
+
+    else{
+      saved.push(i);
+    }
+
+    localStorage.setItem(
+      "tec8CV",
+      JSON.stringify(saved)
+    );
+
+    updateCV();
+    updateDashboard();
+
+  }
+
+
+  function updateCV(){
+
+    const saved=JSON.parse(
+      localStorage.getItem("tec8CV") || "[]"
+    );
+
+    const percent=Math.round(
+      (saved.length/cvItems.length)*100
+    );
+
+    const bar=document.getElementById("tec8CVProgress");
+
+    if(bar){
+      bar.style.width=percent+"%";
+    }
+
+    const text=document.getElementById("tec8CVPercent");
+
+    if(text){
+      text.innerText=percent+"% Ready";
+    }
+
+  }
+
+
+  function renderPortfolio(){
+
+    const saved=JSON.parse(
+      localStorage.getItem("tec8Portfolio") || "[]"
+    );
+
+    document.getElementById("tec8Portfolio").innerHTML=
+
+      portfolioItems.map((x,i)=>`
+
+        <label class="tec8-check">
+
+          <input
+            type="checkbox"
+            ${saved.includes(i) ? "checked":""}
+            onchange="TEC8.togglePortfolio(${i})">
+
+          ${x}
+
+        </label>
+
+      `).join("");
+
+    updatePortfolio();
+
+  }
+
+
+  function togglePortfolio(i){
+
+    let saved=JSON.parse(
+      localStorage.getItem("tec8Portfolio") || "[]"
+    );
+
+    if(saved.includes(i)){
+      saved=saved.filter(x=>x!==i);
+    }
+
+    else{
+      saved.push(i);
+    }
+
+    localStorage.setItem(
+      "tec8Portfolio",
+      JSON.stringify(saved)
+    );
+
+    updatePortfolio();
+    updateDashboard();
+
+  }
+
+
+  function updatePortfolio(){
+
+    const saved=JSON.parse(
+      localStorage.getItem("tec8Portfolio") || "[]"
+    );
+
+    const percent=Math.round(
+      (saved.length/portfolioItems.length)*100
+    );
+
+    const bar=document.getElementById(
+      "tec8PortfolioProgress"
+    );
+
+    if(bar){
+      bar.style.width=percent+"%";
+    }
+
+    const text=document.getElementById(
+      "tec8PortfolioPercent"
+    );
+
+    if(text){
+      text.innerText=percent+"% Ready";
+    }
+
+  }
+
+
+  function addApplication(){
+
+    const company=
+      document.getElementById("tec8Company").value.trim();
+
+    const position=
+      document.getElementById("tec8Position").value.trim();
+
+    const status=
+      document.getElementById("tec8Status").value;
+
+    if(!company || !position){
+      alert("Company এবং Position দিন।");
+      return;
+    }
+
+    const data=JSON.parse(
+      localStorage.getItem("tec8Applications") || "[]"
+    );
+
+    data.push({
+      company,
+      position,
+      status,
+      date:new Date().toLocaleDateString()
+    });
+
+    localStorage.setItem(
+      "tec8Applications",
+      JSON.stringify(data)
+    );
+
+    document.getElementById("tec8Company").value="";
+    document.getElementById("tec8Position").value="";
+
+    renderApplications();
+    updateDashboard();
+
+  }
+
+
+  function renderApplications(){
+
+    const data=JSON.parse(
+      localStorage.getItem("tec8Applications") || "[]"
+    );
+
+    document.getElementById("tec8Applications").innerHTML=
+
+      data.map((x,i)=>`
+
+        <div class="tec8-item">
+
+          <strong>🏢 ${x.company}</strong>
+
+          <p>💼 ${x.position}</p>
+
+          <p>📌 Status: ${x.status}</p>
+
+          <small>📅 ${x.date}</small>
+
+          <br>
+
+          <button
+            class="tec8-btn secondary"
+            onclick="TEC8.deleteApplication(${i})">
+
+            Delete
+
+          </button>
+
+        </div>
+
+      `).join("") ||
+
+      "<div class='tec8-result'>এখনও কোনো application যোগ করা হয়নি।</div>";
+
+  }
+
+
+  function deleteApplication(i){
+
+    const data=JSON.parse(
+      localStorage.getItem("tec8Applications") || "[]"
+    );
+
+    data.splice(i,1);
+
+    localStorage.setItem(
+      "tec8Applications",
+      JSON.stringify(data)
+    );
+
+    renderApplications();
+    updateDashboard();
+
+  }
+
+
+  function updateDashboard(){
+
+    const cv=JSON.parse(
+      localStorage.getItem("tec8CV") || "[]"
+    );
+
+    const portfolio=JSON.parse(
+      localStorage.getItem("tec8Portfolio") || "[]"
+    );
+
+    const applications=JSON.parse(
+      localStorage.getItem("tec8Applications") || "[]"
+    );
+
+    const cvScore=Math.round(
+      (cv.length/cvItems.length)*100
+    );
+
+    const portfolioScore=Math.round(
+      (portfolio.length/portfolioItems.length)*100
+    );
+
+    const careerScore=Math.round(
+      (cvScore+portfolioScore)/2
+    );
+
+    const a=document.getElementById("tec8CVScore");
+    const b=document.getElementById("tec8PortfolioScore");
+    const c=document.getElementById("tec8Applications");
+    const d=document.getElementById("tec8CareerScore");
+
+    if(a) a.innerText=cvScore+"%";
+    if(b) b.innerText=portfolioScore+"%";
+    if(c) c.innerText=applications.length;
+    if(d) d.innerText=careerScore+"%";
+
+  }
+
+
+  return {
+    open,
+    close,
+    show,
+    searchJobs,
+    matchCareer,
+    toggleSkill,
+    analyzeSkills,
+    toggleCV,
+    togglePortfolio,
+    addApplication,
+    deleteApplication
+  };
+
+})();
+
+</script>
 </body>
 </html>
