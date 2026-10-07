@@ -14179,24 +14179,55 @@ document.addEventListener(
      END FINAL ALL-IN-ONE CODE
 ========================================================= -->
   <style>
-/* ===== ONLY FLOATING BUTTON FIX ===== */
+/* ===== FINAL FLOATING BUTTON FIX ONLY ===== */
 
-/* Issue 1:
-   উপরের দুইটি 🚀 button আলাদা gap-এ থাকবে */
-#te2Launcher {
-  bottom: 90px !important;
+/* Hide all old floating launchers */
+#teFeatureLauncher,
+.te-feature-launcher,
+#te2Launcher,
+.te2-launcher,
+#te3Launcher,
+.te3-launcher,
+#te4Launcher,
+.te4-launcher,
+#te5Launcher,
+.te5-launcher,
+#TE5HUB .te5-launch {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
-#te3Launcher {
-  bottom: 160px !important;
-}
+/* Keep ONLY the current ⚡ button */
+#TEXTILE_FINAL_HUB .final-launch {
+  display: flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 
-
-/* Issue 2:
-   ⚡ button-এর unwanted vertical line remove */
-#teFeatureLauncher {
-  border-right: none !important;
+  border: none !important;
   outline: none !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,.28) !important;
+
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  text-decoration: none !important;
+  caret-color: transparent !important;
+}
+
+/* Remove unwanted vertical line */
+#TEXTILE_FINAL_HUB .final-launch::before,
+#TEXTILE_FINAL_HUB .final-launch::after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+}
+
+/* Keep mobile position */
+@media(max-width:700px) {
+  #TEXTILE_FINAL_HUB .final-launch {
+    right: 15px !important;
+    bottom: 15px !important;
+  }
 }
 </style>
 </body>
