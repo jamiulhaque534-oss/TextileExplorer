@@ -19011,5 +19011,1774 @@ document.addEventListener(
 <!-- =========================================================
  END TEXTILE EXPLORER BEGINNER ACADEMY
  ========================================================= -->
+  <!-- =========================================================
+     TEXTILE EXPLORER — ADVANCED STUDENT & GLOBAL GUIDE HUB
+     Version: TEG2 Advanced
+     Paste this entire block before </body>
+========================================================= -->
+
+<style>
+/* =========================
+   TEG2 — SAFE ISOLATED CSS
+========================= */
+
+.teg2-launch{
+  appearance:none;
+  border:0;
+  cursor:pointer;
+  padding:13px 20px;
+  border-radius:14px;
+  font-size:15px;
+  font-weight:800;
+  color:#fff;
+  background:linear-gradient(135deg,#0f766e,#2563eb);
+  box-shadow:0 10px 25px rgba(37,99,235,.22);
+  transition:.25s ease;
+}
+
+.teg2-launch:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(37,99,235,.30);
+}
+
+.teg2-overlay{
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  background:rgba(2,6,23,.78);
+  backdrop-filter:blur(8px);
+  display:none;
+  padding:18px;
+}
+
+.teg2-overlay.active{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.teg2-modal{
+  width:min(1250px,100%);
+  height:min(92vh,900px);
+  background:var(--card-bg,#fff);
+  color:var(--text-color,#0f172a);
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 30px 100px rgba(0,0,0,.35);
+  display:flex;
+  flex-direction:column;
+}
+
+.teg2-header{
+  padding:20px 24px;
+  background:linear-gradient(135deg,#0f766e,#1d4ed8);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.teg2-title{
+  font-size:22px;
+  font-weight:900;
+  margin:0;
+}
+
+.teg2-subtitle{
+  margin:5px 0 0;
+  opacity:.88;
+  font-size:13px;
+}
+
+.teg2-close{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:12px;
+  cursor:pointer;
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  font-size:23px;
+}
+
+.teg2-body{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:0;
+  flex:1;
+}
+
+.teg2-sidebar{
+  overflow:auto;
+  padding:15px;
+  border-right:1px solid rgba(100,116,139,.18);
+  background:rgba(148,163,184,.06);
+}
+
+.teg2-search{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid rgba(100,116,139,.25);
+  border-radius:12px;
+  padding:12px 13px;
+  outline:none;
+  background:var(--card-bg,#fff);
+  color:inherit;
+  margin-bottom:13px;
+}
+
+.teg2-nav{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.teg2-main-btn{
+  width:100%;
+  text-align:left;
+  border:1px solid transparent;
+  background:transparent;
+  color:inherit;
+  border-radius:13px;
+  padding:12px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:750;
+  transition:.2s;
+}
+
+.teg2-main-btn:hover,
+.teg2-main-btn.active{
+  background:rgba(37,99,235,.10);
+  border-color:rgba(37,99,235,.16);
+}
+
+.teg2-main-icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:rgba(37,99,235,.10);
+  flex-shrink:0;
+}
+
+.teg2-content{
+  overflow:auto;
+  padding:25px;
+}
+
+.teg2-welcome{
+  padding:22px;
+  border-radius:20px;
+  background:linear-gradient(135deg,rgba(15,118,110,.10),rgba(37,99,235,.10));
+  margin-bottom:20px;
+}
+
+.teg2-welcome h2{
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.teg2-welcome p{
+  margin:0;
+  line-height:1.7;
+}
+
+.teg2-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+}
+
+.teg2-card{
+  border:1px solid rgba(100,116,139,.18);
+  border-radius:18px;
+  padding:18px;
+  background:var(--card-bg,#fff);
+  transition:.2s;
+}
+
+.teg2-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(15,23,42,.08);
+}
+
+.teg2-card h3{
+  margin:0 0 8px;
+  font-size:18px;
+}
+
+.teg2-card p{
+  margin:0;
+  line-height:1.65;
+  font-size:14px;
+}
+
+.teg2-feature{
+  cursor:pointer;
+}
+
+.teg2-feature-top{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.teg2-feature-icon{
+  width:45px;
+  height:45px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:rgba(37,99,235,.10);
+  font-size:23px;
+  flex-shrink:0;
+}
+
+.teg2-tag{
+  display:inline-block;
+  margin-top:10px;
+  padding:4px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:800;
+  background:rgba(15,118,110,.10);
+}
+
+.teg2-detail{
+  animation:teg2Fade .25s ease;
+}
+
+@keyframes teg2Fade{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.teg2-back{
+  border:0;
+  background:rgba(100,116,139,.10);
+  color:inherit;
+  border-radius:10px;
+  padding:9px 13px;
+  cursor:pointer;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+.teg2-detail h2{
+  font-size:27px;
+  margin:0 0 10px;
+}
+
+.teg2-detail h3{
+  margin:22px 0 9px;
+}
+
+.teg2-detail p{
+  line-height:1.8;
+}
+
+.teg2-detail ul{
+  padding-left:20px;
+  line-height:1.9;
+}
+
+.teg2-step{
+  display:flex;
+  gap:13px;
+  margin:12px 0;
+  padding:14px;
+  border-radius:14px;
+  background:rgba(100,116,139,.07);
+}
+
+.teg2-step-number{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#2563eb;
+  color:#fff;
+  font-weight:800;
+  flex-shrink:0;
+}
+
+.teg2-checklist{
+  display:grid;
+  gap:9px;
+}
+
+.teg2-check{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(100,116,139,.07);
+}
+
+.teg2-check input{
+  margin-top:4px;
+}
+
+.teg2-table-wrap{
+  overflow:auto;
+  border:1px solid rgba(100,116,139,.18);
+  border-radius:14px;
+}
+
+.teg2-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:550px;
+}
+
+.teg2-table th,
+.teg2-table td{
+  padding:12px;
+  border-bottom:1px solid rgba(100,116,139,.15);
+  text-align:left;
+  font-size:14px;
+}
+
+.teg2-table th{
+  background:rgba(100,116,139,.08);
+}
+
+.teg2-progress{
+  margin-top:15px;
+}
+
+.teg2-progress-bar{
+  height:9px;
+  border-radius:20px;
+  background:rgba(100,116,139,.16);
+  overflow:hidden;
+}
+
+.teg2-progress-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#0f766e,#2563eb);
+  transition:.3s;
+}
+
+.teg2-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:17px;
+}
+
+.teg2-action{
+  border:0;
+  cursor:pointer;
+  border-radius:11px;
+  padding:10px 14px;
+  font-weight:800;
+  background:#2563eb;
+  color:#fff;
+}
+
+.teg2-action.secondary{
+  background:rgba(100,116,139,.12);
+  color:inherit;
+}
+
+.teg2-country{
+  border:1px solid rgba(100,116,139,.17);
+  border-radius:17px;
+  padding:17px;
+  cursor:pointer;
+}
+
+.teg2-country strong{
+  display:block;
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+.teg2-country small{
+  opacity:.7;
+}
+
+.teg2-badge{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:800;
+  background:rgba(34,197,94,.12);
+  margin-top:8px;
+}
+
+.teg2-footer-note{
+  margin-top:22px;
+  padding:15px;
+  border-radius:14px;
+  background:rgba(245,158,11,.10);
+  font-size:13px;
+  line-height:1.7;
+}
+
+@media(max-width:850px){
+  .teg2-body{
+    grid-template-columns:1fr;
+  }
+
+  .teg2-sidebar{
+    max-height:190px;
+    border-right:0;
+    border-bottom:1px solid rgba(100,116,139,.18);
+  }
+
+  .teg2-nav{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .teg2-grid{
+    grid-template-columns:1fr;
+  }
+
+  .teg2-content{
+    padding:17px;
+  }
+
+  .teg2-modal{
+    height:96vh;
+    border-radius:18px;
+  }
+}
+
+@media(max-width:520px){
+  .teg2-overlay{
+    padding:7px;
+  }
+
+  .teg2-header{
+    padding:15px;
+  }
+
+  .teg2-title{
+    font-size:18px;
+  }
+
+  .teg2-nav{
+    grid-template-columns:1fr;
+  }
+
+  .teg2-sidebar{
+    max-height:230px;
+  }
+}
+</style>
+
+
+<script>
+(function(){
+
+  "use strict";
+
+  /* ============================================
+     TEG2 DATA
+  ============================================ */
+
+  const TEG2_KEY = "textileExplorer_advanced_global_guide_v1";
+
+  const sections = [
+
+    {
+      id:"global",
+      icon:"🌍",
+      title:"বিদেশে পড়াশোনা",
+      desc:"দেশ নির্বাচন থেকে ভর্তি, স্কলারশিপ, ভিসা ও প্রস্তুতি।",
+      features:[
+        {
+          id:"country-guide",
+          icon:"🗺️",
+          title:"দেশ নির্বাচন গাইড",
+          desc:"কোন দেশের জন্য কী দেখতে হবে।",
+          content:`
+            <h2>🌍 বিদেশে পড়াশোনার জন্য দেশ নির্বাচন</h2>
+            <p>শুধু জনপ্রিয় দেশ দেখে সিদ্ধান্ত নেবে না। নিজের বাজেট, বিষয়, ভাষা, স্কলারশিপ, কাজের সুযোগ এবং ভবিষ্যৎ ক্যারিয়ার—সব একসাথে বিবেচনা করতে হবে।</p>
+
+            <h3>দেশ বাছাইয়ের ৭টি বিষয়</h3>
+
+            <div class="teg2-step"><span class="teg2-step-number">১</span><div><b>শিক্ষার মান</b><br>তোমার পছন্দের বিষয়টি ওই দেশে কতটা ভালোভাবে পড়ানো হয় তা দেখো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">২</span><div><b>মোট খরচ</b><br>Tuition + থাকা + খাবার + যাতায়াত + insurance হিসাব করো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৩</span><div><b>ভাষা</b><br>ইংরেজি প্রোগ্রাম আছে কিনা এবং স্থানীয় ভাষা কতটা প্রয়োজন তা যাচাই করো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৪</span><div><b>Scholarship</b><br>বিশ্ববিদ্যালয়, সরকার ও অন্যান্য scholarship-এর eligibility দেখো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৫</span><div><b>কাজের সুযোগ</b><br>Student হিসেবে কাজের নিয়ম এবং graduation-এর পর কাজের সুযোগ যাচাই করো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৬</span><div><b>ভিসা</b><br>Official immigration website থেকে সর্বশেষ নিয়ম দেখো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৭</span><div><b>দীর্ঘমেয়াদি লক্ষ্য</b><br>পড়াশোনা শেষে দেশে ফিরবে, চাকরি করবে নাকি অন্য পরিকল্পনা—আগেই ভাবো।</div></div>
+
+            <div class="teg2-footer-note">⚠️ ভিসা, tuition fee, work-permit ও immigration rules পরিবর্তিত হতে পারে। আবেদন করার আগে সংশ্লিষ্ট দেশের official website অবশ্যই যাচাই করবে।</div>
+          `
+        },
+
+        {
+          id:"study-abroad-roadmap",
+          icon:"🧭",
+          title:"বিদেশে যাওয়ার সম্পূর্ণ Roadmap",
+          desc:"Student থেকে বিদেশে পৌঁছানো পর্যন্ত ধাপে ধাপে।",
+          content:`
+            <h2>🧭 বিদেশে পড়াশোনার সম্পূর্ণ Roadmap</h2>
+
+            <div class="teg2-checklist">
+              <label class="teg2-check"><input type="checkbox"> নিজের subject ও career goal ঠিক করা</label>
+              <label class="teg2-check"><input type="checkbox"> সম্ভাব্য দেশ shortlist করা</label>
+              <label class="teg2-check"><input type="checkbox"> University shortlist করা</label>
+              <label class="teg2-check"><input type="checkbox"> Admission requirements দেখা</label>
+              <label class="teg2-check"><input type="checkbox"> English/IELTS প্রস্তুতি</label>
+              <label class="teg2-check"><input type="checkbox"> Academic documents প্রস্তুত করা</label>
+              <label class="teg2-check"><input type="checkbox"> SOP প্রস্তুত করা</label>
+              <label class="teg2-check"><input type="checkbox"> Recommendation Letter প্রস্তুত করা</label>
+              <label class="teg2-check"><input type="checkbox"> Scholarship apply করা</label>
+              <label class="teg2-check"><input type="checkbox"> University application</label>
+              <label class="teg2-check"><input type="checkbox"> Offer Letter</label>
+              <label class="teg2-check"><input type="checkbox"> Financial preparation</label>
+              <label class="teg2-check"><input type="checkbox"> Visa application</label>
+              <label class="teg2-check"><input type="checkbox"> Accommodation</label>
+              <label class="teg2-check"><input type="checkbox"> Flight ও travel preparation</label>
+            </div>
+          `
+        },
+
+        {
+          id:"scholarship",
+          icon:"🎓",
+          title:"Scholarship Guide",
+          desc:"Scholarship খোঁজা ও আবেদন করার প্রস্তুতি।",
+          content:`
+            <h2>🎓 Scholarship Guide</h2>
+            <p>Scholarship মানে শুধু পুরো tuition free নয়। কিছু scholarship tuition কমায়, কিছু living cost support করে, আবার কিছু partial funding দেয়।</p>
+
+            <h3>যা প্রস্তুত রাখবে</h3>
+            <ul>
+              <li>Academic transcript</li>
+              <li>Certificate</li>
+              <li>CV</li>
+              <li>Statement of Purpose</li>
+              <li>Recommendation Letter</li>
+              <li>English proficiency proof</li>
+              <li>Passport</li>
+              <li>Financial documents</li>
+            </ul>
+
+            <h3>Scholarship খোঁজার পদ্ধতি</h3>
+            <p>প্রথমে University-এর official scholarship page দেখো। তারপর সংশ্লিষ্ট দেশের government scholarship এবং recognised scholarship database দেখো।</p>
+
+            <div class="teg2-footer-note">💡 কোনো scholarship-এর জন্য টাকা পাঠানোর আগে সেটি official কিনা যাচাই করো।</div>
+          `
+        },
+
+        {
+          id:"ielts",
+          icon:"🗣️",
+          title:"IELTS & English Preparation",
+          desc:"Beginner থেকে English proficiency প্রস্তুতি।",
+          content:`
+            <h2>🗣️ IELTS & English Preparation</h2>
+
+            <h3>চারটি মূল অংশ</h3>
+
+            <div class="teg2-grid">
+              <div class="teg2-card"><h3>🎧 Listening</h3><p>প্রতিদিন English audio শুনে keyword ধরার অভ্যাস করো।</p></div>
+              <div class="teg2-card"><h3>📖 Reading</h3><p>Article পড়ে দ্রুত main idea ও specific information খোঁজার অনুশীলন করো।</p></div>
+              <div class="teg2-card"><h3>✍️ Writing</h3><p>Structure, grammar, vocabulary এবং logical paragraph writing উন্নত করো।</p></div>
+              <div class="teg2-card"><h3>🎤 Speaking</h3><p>প্রতিদিন নিজের voice record করে fluency ও pronunciation পরীক্ষা করো।</p></div>
+            </div>
+
+            <h3>৩০ দিনের Basic Routine</h3>
+            <ul>
+              <li>২০ মিনিট Listening</li>
+              <li>২০ মিনিট Reading</li>
+              <li>২০ মিনিট Vocabulary</li>
+              <li>২০ মিনিট Speaking</li>
+              <li>২০ মিনিট Writing</li>
+            </ul>
+          `
+        },
+
+        {
+          id:"documents",
+          icon:"📁",
+          title:"বিদেশে যাওয়ার Documents Guide",
+          desc:"কোন ধরনের document আগে থেকে প্রস্তুত করবে।",
+          content:`
+            <h2>📁 Documents Preparation</h2>
+
+            <div class="teg2-table-wrap">
+              <table class="teg2-table">
+                <tr><th>Document</th><th>কেন প্রয়োজন হতে পারে</th></tr>
+                <tr><td>Passport</td><td>International identity ও travel</td></tr>
+                <tr><td>Academic Certificate</td><td>শিক্ষাগত যোগ্যতা প্রমাণ</td></tr>
+                <tr><td>Transcript</td><td>Academic performance</td></tr>
+                <tr><td>CV</td><td>Academic/Career profile</td></tr>
+                <tr><td>SOP</td><td>কেন এই course/university বেছে নিয়েছ</td></tr>
+                <tr><td>Recommendation</td><td>Teacher/Professor recommendation</td></tr>
+                <tr><td>Financial Documents</td><td>আর্থিক সক্ষমতা প্রমাণ</td></tr>
+              </table>
+            </div>
+          `
+        }
+      ]
+    },
+
+    {
+      id:"countries",
+      icon:"✈️",
+      title:"দেশভিত্তিক গাইড",
+      desc:"জনপ্রিয় study destinations সম্পর্কে structured overview।",
+      features:[
+        {
+          id:"germany",
+          icon:"🇩🇪",
+          title:"Germany Guide",
+          desc:"Study, language, documents ও planning.",
+          content:`
+            <h2>🇩🇪 Germany Study Guide</h2>
+            <p>Germany-তে পড়াশোনার পরিকল্পনা করার সময় university, programme language, tuition/semester contribution, living cost, financial proof এবং visa requirements আলাদাভাবে যাচাই করতে হবে।</p>
+            <h3>Research Checklist</h3>
+            <div class="teg2-checklist">
+              <label class="teg2-check"><input type="checkbox"> University shortlist</label>
+              <label class="teg2-check"><input type="checkbox"> Programme language</label>
+              <label class="teg2-check"><input type="checkbox"> Admission eligibility</label>
+              <label class="teg2-check"><input type="checkbox"> Language requirement</label>
+              <label class="teg2-check"><input type="checkbox"> Financial requirement</label>
+              <label class="teg2-check"><input type="checkbox"> Accommodation</label>
+              <label class="teg2-check"><input type="checkbox"> Visa requirements</label>
+            </div>
+            <div class="teg2-footer-note">⚠️ Germany-এর নিয়ম university ও programme অনুযায়ী আলাদা হতে পারে। আবেদন করার আগে official university ও German government sources যাচাই করবে।</div>
+          `
+        },
+
+        {
+          id:"malaysia",
+          icon:"🇲🇾",
+          title:"Malaysia Guide",
+          desc:"University, budget ও student life planning.",
+          content:`
+            <h2>🇲🇾 Malaysia Study Guide</h2>
+            <p>Malaysia বাংলাদেশি শিক্ষার্থীদের জন্য একটি পরিচিত international study destination। তবে university নির্বাচন করার সময় accreditation, programme quality, total cost এবং visa requirements যাচাই করা গুরুত্বপূর্ণ।</p>
+            <h3>যা দেখবে</h3>
+            <ul>
+              <li>University accreditation</li>
+              <li>Course duration</li>
+              <li>Total tuition</li>
+              <li>Living cost</li>
+              <li>Accommodation</li>
+              <li>Student visa process</li>
+              <li>Part-time work rules</li>
+            </ul>
+          `
+        },
+
+        {
+          id:"japan-korea",
+          icon:"🇯🇵",
+          title:"Japan & South Korea",
+          desc:"Language + scholarship + technology-focused study planning.",
+          content:`
+            <h2>🇯🇵 Japan & 🇰🇷 South Korea</h2>
+            <p>এই দেশগুলোতে পড়াশোনার ক্ষেত্রে English-taught programme-এর পাশাপাশি local language requirement-ও গুরুত্বপূর্ণ হতে পারে।</p>
+
+            <h3>বিশেষভাবে খেয়াল করবে</h3>
+            <ul>
+              <li>English programme নাকি local-language programme</li>
+              <li>Language proficiency</li>
+              <li>Scholarship opportunities</li>
+              <li>University ranking-এর পাশাপাশি programme quality</li>
+              <li>Living cost</li>
+              <li>Student accommodation</li>
+            </ul>
+          `
+        },
+
+        {
+          id:"canada-australia",
+          icon:"🌎",
+          title:"Canada & Australia",
+          desc:"Admission, budget ও long-term planning.",
+          content:`
+            <h2>🌎 Canada & Australia Study Planning</h2>
+            <p>এই দেশগুলোর ক্ষেত্রে tuition fee, living cost, programme eligibility এবং immigration rules খুব carefully research করা উচিত।</p>
+
+            <h3>Research Framework</h3>
+            <div class="teg2-grid">
+              <div class="teg2-card"><h3>💰 Budget</h3><p>পুরো study period-এর estimated cost হিসাব করো।</p></div>
+              <div class="teg2-card"><h3>🎓 University</h3><p>Course content ও accreditation যাচাই করো।</p></div>
+              <div class="teg2-card"><h3>📄 Documents</h3><p>Academic ও financial documents প্রস্তুত রাখো।</p></div>
+              <div class="teg2-card"><h3>🛂 Visa</h3><p>সর্বশেষ official visa requirements অনুসরণ করো।</p></div>
+            </div>
+          `
+        }
+      ]
+    },
+
+    {
+      id:"college",
+      icon:"🏫",
+      title:"কলেজ লাইফ",
+      desc:"কলেজে নতুন জীবন শুরু করার সম্পূর্ণ গাইড।",
+      features:[
+        {
+          id:"college-start",
+          icon:"🚀",
+          title:"কলেজে প্রথম ৩০ দিন",
+          desc:"নতুন পরিবেশে দ্রুত মানিয়ে নেওয়ার পরিকল্পনা।",
+          content:`
+            <h2>🏫 কলেজে প্রথম ৩০ দিন</h2>
+
+            <div class="teg2-step"><span class="teg2-step-number">১</span><div><b>রুটিন বুঝে নাও</b><br>Class schedule, practical এবং exam pattern লিখে রাখো।</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">২</span><div><b>Teacherদের চিনে নাও</b><br>কোন শিক্ষক কোন subject নেন এবং কীভাবে পড়ান তা বুঝে নাও।</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">৩</span><div><b>ভালো বন্ধু নির্বাচন</b><br>শুধু আড্ডা নয়—যারা তোমাকে পড়াশোনা ও career-এ এগিয়ে নেবে তাদের সাথে থাকো।</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">৪</span><div><b>Notes system</b><br>প্রতিটি subject-এর জন্য আলাদা note structure বানাও।</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">৫</span><div><b>Skill শুরু করো</b><br>English, Excel, communication, computer skill—একসাথে ছোট করে শুরু করো।</div></div>
+          `
+        },
+
+        {
+          id:"study-system",
+          icon:"📚",
+          title:"Smart Study System",
+          desc:"শুধু বেশি সময় নয়—সঠিকভাবে পড়ার পদ্ধতি।",
+          content:`
+            <h2>📚 Smart Study System</h2>
+
+            <h3>একটি Study Session</h3>
+            <ul>
+              <li>৫ মিনিট — আজ কী পড়বে ঠিক করা</li>
+              <li>২৫–৪০ মিনিট — Focused Study</li>
+              <li>৫ মিনিট — বিরতি</li>
+              <li>১০ মিনিট — বই বন্ধ করে Recall</li>
+              <li>৫ মিনিট — নিজের ভাষায় Summary</li>
+            </ul>
+
+            <h3>Exam-এর আগে</h3>
+            <ul>
+              <li>প্রথমে syllabus map করো</li>
+              <li>Important chapter চিহ্নিত করো</li>
+              <li>Previous question দেখো</li>
+              <li>নিজে answer লিখে practice করো</li>
+              <li>শেষে timed mock test দাও</li>
+            </ul>
+          `
+        },
+
+        {
+          id:"college-social",
+          icon:"🤝",
+          title:"বন্ধুত্ব, Networking ও Communication",
+          desc:"ভালো সম্পর্ক তৈরি কিন্তু নিজের লক্ষ্য ঠিক রাখা।",
+          content:`
+            <h2>🤝 Student Networking</h2>
+            <p>Networking মানে শুধু অনেক বন্ধু থাকা নয়। ভালো শিক্ষক, senior, classmate, alumni এবং industry professional-এর সাথে meaningful relationship তৈরি করা।</p>
+
+            <h3>৩টি নিয়ম</h3>
+            <ul>
+              <li>সম্মান দিয়ে কথা বলো</li>
+              <li>প্রয়োজনে সাহায্য চাও</li>
+              <li>তুমিও অন্যকে সাহায্য করো</li>
+            </ul>
+          `
+        }
+      ]
+    },
+
+    {
+      id:"university",
+      icon:"🎓",
+      title:"ভার্সিটি লাইফ",
+      desc:"University থেকে CGPA, skill, research ও career পর্যন্ত।",
+      features:[
+        {
+          id:"university-start",
+          icon:"🎒",
+          title:"ভার্সিটিতে প্রথম বছর",
+          desc:"যে ভুলগুলো শুরুতেই না করাই ভালো।",
+          content:`
+            <h2>🎓 University First Year Guide</h2>
+
+            <h3>প্রথম বছরেই যা করবে</h3>
+            <ul>
+              <li>Department-এর course structure বুঝবে</li>
+              <li>Credit ও semester system বুঝবে</li>
+              <li>CGPA calculation শিখবে</li>
+              <li>English communication উন্নত করবে</li>
+              <li>Computer/Office tools শিখবে</li>
+              <li>একটি practical skill শুরু করবে</li>
+              <li>Teacher ও seniorদের সাথে professional relationship তৈরি করবে</li>
+            </ul>
+
+            <div class="teg2-footer-note">💡 University life শুধু exam-এর জন্য নয়। Academic + Skill + Network + Experience—চারটিই গুরুত্বপূর্ণ।</div>
+          `
+        },
+
+        {
+          id:"cgpa",
+          icon:"📈",
+          title:"CGPA Strategy",
+          desc:"Semester শুরু থেকেই smart academic planning.",
+          content:`
+            <h2>📈 CGPA Strategy</h2>
+
+            <div class="teg2-grid">
+              <div class="teg2-card"><h3>১. Syllabus Map</h3><p>Semester শুরুতেই সব subject-এর chapter ও marks distribution লিখে রাখো।</p></div>
+              <div class="teg2-card"><h3>২. Class Notes</h3><p>Lecture-এর ২৪ ঘণ্টার মধ্যে notes revise করো।</p></div>
+              <div class="teg2-card"><h3>৩. Question Analysis</h3><p>Previous questions থেকে repeated topics চিহ্নিত করো।</p></div>
+              <div class="teg2-card"><h3>৪. Mock Exam</h3><p>সময় ধরে লিখে practice করো।</p></div>
+            </div>
+          `
+        },
+
+        {
+          id:"research",
+          icon:"🔬",
+          title:"Research & Project",
+          desc:"Student থেকে researcher হওয়ার basic roadmap.",
+          content:`
+            <h2>🔬 Research & Project Guide</h2>
+
+            <p>Research শুরু করতে প্রথমে বড় কিছু করার দরকার নেই। একটি ছোট problem বেছে নিয়ে systematicভাবে কাজ করাই শুরু।</p>
+
+            <div class="teg2-step"><span class="teg2-step-number">১</span><div>Problem নির্বাচন</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">২</span><div>Existing research খোঁজা</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">৩</span><div>Research question তৈরি</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">৪</span><div>Data/experiment পরিকল্পনা</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">৫</span><div>Result analysis</div></div>
+            <div class="teg2-step"><span class="teg2-step-number">৬</span><div>Report/Presentation তৈরি</div></div>
+          `
+        },
+
+        {
+          id:"internship",
+          icon:"💼",
+          title:"Internship Guide",
+          desc:"Student থাকা অবস্থায় experience তৈরি।",
+          content:`
+            <h2>💼 Internship Guide</h2>
+
+            <h3>কখন শুরু করবে?</h3>
+            <p>তোমার academic schedule ও eligibility অনুযায়ী। Internship-এর আগে basic skill এবং communication প্রস্তুত করা ভালো।</p>
+
+            <h3>প্রস্তুতি</h3>
+            <ul>
+              <li>One-page CV</li>
+              <li>LinkedIn profile</li>
+              <li>Portfolio</li>
+              <li>Basic interview preparation</li>
+              <li>Relevant technical skill</li>
+              <li>Professional email writing</li>
+            </ul>
+          `
+        }
+      ]
+    },
+
+    {
+      id:"career",
+      icon:"💼",
+      title:"Career & Skill Roadmap",
+      desc:"Student থেকে professional হওয়ার পরিকল্পনা।",
+      features:[
+        {
+          id:"career-map",
+          icon:"🧭",
+          title:"Career Roadmap",
+          desc:"Skill → Portfolio → Internship → Job.",
+          content:`
+            <h2>💼 Career Roadmap</h2>
+
+            <div class="teg2-step"><span class="teg2-step-number">১</span><div><b>নিজের ক্ষেত্র নির্বাচন</b><br>Engineering, Marketing, IT, Design, Business—কোন দিকে যেতে চাও?</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">২</span><div><b>Core Skill</b><br>নিজের field-এর মূল technical skill শিখো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৩</span><div><b>Supporting Skill</b><br>English, Excel, communication, presentation ইত্যাদি।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৪</span><div><b>Portfolio</b><br>শুধু certificate নয়—নিজের কাজ দেখানোর ব্যবস্থা করো।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৫</span><div><b>Experience</b><br>Internship, project, freelance বা volunteer experience।</div></div>
+
+            <div class="teg2-step"><span class="teg2-step-number">৬</span><div><b>Job/Business</b><br>নিজের profile অনুযায়ী চাকরি বা business opportunity খুঁজো।</div></div>
+          `
+        },
+
+        {
+          id:"cv",
+          icon:"📄",
+          title:"CV & Portfolio",
+          desc:"Professional profile তৈরির system.",
+          content:`
+            <h2>📄 CV & Portfolio Guide</h2>
+
+            <h3>CV-তে রাখবে</h3>
+            <ul>
+              <li>নাম ও contact</li>
+              <li>Short professional summary</li>
+              <li>Education</li>
+              <li>Skills</li>
+              <li>Projects</li>
+              <li>Experience</li>
+              <li>Relevant achievements</li>
+            </ul>
+
+            <h3>Portfolio-তে কী থাকবে?</h3>
+            <p>তুমি কী করতে পারো তার বাস্তব প্রমাণ। যেমন project, design, analysis, campaign, engineering work, report বা case study।</p>
+          `
+        },
+
+        {
+          id:"linkedin",
+          icon:"🔗",
+          title:"LinkedIn Professional Guide",
+          desc:"Student profile থেকে professional brand.",
+          content:`
+            <h2>🔗 LinkedIn Guide</h2>
+
+            <div class="teg2-checklist">
+              <label class="teg2-check"><input type="checkbox"> Professional profile photo</label>
+              <label class="teg2-check"><input type="checkbox"> Clear headline</label>
+              <label class="teg2-check"><input type="checkbox"> About section</label>
+              <label class="teg2-check"><input type="checkbox"> Education</label>
+              <label class="teg2-check"><input type="checkbox"> Skills</label>
+              <label class="teg2-check"><input type="checkbox"> Projects</label>
+              <label class="teg2-check"><input type="checkbox"> Portfolio/Website</label>
+              <label class="teg2-check"><input type="checkbox"> Relevant connections</label>
+            </div>
+          `
+        },
+
+        {
+          id:"freelancing",
+          icon:"💻",
+          title:"Freelancing Roadmap",
+          desc:"Skill থেকে client পাওয়ার basic system.",
+          content:`
+            <h2>💻 Freelancing Roadmap</h2>
+
+            <h3>Formula</h3>
+            <p><b>Skill → Portfolio → Profile → Outreach → Client → Delivery → Review → Repeat</b></p>
+
+            <h3>শুরুতে</h3>
+            <ul>
+              <li>একটি specific service নির্বাচন করো</li>
+              <li>৩–৫টি strong portfolio sample তৈরি করো</li>
+              <li>Professional profile তৈরি করো</li>
+              <li>Target client নির্ধারণ করো</li>
+              <li>Short ও personalised proposal লিখো</li>
+              <li>সময়মতো delivery দাও</li>
+            </ul>
+          `
+        }
+      ]
+    },
+
+    {
+      id:"student-life",
+      icon:"🧠",
+      title:"Student Life Master Guide",
+      desc:"সময়, টাকা, স্বাস্থ্য, communication ও digital safety.",
+      features:[
+        {
+          id:"time",
+          icon:"⏰",
+          title:"Time Management",
+          desc:"দিনকে system করে চালানো।",
+          content:`
+            <h2>⏰ Student Time Management</h2>
+
+            <p>একদিনে সবকিছু করার চেষ্টা না করে Priority অনুযায়ী কাজ করো।</p>
+
+            <h3>৩টি Priority</h3>
+            <div class="teg2-grid">
+              <div class="teg2-card"><h3>🔴 জরুরি</h3><p>Exam, assignment, deadline.</p></div>
+              <div class="teg2-card"><h3>🟡 গুরুত্বপূর্ণ</h3><p>Study, skill development, health.</p></div>
+              <div class="teg2-card"><h3>🟢 অতিরিক্ত</h3><p>Entertainment ও optional activities.</p></div>
+            </div>
+          `
+        },
+
+        {
+          id:"finance",
+          icon:"💰",
+          title:"Student Finance",
+          desc:"কম টাকা থেকেও financial discipline.",
+          content:`
+            <h2>💰 Student Finance Guide</h2>
+
+            <h3>Simple System</h3>
+            <ul>
+              <li>মাসিক income/allowance লিখে রাখো</li>
+              <li>Essential expense আলাদা করো</li>
+              <li>Unnecessary spending track করো</li>
+              <li>সম্ভব হলে emergency saving রাখো</li>
+              <li>কোনো financial decision নেওয়ার আগে যাচাই করো</li>
+            </ul>
+          `
+        },
+
+        {
+          id:"communication",
+          icon:"🎤",
+          title:"Communication & Presentation",
+          desc:"কথা বলা থেকে professional presentation.",
+          content:`
+            <h2>🎤 Communication Guide</h2>
+
+            <h3>ভালো communication-এর ৫টি নিয়ম</h3>
+            <ul>
+              <li>আগে শুনো</li>
+              <li>তারপর উত্তর দাও</li>
+              <li>সহজ ভাষায় কথা বলো</li>
+              <li>প্রয়োজনের বেশি কথা বলো না</li>
+              <li>Professional পরিস্থিতিতে respectful tone রাখো</li>
+            </ul>
+          `
+        },
+
+        {
+          id:"digital-safety",
+          icon:"🔐",
+          title:"Digital Safety",
+          desc:"Student account ও personal data নিরাপদ রাখা।",
+          content:`
+            <h2>🔐 Digital Safety Guide</h2>
+
+            <div class="teg2-checklist">
+              <label class="teg2-check"><input type="checkbox"> প্রতিটি গুরুত্বপূর্ণ account-এ strong password</label>
+              <label class="teg2-check"><input type="checkbox"> Two-factor authentication চালু</label>
+              <label class="teg2-check"><input type="checkbox"> সন্দেহজনক link এড়ানো</label>
+              <label class="teg2-check"><input type="checkbox"> OTP কাউকে না দেওয়া</label>
+              <label class="teg2-check"><input type="checkbox"> Public computer-এ account logout</label>
+              <label class="teg2-check"><input type="checkbox"> Important files backup</label>
+            </div>
+          `
+        }
+      ]
+    },
+
+    {
+      id:"textile-career",
+      icon:"🧵",
+      title:"Textile Student Career Hub",
+      desc:"Textile background থেকে career direction.",
+      features:[
+        {
+          id:"textile-career-map",
+          icon:"🧵",
+          title:"Textile Career Map",
+          desc:"Textile industry-এর বিভিন্ন career path.",
+          content:`
+            <h2>🧵 Textile Career Map</h2>
+
+            <div class="teg2-grid">
+              <div class="teg2-card"><h3>📦 Merchandising</h3><p>Buyer communication, costing, order follow-up ও production coordination।</p></div>
+              <div class="teg2-card"><h3>✅ QA/QC</h3><p>Quality inspection, testing, defect analysis ও quality system।</p></div>
+              <div class="teg2-card"><h3>⚙️ IE</h3><p>Production efficiency, line balancing, SMV ও productivity।</p></div>
+              <div class="teg2-card"><h3>🏭 Production</h3><p>Production planning, machine/process management ও output control।</p></div>
+              <div class="teg2-card"><h3>🎨 CAD & Design</h3><p>Textile/fashion design ও technical design workflow।</p></div>
+              <div class="teg2-card"><h3>🔬 Testing/R&D</h3><p>Fabric, yarn ও product testing এবং product development।</p></div>
+            </div>
+          `
+        },
+
+        {
+          id:"textile-skills",
+          icon:"📊",
+          title:"Textile Skill Roadmap",
+          desc:"Student থেকে industry-ready হওয়ার checklist.",
+          content:`
+            <h2>📊 Textile Skill Roadmap</h2>
+
+            <h3>Foundation</h3>
+            <ul>
+              <li>Fiber</li>
+              <li>Yarn</li>
+              <li>Fabric</li>
+              <li>Weaving</li>
+              <li>Knitting</li>
+              <li>Dyeing</li>
+              <li>Finishing</li>
+              <li>Garments</li>
+            </ul>
+
+            <h3>Professional Skills</h3>
+            <ul>
+              <li>Advanced Excel</li>
+              <li>English communication</li>
+              <li>Technical report writing</li>
+              <li>Problem solving</li>
+              <li>Presentation</li>
+              <li>Data analysis</li>
+            </ul>
+          `
+        }
+      ]
+    },
+
+    {
+      id:"resources",
+      icon:"📚",
+      title:"Student Resource Center",
+      desc:"নিজের study ও career resources organize করার জায়গা।",
+      features:[
+        {
+          id:"resource-system",
+          icon:"🗂️",
+          title:"Resource Management",
+          desc:"PDF, notes, links ও important information সাজানো।",
+          content:`
+            <h2>🗂️ Resource Management System</h2>
+
+            <p>একটি নির্দিষ্ট folder structure ব্যবহার করলে পরে resource খুঁজে পাওয়া সহজ হয়।</p>
+
+            <div class="teg2-table-wrap">
+              <table class="teg2-table">
+                <tr><th>Folder</th><th>কী রাখবে</th></tr>
+                <tr><td>01-Notes</td><td>Class notes</td></tr>
+                <tr><td>02-PDF</td><td>Books ও reference</td></tr>
+                <tr><td>03-Exam</td><td>Previous questions</td></tr>
+                <tr><td>04-Projects</td><td>Project files</td></tr>
+                <tr><td>05-CV</td><td>CV ও certificates</td></tr>
+                <tr><td>06-Portfolio</td><td>Professional work</td></tr>
+              </table>
+            </div>
+          `
+        }
+      ]
+    }
+
+  ];
+
+
+  /* ============================================
+     STATE
+  ============================================ */
+
+  let state = {
+    completed: [],
+    checklist: {}
+  };
+
+  try{
+    const saved = JSON.parse(localStorage.getItem(TEG2_KEY));
+    if(saved) state = Object.assign(state,saved);
+  }catch(e){}
+
+  function save(){
+    try{
+      localStorage.setItem(TEG2_KEY,JSON.stringify(state));
+    }catch(e){}
+  }
+
+  /* ============================================
+     ALL FEATURES
+  ============================================ */
+
+  const allFeatures = sections.flatMap(section =>
+    section.features.map(feature => ({
+      ...feature,
+      sectionId:section.id,
+      sectionTitle:section.title
+    }))
+  );
+
+  /* ============================================
+     ROOT
+  ============================================ */
+
+  const root = document.createElement("div");
+
+  root.innerHTML = `
+    <div class="teg2-overlay" id="teg2Overlay">
+
+      <div class="teg2-modal">
+
+        <div class="teg2-header">
+
+          <div>
+            <h1 class="teg2-title">🌍 Student & Global Guide Hub</h1>
+            <p class="teg2-subtitle">
+              পড়াশোনা • বিদেশ • কলেজ • ভার্সিটি • ক্যারিয়ার • জীবন
+            </p>
+          </div>
+
+          <button class="teg2-close" id="teg2Close">×</button>
+
+        </div>
+
+        <div class="teg2-body">
+
+          <aside class="teg2-sidebar">
+
+            <input
+              class="teg2-search"
+              id="teg2Search"
+              type="search"
+              placeholder="🔎 গাইড খুঁজুন..."
+            >
+
+            <div class="teg2-nav" id="teg2Nav"></div>
+
+          </aside>
+
+          <main class="teg2-content" id="teg2Content"></main>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+  document.body.appendChild(root);
+
+  const overlay = document.getElementById("teg2Overlay");
+  const content = document.getElementById("teg2Content");
+  const nav = document.getElementById("teg2Nav");
+  const search = document.getElementById("teg2Search");
+
+  /* ============================================
+     NAVIGATION
+  ============================================ */
+
+  function renderNav(filter=""){
+
+    const query = filter.toLowerCase().trim();
+
+    nav.innerHTML = "";
+
+    sections.forEach(section => {
+
+      const visibleFeatures = section.features.filter(feature =>
+        !query ||
+        feature.title.toLowerCase().includes(query) ||
+        feature.desc.toLowerCase().includes(query) ||
+        section.title.toLowerCase().includes(query)
+      );
+
+      if(!visibleFeatures.length) return;
+
+      const button = document.createElement("button");
+
+      button.className = "teg2-main-btn";
+
+      button.innerHTML = `
+        <span class="teg2-main-icon">${section.icon}</span>
+        <span>${section.title}</span>
+      `;
+
+      button.onclick = () => renderSection(section.id);
+
+      nav.appendChild(button);
+
+    });
+
+  }
+
+
+  /* ============================================
+     HOME
+  ============================================ */
+
+  function renderHome(){
+
+    const total = allFeatures.length;
+
+    const completed = state.completed.length;
+
+    const percent = total
+      ? Math.round((completed / total) * 100)
+      : 0;
+
+    content.innerHTML = `
+
+      <div class="teg2-welcome">
+
+        <h2>👋 তোমার Student Journey এখানে শুরু</h2>
+
+        <p>
+          এই Hub-এ তুমি বিদেশে পড়াশোনা, কলেজ লাইফ, ভার্সিটি লাইফ,
+          ক্যারিয়ার, স্কিল, Textile Career এবং Student Life—
+          সবকিছু এক জায়গা থেকে শিখতে পারবে।
+        </p>
+
+        <div class="teg2-progress">
+
+          <b>📊 তোমার Guide Progress: ${percent}%</b>
+
+          <div class="teg2-progress-bar">
+            <div
+              class="teg2-progress-fill"
+              style="width:${percent}%"
+            ></div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="teg2-grid">
+
+        ${sections.map(section => `
+
+          <div
+            class="teg2-card teg2-feature"
+            data-section="${section.id}"
+          >
+
+            <div class="teg2-feature-top">
+
+              <div class="teg2-feature-icon">
+                ${section.icon}
+              </div>
+
+              <div>
+
+                <h3>${section.title}</h3>
+
+                <p>${section.desc}</p>
+
+                <span class="teg2-tag">
+                  ${section.features.length}টি গাইড
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+      <div class="teg2-footer-note">
+
+        💡 <b>পরামর্শ:</b>
+        একসাথে সব পড়ার দরকার নেই। প্রথমে নিজের বর্তমান অবস্থার সাথে
+        সবচেয়ে সম্পর্কিত Guide নির্বাচন করো এবং ধাপে ধাপে এগিয়ে যাও।
+
+      </div>
+
+    `;
+
+    content.querySelectorAll("[data-section]").forEach(card => {
+
+      card.onclick = () =>
+        renderSection(card.dataset.section);
+
+    });
+
+  }
+
+
+  /* ============================================
+     SECTION
+  ============================================ */
+
+  function renderSection(sectionId){
+
+    const section = sections.find(s => s.id === sectionId);
+
+    if(!section) return;
+
+    content.innerHTML = `
+
+      <button class="teg2-back" id="teg2Back">
+        ← সব গাইড
+      </button>
+
+      <div class="teg2-welcome">
+
+        <h2>
+          ${section.icon} ${section.title}
+        </h2>
+
+        <p>${section.desc}</p>
+
+      </div>
+
+      <div class="teg2-grid">
+
+        ${section.features.map(feature => `
+
+          <div
+            class="teg2-card teg2-feature"
+            data-feature="${feature.id}"
+          >
+
+            <div class="teg2-feature-top">
+
+              <div class="teg2-feature-icon">
+                ${feature.icon}
+              </div>
+
+              <div>
+
+                <h3>${feature.title}</h3>
+
+                <p>${feature.desc}</p>
+
+                ${
+                  state.completed.includes(feature.id)
+                  ? `<span class="teg2-badge">✓ সম্পন্ন</span>`
+                  : `<span class="teg2-tag">গাইড খুলুন →</span>`
+                }
+
+              </div>
+
+            </div>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    `;
+
+    document.getElementById("teg2Back").onclick = renderHome;
+
+    content.querySelectorAll("[data-feature]").forEach(card => {
+
+      card.onclick = () =>
+        renderFeature(card.dataset.feature);
+
+    });
+
+  }
+
+
+  /* ============================================
+     FEATURE DETAIL
+  ============================================ */
+
+  function renderFeature(featureId){
+
+    const feature = allFeatures.find(f => f.id === featureId);
+
+    if(!feature) return;
+
+    const done = state.completed.includes(featureId);
+
+    content.innerHTML = `
+
+      <div class="teg2-detail">
+
+        <button class="teg2-back" id="teg2Back">
+          ← ${feature.sectionTitle}
+        </button>
+
+        ${feature.content}
+
+        <div class="teg2-actions">
+
+          <button
+            class="teg2-action"
+            id="teg2Complete"
+          >
+            ${done ? "✓ সম্পন্ন করা হয়েছে" : "✓ এই গাইড সম্পন্ন করলাম"}
+          </button>
+
+          <button
+            class="teg2-action secondary"
+            id="teg2Home"
+          >
+            🏠 মূল গাইড
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+    document.getElementById("teg2Back").onclick = () =>
+      renderSection(feature.sectionId);
+
+    document.getElementById("teg2Home").onclick =
+      renderHome;
+
+    document.getElementById("teg2Complete").onclick = () => {
+
+      if(!state.completed.includes(featureId)){
+        state.completed.push(featureId);
+      }
+
+      save();
+
+      document.getElementById("teg2Complete").textContent =
+        "✓ সম্পন্ন করা হয়েছে";
+
+    };
+
+    bindChecklist();
+
+  }
+
+
+  /* ============================================
+     CHECKLIST
+  ============================================ */
+
+  function bindChecklist(){
+
+    const checks = content.querySelectorAll(
+      '.teg2-check input[type="checkbox"]'
+    );
+
+    checks.forEach((input,index) => {
+
+      const key =
+        location.pathname +
+        "_" +
+        index +
+        "_" +
+        content.textContent.slice(0,40);
+
+      input.checked = !!state.checklist[key];
+
+      input.addEventListener("change",() => {
+
+        state.checklist[key] = input.checked;
+
+        save();
+
+      });
+
+    });
+
+  }
+
+
+  /* ============================================
+     SEARCH
+  ============================================ */
+
+  search.addEventListener("input",function(){
+
+    renderNav(this.value);
+
+    const query = this.value.toLowerCase().trim();
+
+    if(!query){
+      renderHome();
+      return;
+    }
+
+    const matches = allFeatures.filter(feature =>
+      feature.title.toLowerCase().includes(query) ||
+      feature.desc.toLowerCase().includes(query) ||
+      feature.sectionTitle.toLowerCase().includes(query)
+    );
+
+    content.innerHTML = `
+
+      <div class="teg2-welcome">
+
+        <h2>🔎 Search Result</h2>
+
+        <p>
+          “${this.value.replace(/</g,"&lt;")}”
+          এর জন্য ${matches.length}টি গাইড পাওয়া গেছে।
+        </p>
+
+      </div>
+
+      <div class="teg2-grid">
+
+        ${
+          matches.length
+          ? matches.map(feature => `
+
+              <div
+                class="teg2-card teg2-feature"
+                data-feature="${feature.id}"
+              >
+
+                <div class="teg2-feature-top">
+
+                  <div class="teg2-feature-icon">
+                    ${feature.icon}
+                  </div>
+
+                  <div>
+
+                    <h3>${feature.title}</h3>
+
+                    <p>${feature.desc}</p>
+
+                    <span class="teg2-tag">
+                      ${feature.sectionTitle}
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+          `).join("")
+          :
+          `
+            <div class="teg2-card">
+              <h3>কিছু পাওয়া যায়নি</h3>
+              <p>অন্য কোনো শব্দ দিয়ে আবার খুঁজে দেখো।</p>
+            </div>
+          `
+        }
+
+      </div>
+
+    `;
+
+    content.querySelectorAll("[data-feature]").forEach(card => {
+
+      card.onclick = () =>
+        renderFeature(card.dataset.feature);
+
+    });
+
+  });
+
+
+  /* ============================================
+     OPEN / CLOSE
+  ============================================ */
+
+  function open(){
+
+    overlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+    search.value = "";
+
+    renderNav();
+
+    renderHome();
+
+  }
+
+  function close(){
+
+    overlay.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+  }
+
+  document.getElementById("teg2Close").onclick = close;
+
+  overlay.addEventListener("click",function(e){
+
+    if(e.target === overlay) close();
+
+  });
+
+  document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape" &&
+       overlay.classList.contains("active")){
+
+      close();
+
+    }
+
+  });
+
+
+  /* ============================================
+     ADD LAUNCH BUTTON
+  ============================================ */
+
+  function addLaunchButton(){
+
+    if(document.getElementById("teg2LaunchButton")) return;
+
+    const heroButtons =
+      document.querySelector(".hero-buttons");
+
+    if(heroButtons){
+
+      const btn = document.createElement("button");
+
+      btn.id = "teg2LaunchButton";
+
+      btn.className = "teg2-launch";
+
+      btn.type = "button";
+
+      btn.innerHTML =
+        "🌍 আরও গাইডলাইন";
+
+      btn.addEventListener("click",open);
+
+      heroButtons.appendChild(btn);
+
+      return;
+
+    }
+
+    /* fallback */
+
+    const fallback = document.createElement("button");
+
+    fallback.id = "teg2LaunchButton";
+
+    fallback.className = "teg2-launch";
+
+    fallback.type = "button";
+
+    fallback.innerHTML =
+      "🌍 আরও গাইডলাইন";
+
+    fallback.style.position = "fixed";
+    fallback.style.right = "20px";
+    fallback.style.bottom = "85px";
+    fallback.style.zIndex = "9999";
+
+    fallback.onclick = open;
+
+    document.body.appendChild(fallback);
+
+  }
+
+
+  /* ============================================
+     START
+  ============================================ */
+
+  if(document.readyState === "loading"){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      addLaunchButton
+    );
+
+  }else{
+
+    addLaunchButton();
+
+  }
+
+})();
+</script>
+
+<!-- ================= END TEG2 ================= -->
 </body>
 </html>
