@@ -14496,5 +14496,181 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })();
 </script>
+  <script>
+/* =========================================================
+   FINAL HUB → REAL FEATURES CONNECTION
+========================================================= */
+
+(function(){
+
+  const oldResult = TEXTILE_FINAL_HUB.result;
+
+  TEXTILE_FINAL_HUB.result = function(name){
+
+    /* ---------- STUDY ---------- */
+
+    if(name === "MCQ Practice"){
+      TEXTILE_FINAL_HUB.close();
+      TE2.open("mcq");
+      return;
+    }
+
+    if(name === "Mock Test"){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("mock");
+      return;
+    }
+
+    if(name === "Viva Preparation"){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("viva");
+      return;
+    }
+
+    if(name === "Textile Notes"){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("notes");
+      return;
+    }
+
+    if(name === "Exam Mode"){
+      TEXTILE_FINAL_HUB.close();
+      TE3.open("exam");
+      return;
+    }
+
+    if(name === "Textile Glossary"){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("glossary");
+      return;
+    }
+
+
+    /* ---------- CALCULATOR ---------- */
+
+    if(
+      name === "GSM Calculator" ||
+      name === "Yarn Count" ||
+      name === "EPI / PPI" ||
+      name === "Production Calculator" ||
+      name === "Efficiency Calculator" ||
+      name === "Shrinkage Calculator"
+    ){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("calculator");
+      return;
+    }
+
+
+    /* ---------- LAB ---------- */
+
+    if(name === "GSM Testing"){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("testing");
+      return;
+    }
+
+    if(name === "Shrinkage Test"){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("testing");
+      return;
+    }
+
+    if(name === "Tensile Test"){
+      TEXTILE_FINAL_HUB.close();
+      TE4.open("test");
+      return;
+    }
+
+    if(name === "Color Fastness"){
+      TEXTILE_FINAL_HUB.close();
+      TE.open("testing");
+      return;
+    }
+
+    if(name === "Defect Diagnosis"){
+      TEXTILE_FINAL_HUB.close();
+      TE4.open("defect");
+      return;
+    }
+
+    if(name === "Problem Solver"){
+      TEXTILE_FINAL_HUB.close();
+      TE3.open("assistant");
+      return;
+    }
+
+
+    /* ---------- CAREER ---------- */
+
+    if(name === "Textile Career"){
+      TEXTILE_FINAL_HUB.close();
+      TE2.open("career");
+      return;
+    }
+
+    if(name === "Viva Simulator"){
+      TEXTILE_FINAL_HUB.close();
+      TE4.open("viva");
+      return;
+    }
+
+    if(name === "Interview Practice"){
+      TEXTILE_FINAL_HUB.close();
+      TE4.open("interview");
+      return;
+    }
+
+    if(name === "CV Helper"){
+      TEXTILE_FINAL_HUB.close();
+      TE3.open("cv");
+      return;
+    }
+
+    if(name === "Job Preparation"){
+      TEXTILE_FINAL_HUB.close();
+      TE3.open("career");
+      return;
+    }
+
+    if(name === "Bangladesh Textile Industry"){
+      TEXTILE_FINAL_HUB.close();
+      TE3.open("industry");
+      return;
+    }
+
+
+    /* ---------- FACTORY ---------- */
+
+    if(name === "Factory Simulator"){
+      TEXTILE_FINAL_HUB.close();
+      TE3.open("factory");
+      return;
+    }
+
+    /* Process items */
+    if(
+      name === "Fiber" ||
+      name === "Spinning" ||
+      name === "Weaving" ||
+      name === "Knitting" ||
+      name === "Dyeing" ||
+      name === "Finishing" ||
+      name === "Garments"
+    ){
+      TEXTILE_FINAL_HUB.close();
+      TE3.open("factory");
+      return;
+    }
+
+
+    /* ---------- FALLBACK ---------- */
+
+    oldResult.call(TEXTILE_FINAL_HUB,name);
+
+  };
+
+})();
+</script>
 </body>
 </html>
