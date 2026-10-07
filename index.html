@@ -14277,5 +14277,224 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+  <!-- =========================================================
+     FINAL HUB → REAL TEXTILE FEATURES CONNECT
+========================================================= -->
+<script>
+(function(){
+
+  const originalFinalResult = TEXTILE_FINAL_HUB.result;
+
+  TEXTILE_FINAL_HUB.result = function(name){
+
+    /* Final Hub বন্ধ */
+    try{
+      TEXTILE_FINAL_HUB.close();
+    }catch(e){}
+
+    /* =========================
+       STUDY & LEARNING
+    ========================= */
+
+    if(name === "MCQ Practice"){
+      if(typeof TE2 !== "undefined"){
+        TE2.open("mcq");
+        return;
+      }
+    }
+
+    if(name === "Mock Test"){
+      if(typeof TE !== "undefined"){
+        TE.open("mock");
+        return;
+      }
+    }
+
+    if(name === "Viva Preparation"){
+      if(typeof TE4 !== "undefined"){
+        TE4.open("viva");
+        return;
+      }
+    }
+
+    if(name === "Textile Notes"){
+      if(typeof TE !== "undefined"){
+        TE.open("notes");
+        return;
+      }
+    }
+
+    if(name === "Exam Mode"){
+      if(typeof TE3 !== "undefined"){
+        TE3.open("exam");
+        return;
+      }
+    }
+
+    if(name === "Textile Glossary"){
+      if(typeof TE !== "undefined"){
+        TE.open("glossary");
+        return;
+      }
+    }
+
+
+    /* =========================
+       CALCULATORS
+    ========================= */
+
+    if(
+      name === "GSM Calculator" ||
+      name === "Yarn Count" ||
+      name === "EPI / PPI" ||
+      name === "Production Calculator" ||
+      name === "Efficiency Calculator" ||
+      name === "Shrinkage Calculator"
+    ){
+
+      if(typeof TE3 !== "undefined"){
+        TE3.open("calculator");
+        return;
+      }
+
+      if(typeof TE2 !== "undefined"){
+        TE2.open("calc");
+        return;
+      }
+    }
+
+
+    /* =========================
+       VIRTUAL TEXTILE LAB
+    ========================= */
+
+    if(name === "GSM Testing"){
+      if(typeof TE3 !== "undefined"){
+        TE3.open("lab");
+        return;
+      }
+    }
+
+    if(name === "Shrinkage Test"){
+      if(typeof TE3 !== "undefined"){
+        TE3.open("lab");
+        return;
+      }
+    }
+
+    if(name === "Tensile Test"){
+      if(typeof TE4 !== "undefined"){
+        TE4.open("test");
+        return;
+      }
+    }
+
+    if(name === "Color Fastness"){
+      if(typeof TE4 !== "undefined"){
+        TE4.open("test");
+        return;
+      }
+    }
+
+    if(name === "Defect Diagnosis"){
+      if(typeof TE4 !== "undefined"){
+        TE4.open("defect");
+        return;
+      }
+    }
+
+    if(name === "Problem Solver"){
+      if(typeof TE5HUB !== "undefined"){
+        TE5HUB.open();
+        setTimeout(function(){
+          TE5HUB.show("lab");
+        },50);
+        return;
+      }
+    }
+
+
+    /* =========================
+       CAREER & JOB
+    ========================= */
+
+    if(name === "Textile Career"){
+      if(typeof TE3 !== "undefined"){
+        TE3.open("career");
+        return;
+      }
+    }
+
+    if(name === "Viva Simulator"){
+      if(typeof TE4 !== "undefined"){
+        TE4.open("viva");
+        return;
+      }
+    }
+
+    if(name === "Interview Practice"){
+      if(typeof TE4 !== "undefined"){
+        TE4.open("interview");
+        return;
+      }
+    }
+
+    if(name === "CV Helper"){
+      if(typeof TE3 !== "undefined"){
+        TE3.open("cv");
+        return;
+      }
+    }
+
+    if(name === "Job Preparation"){
+      if(typeof TE3 !== "undefined"){
+        TE3.open("career");
+        return;
+      }
+    }
+
+    if(name === "Bangladesh Textile Industry"){
+      if(typeof TE3 !== "undefined"){
+        TE3.open("industry");
+        return;
+      }
+    }
+
+
+    /* =========================
+       TEXTILE FACTORY
+    ========================= */
+
+    if(
+      name === "Fiber" ||
+      name === "Spinning" ||
+      name === "Weaving" ||
+      name === "Knitting" ||
+      name === "Dyeing" ||
+      name === "Finishing" ||
+      name === "Garments" ||
+      name === "Factory Simulator"
+    ){
+
+      if(typeof TE3 !== "undefined"){
+        TE3.open("factory");
+        return;
+      }
+    }
+
+
+    /* =========================
+       FALLBACK
+    ========================= */
+
+    originalFinalResult.call(
+      TEXTILE_FINAL_HUB,
+      name
+    );
+
+  };
+
+})();
+</script>
 </body>
 </html>
