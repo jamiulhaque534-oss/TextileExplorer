@@ -14672,5 +14672,4344 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })();
 </script>
+  <!-- =========================================================
+ TEXTILE EXPLORER
+ BEGINNER ACADEMY — ADVANCED EDITION
+ Existing features untouched
+ ========================================================= -->
+
+<style>
+/* =========================================================
+   TEG — TEXTILE EXPLORER GUIDE
+   ========================================================= */
+
+#TEG_APP{
+  --teg-primary:#0ea5e9;
+  --teg-secondary:#2563eb;
+  --teg-success:#16a34a;
+  --teg-warning:#f59e0b;
+  --teg-danger:#ef4444;
+  --teg-text:#0f172a;
+  --teg-muted:#64748b;
+  --teg-card:#ffffff;
+  --teg-border:rgba(100,116,139,.18);
+
+  font-family:inherit;
+}
+
+
+/* ================= LAUNCH BUTTON ================= */
+
+.teg-launch-wrap{
+  margin-top:18px;
+  width:100%;
+}
+
+.teg-launch-btn{
+  width:100%;
+  max-width:560px;
+  min-height:82px;
+  border:1px solid rgba(14,165,233,.20);
+  border-radius:20px;
+  padding:16px 18px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(14,165,233,.10),
+      rgba(37,99,235,.06)
+    );
+  color:inherit;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+  text-align:left;
+  font:inherit;
+
+  transition:.25s ease;
+
+  box-shadow:
+    0 8px 30px rgba(15,23,42,.07);
+}
+
+.teg-launch-btn:hover{
+  transform:translateY(-3px);
+  border-color:rgba(14,165,233,.45);
+
+  box-shadow:
+    0 15px 40px rgba(14,165,233,.14);
+}
+
+.teg-launch-icon{
+  width:52px;
+  height:52px;
+  min-width:52px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0ea5e9,
+      #2563eb
+    );
+
+  color:#fff;
+  font-size:25px;
+}
+
+.teg-launch-text{
+  flex:1;
+}
+
+.teg-launch-text strong{
+  display:block;
+  font-size:17px;
+  margin-bottom:4px;
+}
+
+.teg-launch-text span{
+  display:block;
+  font-size:13px;
+  line-height:1.55;
+  opacity:.70;
+}
+
+.teg-launch-arrow{
+  font-size:23px;
+}
+
+
+/* ================= OVERLAY ================= */
+
+#tegOverlay{
+  position:fixed;
+  inset:0;
+
+  z-index:11000;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px;
+
+  background:
+    rgba(15,23,42,.76);
+
+  backdrop-filter:blur(8px);
+}
+
+#tegOverlay.teg-show{
+  display:flex;
+}
+
+
+/* ================= APP WINDOW ================= */
+
+.teg-window{
+  width:min(1180px,100%);
+  height:min(94vh,900px);
+
+  background:
+    var(--teg-card);
+
+  color:
+    var(--teg-text);
+
+  border-radius:25px;
+
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+
+  box-shadow:
+    0 35px 110px rgba(0,0,0,.35);
+}
+
+
+/* ================= HEADER ================= */
+
+.teg-header{
+  min-height:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:14px 20px;
+
+  border-bottom:
+    1px solid var(--teg-border);
+
+  flex-shrink:0;
+}
+
+.teg-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.teg-brand-icon{
+  width:43px;
+  height:43px;
+
+  border-radius:13px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0ea5e9,
+      #2563eb
+    );
+
+  color:#fff;
+  font-size:21px;
+}
+
+.teg-brand h2{
+  margin:0;
+  font-size:18px;
+}
+
+.teg-brand p{
+  margin:2px 0 0;
+  font-size:11px;
+  opacity:.6;
+}
+
+.teg-header-actions{
+  display:flex;
+  gap:7px;
+}
+
+.teg-icon-btn{
+  width:38px;
+  height:38px;
+
+  border:0;
+  border-radius:11px;
+
+  cursor:pointer;
+
+  background:
+    rgba(100,116,139,.10);
+
+  color:inherit;
+
+  font-size:17px;
+}
+
+
+/* ================= MAIN ================= */
+
+.teg-main{
+  display:flex;
+  flex:1;
+  min-height:0;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.teg-sidebar{
+  width:245px;
+
+  flex-shrink:0;
+
+  padding:15px;
+
+  overflow-y:auto;
+
+  border-right:
+    1px solid var(--teg-border);
+}
+
+.teg-progress{
+  padding:15px;
+
+  border-radius:16px;
+
+  background:
+    rgba(14,165,233,.07);
+
+  margin-bottom:13px;
+}
+
+.teg-progress-top{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.teg-progress-track{
+  height:8px;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  background:
+    rgba(100,116,139,.15);
+}
+
+.teg-progress-fill{
+  width:0;
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0ea5e9,
+      #2563eb
+    );
+
+  transition:.4s;
+}
+
+.teg-progress-percent{
+  display:block;
+  margin-top:7px;
+  font-size:11px;
+  opacity:.65;
+}
+
+
+.teg-nav{
+  width:100%;
+
+  display:flex;
+  align-items:center;
+
+  gap:9px;
+
+  padding:10px;
+
+  margin-bottom:4px;
+
+  border:0;
+  border-radius:11px;
+
+  background:transparent;
+
+  color:inherit;
+
+  cursor:pointer;
+
+  text-align:left;
+
+  font:inherit;
+
+  transition:.2s;
+}
+
+.teg-nav:hover{
+  background:
+    rgba(14,165,233,.07);
+}
+
+.teg-nav.active{
+  background:
+    rgba(14,165,233,.12);
+
+  font-weight:700;
+}
+
+.teg-nav-number{
+  width:27px;
+  height:27px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(100,116,139,.11);
+
+  font-size:11px;
+
+  flex-shrink:0;
+}
+
+.teg-nav.active .teg-nav-number{
+  background:#0ea5e9;
+  color:#fff;
+}
+
+
+/* ================= CONTENT ================= */
+
+.teg-content{
+  flex:1;
+
+  min-width:0;
+
+  overflow-y:auto;
+
+  padding:28px;
+}
+
+.teg-page{
+  display:none;
+
+  animation:
+    tegFade .25s ease;
+}
+
+.teg-page.active{
+  display:block;
+}
+
+@keyframes tegFade{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* ================= HERO ================= */
+
+.teg-welcome{
+  padding:27px;
+
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(14,165,233,.11),
+      rgba(37,99,235,.07)
+    );
+
+  border:
+    1px solid rgba(14,165,233,.14);
+
+  margin-bottom:22px;
+}
+
+.teg-label{
+  display:inline-block;
+
+  padding:6px 10px;
+
+  border-radius:20px;
+
+  background:
+    rgba(14,165,233,.11);
+
+  color:#0284c7;
+
+  font-size:11px;
+  font-weight:800;
+
+  margin-bottom:10px;
+}
+
+.teg-welcome h1{
+  margin:0 0 10px;
+
+  font-size:30px;
+  line-height:1.25;
+}
+
+.teg-welcome p{
+  margin:0;
+
+  max-width:750px;
+
+  line-height:1.8;
+
+  opacity:.75;
+}
+
+
+/* ================= GRID ================= */
+
+.teg-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(210px,1fr));
+
+  gap:14px;
+}
+
+.teg-card{
+  padding:18px;
+
+  border:
+    1px solid var(--teg-border);
+
+  border-radius:17px;
+
+  background:
+    rgba(148,163,184,.035);
+
+  transition:.22s;
+}
+
+.teg-card:hover{
+  transform:translateY(-3px);
+
+  border-color:
+    rgba(14,165,233,.35);
+
+  box-shadow:
+    0 10px 30px rgba(14,165,233,.08);
+}
+
+.teg-card-icon{
+  font-size:27px;
+  margin-bottom:9px;
+}
+
+.teg-card h3{
+  margin:0 0 7px;
+  font-size:16px;
+}
+
+.teg-card p{
+  margin:0;
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  opacity:.68;
+}
+
+
+/* ================= MODULE ================= */
+
+.teg-module-header{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  align-items:flex-start;
+
+  margin-bottom:20px;
+}
+
+.teg-module-header h2{
+  margin:0 0 7px;
+
+  font-size:28px;
+}
+
+.teg-module-header p{
+  margin:0;
+
+  line-height:1.7;
+
+  opacity:.7;
+}
+
+.teg-bookmark{
+  border:0;
+
+  width:42px;
+  height:42px;
+
+  border-radius:12px;
+
+  background:
+    rgba(245,158,11,.10);
+
+  cursor:pointer;
+
+  font-size:19px;
+}
+
+
+/* ================= LESSON ================= */
+
+.teg-lesson{
+  padding:20px;
+
+  border:
+    1px solid var(--teg-border);
+
+  border-radius:17px;
+
+  margin-bottom:14px;
+}
+
+.teg-lesson h3{
+  margin:0 0 9px;
+}
+
+.teg-lesson p{
+  margin:0;
+
+  line-height:1.85;
+
+  opacity:.76;
+}
+
+.teg-info{
+  padding:17px;
+
+  border-left:
+    4px solid #0ea5e9;
+
+  border-radius:13px;
+
+  background:
+    rgba(14,165,233,.06);
+
+  margin:15px 0;
+
+  line-height:1.8;
+}
+
+.teg-info strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+
+/* ================= JOURNEY ================= */
+
+.teg-journey{
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+
+  margin:20px 0;
+}
+
+.teg-journey-item{
+  padding:12px 14px;
+
+  border-radius:12px;
+
+  background:
+    rgba(14,165,233,.08);
+
+  border:
+    1px solid rgba(14,165,233,.14);
+
+  font-weight:700;
+
+  font-size:13px;
+}
+
+.teg-arrow{
+  opacity:.45;
+}
+
+
+/* ================= CHECKLIST ================= */
+
+.teg-check{
+  display:flex;
+
+  align-items:flex-start;
+
+  gap:10px;
+
+  padding:11px 0;
+
+  font-size:13px;
+
+  line-height:1.6;
+}
+
+.teg-check input{
+  margin-top:3px;
+  accent-color:#0ea5e9;
+}
+
+
+/* ================= BUTTON ================= */
+
+.teg-btn{
+  border:0;
+
+  padding:11px 17px;
+
+  border-radius:11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0ea5e9,
+      #2563eb
+    );
+
+  color:#fff;
+
+  cursor:pointer;
+
+  font:inherit;
+
+  font-weight:700;
+}
+
+.teg-btn.secondary{
+  background:
+    rgba(100,116,139,.12);
+
+  color:inherit;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+.teg-bottom-nav{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  margin-top:25px;
+
+  padding-top:20px;
+
+  border-top:
+    1px solid var(--teg-border);
+}
+
+
+/* ================= SEARCH ================= */
+
+.teg-search{
+  width:100%;
+
+  padding:13px 15px;
+
+  border-radius:12px;
+
+  border:
+    1px solid var(--teg-border);
+
+  background:
+    rgba(148,163,184,.05);
+
+  color:inherit;
+
+  font:inherit;
+
+  outline:none;
+
+  box-sizing:border-box;
+
+  margin-bottom:15px;
+}
+
+.teg-search:focus{
+  border-color:#0ea5e9;
+}
+
+.teg-search-result{
+  padding:14px;
+
+  border-bottom:
+    1px solid var(--teg-border);
+
+  cursor:pointer;
+}
+
+.teg-search-result:hover{
+  background:
+    rgba(14,165,233,.06);
+}
+
+.teg-search-result strong{
+  display:block;
+  margin-bottom:4px;
+}
+
+.teg-search-result span{
+  font-size:12px;
+  opacity:.65;
+}
+
+
+/* ================= CAREER FINDER ================= */
+
+.teg-career-question{
+  padding:19px;
+
+  border:
+    1px solid var(--teg-border);
+
+  border-radius:16px;
+
+  margin-bottom:14px;
+}
+
+.teg-career-question h3{
+  margin:0 0 11px;
+  font-size:16px;
+}
+
+.teg-choice{
+  width:100%;
+
+  padding:11px 13px;
+
+  margin-top:7px;
+
+  border:0;
+
+  border-radius:10px;
+
+  background:
+    rgba(148,163,184,.07);
+
+  color:inherit;
+
+  cursor:pointer;
+
+  text-align:left;
+
+  font:inherit;
+}
+
+.teg-choice:hover{
+  background:
+    rgba(14,165,233,.11);
+}
+
+.teg-choice.selected{
+  background:
+    rgba(14,165,233,.16);
+
+  outline:
+    2px solid rgba(14,165,233,.35);
+}
+
+.teg-career-result{
+  padding:22px;
+
+  border-radius:18px;
+
+  background:
+    rgba(34,197,94,.08);
+
+  margin-top:18px;
+}
+
+.teg-career-result h3{
+  margin-top:0;
+}
+
+
+/* ================= QUIZ ================= */
+
+.teg-question{
+  padding:19px;
+
+  border:
+    1px solid var(--teg-border);
+
+  border-radius:16px;
+
+  margin-bottom:15px;
+}
+
+.teg-question h3{
+  font-size:15px;
+  line-height:1.6;
+  margin:0 0 10px;
+}
+
+.teg-option{
+  width:100%;
+
+  border:0;
+
+  padding:11px;
+
+  border-radius:10px;
+
+  background:
+    rgba(148,163,184,.06);
+
+  color:inherit;
+
+  cursor:pointer;
+
+  text-align:left;
+
+  font:inherit;
+
+  margin-top:7px;
+}
+
+.teg-option.correct{
+  background:
+    rgba(34,197,94,.14);
+}
+
+.teg-option.wrong{
+  background:
+    rgba(239,68,68,.13);
+}
+
+.teg-option:disabled{
+  cursor:default;
+}
+
+.teg-score{
+  text-align:center;
+
+  padding:24px;
+
+  border-radius:18px;
+
+  background:
+    rgba(14,165,233,.07);
+}
+
+.teg-score strong{
+  display:block;
+
+  font-size:36px;
+
+  margin-bottom:5px;
+}
+
+
+/* ================= GLOSSARY ================= */
+
+.teg-glossary-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+  gap:12px;
+}
+
+.teg-term{
+  padding:16px;
+
+  border:
+    1px solid var(--teg-border);
+
+  border-radius:14px;
+}
+
+.teg-term strong{
+  display:block;
+
+  font-size:17px;
+
+  margin-bottom:5px;
+}
+
+.teg-term span{
+  font-size:12px;
+
+  line-height:1.7;
+
+  opacity:.7;
+}
+
+
+/* ================= CERTIFICATE ================= */
+
+.teg-certificate{
+  padding:35px;
+
+  border:
+    2px solid rgba(14,165,233,.30);
+
+  border-radius:20px;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(14,165,233,.07),
+      rgba(37,99,235,.05)
+    );
+}
+
+.teg-certificate-icon{
+  font-size:55px;
+  margin-bottom:10px;
+}
+
+.teg-certificate h2{
+  margin:5px 0;
+}
+
+.teg-certificate-name{
+  font-size:20px;
+  font-weight:800;
+  margin:15px 0;
+}
+
+
+/* ================= TOAST ================= */
+
+#tegToast{
+  position:fixed;
+
+  left:50%;
+  bottom:25px;
+
+  transform:
+    translate(-50%,20px);
+
+  padding:11px 17px;
+
+  border-radius:11px;
+
+  background:#0f172a;
+
+  color:#fff;
+
+  font-size:13px;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.25s;
+
+  z-index:12000;
+}
+
+#tegToast.show{
+  opacity:1;
+
+  transform:
+    translate(-50%,0);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:760px){
+
+  #tegOverlay{
+    padding:6px;
+  }
+
+  .teg-window{
+    height:97vh;
+
+    border-radius:18px;
+  }
+
+  .teg-header{
+    padding:11px 13px;
+  }
+
+  .teg-brand h2{
+    font-size:15px;
+  }
+
+  .teg-brand p{
+    display:none;
+  }
+
+  .teg-main{
+    flex-direction:column;
+  }
+
+  .teg-sidebar{
+    width:auto;
+
+    display:flex;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    border-right:0;
+
+    border-bottom:
+      1px solid var(--teg-border);
+
+    padding:8px;
+  }
+
+  .teg-progress{
+    display:none;
+  }
+
+  .teg-nav{
+    width:auto;
+
+    min-width:max-content;
+
+    margin:0;
+  }
+
+  .teg-nav span:last-child{
+    display:none;
+  }
+
+  .teg-content{
+    padding:17px;
+  }
+
+  .teg-welcome{
+    padding:20px;
+  }
+
+  .teg-welcome h1{
+    font-size:23px;
+  }
+
+  .teg-module-header h2{
+    font-size:22px;
+  }
+
+  .teg-grid{
+    grid-template-columns:1fr;
+  }
+
+  .teg-journey{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .teg-arrow{
+    text-align:center;
+  }
+
+  .teg-bottom-nav{
+    position:sticky;
+    bottom:0;
+
+    background:
+      var(--teg-card);
+
+    padding-bottom:5px;
+  }
+
+}
+</style>
+
+
+<div id="TEG_APP">
+
+  <!-- =======================================================
+       LAUNCH BUTTON
+       ======================================================= -->
+
+  <div
+    class="teg-launch-wrap"
+    id="tegLaunchWrap">
+
+    <button
+      class="teg-launch-btn"
+      type="button"
+      onclick="TEG.open()">
+
+      <div class="teg-launch-icon">
+        🎓
+      </div>
+
+      <div class="teg-launch-text">
+
+        <strong>
+          নতুনদের জন্য গাইডলাইন
+        </strong>
+
+        <span>
+          আপনার Textile Engineering-এর যাত্রা এখান থেকেই শুরু করুন →
+        </span>
+
+      </div>
+
+      <div class="teg-launch-arrow">
+        →
+      </div>
+
+    </button>
+
+  </div>
+
+
+  <!-- =======================================================
+       MAIN APP
+       ======================================================= -->
+
+  <div
+    id="tegOverlay"
+    aria-hidden="true">
+
+    <div class="teg-window">
+
+
+      <!-- HEADER -->
+
+      <header class="teg-header">
+
+        <div class="teg-brand">
+
+          <div class="teg-brand-icon">
+            🧵
+          </div>
+
+          <div>
+
+            <h2>
+              Textile Explorer Academy
+            </h2>
+
+            <p>
+              নতুনদের জন্য Textile Engineering Learning Journey
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="teg-header-actions">
+
+          <button
+            class="teg-icon-btn"
+            title="হোম"
+            onclick="TEG.home()">
+            🏠
+          </button>
+
+          <button
+            class="teg-icon-btn"
+            title="বন্ধ করুন"
+            onclick="TEG.close()">
+            ×
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- MAIN -->
+
+      <div class="teg-main">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="teg-sidebar">
+
+          <div class="teg-progress">
+
+            <div class="teg-progress-top">
+
+              <strong>
+                শেখার অগ্রগতি
+              </strong>
+
+              <span id="tegProgressCount">
+                0/12
+              </span>
+
+            </div>
+
+            <div class="teg-progress-track">
+
+              <div
+                class="teg-progress-fill"
+                id="tegProgressFill">
+              </div>
+
+            </div>
+
+            <span
+              class="teg-progress-percent"
+              id="tegProgressPercent">
+              ০% সম্পন্ন
+            </span>
+
+          </div>
+
+
+          <button
+            class="teg-nav active"
+            data-page="0"
+            onclick="TEG.go(0)">
+
+            <span class="teg-nav-number">
+              ১
+            </span>
+
+            <span>
+              শুরু করুন
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="1"
+            onclick="TEG.go(1)">
+
+            <span class="teg-nav-number">
+              ২
+            </span>
+
+            <span>
+              Textile কী?
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="2"
+            onclick="TEG.go(2)">
+
+            <span class="teg-nav-number">
+              ৩
+            </span>
+
+            <span>
+              Textile Journey
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="3"
+            onclick="TEG.go(3)">
+
+            <span class="teg-nav-number">
+              ৪
+            </span>
+
+            <span>
+              বিভাগগুলো
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="4"
+            onclick="TEG.go(4)">
+
+            <span class="teg-nav-number">
+              ৫
+            </span>
+
+            <span>
+              Engineer কী করেন?
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="5"
+            onclick="TEG.go(5)">
+
+            <span class="teg-nav-number">
+              ৬
+            </span>
+
+            <span>
+              কীভাবে শিখবেন
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="6"
+            onclick="TEG.go(6)">
+
+            <span class="teg-nav-number">
+              ৭
+            </span>
+
+            <span>
+              Career Finder
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="7"
+            onclick="TEG.go(7)">
+
+            <span class="teg-nav-number">
+              ৮
+            </span>
+
+            <span>
+              Textile Glossary
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="8"
+            onclick="TEG.go(8)">
+
+            <span class="teg-nav-number">
+              ৯
+            </span>
+
+            <span>
+              Factory Journey
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="9"
+            onclick="TEG.go(9)">
+
+            <span class="teg-nav-number">
+              ১০
+            </span>
+
+            <span>
+              Beginner Quiz
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="10"
+            onclick="TEG.go(10)">
+
+            <span class="teg-nav-number">
+              ১১
+            </span>
+
+            <span>
+              Search & Bookmark
+            </span>
+
+          </button>
+
+
+          <button
+            class="teg-nav"
+            data-page="11"
+            onclick="TEG.go(11)">
+
+            <span class="teg-nav-number">
+              ১২
+            </span>
+
+            <span>
+              Completion
+            </span>
+
+          </button>
+
+        </aside>
+
+
+        <!-- CONTENT -->
+
+        <main class="teg-content">
+
+
+          <!-- =================================================
+               PAGE 01
+               ================================================= -->
+
+          <section
+            class="teg-page active"
+            data-page="0">
+
+            <div class="teg-welcome">
+
+              <span class="teg-label">
+                BEGINNER ACADEMY
+              </span>
+
+              <h1>
+                আপনার Textile Engineering যাত্রা এখান থেকেই শুরু করুন। 🚀
+              </h1>
+
+              <p>
+                আপনি যদি Textile Engineering সম্পর্কে একদম নতুন হন,
+                তাহলে এই Academy আপনার জন্য। এখানে Fiber থেকে
+                Garments, Engineering থেকে Career—সবকিছু ধাপে ধাপে
+                সহজ বাংলায় বুঝানো হবে।
+              </p>
+
+            </div>
+
+
+            <div class="teg-grid">
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🌱
+                </div>
+
+                <h3>
+                  একদম Basic থেকে
+                </h3>
+
+                <p>
+                  কোনো পূর্বজ্ঞান ছাড়াই শুরু করতে পারবেন।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🧵
+                </div>
+
+                <h3>
+                  Textile Journey
+                </h3>
+
+                <p>
+                  Fiber থেকে final product পর্যন্ত পুরো ধারণা।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🏭
+                </div>
+
+                <h3>
+                  Industry Understanding
+                </h3>
+
+                <p>
+                  Factory ও department সম্পর্কে beginner-friendly ধারণা।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  💼
+                </div>
+
+                <h3>
+                  Career Direction
+                </h3>
+
+                <p>
+                  নিজের আগ্রহ অনুযায়ী সম্ভাব্য career direction খুঁজে নিন।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-info">
+
+              <strong>
+                🎯 কীভাবে ব্যবহার করবেন?
+              </strong>
+
+              একেকটি module পড়ুন, নিজের progress সম্পন্ন করুন,
+              quiz দিন এবং শেষে Career Finder ব্যবহার করে
+              নিজের সম্ভাব্য direction সম্পর্কে ধারণা নিন।
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <span></span>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.next()">
+
+                যাত্রা শুরু করুন →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 02
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="1">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  MODULE 01
+                </span>
+
+                <h2>
+                  Textile Engineering কী?
+                </h2>
+
+                <p>
+                  Textile Engineering-এর সবচেয়ে basic ধারণা।
+                </p>
+
+              </div>
+
+              <button
+                class="teg-bookmark"
+                onclick="TEG.bookmark(1)"
+                id="tegBookmark1">
+                ☆
+              </button>
+
+            </div>
+
+
+            <div class="teg-lesson">
+
+              <h3>
+                সহজ ভাষায়
+              </h3>
+
+              <p>
+                Textile Engineering হলো Fiber, Yarn, Fabric,
+                Dyeing, Finishing, Garments এবং সংশ্লিষ্ট
+                manufacturing, testing, quality ও engineering
+                process নিয়ে কাজ করার একটি engineering field।
+              </p>
+
+            </div>
+
+
+            <div class="teg-info">
+
+              <strong>
+                🧠 একটি উদাহরণ
+              </strong>
+
+              আপনি যে T-shirt পরেছেন সেটি কোথা থেকে এসেছে?
+
+              Fiber → Yarn → Fabric → Dyeing/Finishing →
+              Cutting → Sewing → Garment।
+
+              এই journey-এর বিভিন্ন ধাপ বুঝতে Textile Engineering
+              গুরুত্বপূর্ণ ভূমিকা রাখে।
+
+            </div>
+
+
+            <div class="teg-grid">
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">🧶</div>
+
+                <h3>Fiber</h3>
+
+                <p>
+                  Textile material তৈরির একটি মৌলিক raw material।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">🧵</div>
+
+                <h3>Yarn</h3>
+
+                <p>
+                  Fiber বা filament থেকে তৈরি strand।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">🧶</div>
+
+                <h3>Fabric</h3>
+
+                <p>
+                  Yarn বা textile material থেকে তৈরি structure।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">👕</div>
+
+                <h3>Garment</h3>
+
+                <p>
+                  Fabric থেকে তৈরি final apparel product।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(1);TEG.next()">
+                বুঝেছি, পরের ধাপ →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 03
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="2">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  MODULE 02
+                </span>
+
+                <h2>
+                  Textile Journey 🧵
+                </h2>
+
+                <p>
+                  একটি Textile product-এর বড় production journey।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-journey">
+
+              <div class="teg-journey-item">
+                🌱 Fiber
+              </div>
+
+              <div class="teg-arrow">→</div>
+
+              <div class="teg-journey-item">
+                🧵 Spinning
+              </div>
+
+              <div class="teg-arrow">→</div>
+
+              <div class="teg-journey-item">
+                🧶 Yarn
+              </div>
+
+              <div class="teg-arrow">→</div>
+
+              <div class="teg-journey-item">
+                🏭 Weaving / Knitting
+              </div>
+
+              <div class="teg-arrow">→</div>
+
+              <div class="teg-journey-item">
+                🎨 Dyeing
+              </div>
+
+              <div class="teg-arrow">→</div>
+
+              <div class="teg-journey-item">
+                ✨ Finishing
+              </div>
+
+              <div class="teg-arrow">→</div>
+
+              <div class="teg-journey-item">
+                👕 Garments
+              </div>
+
+            </div>
+
+
+            <div class="teg-info">
+
+              <strong>
+                ⚠️ গুরুত্বপূর্ণ
+              </strong>
+
+              সব Textile product একই production route অনুসরণ করে না।
+              Fiber type, fabric construction এবং product অনুযায়ী
+              process পরিবর্তিত হতে পারে।
+
+            </div>
+
+
+            <div class="teg-lesson">
+
+              <h3>
+                Beginner হিসেবে কী মনে রাখবেন?
+              </h3>
+
+              <div class="teg-check">
+                <input type="checkbox" onchange="TEG.saveChecklist(this)">
+                <span>Fiber এবং Yarn-এর পার্থক্য বুঝুন।</span>
+              </div>
+
+              <div class="teg-check">
+                <input type="checkbox" onchange="TEG.saveChecklist(this)">
+                <span>Woven এবং Knitted fabric সম্পর্কে basic ধারণা নিন।</span>
+              </div>
+
+              <div class="teg-check">
+                <input type="checkbox" onchange="TEG.saveChecklist(this)">
+                <span>Dyeing ও Finishing-এর উদ্দেশ্য বুঝুন।</span>
+              </div>
+
+              <div class="teg-check">
+                <input type="checkbox" onchange="TEG.saveChecklist(this)">
+                <span>Garments production-এর basic flow জানুন।</span>
+              </div>
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(2);TEG.next()">
+                পরের ধাপ →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 04
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="3">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  MODULE 03
+                </span>
+
+                <h2>
+                  Textile-এর প্রধান বিভাগ
+                </h2>
+
+                <p>
+                  Industry-এর বিভিন্ন department সম্পর্কে basic ধারণা।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-grid">
+
+              <div class="teg-card">
+                <div class="teg-card-icon">🧵</div>
+                <h3>Spinning</h3>
+                <p>
+                  Fiber থেকে yarn তৈরির process।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">🏭</div>
+                <h3>Weaving</h3>
+                <p>
+                  Warp ও Weft-এর interlacement দিয়ে woven fabric।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">🧶</div>
+                <h3>Knitting</h3>
+                <p>
+                  Loop formation-এর মাধ্যমে knitted fabric।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">🎨</div>
+                <h3>Dyeing</h3>
+                <p>
+                  Textile material-এ desired colour দেওয়ার process।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">✨</div>
+                <h3>Finishing</h3>
+                <p>
+                  Fabric-এর appearance ও performance উন্নত করা।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">👕</div>
+                <h3>Garments</h3>
+                <p>
+                  Fabric থেকে final apparel তৈরি।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">🔬</div>
+                <h3>Testing</h3>
+                <p>
+                  Material ও product-এর বিভিন্ন property পরীক্ষা।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">✅</div>
+                <h3>Quality</h3>
+                <p>
+                  Specification অনুযায়ী quality নিশ্চিত করা।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">📊</div>
+                <h3>Industrial Engineering</h3>
+                <p>
+                  Efficiency, productivity ও production improvement।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">💼</div>
+                <h3>Merchandising</h3>
+                <p>
+                  Buyer, order, costing ও production coordination।
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(3);TEG.next()">
+                পরের ধাপ →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 05
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="4">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  MODULE 04
+                </span>
+
+                <h2>
+                  Textile Engineer কী করেন?
+                </h2>
+
+                <p>
+                  একজন Engineer-এর কাজ department অনুযায়ী পরিবর্তিত হয়।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-grid">
+
+              <div class="teg-card">
+                <div class="teg-card-icon">⚙️</div>
+                <h3>Production</h3>
+                <p>
+                  Production planning, monitoring ও process improvement।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">🔍</div>
+                <h3>Quality</h3>
+                <p>
+                  Inspection, defect analysis ও quality control।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">📈</div>
+                <h3>IE</h3>
+                <p>
+                  Efficiency, SMV, line balancing ও productivity।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">🧪</div>
+                <h3>Testing</h3>
+                <p>
+                  Yarn, fabric ও garment-এর বিভিন্ন test।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">💻</div>
+                <h3>CAD</h3>
+                <p>
+                  Design, pattern এবং technical digital work।
+                </p>
+              </div>
+
+              <div class="teg-card">
+                <div class="teg-card-icon">💼</div>
+                <h3>Merchandising</h3>
+                <p>
+                  Buyer communication, costing ও order follow-up।
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="teg-info">
+
+              <strong>
+                💡 মনে রাখবেন
+              </strong>
+
+              Textile Engineer মানেই শুধু production floor-এ কাজ করা নয়।
+              Industry-এর বিভিন্ন technical ও management-related role-এ
+              career তৈরি করা সম্ভব।
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(4);TEG.next()">
+                পরের ধাপ →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 06
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="5">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  MODULE 05
+                </span>
+
+                <h2>
+                  নতুন হলে কীভাবে শিখবেন?
+                </h2>
+
+                <p>
+                  Zero থেকে Industry-ready হওয়ার একটি basic roadmap।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-lesson">
+
+              <h3>
+                ধাপ ১ — Foundation
+              </h3>
+
+              <p>
+                Fiber, Yarn, Fabric, GSM, Warp, Weft,
+                Course, Wale, Count ইত্যাদি basic term বুঝুন।
+              </p>
+
+            </div>
+
+
+            <div class="teg-lesson">
+
+              <h3>
+                ধাপ ২ — Production Process
+              </h3>
+
+              <p>
+                Spinning, Weaving, Knitting, Dyeing,
+                Finishing এবং Garments-এর basic workflow শিখুন।
+              </p>
+
+            </div>
+
+
+            <div class="teg-lesson">
+
+              <h3>
+                ধাপ ৩ — Calculation
+              </h3>
+
+              <p>
+                GSM, Yarn Count, EPI, PPI, shrinkage এবং
+                প্রয়োজনীয় textile calculation practice করুন।
+              </p>
+
+            </div>
+
+
+            <div class="teg-lesson">
+
+              <h3>
+                ধাপ ৪ — Practical
+              </h3>
+
+              <p>
+                Laboratory, machinery, production floor এবং
+                real-world textile problem সম্পর্কে ধারণা নিন।
+              </p>
+
+            </div>
+
+
+            <div class="teg-lesson">
+
+              <h3>
+                ধাপ ৫ — Career Skills
+              </h3>
+
+              <p>
+                Communication, Excel, reporting, problem solving,
+                teamwork এবং relevant software skill তৈরি করুন।
+              </p>
+
+            </div>
+
+
+            <div class="teg-info">
+
+              <strong>
+                🚀 আপনার লক্ষ্য
+              </strong>
+
+              শুধু exam pass নয়—যে concept শিখছেন সেটি
+              industry-তে কোথায় ব্যবহার হয় সেটা বোঝার চেষ্টা করুন।
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(5);TEG.next()">
+                Career Finder →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 07 — CAREER FINDER
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="6">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  CAREER FINDER
+                </span>
+
+                <h2>
+                  আপনার জন্য কোন Textile direction?
+                </h2>
+
+                <p>
+                  কয়েকটি প্রশ্নের উত্তর দিন। এটি শুধু একটি beginner-level
+                  guidance tool—চূড়ান্ত career decision নয়।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-career-question">
+
+              <h3>
+                ১. কোন কাজটি আপনার বেশি ভালো লাগে?
+              </h3>
+
+              <button
+                class="teg-choice"
+                data-career="production"
+                onclick="TEG.careerChoice(this)">
+                ⚙️ Machine / Production process
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="quality"
+                onclick="TEG.careerChoice(this)">
+                🔍 Defect খুঁজে বের করা
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="ie"
+                onclick="TEG.careerChoice(this)">
+                📊 Calculation ও efficiency
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="merchandising"
+                onclick="TEG.careerChoice(this)">
+                💼 Buyer ও communication
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="design"
+                onclick="TEG.careerChoice(this)">
+                🎨 Design / CAD
+              </button>
+
+            </div>
+
+
+            <div class="teg-career-question">
+
+              <h3>
+                ২. কোন skill আপনার বেশি পছন্দ?
+              </h3>
+
+              <button
+                class="teg-choice"
+                data-career="production"
+                onclick="TEG.careerChoice(this)">
+                🏭 Practical work
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="quality"
+                onclick="TEG.careerChoice(this)">
+                🔬 Testing / inspection
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="ie"
+                onclick="TEG.careerChoice(this)">
+                📈 Data / analysis
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="merchandising"
+                onclick="TEG.careerChoice(this)">
+                🗣️ Communication
+              </button>
+
+              <button
+                class="teg-choice"
+                data-career="design"
+                onclick="TEG.careerChoice(this)">
+                💻 Computer / design
+              </button>
+
+            </div>
+
+
+            <button
+              class="teg-btn"
+              onclick="TEG.showCareerResult()">
+
+              আমার সম্ভাব্য direction দেখুন →
+            </button>
+
+
+            <div
+              class="teg-career-result"
+              id="tegCareerResult"
+              style="display:none;">
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(6);TEG.next()">
+                পরের →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 08 — GLOSSARY
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="7">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  TEXTILE GLOSSARY
+                </span>
+
+                <h2>
+                  Beginner Textile Dictionary 📖
+                </h2>
+
+                <p>
+                  গুরুত্বপূর্ণ শব্দগুলো এক জায়গায়।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <input
+              class="teg-search"
+              id="tegGlossarySearch"
+              type="search"
+              placeholder="যেমন: GSM, Warp, Yarn, EPI..."
+              oninput="TEG.glossarySearch(this.value)"
+            >
+
+
+            <div
+              class="teg-glossary-grid"
+              id="tegGlossaryGrid">
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(7);TEG.next()">
+                Factory Journey →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 09 — FACTORY
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="8">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  VIRTUAL FACTORY JOURNEY
+                </span>
+
+                <h2>
+                  একটি Textile Factory ঘুরে দেখুন 🏭
+                </h2>
+
+                <p>
+                  Beginner-এর চোখে factory-এর বিভিন্ন department।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-grid">
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🌱
+                </div>
+
+                <h3>
+                  Raw Material
+                </h3>
+
+                <p>
+                  Fiber, yarn অথবা অন্যান্য raw material
+                  production-এর জন্য প্রস্তুত করা হয়।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🧵
+                </div>
+
+                <h3>
+                  Spinning
+                </h3>
+
+                <p>
+                  Fiber থেকে yarn তৈরি ও yarn quality control।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🏭
+                </div>
+
+                <h3>
+                  Weaving
+                </h3>
+
+                <p>
+                  Warp ও weft interlacement-এর মাধ্যমে woven fabric।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🧶
+                </div>
+
+                <h3>
+                  Knitting
+                </h3>
+
+                <p>
+                  Yarn loop formation-এর মাধ্যমে knitted fabric।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🎨
+                </div>
+
+                <h3>
+                  Dyeing
+                </h3>
+
+                <p>
+                  Colour, shade ও process control।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  ✨
+                </div>
+
+                <h3>
+                  Finishing
+                </h3>
+
+                <p>
+                  Fabric-এর desired appearance ও performance।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  👕
+                </div>
+
+                <h3>
+                  Garments
+                </h3>
+
+                <p>
+                  Cutting, sewing, finishing ও final inspection।
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🚚
+                </div>
+
+                <h3>
+                  Final Product
+                </h3>
+
+                <p>
+                  Quality check-এর পর product shipment-এর জন্য প্রস্তুত।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-info">
+
+              <strong>
+                🧠 Beginner Challenge
+              </strong>
+
+              এখন নিজের ভাষায় চিন্তা করুন:
+              “একটি cotton T-shirt তৈরি করতে কী কী ধাপ লাগতে পারে?”
+
+              এই প্রশ্নের উত্তর নিজে বলার চেষ্টা করুন।
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(8);TEG.next()">
+                Quiz শুরু করুন →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 10 — QUIZ
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="9">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  BEGINNER QUIZ
+                </span>
+
+                <h2>
+                  আপনার ধারণা পরীক্ষা করুন 🧠
+                </h2>
+
+                <p>
+                  পাঁচটি প্রশ্নের উত্তর দিন।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div id="tegQuizContainer"></div>
+
+
+            <div class="teg-score">
+
+              <strong id="tegQuizScore">
+                ০ / ৫
+              </strong>
+
+              <span id="tegQuizMessage">
+                Quiz শুরু করুন।
+              </span>
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(9);TEG.next()">
+                পরের →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 11 — SEARCH
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="10">
+
+            <div class="teg-module-header">
+
+              <div>
+
+                <span class="teg-label">
+                  SMART SEARCH
+                </span>
+
+                <h2>
+                  Beginner Guide Search 🔍
+                </h2>
+
+                <p>
+                  Guide-এর content থেকে দ্রুত বিষয় খুঁজে নিন।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <input
+              class="teg-search"
+              id="tegSearch"
+              type="search"
+              placeholder="যেমন: Textile, Fiber, Career, GSM..."
+              oninput="TEG.search(this.value)"
+            >
+
+
+            <div
+              id="tegSearchResults">
+            </div>
+
+
+            <div class="teg-info">
+
+              <strong>
+                🔖 Bookmark
+              </strong>
+
+              গুরুত্বপূর্ণ lesson-এ ☆ চাপ দিলে সেটি
+              আপনার browser-এ locally সংরক্ষিত থাকবে।
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.prev()">
+                ← আগের
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.complete(10);TEG.next()">
+                Completion →
+              </button>
+
+            </div>
+
+          </section>
+
+
+          <!-- =================================================
+               PAGE 12 — COMPLETION
+               ================================================= -->
+
+          <section
+            class="teg-page"
+            data-page="11">
+
+            <div class="teg-certificate">
+
+              <div class="teg-certificate-icon">
+                🏆
+              </div>
+
+              <span class="teg-label">
+                TEXTILE EXPLORER ACADEMY
+              </span>
+
+              <h2>
+                Beginner Journey Completed
+              </h2>
+
+              <div class="teg-certificate-name">
+                Textile Engineering Beginner
+              </div>
+
+              <p>
+                আপনি Textile Engineering-এর basic journey,
+                industry departments, career direction এবং
+                beginner concepts সম্পর্কে একটি foundation তৈরি করেছেন।
+              </p>
+
+              <p>
+                🎓 আপনার পরবর্তী ধাপ হলো—
+                TextileExplorer-এর Calculators, Study Tools,
+                Testing, Factory এবং Career features ব্যবহার করে
+                আরও গভীরে শেখা।
+              </p>
+
+            </div>
+
+
+            <div class="teg-grid">
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  📊
+                </div>
+
+                <h3>
+                  আপনার Progress
+                </h3>
+
+                <p id="tegFinalProgress">
+                  ০%
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🧠
+                </div>
+
+                <h3>
+                  Quiz Score
+                </h3>
+
+                <p id="tegFinalScore">
+                  ০ / ৫
+                </p>
+
+              </div>
+
+
+              <div class="teg-card">
+
+                <div class="teg-card-icon">
+                  🚀
+                </div>
+
+                <h3>
+                  Next Step
+                </h3>
+
+                <p>
+                  Advanced Textile topics explore করুন।
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="teg-bottom-nav">
+
+              <button
+                class="teg-btn secondary"
+                onclick="TEG.go(0)">
+                ↺ আবার শুরু
+              </button>
+
+              <button
+                class="teg-btn"
+                onclick="TEG.close()">
+                TextileExplorer-এ ফিরে যান →
+              </button>
+
+            </div>
+
+          </section>
+
+
+        </main>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="tegToast"></div>
+
+
+<script>
+
+/* =========================================================
+   TEXTILE EXPLORER BEGINNER ACADEMY ENGINE
+   ========================================================= */
+
+const TEG = {
+
+  current:0,
+
+  total:12,
+
+  completed:{},
+
+  bookmarks:{},
+
+  quizAnswers:{},
+
+  careerScores:{
+    production:0,
+    quality:0,
+    ie:0,
+    merchandising:0,
+    design:0
+  },
+
+
+  /* ================= OPEN ================= */
+
+  open:function(){
+
+    const overlay=
+      document.getElementById("tegOverlay");
+
+    if(!overlay) return;
+
+    overlay.classList.add("teg-show");
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow="hidden";
+
+    this.load();
+
+    this.go(this.current);
+
+    this.renderGlossary();
+
+    this.renderQuiz();
+
+    this.updateFinalStats();
+
+  },
+
+
+  /* ================= CLOSE ================= */
+
+  close:function(){
+
+    const overlay=
+      document.getElementById("tegOverlay");
+
+    if(!overlay) return;
+
+    overlay.classList.remove("teg-show");
+
+    overlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.style.overflow="";
+
+    this.save();
+
+  },
+
+
+  /* ================= HOME ================= */
+
+  home:function(){
+
+    this.go(0);
+
+  },
+
+
+  /* ================= NAVIGATION ================= */
+
+  go:function(index){
+
+    if(index<0) index=0;
+
+    if(index>=this.total){
+      index=this.total-1;
+    }
+
+    this.current=index;
+
+
+    document
+      .querySelectorAll("#tegOverlay .teg-page")
+      .forEach(function(page){
+
+        page.classList.remove("active");
+
+      });
+
+
+    const page=
+      document.querySelector(
+        '#tegOverlay .teg-page[data-page="'+index+'"]'
+      );
+
+
+    if(page){
+      page.classList.add("active");
+    }
+
+
+    document
+      .querySelectorAll("#tegOverlay .teg-nav")
+      .forEach(function(nav){
+
+        nav.classList.remove("active");
+
+        if(
+          Number(nav.dataset.page)===index
+        ){
+
+          nav.classList.add("active");
+
+        }
+
+      });
+
+
+    const content=
+      document.querySelector(".teg-content");
+
+    if(content){
+      content.scrollTop=0;
+    }
+
+
+    this.updateProgress();
+
+    this.save();
+
+  },
+
+
+  next:function(){
+
+    this.complete(this.current);
+
+    if(this.current<this.total-1){
+
+      this.go(this.current+1);
+
+    }
+
+  },
+
+
+  prev:function(){
+
+    if(this.current>0){
+
+      this.go(this.current-1);
+
+    }
+
+  },
+
+
+  /* ================= COMPLETION ================= */
+
+  complete:function(index){
+
+    this.completed[index]=true;
+
+    this.save();
+
+    this.updateProgress();
+
+    this.updateFinalStats();
+
+  },
+
+
+  /* ================= PROGRESS ================= */
+
+  updateProgress:function(){
+
+    const completedCount=
+      Object.keys(this.completed).length;
+
+
+    const percent=Math.round(
+      (completedCount/this.total)*100
+    );
+
+
+    const fill=
+      document.getElementById(
+        "tegProgressFill"
+      );
+
+    const count=
+      document.getElementById(
+        "tegProgressCount"
+      );
+
+    const text=
+      document.getElementById(
+        "tegProgressPercent"
+      );
+
+
+    if(fill){
+      fill.style.width=
+        percent+"%";
+    }
+
+
+    if(count){
+      count.textContent=
+        completedCount+"/"+this.total;
+    }
+
+
+    if(text){
+
+      text.textContent=
+        this.bn(percent)+"% সম্পন্ন";
+
+    }
+
+  },
+
+
+  /* ================= BOOKMARK ================= */
+
+  bookmark:function(index){
+
+    this.bookmarks[index]=
+      !this.bookmarks[index];
+
+
+    const button=
+      document.getElementById(
+        "tegBookmark"+index
+      );
+
+
+    if(button){
+
+      button.textContent=
+        this.bookmarks[index]
+          ? "★"
+          : "☆";
+
+    }
+
+
+    this.save();
+
+    this.toast(
+      this.bookmarks[index]
+        ? "Lesson bookmark করা হয়েছে।"
+        : "Bookmark সরানো হয়েছে।"
+    );
+
+  },
+
+
+  /* ================= GLOSSARY ================= */
+
+  glossaryData:[
+
+    ["GSM",
+     "Grams per Square Meter — fabric-এর প্রতি square meter-এর weight।"],
+
+    ["EPI",
+     "Ends Per Inch — woven fabric-এর warp density-এর একটি পরিমাপ।"],
+
+    ["PPI",
+     "Picks Per Inch — woven fabric-এর weft density-এর একটি পরিমাপ।"],
+
+    ["Warp",
+     "Woven fabric-এর lengthwise yarn system।"],
+
+    ["Weft",
+     "Woven fabric-এর crosswise yarn system।"],
+
+    ["Yarn Count",
+     "Yarn-এর fineness বা linear density প্রকাশের পদ্ধতি।"],
+
+    ["Denier",
+     "Mass per 9000 meter filament-এর ভিত্তিতে প্রকাশ করা একটি count system।"],
+
+    ["Tex",
+     "1000 meter yarn-এর gram weight-এর ভিত্তিতে linear density প্রকাশ।"],
+
+    ["Course",
+     "Knitted fabric-এর একটি গুরুত্বপূর্ণ structural direction।"],
+
+    ["Wale",
+     "Knitted fabric-এর vertical loop direction।"],
+
+    ["Fiber",
+     "Textile material তৈরির মৌলিক raw material-এর একটি form।"],
+
+    ["Filament",
+     "দীর্ঘ continuous fiber বা strand।"],
+
+    ["Spinning",
+     "Fiber থেকে yarn তৈরির manufacturing process।"],
+
+    ["Weaving",
+     "Warp ও weft-এর interlacement-এর মাধ্যমে woven fabric তৈরির process।"],
+
+    ["Knitting",
+     "Loop formation-এর মাধ্যমে knitted fabric তৈরির process।"],
+
+    ["Dyeing",
+     "Textile material-এ desired colour দেওয়ার process।"],
+
+    ["Finishing",
+     "Fabric-এর appearance ও performance উন্নত করার process।"],
+
+    ["Shrinkage",
+     "Processing বা washing-এর ফলে dimension কমে যাওয়ার পরিবর্তন।"],
+
+    ["Quality",
+     "Specified requirements অনুযায়ী product-এর conformity।"],
+
+    ["SMV",
+     "Standard Minute Value — garment operation-এর standard time সম্পর্কিত একটি industrial engineering measure।"]
+
+  ],
+
+
+  renderGlossary:function(){
+
+    const grid=
+      document.getElementById(
+        "tegGlossaryGrid"
+      );
+
+    if(!grid) return;
+
+    grid.innerHTML="";
+
+
+    this.glossaryData.forEach(
+      function(item){
+
+        const div=
+          document.createElement("div");
+
+        div.className=
+          "teg-term";
+
+        div.dataset.term=
+          (
+            item[0]+" "+item[1]
+          ).toLowerCase();
+
+        div.innerHTML=
+          `
+          <strong>${item[0]}</strong>
+          <span>${item[1]}</span>
+          `;
+
+        grid.appendChild(div);
+
+      }
+    );
+
+  },
+
+
+  glossarySearch:function(value){
+
+    const query=
+      String(value)
+      .toLowerCase()
+      .trim();
+
+
+    document
+      .querySelectorAll("#tegGlossaryGrid .teg-term")
+      .forEach(function(item){
+
+        item.style.display=
+          !query ||
+          item.dataset.term.includes(query)
+            ? ""
+            : "none";
+
+      });
+
+  },
+
+
+  /* ================= CAREER FINDER ================= */
+
+  careerChoice:function(button){
+
+    const career=
+      button.dataset.career;
+
+
+    if(!career) return;
+
+
+    const siblings=
+      button.parentElement
+      .querySelectorAll(
+        ".teg-choice"
+      );
+
+
+    siblings.forEach(
+      function(btn){
+
+        btn.classList.remove(
+          "selected"
+        );
+
+      }
+    );
+
+
+    button.classList.add(
+      "selected"
+    );
+
+
+    this.careerScores[career]++;
+
+  },
+
+
+  showCareerResult:function(){
+
+    let best="production";
+
+    let score=-1;
+
+
+    Object.keys(
+      this.careerScores
+    ).forEach(
+      function(key){
+
+        if(
+          TEG.careerScores[key]>score
+        ){
+
+          score=
+            TEG.careerScores[key];
+
+          best=key;
+
+        }
+
+      }
+    );
+
+
+    const data={
+
+      production:{
+        title:"Production / Manufacturing",
+        icon:"⚙️",
+        text:
+          "আপনার আগ্রহ production process, machinery ও practical work-এর দিকে বেশি হতে পারে। Spinning, Weaving, Knitting, Dyeing বা Garments production সম্পর্কে আরও জানুন।"
+      },
+
+      quality:{
+        title:"Quality / Testing",
+        icon:"🔍",
+        text:
+          "আপনার observation, inspection ও defect analysis-এর প্রতি আগ্রহ থাকতে পারে। Quality Control এবং Textile Testing সম্পর্কে আরও explore করুন।"
+      },
+
+      ie:{
+        title:"Industrial Engineering",
+        icon:"📊",
+        text:
+          "আপনার calculation, data ও efficiency-related কাজের প্রতি আগ্রহ থাকতে পারে। IE, productivity, SMV ও line balancing নিয়ে শিখতে পারেন।"
+      },
+
+      merchandising:{
+        title:"Merchandising",
+        icon:"💼",
+        text:
+          "Communication, buyer interaction, costing ও order coordination আপনার জন্য interesting হতে পারে।"
+      },
+
+      design:{
+        title:"CAD / Design",
+        icon:"🎨",
+        text:
+          "Computer, design ও creative technical work আপনার জন্য উপযুক্ত হতে পারে। CAD, pattern ও textile/fashion design explore করতে পারেন।"
+      }
+
+    };
+
+
+    const result=
+      document.getElementById(
+        "tegCareerResult"
+      );
+
+
+    if(!result) return;
+
+
+    const item=data[best];
+
+
+    result.style.display="block";
+
+
+    result.innerHTML=
+      `
+      <h3>
+        ${item.icon} ${item.title}
+      </h3>
+
+      <p>
+        ${item.text}
+      </p>
+
+      <small>
+        এটি একটি beginner-level guidance।
+        আপনার বাস্তব interest, skill, education এবং
+        industry experience বিবেচনা করে final decision নিন।
+      </small>
+      `;
+
+
+    result.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+  },
+
+
+  /* ================= QUIZ ================= */
+
+  quizData:[
+
+    {
+      q:"Fiber থেকে সাধারণত কী তৈরি করা হয়?",
+      options:[
+        "Yarn",
+        "Boiler",
+        "Machine Oil",
+        "Needle"
+      ],
+      answer:0
+    },
+
+    {
+      q:"EPI-এর পূর্ণরূপ কী?",
+      options:[
+        "Ends Per Inch",
+        "Every Production Inch",
+        "Extra Picks Inch",
+        "End Process Index"
+      ],
+      answer:0
+    },
+
+    {
+      q:"Warp কোন direction-এর yarn?",
+      options:[
+        "Lengthwise",
+        "Crosswise",
+        "Circular",
+        "Random"
+      ],
+      answer:0
+    },
+
+    {
+      q:"Knitting-এর basic structure কী দিয়ে তৈরি হয়?",
+      options:[
+        "Loops",
+        "Only knots",
+        "Only warp",
+        "Only dye"
+      ],
+      answer:0
+    },
+
+    {
+      q:"কোনটি Textile career-এর একটি সম্ভাব্য ক্ষেত্র?",
+      options:[
+        "Industrial Engineering",
+        "Only Driving",
+        "Only Banking",
+        "Only Farming"
+      ],
+      answer:0
+    }
+
+  ],
+
+
+  renderQuiz:function(){
+
+    const container=
+      document.getElementById(
+        "tegQuizContainer"
+      );
+
+    if(!container) return;
+
+
+    container.innerHTML="";
+
+
+    this.quizData.forEach(
+      function(item,index){
+
+        const question=
+          document.createElement("div");
+
+        question.className=
+          "teg-question";
+
+
+        let html=
+          "<h3>"+
+          (index+1)+
+          ". "+
+          item.q+
+          "</h3>";
+
+
+        item.options.forEach(
+          function(option,optIndex){
+
+            html+=
+              `
+              <button
+                class="teg-option"
+                data-question="${index}"
+                data-option="${optIndex}"
+                type="button">
+
+                ${option}
+
+              </button>
+              `;
+
+          }
+        );
+
+
+        question.innerHTML=html;
+
+        container.appendChild(
+          question
+        );
+
+      }
+    );
+
+
+    container
+      .querySelectorAll(".teg-option")
+      .forEach(
+        function(button){
+
+          button.addEventListener(
+            "click",
+            function(){
+
+              const q=
+                Number(
+                  this.dataset.question
+                );
+
+              const selected=
+                Number(
+                  this.dataset.option
+                );
+
+              const correct=
+                TEG.quizData[q].answer;
+
+
+              const buttons=
+                container.querySelectorAll(
+                  '[data-question="'+q+'"]'
+                );
+
+
+              buttons.forEach(
+                function(btn){
+
+                  btn.disabled=true;
+
+                }
+              );
+
+
+              if(selected===correct){
+
+                this.classList.add(
+                  "correct"
+                );
+
+              }else{
+
+                this.classList.add(
+                  "wrong"
+                );
+
+                buttons[
+                  correct
+                ].classList.add(
+                  "correct"
+                );
+
+              }
+
+
+              TEG.quizAnswers[q]=
+                selected;
+
+
+              TEG.updateQuizScore();
+
+            }
+          );
+
+        }
+      );
+
+  },
+
+
+  updateQuizScore:function(){
+
+    let score=0;
+
+
+    this.quizData.forEach(
+      function(item,index){
+
+        if(
+          TEG.quizAnswers[index]===
+          item.answer
+        ){
+
+          score++;
+
+        }
+
+      }
+    );
+
+
+    const scoreEl=
+      document.getElementById(
+        "tegQuizScore"
+      );
+
+    const messageEl=
+      document.getElementById(
+        "tegQuizMessage"
+      );
+
+
+    if(scoreEl){
+
+      scoreEl.textContent=
+        score+" / "+
+        this.quizData.length;
+
+    }
+
+
+    if(messageEl){
+
+      if(score===5){
+
+        messageEl.textContent=
+          "অসাধারণ! Beginner level-এর সব প্রশ্ন সঠিক হয়েছে। 🎉";
+
+      }else if(score>=3){
+
+        messageEl.textContent=
+          "খুব ভালো! আপনার basic foundation তৈরি হচ্ছে। 👍";
+
+      }else{
+
+        messageEl.textContent=
+          "আরও একটু practice করুন। Beginner Guide আবার দেখতে পারেন। 📚";
+
+      }
+
+    }
+
+
+    this.updateFinalStats();
+
+    this.save();
+
+  },
+
+
+  /* ================= SEARCH ================= */
+
+  search:function(value){
+
+    const query=
+      String(value)
+      .toLowerCase()
+      .trim();
+
+
+    const result=
+      document.getElementById(
+        "tegSearchResults"
+      );
+
+
+    if(!result) return;
+
+
+    if(!query){
+
+      result.innerHTML=
+        `
+        <div class="teg-info">
+          <strong>🔍 Search করুন</strong>
+          Textile, Fiber, Yarn, Career, Factory,
+          Quality, GSM ইত্যাদি লিখে দেখুন।
+        </div>
+        `;
+
+      return;
+
+    }
+
+
+    const data=[
+
+      ["Textile Engineering",
+       "Textile Engineering কী এবং কেন গুরুত্বপূর্ণ।",
+       1],
+
+      ["Fiber",
+       "Textile-এর basic raw material এবং Fiber থেকে Yarn তৈরির ধারণা।",
+       1],
+
+      ["Yarn",
+       "Fiber থেকে Yarn তৈরির basic ধারণা।",
+       2],
+
+      ["Spinning",
+       "Fiber থেকে Yarn তৈরির process।",
+       3],
+
+      ["Weaving",
+       "Warp ও Weft-এর interlacement।",
+       3],
+
+      ["Knitting",
+       "Loop formation-এর মাধ্যমে fabric তৈরির process।",
+       3],
+
+      ["Dyeing",
+       "Textile material-এ colour দেওয়ার process।",
+       3],
+
+      ["Quality",
+       "Inspection ও defect analysis-এর basic ধারণা।",
+       4],
+
+      ["Career",
+       "Textile Engineering-এর বিভিন্ন career direction।",
+       6],
+
+      ["GSM",
+       "Fabric weight-এর একটি গুরুত্বপূর্ণ measurement।",
+       7],
+
+      ["Factory",
+       "Textile factory-এর বিভিন্ন department ও journey।",
+       8],
+
+      ["Garments",
+       "Fabric থেকে final apparel তৈরির ধারণা।",
+       8]
+
+    ];
+
+
+    const matches=
+      data.filter(
+        function(item){
+
+          return (
+            item[0]+" "+
+            item[1]
+          )
+          .toLowerCase()
+          .includes(query);
+
+        }
+      );
+
+
+    if(!matches.length){
+
+      result.innerHTML=
+        `
+        <div class="teg-info">
+          <strong>কিছু পাওয়া যায়নি।</strong>
+          অন্য keyword দিয়ে আবার চেষ্টা করুন।
+        </div>
+        `;
+
+      return;
+
+    }
+
+
+    result.innerHTML=
+      matches.map(
+        function(item){
+
+          return `
+          <div
+            class="teg-search-result"
+            onclick="TEG.go(${item[2]})">
+
+            <strong>
+              ${item[0]}
+            </strong>
+
+            <span>
+              ${item[1]}
+            </span>
+
+          </div>
+          `;
+
+        }
+      ).join("");
+
+  },
+
+
+  /* ================= STORAGE ================= */
+
+  save:function(){
+
+    try{
+
+      localStorage.setItem(
+        "TEG_current",
+        JSON.stringify(
+          this.current
+        )
+      );
+
+
+      localStorage.setItem(
+        "TEG_completed",
+        JSON.stringify(
+          this.completed
+        )
+      );
+
+
+      localStorage.setItem(
+        "TEG_bookmarks",
+        JSON.stringify(
+          this.bookmarks
+        )
+      );
+
+
+      localStorage.setItem(
+        "TEG_quiz",
+        JSON.stringify(
+          this.quizAnswers
+        )
+      );
+
+    }catch(e){}
+
+  },
+
+
+  load:function(){
+
+    try{
+
+      const current=
+        localStorage.getItem(
+          "TEG_current"
+        );
+
+      const completed=
+        localStorage.getItem(
+          "TEG_completed"
+        );
+
+      const bookmarks=
+        localStorage.getItem(
+          "TEG_bookmarks"
+        );
+
+      const quiz=
+        localStorage.getItem(
+          "TEG_quiz"
+        );
+
+
+      if(current!==null){
+
+        this.current=
+          Number(current);
+
+      }
+
+
+      if(completed!==null){
+
+        this.completed=
+          JSON.parse(completed) || {};
+
+      }
+
+
+      if(bookmarks!==null){
+
+        this.bookmarks=
+          JSON.parse(bookmarks) || {};
+
+      }
+
+
+      if(quiz!==null){
+
+        this.quizAnswers=
+          JSON.parse(quiz) || {};
+
+      }
+
+
+      Object.keys(
+        this.bookmarks
+      ).forEach(
+        function(index){
+
+          const btn=
+            document.getElementById(
+              "tegBookmark"+index
+            );
+
+          if(btn){
+
+            btn.textContent=
+              TEG.bookmarks[index]
+                ? "★"
+                : "☆";
+
+          }
+
+        }
+      );
+
+
+      this.updateProgress();
+
+      this.updateFinalStats();
+
+    }catch(e){}
+
+  },
+
+
+  /* ================= CHECKLIST ================= */
+
+  saveChecklist:function(){
+
+    try{
+
+      const checks=
+        Array.from(
+          document.querySelectorAll(
+            "#tegOverlay .teg-check input"
+          )
+        )
+        .map(
+          function(input){
+            return input.checked;
+          }
+        );
+
+      localStorage.setItem(
+        "TEG_checklist",
+        JSON.stringify(checks)
+      );
+
+    }catch(e){}
+
+  },
+
+
+  /* ================= FINAL STATS ================= */
+
+  updateFinalStats:function(){
+
+    const count=
+      Object.keys(
+        this.completed
+      ).length;
+
+
+    const percent=
+      Math.round(
+        (count/this.total)*100
+      );
+
+
+    const finalProgress=
+      document.getElementById(
+        "tegFinalProgress"
+      );
+
+    const finalScore=
+      document.getElementById(
+        "tegFinalScore"
+      );
+
+
+    if(finalProgress){
+
+      finalProgress.textContent=
+        this.bn(percent)+
+        "% সম্পন্ন";
+
+    }
+
+
+    if(finalScore){
+
+      let score=0;
+
+      this.quizData.forEach(
+        function(item,index){
+
+          if(
+            TEG.quizAnswers[index]===
+            item.answer
+          ){
+
+            score++;
+
+          }
+
+        }
+      );
+
+
+      finalScore.textContent=
+        score+" / "+
+        this.quizData.length;
+
+    }
+
+  },
+
+
+  /* ================= TOAST ================= */
+
+  toast:function(message){
+
+    const toast=
+      document.getElementById(
+        "tegToast"
+      );
+
+    if(!toast) return;
+
+
+    toast.textContent=
+      message;
+
+
+    toast.classList.add(
+      "show"
+    );
+
+
+    clearTimeout(
+      this.toastTimer
+    );
+
+
+    this.toastTimer=
+      setTimeout(
+        function(){
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },
+        1800
+      );
+
+  },
+
+
+  /* ================= BANGLA NUMBER ================= */
+
+  bn:function(number){
+
+    return String(number)
+      .replace(
+        /[0-9]/g,
+        function(d){
+
+          return "০১২৩৪৫৬৭৮৯"[d];
+
+        }
+      );
+
+  }
+
+};
+
+
+/* =========================================================
+   INSERT LAUNCH BUTTON
+   ========================================================= */
+
+(function(){
+
+  function initTEG(){
+
+    const launcher=
+      document.getElementById(
+        "tegLaunchWrap"
+      );
+
+    const heroButtons=
+      document.querySelector(
+        ".hero-buttons"
+      );
+
+
+    if(
+      launcher &&
+      heroButtons &&
+      !launcher.dataset.inserted
+    ){
+
+      heroButtons.insertAdjacentElement(
+        "afterend",
+        launcher
+      );
+
+      launcher.dataset.inserted=
+        "true";
+
+    }
+
+
+    TEG.load();
+
+    TEG.renderGlossary();
+
+    TEG.renderQuiz();
+
+    TEG.search("");
+
+  }
+
+
+  if(
+    document.readyState===
+    "loading"
+  ){
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      initTEG
+    );
+
+  }else{
+
+    initTEG();
+
+  }
+
+})();
+
+
+/* =========================================================
+   ESC KEY
+   ========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(
+      event.key==="Escape"
+    ){
+
+      const overlay=
+        document.getElementById(
+          "tegOverlay"
+        );
+
+
+      if(
+        overlay &&
+        overlay.classList.contains(
+          "teg-show"
+        )
+      ){
+
+        TEG.close();
+
+      }
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   OUTSIDE CLICK
+   ========================================================= */
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const overlay=
+      document.getElementById(
+        "tegOverlay"
+      );
+
+
+    if(
+      overlay &&
+      event.target===overlay
+    ){
+
+      TEG.close();
+
+    }
+
+  }
+);
+
+</script>
+
+<!-- =========================================================
+ END TEXTILE EXPLORER BEGINNER ACADEMY
+ ========================================================= -->
 </body>
 </html>
